@@ -1,0 +1,138 @@
+Event	ID	Name			Wwise Object Path	Notes
+	573664262	shootstylebulletsfx			\Default Work Unit\shootstylebulletsfx	
+	687990298	stlouisvoice			\Default Work Unit\stlouisvoice	
+	779278001	death			\Default Work Unit\death	
+	1063047365	airforcesfx			\Default Work Unit\airforcesfx	
+	1074439307	delawaresfx			\Default Work Unit\delawaresfx	
+	1215621278	airforcevoice			\Default Work Unit\airforcevoice	
+	1356252224	delawarevoice			\Default Work Unit\delawarevoice	
+	1918362945	stlouissfx			\Default Work Unit\stlouissfx	
+	2493696431	ofavoice			\Default Work Unit\ofavoice	
+	2656882895	Entrance			\Default Work Unit\Entrance	
+	3062535197	blackwhipsfx			\Default Work Unit\blackwhipsfx	
+	3161415855	event			\Default Work Unit\event	
+	3289116818	detroitexit			\Default Work Unit\detroitexit	
+	3709822086	blackwhipvoice			\Default Work Unit\blackwhipvoice	
+	3806074874	detroitcharge			\Default Work Unit\detroitcharge	
+	3842300745	shootstylebulletvoice			\Default Work Unit\shootstylebulletvoice	
+	3940341776	ofasfx			\Default Work Unit\ofasfx	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	3673881719	Volume_SFX			\Default Work Unit\Volume_SFX	
+	3695994288	Volume_Master			\Default Work Unit\Volume_Master	
+
+Source plug-ins	ID	Name	Type		Wwise Object Path	Notes
+	75647635	Wwise Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\shootstylebullet\shootstylebulletvoice\Silence_04\Wwise Silence	
+	110499404	Wwise Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\stlouis\stlouisvoice\Silence_03\Wwise Silence	
+	117627420	Wwise Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\ofa\ofavoice\Silence\Wwise Silence	
+	164114253	Wwise Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\shootstylebullet\shootstylebulletvoice\Silence_06\Wwise Silence	
+	177462329	Wwise Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\stlouis\stlouisvoice\Silence\Wwise Silence	
+	321779176	Wwise Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\stlouis\stlouisvoice\Silence_05\Wwise Silence	
+	428613216	Wwise Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\shootstylebullet\shootstylebulletvoice\Silence_03\Wwise Silence	
+	473413649	Wwise Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\shootstylebullet\shootstylebulletvoice\Silence_07\Wwise Silence	
+	554491693	Wwise Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\shootstylebullet\shootstylebulletvoice\Silence_09\Wwise Silence	
+	631575304	Wwise Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\stlouis\stlouisvoice\Silence_02\Wwise Silence	
+	646171409	Wwise Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\shootstylebullet\shootstylebulletvoice\Silence_05\Wwise Silence	
+	683113195	Wwise Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\shootstylebullet\shootstylebulletvoice\Silence_08\Wwise Silence	
+	689853809	Wwise Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\shootstylebullet\shootstylebulletvoice\Silence_02\Wwise Silence	
+	699045391	Wwise Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\shootstylebullet\shootstylebulletvoice\Silence\Wwise Silence	
+	727916799	Wwise Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\shootstylebullet\shootstylebulletvoice\Silence_01\Wwise Silence	
+	750468009	Wwise Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\airforce\airforcevoice\Silence\Wwise Silence	
+	751618574	Wwise Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\shootstylebullet\shootstylebulletvoice\Silence_10\Wwise Silence	
+	807835198	Wwise Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\blackwhip\blackwhipvoice\Silence\Wwise Silence	
+	886258220	Wwise Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\stlouis\stlouisvoice\Silence_01\Wwise Silence	
+	978414617	Wwise Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\stlouis\stlouisvoice\Silence_04\Wwise Silence	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	13923596	VoPl01_00000045	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\blackwhip\VoPl01_00000045_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\blackwhip\blackwhipvoice\VoPl01_00000045		2542
+	14386378	VoPl01_00000082	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\shootstylebullet\VoPl01_00000082_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\shootstylebullet\shootstylebulletvoice\VoPl01_00000082		3136
+	18708744	VoPl01_00000044	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\blackwhip\VoPl01_00000044_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\blackwhip\blackwhipvoice\VoPl01_00000044		3820
+	24956156	smashvoice	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\delaware\smashvoice_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\delaware\delawarevoice\smashvoice		17436
+	25413997	SePl01_0000000E	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\stlouis\sfx\SePl01_0000000E_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\stlouis\sfx\stlouissfx\SePl01_0000000E		19066
+	33232957	detroitwithcharge	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\detroit\charge\detroitwithcharge_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\detroit\charge\detroitcharge\detroitwithcharge		26350
+	45278170	VoPl01_00000023	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\ofa\VoPl01_00000023_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\ofa\ofavoice\VoPl01_00000023		18387
+	45353454	VoPl01_0000005D	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\ofa\VoPl01_0000005D_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\ofa\ofavoice\VoPl01_0000005D		17279
+	66608882	VoPl01_000000E7	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\Entrance\VoPl01_000000E7_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\Entrance\entrance\VoPl01_000000E7		19410
+	78216023	VoPl01_00000099	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\Death\VoPl01_00000099_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\Death\death\VoPl01_00000099		13178
+	89094593	VoPl01_0000005F	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\ofa\VoPl01_0000005F_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\ofa\ofavoice\VoPl01_0000005F		14281
+	128544243	airforceshot	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\airforceshot_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\airforce\sfx\airforcesfx\airforceshot		2576
+	133485999	VoPl01_000000A2	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\Death\VoPl01_000000A2_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\Death\death\VoPl01_000000A2		17040
+	133882509	gomenasaiwithcharge	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\detroit\charge\gomenasaiwithcharge_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\detroit\charge\detroitcharge\gomenasaiwithcharge		25378
+	134648371	VoPl01_00000056	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\airforce\VoPl01_00000056_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\airforce\airforcevoice\VoPl01_00000056		10243
+	140991218	VoPl01_00000051	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\delaware\VoPl01_00000051_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\delaware\delawarevoice\VoPl01_00000051		4632
+	152619868	VoPl01_00000050	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\delaware\VoPl01_00000050_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\delaware\delawarevoice\VoPl01_00000050		2946
+	153943766	VoPl01_00000089	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\shootstylebullet\VoPl01_00000089_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\shootstylebullet\shootstylebulletvoice\VoPl01_00000089		2309
+	161241194	SePl01_0000000F	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\stlouis\sfx\SePl01_0000000F_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\stlouis\sfx\stlouissfx\SePl01_0000000F		16188
+	186206304	VoPl01_000000AC	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\Death\VoPl01_000000AC_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\Death\death\VoPl01_000000AC		20958
+	189355726	SePl01_00000001	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\shootstylebullet\sfx\SePl01_00000001_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\shootstylebullet\sfx\shootstylebulletsfx\SePl01_00000001		4014
+	199866267	VoPl01_00000048	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\blackwhip\VoPl01_00000048_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\blackwhip\blackwhipvoice\VoPl01_00000048		5633
+	227151916	VoPl01_00000022	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\ofa\VoPl01_00000022_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\ofa\ofavoice\VoPl01_00000022		19657
+	230797769	VoPl01_00000083	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\shootstylebullet\VoPl01_00000083_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\shootstylebullet\shootstylebulletvoice\VoPl01_00000083		2938
+	246103165	VoPl01_000000AE	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\Death\VoPl01_000000AE_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\Death\death\VoPl01_000000AE		20244
+	310105775	VoPl01_0000010F	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\Entrance\VoPl01_0000010F_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\Entrance\entrance\VoPl01_0000010F		17466
+	352397840	VoPl01_00000046	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\blackwhip\VoPl01_00000046_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\blackwhip\blackwhipvoice\VoPl01_00000046		2703
+	355347321	VoPl01_000000F5	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\Entrance\VoPl01_000000F5_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\Entrance\entrance\VoPl01_000000F5		12045
+	368417381	VoPl01_00000016	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\shootstylebullet\VoPl01_00000016_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\shootstylebullet\shootstylebulletvoice\VoPl01_00000016		10027
+	398014809	VoPl01_00000052	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\delaware\VoPl01_00000052_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\delaware\delawarevoice\VoPl01_00000052		6774
+	398723116	VoPl01_0000003E	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\blackwhip\VoPl01_0000003E_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\blackwhip\blackwhipvoice\VoPl01_0000003E		18375
+	427314784	VoPl01_00000087	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\shootstylebullet\VoPl01_00000087_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\shootstylebullet\shootstylebulletvoice\VoPl01_00000087		7090
+	483243679	VoPl01_00000054	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\ofa\VoPl01_00000054_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\ofa\ofavoice\VoPl01_00000054		19068
+	484186578	VoPl01_000000A1	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\Death\VoPl01_000000A1_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\Death\death\VoPl01_000000A1		15680
+	485064595	VoPl01_0000004C	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\stlouis\VoPl01_0000004C_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\stlouis\stlouisvoice\VoPl01_0000004C		6427
+	487520420	VoPl01_000000E6	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\Entrance\VoPl01_000000E6_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\Entrance\entrance\VoPl01_000000E6		22140
+	487561111	VoPl01_000000F2	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\Death\VoPl01_000000F2_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\Death\death\VoPl01_000000F2		18361
+	492780473	VoPl01_00000080	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\shootstylebullet\VoPl01_00000080_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\shootstylebullet\shootstylebulletvoice\VoPl01_00000080		7647
+	519379338	VoPl01_0000008A	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\airforce\VoPl01_0000008A_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\airforce\airforcevoice\VoPl01_0000008A		6004
+	524330261	VoPl01_0000007D	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\stlouis\VoPl01_0000007D_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\stlouis\stlouisvoice\VoPl01_0000007D		24656
+	524893754	fullcowlcharge	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\ofa\sfx\fullcowlcharge_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\ofa\sfx\ofasfx\fullcowlcharge		25418
+	528051330	VoPl01_0000007D	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\delaware\VoPl01_0000007D_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\delaware\delawarevoice\VoPl01_0000007D		24656
+	569156007	VoPl01_00000085	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\shootstylebullet\VoPl01_00000085_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\shootstylebullet\shootstylebulletvoice\VoPl01_00000085		7437
+	570338746	shootstylewithrocks	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\shootstylebullet\shootstylewithrocks_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\shootstylebullet\shootstylebulletvoice\shootstylewithrocks		21784
+	572307406	VoPl01_00000055	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\ofa\VoPl01_00000055_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\ofa\ofavoice\VoPl01_00000055		22354
+	579125949	smashvoice	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\detroit\exit\smashvoice_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\detroit\exit\detroitexit\smashvoice		17436
+	604310980	VoPl01_0000004F	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\stlouis\VoPl01_0000004F_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\stlouis\stlouisvoice\VoPl01_0000004F		14133
+	612985191	VoPl01_000000FD	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\Entrance\VoPl01_000000FD_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\Entrance\entrance\VoPl01_000000FD		14377
+	615323603	airforceshotlong	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\airforceshotlong_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\airforce\sfx\airforcesfx\airforceshotlong		9038
+	644011312	ofadash	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\shootstylebullet\sfx\ofadash_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\shootstylebullet\sfx\shootstylebulletsfx\ofadash		14118
+	645213426	fullcowlchargequick	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\shootstylebullet\sfx\fullcowlchargequick_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\shootstylebullet\sfx\shootstylebulletsfx\fullcowlchargequick		11424
+	655583295	VoPl01_000000C0	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\delaware\VoPl01_000000C0_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\delaware\delawarevoice\VoPl01_000000C0		13542
+	657530836	VoPl01_00000047	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\blackwhip\VoPl01_00000047_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\blackwhip\blackwhipvoice\VoPl01_00000047		4340
+	670907558	VoPl01_00000088	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\shootstylebullet\VoPl01_00000088_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\shootstylebullet\shootstylebulletvoice\VoPl01_00000088		5910
+	676652089	VoPl01_00000084	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\shootstylebullet\VoPl01_00000084_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\shootstylebullet\shootstylebulletvoice\VoPl01_00000084		8432
+	679376315	VoPl01_00000025	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\ofa\VoPl01_00000025_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\ofa\ofavoice\VoPl01_00000025		12829
+	697834283	VoPl01_00000027	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\ofa\VoPl01_00000027_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\ofa\ofavoice\VoPl01_00000027		14197
+	706237824	VoPl01_00000081	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\shootstylebullet\VoPl01_00000081_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\shootstylebullet\shootstylebulletvoice\VoPl01_00000081		4908
+	729564121	SePl01_00000006	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\ofa\sfx\SePl01_00000006_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\ofa\sfx\ofasfx\SePl01_00000006		25406
+	740940922	blackwhipsfx	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\blackwhip\sfx\blackwhipsfx_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\blackwhip\sfx\blackwhipsfx\blackwhipsfx		55934
+	754389255	SePl01_00000010	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\delaware\sfx\SePl01_00000010_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\delaware\sfx\delawaresfx\SePl01_00000010		23125
+	757473651	blackwhipsfx2	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\blackwhip\sfx\blackwhipsfx2_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\blackwhip\sfx\blackwhipsfx\blackwhipsfx2		18003
+	759147328	VoPl01_00000086	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\shootstylebullet\VoPl01_00000086_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\shootstylebullet\shootstylebulletvoice\VoPl01_00000086		6007
+	784193560	VoPl01_00000026	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\ofa\VoPl01_00000026_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\ofa\ofavoice\VoPl01_00000026		12442
+	789997502	SePl01_00000003	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\shootstylebullet\sfx\SePl01_00000003_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\shootstylebullet\sfx\shootstylebulletsfx\SePl01_00000003		6503
+	793806329	VoPl01_000000A7	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\Death\VoPl01_000000A7_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\Death\death\VoPl01_000000A7		8674
+	794352150	VoPl01_0000007D	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\detroit\exit\VoPl01_0000007D_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\detroit\exit\detroitexit\VoPl01_0000007D		24656
+	794485280	VoPl01_00000024	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\ofa\VoPl01_00000024_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\ofa\ofavoice\VoPl01_00000024		12110
+	810254431	dekudesu	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\Entrance\dekudesu_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\Entrance\entrance\dekudesu		8644
+	811877985	VoPl01_0000005E	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\ofa\VoPl01_0000005E_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\ofa\ofavoice\VoPl01_0000005E		13414
+	830531229	delawarevoice	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\delaware\delawarevoice_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\delaware\delawarevoice\delawarevoice		9139
+	834891393	VoPl01_0000004A	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\stlouis\VoPl01_0000004A_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\stlouis\stlouisvoice\VoPl01_0000004A		6061
+	877183228	VoPl01_00000005	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\ofa\VoPl01_00000005_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\ofa\ofavoice\VoPl01_00000005		17025
+	879383538	VoPl01_0000005A	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\ofa\VoPl01_0000005A_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\ofa\ofavoice\VoPl01_0000005A		10385
+	891875724	SePl01_0000000D	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\delaware\sfx\SePl01_0000000D_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\delaware\sfx\delawaresfx\SePl01_0000000D		17093
+	906836170	VoPl01_AgencyEvent_00000000	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\Entrance\VoPl01_AgencyEvent_00000000_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\Entrance\entrance\VoPl01_AgencyEvent_00000000		29584
+	911964384	VoPl01_000000EF	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\Entrance\VoPl01_000000EF_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\Entrance\entrance\VoPl01_000000EF		20785
+	922481399	SePl01_00000002	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\shootstylebullet\sfx\SePl01_00000002_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\shootstylebullet\sfx\shootstylebulletsfx\SePl01_00000002		4731
+	940294545	VoPl01_0000004D	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\stlouis\VoPl01_0000004D_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\stlouis\stlouisvoice\VoPl01_0000004D		10865
+	956066236	fullcowlchargequick	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\stlouis\sfx\fullcowlchargequick_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\stlouis\sfx\stlouissfx\fullcowlchargequick		11424
+	957060177	VoPl01_00000053	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\ofa\VoPl01_00000053_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\ofa\ofavoice\VoPl01_00000053		16157
+	962771432	VoPl01_000000A5	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\Death\VoPl01_000000A5_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\Death\death\VoPl01_000000A5		14481
+	982687313	VoPl01_0000004E	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\stlouis\VoPl01_0000004E_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\stlouis\stlouisvoice\VoPl01_0000004E		11032
+	1004362541	VoPl01_000000E8	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\Entrance\VoPl01_000000E8_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\Entrance\entrance\VoPl01_000000E8		25817
+	1005886961	VoPl01_0000009A	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\Death\VoPl01_0000009A_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\Death\death\VoPl01_0000009A		12602
+	1007881140	SePl01_00000011	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\blackwhip\sfx\SePl01_00000011_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\blackwhip\sfx\blackwhipsfx\SePl01_00000011		10449
+	1010762699	VoPl01_0000005C	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\ofa\VoPl01_0000005C_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\ofa\ofavoice\VoPl01_0000005C		13637
+	1014234507	VoPl01_00000015	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\shootstylebullet\VoPl01_00000015_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\shootstylebullet\shootstylebulletvoice\VoPl01_00000015		10420
+	1027557244	VoPl01_0000004B	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\stlouis\VoPl01_0000004B_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\stlouis\stlouisvoice\VoPl01_0000004B		7016
+	1035619698	SePl01_00000004	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\ofa\sfx\SePl01_00000004_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\ofa\sfx\ofasfx\SePl01_00000004		11080
+	1047346623	ofajump	F:\Theodore 3\GameDev\Mods\DekuRor2\DekuModWwise\.cache\Windows\SFX\stlouis\sfx\ofajump_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Deku\stlouis\sfx\stlouissfx\ofajump		17102
+
