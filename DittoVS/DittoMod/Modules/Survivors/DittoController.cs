@@ -11,8 +11,8 @@ namespace DittoMod.Modules.Survivors
 	[RequireComponent(typeof(InputBankTest))]
 	public class DittoController : MonoBehaviour
 	{
-		public float maxTrackingDistance = 100f;
-		public float maxTrackingAngle = 90f;
+		public float maxTrackingDistance = 40f;
+		public float maxTrackingAngle = 30f;
 		public float trackerUpdateFrequency = 10f;
 		private HurtBox trackingTarget;
 		private CharacterBody characterBody;
@@ -79,6 +79,7 @@ namespace DittoMod.Modules.Survivors
 							
 			
 		}
+	
 
 	}
 }

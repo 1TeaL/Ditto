@@ -6,6 +6,7 @@ using RoR2;
 using System.IO;
 using System.Collections.Generic;
 using RoR2.UI;
+using UnityEngine.AddressableAssets;
 
 namespace DittoMod.Modules
 {
@@ -33,8 +34,21 @@ namespace DittoMod.Modules
         // CHANGE THIS
         private const string assetbundleName = "DittoAssetBundle";
 
+        //buffs
+        public static BuffDef fireelitebuff =  Addressables.LoadAssetAsync<BuffDef>("RoR2/Base/EliteFire/bdEliteFire.asset").WaitForCompletion();
+        public static BuffDef hauntedelitebuff = Addressables.LoadAssetAsync<BuffDef>("RoR2/Base/EliteHaunted/bdEliteHaunted.asset").WaitForCompletion();
+        public static BuffDef iceelitebuff = Addressables.LoadAssetAsync<BuffDef>("RoR2/Base/EliteIce/bdEliteIce.asset").WaitForCompletion();
+        public static BuffDef lightningelitebuff = Addressables.LoadAssetAsync<BuffDef>("RoR2/Base/EliteLightning/bdEliteLightning.asset").WaitForCompletion();
+        public static BuffDef lunarelitebuff = Addressables.LoadAssetAsync<BuffDef>("RoR2/Base/EliteLunar/bdEliteLunar.asset").WaitForCompletion();
+        public static BuffDef malachiteelitebuff = Addressables.LoadAssetAsync<BuffDef>("RoR2/Base/ElitePoison/bdElitePoison.asset").WaitForCompletion();
+        public static BuffDef mendingelitebuff = Addressables.LoadAssetAsync<BuffDef>("RoR2/DLC1/EliteEarth/bdEliteEarth.asset").WaitForCompletion();
+        public static BuffDef speedelitebuff = Addressables.LoadAssetAsync<BuffDef>("RoR2/DLC1/bdEliteSecretSpeed.asset").WaitForCompletion();
+        public static BuffDef voidelitebuff = Addressables.LoadAssetAsync<BuffDef>("RoR2/DLC1/EliteVoid/bdEliteVoid.asset").WaitForCompletion();
+
+
         internal static void Initialize()
         {
+
             if (assetbundleName == "myassetbundle")
             {
                 Debug.LogError("AssetBundle name hasn't been changed- not loading any assets to avoid conflicts");
@@ -44,6 +58,7 @@ namespace DittoMod.Modules
             LoadAssetBundle();
             LoadSoundbank();
             PopulateAssets();
+
         }
 
         internal static void LoadAssetBundle()

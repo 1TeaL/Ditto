@@ -32,7 +32,7 @@ namespace DittoMod.Modules.Survivors
             bodyColor = Color.magenta,
             characterPortrait = Modules.Assets.LoadCharacterIcon("Ditto"),
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
-            damage = 10f,
+            damage = 20f,
             healthGrowth = 20f,
             healthRegen = 1.5f,
             jumpCount = 2,

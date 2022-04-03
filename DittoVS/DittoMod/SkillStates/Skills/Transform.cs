@@ -53,15 +53,11 @@ namespace DittoMod.SkillStates
                 hasFired = true;
                 if (Target)
                 {
-                    if(Target != default)
-                    {
-                        Debug.Log("Target");
-                        if (Target.healthComponent.body)
-                        {
-                            Debug.Log("Target.gameobject");
-                            ChangeOrSetCharacter(characterBody.master.playerCharacterMasterController.networkUser, Target.healthComponent.body.gameObject);
-                        }
-                    }
+                    Debug.Log("Target");
+                    
+                    ChangeOrSetCharacter(characterBody.master.playerCharacterMasterController.networkUser, Target);
+                    
+                    
                     return;
                 }
             }
@@ -74,12 +70,22 @@ namespace DittoMod.SkillStates
             }
         }
 
-        private void ChangeOrSetCharacter(NetworkUser player, GameObject bodyPrefab)
+
+
+        private void ChangeOrSetCharacter(NetworkUser player, HurtBox hurtBox)
         {
+
             CharacterMaster master = player.master;
             CharacterBody oldBody = master.GetBody();
 
-            master.bodyPrefab = bodyPrefab;
+            master.bodyPrefab = BodyCatalog.FindBodyPrefab(BodyCatalog.GetBodyName(hurtBox.healthComponent.body.bodyIndex));
+
+
+            CharacterBody newcharBody = master.GetBody();
+            
+
+            
+
             CharacterBody body;
             
             
@@ -88,7 +94,7 @@ namespace DittoMod.SkillStates
                 master.inventory.RemoveItem(RoR2Content.Items.CaptainDefenseMatrix, 1);
             }
 
-            if (bodyPrefab.name == "CaptainBody")
+            if (master.bodyPrefab.name == "CaptainBody")
             {
                 master.inventory.GiveItem(RoR2Content.Items.CaptainDefenseMatrix, 1);
             }
@@ -101,13 +107,56 @@ namespace DittoMod.SkillStates
                 master.inventory.RemoveItem(RoR2Content.Items.LunarUtilityReplacement, 1);
             }
 
-            if (bodyPrefab.name != "HereticBody")
+            if (master.bodyPrefab.name != "HereticBody")
             {
                 body = master.Respawn(master.GetBody().transform.position, master.GetBody().transform.rotation);
+                newcharBody.baseMaxHealth = oldBody.baseMaxHealth;
+                newcharBody.regen = oldBody.regen;
+                newcharBody.baseJumpCount = oldBody.baseJumpCount;
+                newcharBody.baseJumpPower = oldBody.baseJumpPower;
+                newcharBody.armor = oldBody.armor;
+                newcharBody.baseMoveSpeed = oldBody.baseMoveSpeed;
+
+                if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.fireelitebuff))
+                {
+                    body.AddBuff(DittoMod.Modules.Assets.fireelitebuff);
+                }
+                if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.iceelitebuff))
+                {
+                    body.AddBuff(DittoMod.Modules.Assets.iceelitebuff);
+                }
+                if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.hauntedelitebuff))
+                {
+                    body.AddBuff(DittoMod.Modules.Assets.hauntedelitebuff);
+                }
+                if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.lightningelitebuff))
+                {
+                    body.AddBuff(DittoMod.Modules.Assets.lightningelitebuff);
+                }
+                if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.mendingelitebuff))
+                {
+                    body.AddBuff(DittoMod.Modules.Assets.mendingelitebuff);
+                }
+                if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.malachiteelitebuff))
+                {
+                    body.AddBuff(DittoMod.Modules.Assets.malachiteelitebuff);
+                }
+                if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.speedelitebuff))
+                {
+                    body.AddBuff(DittoMod.Modules.Assets.speedelitebuff);
+                }
+                if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.voidelitebuff))
+                {
+                    body.AddBuff(DittoMod.Modules.Assets.voidelitebuff);
+                }
+                if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.lunarelitebuff))
+                {
+                    body.AddBuff(DittoMod.Modules.Assets.lunarelitebuff);
+                }
             }
             else
             {
-                if (bodyPrefab.name == "HereticBody")
+                if (master.bodyPrefab.name == "HereticBody")
                 {
                     master.inventory.GiveItem(RoR2Content.Items.LunarPrimaryReplacement, 1);
                     master.inventory.GiveItem(RoR2Content.Items.LunarSecondaryReplacement, 1);
