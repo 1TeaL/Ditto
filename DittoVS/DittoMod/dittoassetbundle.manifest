@@ -1,0 +1,49 @@
+ManifestFileVersion: 0
+CRC: 1965861262
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 03c02064f221cda1dd9bd62c67d79a8a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 629e386d734ac71e9bc9dd2ba6bb23b5
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 90
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 261c50d8a80898e4ebf2e8e415ea6766, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
+- Class: 137
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Ditto/DittoAvatar.asset
+- Assets/Ditto/mdlDitto.prefab
+- Assets/Ditto/DittoDisplay.prefab
+- Assets/Ditto/metamon_col.png
+- Assets/Ditto/DittoMat.mat
+- Assets/Ditto/Ditto.fbx
+- Assets/Ditto/Mesh.mesh
+Dependencies: []
