@@ -17,12 +17,13 @@
     <None Remove="Deku1.bnk" />
     <None Remove="DekuAssetBundle" />
     <None Remove="DelikuBank.bnk" />
+    <None Remove="Ditto.bnk" />
     <None Remove="DittoAssetBundle" />
     <None Remove="Modules\Survivors\DekuHenryDeku.cs~RF6221a098.TMP" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Deku1.bnk" />
+    <EmbeddedResource Include="Ditto.bnk" />
     <EmbeddedResource Include="DittoAssetBundle" />
   </ItemGroup>
 	

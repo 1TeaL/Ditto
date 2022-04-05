@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1965861262
+CRC: 3520331714
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 03c02064f221cda1dd9bd62c67d79a8a
+    Hash: 355805bbbce34ce977ed4150d4f38730
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 629e386d734ac71e9bc9dd2ba6bb23b5
+    Hash: 8bbb066685894847938325eec38434f5
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -15,11 +15,17 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 21
   Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
 - Class: 28
+  Script: {instanceID: 0}
+- Class: 33
   Script: {instanceID: 0}
 - Class: 43
   Script: {instanceID: 0}
 - Class: 48
+  Script: {instanceID: 0}
+- Class: 54
   Script: {instanceID: 0}
 - Class: 74
   Script: {instanceID: 0}
@@ -29,21 +35,62 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 95
   Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9a68da65c907acb4eb4dbcd042f172e7, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fc41cd48bee14034db80323ab44fbd3e, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 261c50d8a80898e4ebf2e8e415ea6766, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 751bd37d2e55f5f448dbb0d97812d9ba, type: 3}
 - Class: 115
+  Script: {instanceID: 0}
+- Class: 135
   Script: {instanceID: 0}
 - Class: 136
   Script: {instanceID: 0}
 - Class: 137
   Script: {instanceID: 0}
+- Class: 144
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/Ditto/DittoAvatar.asset
-- Assets/Ditto/mdlDitto.prefab
-- Assets/Ditto/DittoDisplay.prefab
-- Assets/Ditto/metamon_col.png
-- Assets/Ditto/DittoMat.mat
-- Assets/Ditto/Ditto.fbx
-- Assets/Ditto/Mesh.mesh
+- Assets/Ditto/Animations/Armature_Idle.anim
+- Assets/Ditto/Assets/DittoAvatar.asset
+- Assets/Ditto/Assets/mdlDitto.prefab
+- Assets/Ditto/Animations/animDitto.controller
+- Assets/Ditto/Animations/Armature_Falling.anim
+- Assets/Ditto/GUI/ChoiceSpecs.png
+- Assets/Ditto/Animations/Armature_Jumping.anim
+- Assets/Ditto/GUI/texDittoIcon.tif
+- Assets/Ditto/GUI/TMtransformSprite.PNG
+- Assets/Ditto/GUI/Transform.png
+- Assets/Ditto/GUI/DittoGen5.jpg
+- Assets/Ditto/Assets/DittoDisplay.prefab
+- Assets/Ditto/Assets/metamon_col.png
+- Assets/Ditto/GUI/Materials/TMtransform.mat
+- Assets/Ditto/GUI/Ability.png
+- Assets/Ditto/GUI/RockyHelmet.png
+- Assets/Ditto/GUI/ScopeLens.png
+- Assets/Ditto/Animations/Armature_Walking.anim
+- Assets/Ditto/GUI/ShellBell.png
+- Assets/Ditto/Assets/cylinder.fbx
+- Assets/Ditto/Assets/DittoMat.mat
+- Assets/Ditto/Assets/Ditto.fbx
+- Assets/Ditto/Assets/DittoEquipmentModel.prefab
+- Assets/Ditto/GUI/ChoiceBand.png
+- Assets/Ditto/Animations/Armature_IdleAnimation.anim
+- Assets/Ditto/Assets/Mesh.mesh
+- Assets/Ditto/GUI/TMtransform.PNG
+- Assets/Ditto/GUI/Materials/DittoEquipmentMat.mat
+- Assets/Ditto/Animations/Armature_Landing.anim
+- Assets/Ditto/GUI/Materials/DittoGen5.mat
+- Assets/Ditto/GUI/ChoiceScarf.png
+- Assets/Ditto/GUI/Leftovers.png
+- Assets/Ditto/Animations/animDittoDisplay.controller
+- Assets/Ditto/GUI/Struggle.png
 Dependencies: []

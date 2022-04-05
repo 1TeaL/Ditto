@@ -11,39 +11,29 @@ namespace DittoMod.Modules
     {
         internal static List<BuffDef> buffDefs = new List<BuffDef>();
 
-        internal static BuffDef ofaBuff;
-
-        internal static BuffDef kickBuff;
-
-        internal static BuffDef floatBuff;
-
-        internal static BuffDef supaofaBuff;
-
-        internal static BuffDef ofaBuff45;
-
-        internal static BuffDef supaofaBuff45;
-
-        internal static BuffDef fajinBuff;
-
-        //armor buff for oklahoma
-        internal static BuffDef oklahomaBuff;
-
-
-        internal static BuffDef counterBuff;
+        //internal static BuffDef transformBuff;
+        internal static BuffDef choicescarfBuff;
+        internal static BuffDef choicebandBuff;
+        internal static BuffDef choicespecsBuff;
+        internal static BuffDef leftoversBuff;
+        internal static BuffDef rockyhelmetBuff;
+        internal static BuffDef scopelensBuff;
+        internal static BuffDef shellbellBuff;
 
         internal static void RegisterBuffs()
         {
-            oklahomaBuff = Buffs.AddNewBuff("DekuArmorBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("armorblue"), Color.white, false, false);
-            ofaBuff = Buffs.AddNewBuff("DekuOFABuff", Assets.mainAssetBundle.LoadAsset<Sprite>("lightninggreen"), Color.white, false, false);
-            supaofaBuff = Buffs.AddNewBuff("DekuInfiniteOFABuff", Assets.mainAssetBundle.LoadAsset<Sprite>("lightningwhitegreen"), Color.white, false, false);
-            kickBuff = Buffs.AddNewBuff("DekuKickBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("kickCount"), Color.white, true, false);
-            ofaBuff45 = Buffs.AddNewBuff("DekuOFA45Buff", Assets.mainAssetBundle.LoadAsset<Sprite>("lightningblue"), Color.white, false, false);
-            supaofaBuff45 = Buffs.AddNewBuff("DekuInfiniteOFA45Buff", Assets.mainAssetBundle.LoadAsset<Sprite>("lightningwhiteblue"), Color.white, false, false);
-            fajinBuff = Buffs.AddNewBuff("FaJinBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("armorgreen"), Color.white, true, false);
-            floatBuff = Buffs.AddNewBuff("DekuFloatBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("Float"), Color.white, false, false);
-            counterBuff = Buffs.AddNewBuff("DekuCounterBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("Counter"), Color.white, false, false);
-            oklahomaBuff = Buffs.AddNewBuff("DekuArmorBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("armorgreen"), Color.white, false, false);
- }
+            choicescarfBuff = Buffs.AddNewBuff("choicescarfBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("ChoiceScarf"), Color.white, false, false);
+            choicebandBuff = Buffs.AddNewBuff("choicebandBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("ChoiceBand"), Color.white, false, false);
+            choicespecsBuff = Buffs.AddNewBuff("choicespecsBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("ChoiceSpecs"), Color.white, false, false);
+            leftoversBuff = Buffs.AddNewBuff("leftoversBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("Leftovers"), Color.white, false, false);
+            rockyhelmetBuff = Buffs.AddNewBuff("rockyhelmetBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("RockyHelmet"), Color.white, false, false);
+            scopelensBuff = Buffs.AddNewBuff("scopelensBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("ScopeLens"), Color.white, false, false);
+            shellbellBuff = Buffs.AddNewBuff("shellbellBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("ShellBell"), Color.white, false, false);
+
+            //Sprite TransformBuff = Addressables.LoadAssetAsync<BuffDef>("RoR2/Base/LunarSkillReplacements/bdLunarSecondaryRoot.asset").WaitForCompletion().iconSprite;
+            //transformBuff = AddNewBuff("TransformTimer", TransformBuff, Color.yellow, false, false);
+
+        }
 
         // simple helper method
         internal static BuffDef AddNewBuff(string buffName, Sprite buffIcon, Color buffColor, bool canStack, bool isDebuff)

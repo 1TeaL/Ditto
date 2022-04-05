@@ -44,7 +44,11 @@ namespace DittoMod.Modules
         public static BuffDef mendingelitebuff = Addressables.LoadAssetAsync<BuffDef>("RoR2/DLC1/EliteEarth/bdEliteEarth.asset").WaitForCompletion();
         public static BuffDef speedelitebuff = Addressables.LoadAssetAsync<BuffDef>("RoR2/DLC1/bdEliteSecretSpeed.asset").WaitForCompletion();
         public static BuffDef voidelitebuff = Addressables.LoadAssetAsync<BuffDef>("RoR2/DLC1/EliteVoid/bdEliteVoid.asset").WaitForCompletion();
+        public static BuffDef invincibilitybuff = Addressables.LoadAssetAsync<BuffDef>("RoR2/DLC1/EliteVoid/bdEliteVoid.asset").WaitForCompletion();
 
+
+        //Ditto Equipment Obj
+        internal static GameObject DittoEquipmentPrefab;
 
         internal static void Initialize()
         {
@@ -76,7 +80,7 @@ namespace DittoMod.Modules
 
         internal static void LoadSoundbank()
         {
-            using (Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("DittoMod.Deku1.bnk"))
+            using (Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("DittoMod.Ditto.bnk"))
             {
                 byte[] array = new byte[manifestResourceStream2.Length];
                 manifestResourceStream2.Read(array, 0, array.Length);
@@ -92,23 +96,9 @@ namespace DittoMod.Modules
                 return;
             }
 
-            //blackwhipbullet = LoadEffect("BombExplosionEffect", "HenryBombExplosion");
 
-            //if (bombExplosionEffect)
-            //{
-            //    ShakeEmitter shakeEmitter = bombExplosionEffect.AddComponent<ShakeEmitter>();
-            //    shakeEmitter.amplitudeTimeDecay = true;
-            //    shakeEmitter.duration = 0.5f;
-            //    shakeEmitter.radius = 200f;
-            //    shakeEmitter.scaleShakeRadiusWithLocalScale = false;
-
-            //    shakeEmitter.wave = new Wave
-            //    {
-            //        amplitude = 1f,
-            //        frequency = 40f,
-            //        cycleOffset = 0f
-            //    };
-            //}
+            //Ditto Equipment prefab
+            DittoEquipmentPrefab = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("DittoEquipmentModel");
         }
 
         private static GameObject CreateTracer(string originalTracerName, string newTracerName)

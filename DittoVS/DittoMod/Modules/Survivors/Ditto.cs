@@ -32,9 +32,9 @@ namespace DittoMod.Modules.Survivors
             bodyColor = Color.magenta,
             characterPortrait = Modules.Assets.LoadCharacterIcon("Ditto"),
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
-            damage = 20f,
+            damage = 15f,
             healthGrowth = 20f,
-            healthRegen = 1.5f,
+            healthRegen = 1f,
             jumpCount = 2,
             maxHealth = 100f,
             moveSpeed = 7f,
@@ -101,7 +101,7 @@ namespace DittoMod.Modules.Survivors
             skillloc.passiveSkill.enabled = true;
             skillloc.passiveSkill.skillNameToken = prefix + "PASSIVE_NAME";
             skillloc.passiveSkill.skillDescriptionToken = prefix + "PASSIVE_DESCRIPTION";
-            skillloc.passiveSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ultimate");
+            skillloc.passiveSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Ability");
             #endregion
 
             #region Primary
@@ -112,8 +112,8 @@ namespace DittoMod.Modules.Survivors
                 skillName = prefix + "PRIMARY_NAME",
                 skillNameToken = prefix + "PRIMARY_NAME",
                 skillDescriptionToken = prefix + "PRIMARY_DESCRIPTION",
-                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("airforce"),
-                activationState = new SerializableEntityStateType(typeof(SkillStates.Transform)),
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Struggle"),
+                activationState = new SerializableEntityStateType(typeof(SkillStates.Struggle)),
                 activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
                 baseRechargeInterval = 0f,
@@ -136,17 +136,17 @@ namespace DittoMod.Modules.Survivors
 
             #endregion
 
-            #region Secondary
-            SkillDef skillDef21 = Skills.CreateSkillDef(new SkillDefInfo
+            #region Items
+            SkillDef ChoiceBand = Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "SECONDARY_NAME",
-                skillNameToken = prefix + "SECONDARY_NAME",
-                skillDescriptionToken = prefix + "SECONDARY_DESCRIPTION",
-                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("blackwhip"),
-                activationState = new SerializableEntityStateType(typeof(SkillStates.Transform)),
+                skillName = prefix + "CHOICEBAND_NAME",
+                skillNameToken = prefix + "CHOICEBAND_NAME",
+                skillDescriptionToken = prefix + "CHOICEBAND_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ChoiceBand"),
+                activationState = new SerializableEntityStateType(typeof(SkillStates.ChoiceBand)),
                 activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
-                baseRechargeInterval = 3f,
+                baseRechargeInterval = 0f,
                 beginSkillCooldownOnSkillEnd = true,
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,
@@ -159,34 +159,26 @@ namespace DittoMod.Modules.Survivors
                 rechargeStock = 1,
                 requiredStock = 1,
                 stockToConsume = 1,
-                keywordTokens = new string[] { "KEYWORD_AGILE", "KEYWORD_STUNNING" }
+                keywordTokens = new string[] { "KEYWORD_AGILE"}
 
-            }) ;
-
-            Skills.AddSecondarySkills(this.bodyPrefab, new SkillDef[]
-            {
-                skillDef21,
             });
-            #endregion
-
-            #region Utility
-            SkillDef skillDef31 = Skills.CreateSkillDef(new SkillDefInfo
+            SkillDef ChoiceScarf = Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "UTILITY_NAME",
-                skillNameToken = prefix + "UTILITY_NAME",
-                skillDescriptionToken = prefix + "UTILITY_DESCRIPTION",
-                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Floatactivate"),
-                activationState = new SerializableEntityStateType(typeof(SkillStates.Transform)),
-                activationStateMachineName = "Body",
+                skillName = prefix + "CHOICESCARF_NAME",
+                skillNameToken = prefix + "CHOICESCARF_NAME",
+                skillDescriptionToken = prefix + "CHOICESCARF_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ChoiceScarf"),
+                activationState = new SerializableEntityStateType(typeof(SkillStates.ChoiceScarf)),
+                activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
-                baseRechargeInterval = 10f,
+                baseRechargeInterval = 0f,
                 beginSkillCooldownOnSkillEnd = true,
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,
                 fullRestockOnAssign = false,
                 interruptPriority = InterruptPriority.Skill,
                 resetCooldownTimerOnUse = false,
-                isCombatSkill = false,
+                isCombatSkill = true,
                 mustKeyPress = true,
                 cancelSprintingOnActivation = false,
                 rechargeStock = 1,
@@ -195,9 +187,208 @@ namespace DittoMod.Modules.Survivors
                 keywordTokens = new string[] { "KEYWORD_AGILE" }
 
             });
+            SkillDef ChoiceSpecs = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "CHOICESPECS_NAME",
+                skillNameToken = prefix + "CHOICESPECS_NAME",
+                skillDescriptionToken = prefix + "CHOICESPECS_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ChoiceSpecs"),
+                activationState = new SerializableEntityStateType(typeof(SkillStates.ChoiceSpecs)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 0f,
+                beginSkillCooldownOnSkillEnd = true,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = false,
+                interruptPriority = InterruptPriority.Skill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { "KEYWORD_AGILE" }
+
+            });
+            SkillDef Leftovers = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "LEFTOVERS_NAME",
+                skillNameToken = prefix + "LEFTOVERS_NAME",
+                skillDescriptionToken = prefix + "LEFTOVERS_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Leftovers"),
+                activationState = new SerializableEntityStateType(typeof(SkillStates.Leftovers)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 0f,
+                beginSkillCooldownOnSkillEnd = true,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = false,
+                interruptPriority = InterruptPriority.Skill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { "KEYWORD_AGILE" }
+
+            });
+            SkillDef RockyHelmet = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "ROCKYHELMET_NAME",
+                skillNameToken = prefix + "ROCKYHELMET_NAME",
+                skillDescriptionToken = prefix + "ROCKYHELMET_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("RockyHelmet"),
+                activationState = new SerializableEntityStateType(typeof(SkillStates.RockyHelmet)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 0f,
+                beginSkillCooldownOnSkillEnd = true,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = false,
+                interruptPriority = InterruptPriority.Skill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { "KEYWORD_AGILE" }
+
+            });
+            SkillDef ScopeLens = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "SCOPELENS_NAME",
+                skillNameToken = prefix + "SCOPELENS_NAME",
+                skillDescriptionToken = prefix + "SCOPELENS_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ScopeLens"),
+                activationState = new SerializableEntityStateType(typeof(SkillStates.ScopeLens)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 0f,
+                beginSkillCooldownOnSkillEnd = true,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = false,
+                interruptPriority = InterruptPriority.Skill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { "KEYWORD_AGILE" }
+
+            });
+            SkillDef ShellBell = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "SHELLBELL_NAME",
+                skillNameToken = prefix + "SHELLBELL_NAME",
+                skillDescriptionToken = prefix + "SHELLBELL_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ShellBell"),
+                activationState = new SerializableEntityStateType(typeof(SkillStates.ShellBell)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 0f,
+                beginSkillCooldownOnSkillEnd = true,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = false,
+                interruptPriority = InterruptPriority.Skill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { "KEYWORD_AGILE" }
+
+            });
+
+            #endregion
+
+            #region Secondary
+            //SkillDef skillDef21 = Skills.CreateSkillDef(new SkillDefInfo
+            //{
+            //    skillName = prefix + "SECONDARY_NAME",
+            //    skillNameToken = prefix + "SECONDARY_NAME",
+            //    skillDescriptionToken = prefix + "SECONDARY_DESCRIPTION",
+            //    skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("blackwhip"),
+            //    activationState = new SerializableEntityStateType(typeof(SkillStates.Transform)),
+            //    activationStateMachineName = "Weapon",
+            //    baseMaxStock = 1,
+            //    baseRechargeInterval = 3f,
+            //    beginSkillCooldownOnSkillEnd = true,
+            //    canceledFromSprinting = false,
+            //    forceSprintDuringState = false,
+            //    fullRestockOnAssign = false,
+            //    interruptPriority = InterruptPriority.Skill,
+            //    resetCooldownTimerOnUse = false,
+            //    isCombatSkill = true,
+            //    mustKeyPress = true,
+            //    cancelSprintingOnActivation = false,
+            //    rechargeStock = 1,
+            //    requiredStock = 1,
+            //    stockToConsume = 1,
+            //    keywordTokens = new string[] { "KEYWORD_AGILE", "KEYWORD_STUNNING" }
+
+            //}) ;
+
+            Skills.AddSecondarySkills(this.bodyPrefab, new SkillDef[]
+            {
+                ChoiceBand,
+                ChoiceScarf,
+                ChoiceSpecs,
+                Leftovers,
+                RockyHelmet,
+                ScopeLens,
+                ShellBell,
+            });
+            #endregion
+
+            #region Utility
+            //SkillDef skillDef31 = Skills.CreateSkillDef(new SkillDefInfo
+            //{
+            //    skillName = prefix + "UTILITY_NAME",
+            //    skillNameToken = prefix + "UTILITY_NAME",
+            //    skillDescriptionToken = prefix + "UTILITY_DESCRIPTION",
+            //    skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Floatactivate"),
+            //    activationState = new SerializableEntityStateType(typeof(SkillStates.Transform)),
+            //    activationStateMachineName = "Body",
+            //    baseMaxStock = 1,
+            //    baseRechargeInterval = 10f,
+            //    beginSkillCooldownOnSkillEnd = true,
+            //    canceledFromSprinting = false,
+            //    forceSprintDuringState = false,
+            //    fullRestockOnAssign = false,
+            //    interruptPriority = InterruptPriority.Skill,
+            //    resetCooldownTimerOnUse = false,
+            //    isCombatSkill = false,
+            //    mustKeyPress = true,
+            //    cancelSprintingOnActivation = false,
+            //    rechargeStock = 1,
+            //    requiredStock = 1,
+            //    stockToConsume = 1,
+            //    keywordTokens = new string[] { "KEYWORD_AGILE" }
+
+            //});
             Skills.AddUtilitySkills(this.bodyPrefab, new SkillDef[]
             {
-                skillDef31,
+                ShellBell,
+                ScopeLens,
+                RockyHelmet,
+                Leftovers,
+                ChoiceSpecs,
+                ChoiceScarf,
+                ChoiceBand,
             });
             #endregion
 
@@ -207,7 +398,7 @@ namespace DittoMod.Modules.Survivors
                 skillName = prefix + "SPECIAL_NAME",
                 skillNameToken = prefix + "SPECIAL_NAME",
                 skillDescriptionToken = prefix + "SPECIAL_DESCRIPTION",
-                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ultimate"),
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Transform"),
                 activationState = new SerializableEntityStateType(typeof(SkillStates.Transform)),
                 activationStateMachineName = "Weapon",
                 baseMaxStock = 1,

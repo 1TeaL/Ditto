@@ -15,17 +15,20 @@ namespace DittoMod.SkillStates
         private float duration = 1f;
         private float fireTime = 0.2f;
         private bool hasFired;
-        private DittoController dittoTracker;
-        private HurtBox Target;
+        //private DittoMasterController dittocon;
+        public DittoController dittocon;
+        public HurtBox Target;
 
         public override void OnEnter()
         {
             base.OnEnter();
 
-            dittoTracker = base.GetComponent<DittoController>();
-            if (dittoTracker && base.isAuthority)
+            AkSoundEngine.PostEvent(1719197672, this.gameObject);
+
+            dittocon = base.GetComponent<DittoController>();
+            if (dittocon && base.isAuthority)
             {
-                Target = dittoTracker.GetTrackingTarget();
+                Target = dittocon.GetTrackingTarget();
             }
 
             if (!Target)
@@ -54,7 +57,6 @@ namespace DittoMod.SkillStates
                 if (Target)
                 {
                     Debug.Log("Target");
-                    
                     ChangeOrSetCharacter(characterBody.master.playerCharacterMasterController.networkUser, Target);
                     
                     
@@ -79,9 +81,9 @@ namespace DittoMod.SkillStates
             CharacterBody oldBody = master.GetBody();
 
             master.bodyPrefab = BodyCatalog.FindBodyPrefab(BodyCatalog.GetBodyName(hurtBox.healthComponent.body.bodyIndex));
+            
 
-
-            CharacterBody newcharBody = master.GetBody();
+            //CharacterBody newcharBody = master.GetBody();
             
 
             
@@ -110,13 +112,91 @@ namespace DittoMod.SkillStates
             if (master.bodyPrefab.name != "HereticBody")
             {
                 body = master.Respawn(master.GetBody().transform.position, master.GetBody().transform.rotation);
-                newcharBody.baseMaxHealth = oldBody.baseMaxHealth;
-                newcharBody.regen = oldBody.regen;
-                newcharBody.baseJumpCount = oldBody.baseJumpCount;
-                newcharBody.baseJumpPower = oldBody.baseJumpPower;
-                newcharBody.armor = oldBody.armor;
-                newcharBody.baseMoveSpeed = oldBody.baseMoveSpeed;
+                RigidbodyMotor rigid = body.gameObject.GetComponent<RigidbodyMotor>();
 
+                if (rigid)
+                {
+                    rigid.characterBody.moveSpeed = oldBody.moveSpeed;
+                }
+                
+
+                body.baseMaxHealth = oldBody.maxHealth;
+                body.baseRegen = oldBody.regen;
+                body.baseJumpCount = oldBody.baseJumpCount;
+                body.jumpPower = oldBody.jumpPower;
+                body.baseJumpPower = oldBody.baseJumpPower;
+                if (body.characterMotor)
+                {
+                    body.characterMotor.mass = oldBody.characterMotor.mass;
+                }             
+                body.baseArmor = oldBody.armor;
+                body.baseMoveSpeed = oldBody.baseMoveSpeed;
+                
+
+                //body.AddTimedBuffAuthority(Modules.Buffs.transformBuff.buffIndex, Modules.StaticValues.transformDuration);
+                body.AddTimedBuffAuthority(RoR2Content.Buffs.HiddenInvincibility.buffIndex, Modules.StaticValues.invincibilityDuration);
+
+                if (dittocon.choiceband)
+                {
+                    body.AddBuff(Modules.Buffs.choicebandBuff);
+                }
+                if (dittocon.choicescarf)
+                {
+                    body.AddBuff(Modules.Buffs.choicescarfBuff);
+                }
+                if (dittocon.choicespecs)
+                {
+                    body.AddBuff(Modules.Buffs.choicespecsBuff);
+                }
+                if (dittocon.leftovers)
+                {
+                    body.AddBuff(Modules.Buffs.leftoversBuff);
+                }
+                if (dittocon.rockyhelmet)
+                {
+                    body.AddBuff(Modules.Buffs.rockyhelmetBuff);
+                }
+                if (dittocon.scopelens)
+                {
+                    body.AddBuff(Modules.Buffs.scopelensBuff);
+                }
+                if (dittocon.shellbell)
+                {
+                    body.AddBuff(Modules.Buffs.shellbellBuff);
+                }
+
+                if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.OnFire))
+                {
+                    body.AddBuff(RoR2Content.Buffs.OnFire);
+                }
+                if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixBlue))
+                {
+                    body.AddBuff(RoR2Content.Buffs.AffixBlue);
+                }
+                if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixEcho))
+                {
+                    body.AddBuff(RoR2Content.Buffs.AffixEcho);
+                }
+                if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixHaunted))
+                {
+                    body.AddBuff(RoR2Content.Buffs.AffixHaunted);
+                }
+                if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixLunar))
+                {
+                    body.AddBuff(RoR2Content.Buffs.AffixLunar);
+                }
+                if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixPoison))
+                {
+                    body.AddBuff(RoR2Content.Buffs.AffixPoison);
+                }
+                if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixRed))
+                {
+                    body.AddBuff(RoR2Content.Buffs.AffixRed);
+                }
+                if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixWhite))
+                {
+                    body.AddBuff(RoR2Content.Buffs.AffixWhite);
+                }
                 if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.fireelitebuff))
                 {
                     body.AddBuff(DittoMod.Modules.Assets.fireelitebuff);
