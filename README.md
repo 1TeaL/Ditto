@@ -47,9 +47,9 @@ If you enjoy my work, support me on Ko-fi!
 ## Known Issues
 Some Transformations may cause a black screen(?).
 
-Other Dittos may appear as voidtouched/flaming elites, but they are not.
+Non-host dittos may have multiple buffs, but they are not active.
 
-Other Dittos may appear as voidtouched/flaming elites, but they are not.
+When you revive/spawn in the next stage your health resets to the character's max health not ditto's.
 
 Some Transformations aren't able to use equipment, for now I've disabled transformation into them: these include- Col droneman, explodables, the void final boss, alpha construct. 
 
@@ -61,7 +61,7 @@ No Ragdoll yet
     Ditto can transform into any character/monster
     Ditto copies every stat besides HP, regen, armor and movespeed
     Use Ditto's equipment to transform back to ditto. It can also drop naturally
-    Ditto's secondary and utility skills are items that when activated give buffs that are carried over when transformed as well. They stack as well.
+    Ditto's secondary and utility skills are items that when activated give buffs that are carried over when transformed as well. They stack as well by having both equipped.
     Aim to increase your HP as he has low base HP
 
 ## Skills
@@ -84,13 +84,16 @@ Ditto comes with an equipment that transform yourself into a ditto. He has a dou
   <tr>
     <td>Transform<br>Special</td>
     <td><img src="https://user-images.githubusercontent.com/93917577/161869543-a7634823-0535-448d-87a9-477af10a6ea7.png" width="100" height="100"></td>
-    <td>Transform into whatever you're looking at.</td>
+    <td>Transform into whatever you're looking at.
+    <br>Copies every stat besides regen, armor and movespeed.
+    <br>The transformation will have 10% of its Max HP + Ditto's Max HP.</td>
   </tr>
 </tbody>
 </table>
 
 
 ## Items
+Items should automatically activate their effects. If not, activate them with the corresponding skill key. These buffs carry over to your transformations. Same items stack linearly.
 <table>
 <thead>
   <tr>
@@ -118,7 +121,7 @@ Ditto comes with an equipment that transform yourself into a ditto. He has a dou
   <tr>
     <td>Leftovers</td>
     <td><img src="https://user-images.githubusercontent.com/93917577/161869520-6ba0e5f5-ada6-4245-853a-c09fc85f24c5.png" width="100" height="100"></td>
-    <td>Grant 50% attackspeed.</td>
+    <td>Grant 3.125% of your max health regen.</td>
   </tr>
   <tr>
     <td>Rocky Helmet</td>
