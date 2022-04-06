@@ -5,6 +5,7 @@ using DittoMod.Modules;
 //using DittoMod.Modules.Networking;
 using DittoMod.Modules.Survivors;
 using DittoMod.SkillStates;
+using R2API;
 using R2API.Networking;
 using R2API.Utils;
 using RoR2;
@@ -15,6 +16,8 @@ using System.Reflection;
 using System.Security;
 using System.Security.Permissions;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.Networking;
 
 #pragma warning disable CS0618 // Type or member is obsolete
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -44,7 +47,7 @@ namespace DittoMod
 
         public const string MODUID = "com.TeaL.DittoMod";
         public const string MODNAME = "DittoMod";
-        public const string MODVERSION = "0.1";
+        public const string MODVERSION = "1.0.0";
 
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string developerPrefix = "TEAL";
@@ -87,8 +90,214 @@ namespace DittoMod
             RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
 
             Hook();
+
+            //give equipment slot
+            GameObject beetlequeen = LegacyResourcesAPI.Load<GameObject>("prefabs/characterbodies/BeetleQueen2Body");
+            GameObject golem = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/GolemBody");
+            GameObject titan = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/TitanBody");
+            GameObject titangold = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/TitanGoldBody");
+            GameObject gravekeeper = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/GravekeeperBody");
+            GameObject vagrant = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/VagrantBody");
+            GameObject magmaworm = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/MagmaWormBody");
+            GameObject overloadingworm = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/ElectricWormBody");
+            GameObject claydunestrider = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/ClayBossBody");
+            GameObject roboballboss = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/RoboBallBossBody");
+            GameObject superroboballboss = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/SuperRoboBallBossBody");
+            GameObject xiconstruct = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/MajorAndMinorConstruct/MegaConstructBody.prefab").WaitForCompletion();
+            GameObject xiconstruct2 = PrefabAPI.InstantiateClone(xiconstruct, "1xiconstruct");
+            GameObject grandparent = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/GrandParentBody");
+            GameObject scavenger = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/ScavBody");
+            GameObject brother = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/BrotherBody");
+            GameObject drone1 = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/Drone1Body");
+            GameObject drone2 = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/Drone2Body");
+            GameObject turret1 = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/Turret1Body");
+            GameObject missiledrone = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/MissileDroneBody");
+            GameObject flamedrone = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/FlameDroneBody");
+            GameObject backupdrone = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/BackupDroneBody");
+            GameObject emergencydrone = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/EmergencyDroneBody");
+            GameObject equipmentdrone = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/EquipmentDroneBody");
+            GameObject megadrone = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/MegaDroneBody");
+            GameObject engiturret = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/EngiTurretBody");
+            GameObject engiwalkerturret= LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/EngiWalkerTurretBody");
+            GameObject squidturret = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/SquidTurretBody");
+            GameObject urchinturret = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/UrchinTurretBody");
+            GameObject beetle = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/BeetleBody");
+            GameObject beetleguard = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/BeetleGuardBody");
+            GameObject acidlarva = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/AcidLarvaBody");
+            GameObject lemurian = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/LemurianBody");
+            GameObject lemurianbruiser = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/LemurianBruiserBody");
+            GameObject flyingvermin = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/FlyingVerminBody");
+            GameObject vermin = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/VerminBody");
+            GameObject wisp = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/WispBody");
+            GameObject greaterwisp = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/GreaterWispBody");
+            GameObject imp = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/ImpBody");
+            GameObject jellyfish = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/JellyfishBody");
+            GameObject bison = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/BisonBody");
+            GameObject claybruiser = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/ClayBruiserBody");
+            GameObject claygrenadier = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/ClayGrenadierBody");
+            GameObject vulture = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/VultureBody");
+            GameObject roboballmini = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/RoboBallMiniBody");
+            GameObject roboballgreen = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/RoboBallGreenBuddyBody");
+            GameObject roboballred = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/RoboBallRedBuddyBody");
+            GameObject bellbody = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/BellBody");
+            GameObject alphaconstruct = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/MajorAndMinorConstruct/MinorConstructBody.prefab").WaitForCompletion();
+            GameObject alphaconstruct2 = PrefabAPI.InstantiateClone(alphaconstruct, "1alphaconstruct");
+            GameObject minimushroom = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/MiniMushroomBody");
+            GameObject gip = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/Gup/GipBody.prefab").WaitForCompletion();
+            GameObject gip2 = PrefabAPI.InstantiateClone(gip, "1gip");
+            GameObject geep = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/Gup/GeepBody.prefab").WaitForCompletion();
+            GameObject geep2 = PrefabAPI.InstantiateClone(geep, "1geep");
+            GameObject gup = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/Gup/GupBody.prefab").WaitForCompletion();
+            GameObject gup2 = PrefabAPI.InstantiateClone(gup, "1gup");
+            GameObject hermitcrab = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/HermitCrabBody");
+            GameObject voidinfestor = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/EliteVoid/VoidInfestorBody.prefab").WaitForCompletion();
+            GameObject voidinfestor2 = PrefabAPI.InstantiateClone(voidinfestor, "1voidinfestor");
+            GameObject voidbarnacle = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/VoidBarnacle/VoidBarnacleBody.prefab").WaitForCompletion();
+            GameObject voidbarnacle2 = PrefabAPI.InstantiateClone(voidbarnacle, "1voidbarnacle");
+            GameObject nullifier = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/NullifierBody");
+            GameObject voidjailer = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/VoidJailer/VoidJailerBody.prefab").WaitForCompletion();
+            GameObject voidjailer2 = PrefabAPI.InstantiateClone(voidjailer, "PCVoidJailerBody");
+            GameObject voidmegacrab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/VoidMegaCrab/VoidMegaCrabBody.prefab").WaitForCompletion();
+            GameObject voidmegacrab2 = PrefabAPI.InstantiateClone(voidmegacrab, "1voidmegacrab");
+            GameObject lunarexploder = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/LunarExploderBody");
+            GameObject lunargolem = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/LunarGolemBody");
+            GameObject lunarwisp = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/LunarWispBody");
+            GameObject droneman = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/DroneCommander/DroneCommanderBody.prefab").WaitForCompletion();
+            GameObject droneman2 = PrefabAPI.InstantiateClone(droneman, "1droneman");
+            GameObject voidcrabphase1 = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/VoidRaidCrab/MiniVoidRaidCrabBodyPhase1.prefab").WaitForCompletion();
+            GameObject voidcrabphase12 = PrefabAPI.InstantiateClone(voidcrabphase1, "1voidcrabphase1"); 
+            GameObject voidcrabphase2 = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/VoidRaidCrab/MiniVoidRaidCrabBodyPhase2.prefab").WaitForCompletion();
+            GameObject voidcrabphase22 = PrefabAPI.InstantiateClone(voidcrabphase2, "1voidcrabphase2");
+            GameObject voidcrabphase3 = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/VoidRaidCrab/MiniVoidRaidCrabBodyPhase3.prefab").WaitForCompletion();
+            GameObject voidcrabphase32 = PrefabAPI.InstantiateClone(voidcrabphase3, "1voidcrabphase3");
+
+            //GameObject voidcrabphase12 = LegacyResourcesAPI.Load<GameObject>("RoR2/DLC1/VoidRaidCrab/MiniVoidRaidCrabBodyPhase1.prefab");
+            //GameObject voidcrabphase22 = LegacyResourcesAPI.Load<GameObject>("RoR2/DLC1/VoidRaidCrab/MiniVoidRaidCrabBodyPhase2.prefab");
+            //GameObject voidcrabphase32 = LegacyResourcesAPI.Load<GameObject>("RoR2/DLC1/VoidRaidCrab/MiniVoidRaidCrabBodyPhase3.prefab")
+            //GameObject VoidRaidCrabrOrig = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/VoidRaidCrab/MiniVoidRaidCrabBodyPhase2.prefab").WaitForCompletion();
+
+            //GameObject VoidRaidCrabPlayer = VoidRaidCrabrOrig.InstantiateClone("MyVoidRaidCrabBodyPhase2");
+
+            //EquipmentSlot equipmentSlot = VoidRaidCrabPlayer.GetComponent<EquipmentSlot>();
+
+            //if (!equipmentSlot)
+            //{
+            //    equipmentSlot = VoidRaidCrabPlayer.AddComponent<EquipmentSlot>();
+            //}
+            //EquipmentSlot exists = beetlequeen.GetComponent<EquipmentSlot>();
+            //bool flag3 = !exists;
+            //if (flag3)
+            //{
+            //    exists = beetlequeen.AddComponent<EquipmentSlot>();
+            //}
+            PolishMonsterToSurvivor(beetle, 5f);
+            PolishMonsterToSurvivor(beetleguard, 5f);
+            PolishMonsterToSurvivor(acidlarva, 5f);
+            PolishMonsterToSurvivor(lemurian, 5f);
+            PolishMonsterToSurvivor(lemurianbruiser, 5f);
+            PolishMonsterToSurvivor(flyingvermin, 5f);
+            PolishMonsterToSurvivor(vermin, 3f);
+            PolishMonsterToSurvivor(wisp, 5f);
+            PolishMonsterToSurvivor(greaterwisp, 5f);
+            PolishMonsterToSurvivor(imp, 5f);
+            PolishMonsterToSurvivor(jellyfish, 5f);
+            PolishMonsterToSurvivor(bison, 5f);
+            PolishMonsterToSurvivor(claybruiser, 5f);
+            PolishMonsterToSurvivor(claygrenadier, 5f);
+            PolishMonsterToSurvivor(vulture, 5f);
+            PolishMonsterToSurvivor(roboballmini, 5f);
+            PolishMonsterToSurvivor(roboballgreen, 5f);
+            PolishMonsterToSurvivor(roboballred, 5f);
+            PolishMonsterToSurvivor(bellbody, 5f);
+            PolishMonsterToSurvivor(alphaconstruct2, 5f);
+            PolishMonsterToSurvivor(minimushroom, 5f);
+            PolishMonsterToSurvivor(gip2, 10f);
+            PolishMonsterToSurvivor(geep2, 10f);
+            PolishMonsterToSurvivor(gup2, 10f);
+            PolishMonsterToSurvivor(hermitcrab, 10f);
+            PolishMonsterToSurvivor(voidinfestor2, 10f);
+            PolishMonsterToSurvivor(voidbarnacle2, 10f);
+            PolishMonsterToSurvivor(nullifier, 10f);
+            PolishMonsterToSurvivor(voidjailer2, 10f);
+            PolishMonsterToSurvivor(voidmegacrab2, 10f);
+            PolishMonsterToSurvivor(lunarexploder, 10f);
+            PolishMonsterToSurvivor(lunargolem, 10f);
+            PolishMonsterToSurvivor(lunarwisp, 10f);
+            PolishMonsterToSurvivor(beetlequeen, 10f);
+            PolishMonsterToSurvivor(golem, 10f);
+            PolishMonsterToSurvivor(titan, 20f);
+            PolishMonsterToSurvivor(titangold, 20f);
+            PolishMonsterToSurvivor(gravekeeper, 20f);
+            PolishMonsterToSurvivor(vagrant, 20f);
+            PolishMonsterToSurvivor(magmaworm, 20f);
+            PolishMonsterToSurvivor(overloadingworm, 20f);
+            PolishMonsterToSurvivor(claydunestrider, 20f);
+            PolishMonsterToSurvivor(roboballboss, 10f);
+            PolishMonsterToSurvivor(superroboballboss, 20f);
+            PolishMonsterToSurvivor(xiconstruct2, 20f);
+            PolishMonsterToSurvivor(grandparent, 10f);
+            PolishMonsterToSurvivor(scavenger, 20f);
+            PolishMonsterToSurvivor(brother, 20f);
+            PolishMonsterToSurvivor(drone1, 5f);
+            PolishMonsterToSurvivor(drone2, 5f);
+            PolishMonsterToSurvivor(turret1, 5f);
+            PolishMonsterToSurvivor(missiledrone, 5f);
+            PolishMonsterToSurvivor(flamedrone, 5f);
+            PolishMonsterToSurvivor(backupdrone, 5f);
+            PolishMonsterToSurvivor(emergencydrone, 5f);
+            PolishMonsterToSurvivor(equipmentdrone, 5f);
+            PolishMonsterToSurvivor(megadrone, 20f);
+            PolishMonsterToSurvivor(engiturret, 20f);
+            PolishMonsterToSurvivor(engiwalkerturret, 20f);
+            PolishMonsterToSurvivor(squidturret, 20f);
+            PolishMonsterToSurvivor(urchinturret, 20f);
+            PolishMonsterToSurvivor(droneman2, 20f);
+            PolishMonsterToSurvivor(voidcrabphase12, 20f);
+            PolishMonsterToSurvivor(voidcrabphase22, 20f);
+            PolishMonsterToSurvivor(voidcrabphase32, 20f);
         }
 
+        private void PolishMonsterToSurvivor(GameObject monsterSurvivor, float maxInteractionDistance)
+        {
+            NetworkIdentity networkIdentity = monsterSurvivor.GetComponent<NetworkIdentity>();
+            bool flag = !networkIdentity;
+            if (flag)
+            {
+                base.Logger.LogMessage("Missing NetworkIdentity! Adding...");
+                networkIdentity = monsterSurvivor.AddComponent<NetworkIdentity>();
+            }
+            bool flag2 = !networkIdentity.localPlayerAuthority;
+            if (flag2)
+            {
+                base.Logger.LogMessage("Ensuring Networking");
+                networkIdentity.localPlayerAuthority = true;
+            }
+            //DeathRewards component = monsterSurvivor.GetComponent<DeathRewards>();
+            //bool flag3 = component;
+            //if (flag3)
+            //{
+            //    Object.Destroy(component);
+            //}
+            //InteractionDriver exists = monsterSurvivor.GetComponent<InteractionDriver>();
+            //bool flag4 = !exists;
+            //if (flag4)
+            //{
+            //    exists = monsterSurvivor.AddComponent<InteractionDriver>();
+            //}
+            Interactor interactor = monsterSurvivor.GetComponent<Interactor>();
+            bool flag5 = !interactor;
+            if (flag5)
+            {
+                interactor = monsterSurvivor.AddComponent<Interactor>();
+            }
+            interactor.maxInteractionDistance = maxInteractionDistance;
+            EquipmentSlot exists2 = monsterSurvivor.GetComponent<EquipmentSlot>();
+            bool flag6 = !exists2;
+            if (flag6)
+            {
+                exists2 = monsterSurvivor.AddComponent<EquipmentSlot>();
+            }
+        }
         private void LateSetup(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
         {
             // have to set item displays later now because they require direct object references..
@@ -106,6 +315,7 @@ namespace DittoMod
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             GlobalEventManager.onServerDamageDealt += GlobalEventManager_OnDamageDealt;
         }
+
         //lifesteal
         private void GlobalEventManager_OnDamageDealt(DamageReport report)
         {
@@ -113,8 +323,20 @@ namespace DittoMod
             bool flag = !report.attacker || !report.attackerBody;
             if (!flag && report.attackerBody.HasBuff(Modules.Buffs.shellbellBuff))
             {
-                CharacterBody attackerBody = report.attackerBody;
-                attackerBody.healthComponent.Heal(report.damageDealt * Modules.StaticValues.shellbelllifesteal, default(ProcChainMask), true);
+                int buffnumber = report.attackerBody.GetBuffCount(Modules.Buffs.shellbellBuff);
+                if (buffnumber > 0)
+                {
+                    if (buffnumber >= 1 && buffnumber < 2)
+                    {
+                        CharacterBody attackerBody = report.attackerBody;
+                        attackerBody.healthComponent.Heal(report.damageDealt * Modules.StaticValues.shellbelllifesteal, default(ProcChainMask), true);
+                    }
+                    if (buffnumber >= 2)
+                    {
+                        CharacterBody attackerBody = report.attackerBody;
+                        attackerBody.healthComponent.Heal(report.damageDealt * Modules.StaticValues.shellbelllifesteal2, default(ProcChainMask), true);
+                    }
+                }
 
             }
         }
@@ -123,33 +345,75 @@ namespace DittoMod
         {
             if (self.body.HasBuff(Modules.Buffs.rockyhelmetBuff.buffIndex))
             {
-                var damageInfo2 = new DamageInfo();
-
-                damageInfo2.damage = self.body.damage * Modules.StaticValues.rockyhelmetreflect;
-                damageInfo2.position = damageInfo.attacker.transform.position;
-                damageInfo2.force = Vector3.zero;
-                damageInfo2.damageColorIndex = DamageColorIndex.Default;
-                damageInfo2.crit = Util.CheckRoll(self.body.crit, self.body.master);
-                damageInfo2.attacker = self.gameObject;
-                damageInfo2.inflictor = null;
-                damageInfo2.damageType = DamageType.BypassArmor | DamageType.Generic;
-                damageInfo2.procCoefficient = 0.5f;
-                damageInfo2.procChainMask = default(ProcChainMask);
-
-                if (damageInfo.attacker.gameObject.GetComponent<CharacterBody>().baseNameToken
-                    != DittoPlugin.developerPrefix + "_DITTO_BODY_NAME" && damageInfo.attacker != null)
+                int buffnumber = self.body.GetBuffCount(Modules.Buffs.rockyhelmetBuff);
+                if (buffnumber > 0)
                 {
-                    damageInfo.attacker.GetComponent<CharacterBody>().healthComponent.TakeDamage(damageInfo2);
+                    if (buffnumber >= 1 && buffnumber < 2)
+                    {
+
+                        var damageInfo2 = new DamageInfo();
+
+                        damageInfo2.damage = self.body.damage * Modules.StaticValues.rockyhelmetreflect;
+                        damageInfo2.position = damageInfo.attacker.transform.position;
+                        damageInfo2.force = Vector3.zero;
+                        damageInfo2.damageColorIndex = DamageColorIndex.Default;
+                        damageInfo2.crit = Util.CheckRoll(self.body.crit, self.body.master);
+                        damageInfo2.attacker = self.gameObject;
+                        damageInfo2.inflictor = null;
+                        damageInfo2.damageType = DamageType.BypassArmor | DamageType.Generic;
+                        damageInfo2.procCoefficient = 0.5f;
+                        damageInfo2.procChainMask = default(ProcChainMask);
+
+                        if (damageInfo.attacker.gameObject.GetComponent<CharacterBody>().baseNameToken
+                            != DittoPlugin.developerPrefix + "_DITTO_BODY_NAME" && damageInfo.attacker != null)
+                        {
+                            damageInfo.attacker.GetComponent<CharacterBody>().healthComponent.TakeDamage(damageInfo2);
+                        }
+
+                        Vector3 enemyPos = damageInfo.attacker.transform.position;
+                        EffectManager.SpawnEffect(effectPrefab, new EffectData
+                        {
+                            origin = enemyPos,
+                            scale = 1f,
+                            rotation = Quaternion.LookRotation(enemyPos - self.body.transform.position)
+
+                        }, false);
+                    }
+                    if (buffnumber >= 2)
+                    {
+                        if (buffnumber >= 1 && buffnumber < 2)
+                        {
+
+                            var damageInfo2 = new DamageInfo();
+
+                            damageInfo2.damage = self.body.damage * Modules.StaticValues.rockyhelmetreflect2;
+                            damageInfo2.position = damageInfo.attacker.transform.position;
+                            damageInfo2.force = Vector3.zero;
+                            damageInfo2.damageColorIndex = DamageColorIndex.Default;
+                            damageInfo2.crit = Util.CheckRoll(self.body.crit, self.body.master);
+                            damageInfo2.attacker = self.gameObject;
+                            damageInfo2.inflictor = null;
+                            damageInfo2.damageType = DamageType.BypassArmor | DamageType.Generic;
+                            damageInfo2.procCoefficient = 0.5f;
+                            damageInfo2.procChainMask = default(ProcChainMask);
+
+                            if (damageInfo.attacker.gameObject.GetComponent<CharacterBody>().baseNameToken
+                                != DittoPlugin.developerPrefix + "_DITTO_BODY_NAME" && damageInfo.attacker != null)
+                            {
+                                damageInfo.attacker.GetComponent<CharacterBody>().healthComponent.TakeDamage(damageInfo2);
+                            }
+
+                            Vector3 enemyPos = damageInfo.attacker.transform.position;
+                            EffectManager.SpawnEffect(effectPrefab, new EffectData
+                            {
+                                origin = enemyPos,
+                                scale = 1f,
+                                rotation = Quaternion.LookRotation(enemyPos - self.body.transform.position)
+
+                            }, false);
+                        }
+                    }
                 }
-
-                Vector3 enemyPos = damageInfo.attacker.transform.position;
-                EffectManager.SpawnEffect(effectPrefab, new EffectData
-                {
-                    origin = enemyPos,
-                    scale = 1f,
-                    rotation = Quaternion.LookRotation(enemyPos - self.body.transform.position)
-
-                }, false);
 
             }
             orig.Invoke(self, damageInfo);
@@ -163,28 +427,88 @@ namespace DittoMod
             
             if (self.HasBuff(Modules.Buffs.choicebandBuff))
             {
-                self.attackSpeed *= Modules.StaticValues.choicebandboost;
+                int buffnumber = self.GetBuffCount(Modules.Buffs.choicebandBuff);
+                if(buffnumber > 0)
+                {
+                    if(buffnumber >= 1 && buffnumber <2)
+                    {
+                        self.attackSpeed *= Modules.StaticValues.choicebandboost;
+                    }
+                    if(buffnumber >= 2)
+                    {
+                        self.attackSpeed *= Modules.StaticValues.choicebandboost2;
+                    }
+                }
             }
             if (self.HasBuff(Modules.Buffs.choicescarfBuff))
             {
-                self.moveSpeed *= Modules.StaticValues.choicescarfboost;
+                int buffnumber = self.GetBuffCount(Modules.Buffs.choicescarfBuff);
+                if (buffnumber > 0)
+                {
+                    if (buffnumber >= 1 && buffnumber < 2)
+                    {
+                        self.moveSpeed *= Modules.StaticValues.choicescarfboost;
+                    }
+                    if (buffnumber >= 2)
+                    {
+                        self.moveSpeed *= Modules.StaticValues.choicescarfboost2;
+                    }
+                }
             }
             if (self.HasBuff(Modules.Buffs.choicespecsBuff))
             {
-                self.damage *= Modules.StaticValues.choicespecsboost;
+                int buffnumber = self.GetBuffCount(Modules.Buffs.choicespecsBuff);
+                if (buffnumber > 0)
+                {
+                    if (buffnumber >= 1 && buffnumber < 2)
+                    {
+                        self.damage *= Modules.StaticValues.choicespecsboost;
+                    }
+                    if (buffnumber >= 2)
+                    {
+                        self.damage *= Modules.StaticValues.choicespecsboost2;
+                    }
+                }
             }
             if (self.HasBuff(Modules.Buffs.scopelensBuff))
             {
-                self.crit += Modules.StaticValues.scopelensboost;
+                int buffnumber = self.GetBuffCount(Modules.Buffs.scopelensBuff);
+                if (buffnumber > 0)
+                {
+                    if (buffnumber >= 1 && buffnumber < 2)
+                    {
+                        self.crit += Modules.StaticValues.scopelensboost;
+                    }
+                    if (buffnumber >= 2)
+                    {
+                        self.crit += Modules.StaticValues.scopelensboost2;
+                    }
+                }
             }
             if (self.HasBuff(Modules.Buffs.leftoversBuff))
             {
-                HealthComponent hp = self.healthComponent;
-                float regenValue = hp.fullCombinedHealth * Modules.StaticValues.leftoversregen;
-                self.regen += regenValue;
-                //Chat.AddMessage("hpregen activated");
+                int buffnumber = self.GetBuffCount(Modules.Buffs.leftoversBuff);
+                if (buffnumber > 0)
+                {
+                    if (buffnumber >= 1 && buffnumber < 2)
+                    {
+
+                        HealthComponent hp = self.healthComponent;
+                        float regenValue = hp.fullCombinedHealth * Modules.StaticValues.leftoversregen;
+                        self.regen += regenValue;
+                        //Chat.AddMessage("hpregen activated");
+                    }
+                    if (buffnumber >= 2)
+                    {
+
+                        HealthComponent hp = self.healthComponent;
+                        float regenValue = hp.fullCombinedHealth * Modules.StaticValues.leftoversregen2;
+                        self.regen += regenValue;
+                        //Chat.AddMessage("hpregen activated");
+                    }
+                }
             }
-            
+                        
         }
 
         private void CharacterBody_OnDeathStart(On.RoR2.CharacterBody.orig_OnDeathStart orig, CharacterBody self)
@@ -206,7 +530,7 @@ namespace DittoMod
                 if (self.bodyPrefab.name.Contains("Ditto"))
                 {
                     //Give equipment
-                    self.inventory.GiveEquipmentString("EQUIPMENT_BECOME_DITTO");
+                    self.inventory.GiveEquipmentString("EQUIPMENT_TM_TRANSFORM");
                     //setup UI
                 }
             }
@@ -233,7 +557,7 @@ namespace DittoMod
                 self.RemoveBuff(DittoMod.Modules.Assets.lightningelitebuff);
                 self.RemoveBuff(DittoMod.Modules.Assets.mendingelitebuff);
                 self.RemoveBuff(DittoMod.Modules.Assets.malachiteelitebuff);
-                self.RemoveBuff(DittoMod.Modules.Assets.speedelitebuff);
+                //self.RemoveBuff(DittoMod.Modules.Assets.speedelitebuff);
                 self.RemoveBuff(DittoMod.Modules.Assets.voidelitebuff);
                 self.RemoveBuff(DittoMod.Modules.Assets.lunarelitebuff);
             }

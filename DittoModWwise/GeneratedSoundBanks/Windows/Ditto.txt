@@ -1,5 +1,6 @@
 Event	ID	Name			Wwise Object Path	Notes
 	500315785	StruggleSFX			\Default Work Unit\StruggleSFX	
+	1531773223	AButtonSFX			\Default Work Unit\AButtonSFX	
 	1719197672	TransformSFX			\Default Work Unit\TransformSFX	
 	3468082827	DittoVoice			\Default Work Unit\DittoVoice	
 
@@ -9,6 +10,7 @@ Game Parameter	ID	Name			Wwise Object Path	Notes
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	98812312	Transformgen5	F:\Theodore 3\GameDev\Mods\DittoRor2\DittoModWwise\.cache\Windows\SFX\SFX\Transformgen5_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Ditto\TransformSFX\TransformSFX\Transformgen5		23370
+	108164889	Pokemon (A Button) - Sound Effect (HD)	F:\Theodore 3\GameDev\Mods\DittoRor2\DittoModWwise\.cache\Windows\SFX\Pokemon (A Button) - Sound Effect (HD)_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Ditto\TransformSFX\AButton\Pokemon (A Button) - Sound Effect (HD)		14853
 	239728054	5	F:\Theodore 3\GameDev\Mods\DittoRor2\DittoModWwise\.cache\Windows\SFX\Voice\5_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Ditto\DittoVoice\Dittovoice\5		6628
 	272812737	Transformgen8	F:\Theodore 3\GameDev\Mods\DittoRor2\DittoModWwise\.cache\Windows\SFX\Transformgen8_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Ditto\TransformSFX\TransformSFX\Transformgen8		31462
 	431749713	Transformgen6	F:\Theodore 3\GameDev\Mods\DittoRor2\DittoModWwise\.cache\Windows\SFX\SFX\Transformgen6_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\Sfx Mixer\Ditto\TransformSFX\TransformSFX\Transformgen6		27578

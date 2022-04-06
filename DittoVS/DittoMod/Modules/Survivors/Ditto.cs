@@ -69,10 +69,10 @@ namespace DittoMod.Modules.Survivors
             bodyPrefab.AddComponent<DittoController>();
         }
 
-        //internal override void InitializeUnlockables()
-        //{
-        //    masterySkinUnlockableDef = Modules.Unlockables.AddUnlockable<Achievements.MasteryAchievement>(true);
-        //}
+        internal override void InitializeUnlockables()
+        {
+            masterySkinUnlockableDef = Modules.Unlockables.AddUnlockable<Achievements.MasteryAchievement>(true);
+        }
 
         internal override void InitializeDoppelganger()
         {
@@ -121,7 +121,7 @@ namespace DittoMod.Modules.Survivors
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,
                 fullRestockOnAssign = true,
-                interruptPriority = EntityStates.InterruptPriority.Any,
+                interruptPriority = EntityStates.InterruptPriority.Skill,
                 resetCooldownTimerOnUse = false,
                 isCombatSkill = true,
                 mustKeyPress = false,
@@ -382,13 +382,13 @@ namespace DittoMod.Modules.Survivors
             //});
             Skills.AddUtilitySkills(this.bodyPrefab, new SkillDef[]
             {
-                ShellBell,
-                ScopeLens,
-                RockyHelmet,
-                Leftovers,
-                ChoiceSpecs,
-                ChoiceScarf,
                 ChoiceBand,
+                ChoiceScarf,
+                ChoiceSpecs,
+                Leftovers,
+                RockyHelmet,
+                ScopeLens,
+                ShellBell,
             });
             #endregion
 
@@ -443,7 +443,7 @@ namespace DittoMod.Modules.Survivors
 
             #region DefaultSkin
             SkinDef defaultSkin = Modules.Skins.CreateSkinDef(DittoPlugin.developerPrefix + "_DITTO_BODY_DEFAULT_SKIN_NAME",
-                Assets.mainAssetBundle.LoadAsset<Sprite>("Airforceskin"),
+                Assets.mainAssetBundle.LoadAsset<Sprite>("DittoBaseSkin"),
                 defaultRenderers,
                 mainRenderer,
                 model);
@@ -453,7 +453,7 @@ namespace DittoMod.Modules.Survivors
 
                 new SkinDef.MeshReplacement
                 {
-                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("Mesh"),
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("MeshDitto"),
                     renderer = defaultRenderers[instance.mainRendererIndex].renderer
                 }
             };
@@ -461,39 +461,30 @@ namespace DittoMod.Modules.Survivors
             skins.Add(defaultSkin);
             #endregion
 
-            //#region MasterySkin
-            //Material masteryMat = Modules.Assets.CreateMaterial("matHenryAlt");
-            //CharacterModel.RendererInfo[] masteryRendererInfos = SkinRendererInfos(defaultRenderers, new Material[]
-            //{
-            //    masteryMat,
-            //    masteryMat,
-            //    masteryMat,
-            //    masteryMat
-            //});
+            #region masteryskin
+            Material masteryMat = Modules.Assets.CreateMaterial("ShinyDittoMat", 0f, Color.white, 1.0f);
+            CharacterModel.RendererInfo[] masteryRendererInfos = SkinRendererInfos(defaultRenderers, new Material[] {
+                masteryMat,
+                masteryMat,
+                masteryMat,
+                masteryMat,
+            });
+            SkinDef masterySkin = Modules.Skins.CreateSkinDef(DittoPlugin.developerPrefix + "_DITTO_BODY_MASTERY_SKIN_NAME",
+                Assets.mainAssetBundle.LoadAsset<Sprite>("DittoShinySkin"),
+                masteryRendererInfos,
+                mainRenderer,
+                model,
+                masterySkinUnlockableDef);
 
-            //SkinDef masterySkin = Modules.Skins.CreateSkinDef(DekuPlugin.developerPrefix + "_DEKU_BODY_MASTERY_SKIN_NAME",
-            //    Assets.mainAssetBundle.LoadAsset<Sprite>("texMasteryAchievement"),
-            //    masteryRendererInfos,
-            //    mainRenderer,
-            //    model,
-            //    masterySkinUnlockableDef);
-
-            //masterySkin.meshReplacements = new SkinDef.MeshReplacement[]
-            //{
-            //    new SkinDef.MeshReplacement
-            //    {
-            //        mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("meshHenrySwordAlt"),
-            //        renderer = defaultRenderers[0].renderer
-            //    },
-            //    new SkinDef.MeshReplacement
-            //    {
-            //        mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("meshHenryAlt"),
-            //        renderer = defaultRenderers[instance.mainRendererIndex].renderer
-            //    }
-            //};
-
-            //skins.Add(masterySkin);
-            //#endregion
+            masterySkin.meshReplacements = new SkinDef.MeshReplacement[] {
+                new SkinDef.MeshReplacement
+                {
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("MeshDitto"),
+                    renderer = defaultRenderers[instance.mainRendererIndex].renderer
+                },
+            };
+            skins.Add(masterySkin);
+            #endregion
 
             skinController.skins = skins.ToArray();
         }
@@ -3127,8 +3118,6 @@ namespace DittoMod.Modules.Survivors
             defaultRenderers.CopyTo(newRendererInfos, 0);
 
             newRendererInfos[0].defaultMaterial = materials[0];
-            newRendererInfos[1].defaultMaterial = materials[1];
-            newRendererInfos[instance.mainRendererIndex].defaultMaterial = materials[2];
 
             return newRendererInfos;
         }

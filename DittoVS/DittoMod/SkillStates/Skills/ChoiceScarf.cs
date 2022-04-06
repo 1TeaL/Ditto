@@ -15,9 +15,25 @@ namespace DittoMod.SkillStates
             base.OnEnter();
 
             dittocon = base.GetComponent<DittoController>();
-            dittocon.choicescarf = true;
-            characterBody.AddBuff(Modules.Buffs.choicescarfBuff);
-            
+            if (!characterBody.HasBuff(Modules.Buffs.choicescarfBuff))
+            {
+                {
+                    if (dittocon.choicescarf = false && base.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICESCARF_NAME")
+                    {
+                        dittocon.choicescarf = true;
+                        characterBody.AddBuff(Modules.Buffs.choicescarfBuff);
+                        AkSoundEngine.PostEvent(1531773223, this.gameObject);
+                    }
+                    if (dittocon.choicescarf2 = false && base.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICESCARF_NAME")
+                    {
+                        dittocon.choicescarf2 = true;
+                        characterBody.AddBuff(Modules.Buffs.choicescarfBuff);
+                        AkSoundEngine.PostEvent(1531773223, this.gameObject);
+                    }
+
+                }
+
+            }
         }
 
         public override void OnExit()

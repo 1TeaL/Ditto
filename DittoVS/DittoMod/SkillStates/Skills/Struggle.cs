@@ -49,12 +49,20 @@ namespace DittoMod.SkillStates
             blastAttack.teamIndex = TeamComponent.GetObjectTeam(blastAttack.attacker);
             blastAttack.damageType = DamageType.Generic;
             blastAttack.attackerFiltering = AttackerFiltering.Default;
+            if (base.isAuthority)
+            {
+                if (Random.RandomRangeInt(0, 10) == 1)
+                {
+                    AkSoundEngine.PostEvent(500315785, this.gameObject);
+                }
+            }
 
-            AkSoundEngine.PostEvent(500315785, this.gameObject);
+            base.gameObject.layer = LayerIndex.fakeActor.intVal;
         }
 
         public override void OnExit()
         {
+            base.gameObject.layer = LayerIndex.defaultLayer.intVal;
             base.characterMotor.velocity.y *= 0f;
             base.OnExit();
         }
@@ -80,7 +88,10 @@ namespace DittoMod.SkillStates
             if (struggleAge > duration / 10)
             {
                 blastAttack.position = theSpot;
-                blastAttack.Fire();
+                if (base.isAuthority)
+                {
+                    blastAttack.Fire();
+                }
                 struggleAge = 0;
             }
             else
@@ -111,7 +122,7 @@ namespace DittoMod.SkillStates
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.Skill;
+            return InterruptPriority.PrioritySkill;
         }
 
     }

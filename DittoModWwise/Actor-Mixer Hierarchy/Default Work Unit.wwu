@@ -480,6 +480,66 @@
 														</Sound>
 													</ChildrenList>
 												</RandomSequenceContainer>
+												<RandomSequenceContainer Name="AButton" ID="{125C2978-69AD-49F4-8A5F-9C04416C7D72}" ShortID="18486690">
+													<PropertyList>
+														<Property Name="3DSpatialization" Type="int16" Value="1"/>
+														<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+														<Property Name="OverridePositioning" Type="bool" Value="True"/>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>12</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="attenuation" ID="{ACADF2A6-364F-465B-B8A9-063DCB20768E}" WorkUnitID="{6A73AA2B-0A33-4047-8E5A-E78AE57EF7AF}"/>
+														</Reference>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9A15F9F0-3C85-4A2C-A5DF-E26CFCB03729}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{87F9AF01-F64A-4F2B-A11D-BEF67188C94B}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="Pokemon (A Button) - Sound Effect (HD)" ID="{25855112-7896-42B3-ADDE-AECC1D5AEF80}" ShortID="950563367">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64">
+																	<ValueList>
+																		<Value>5</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9A15F9F0-3C85-4A2C-A5DF-E26CFCB03729}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{87F9AF01-F64A-4F2B-A11D-BEF67188C94B}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="Pokemon (A Button) - Sound Effect (HD)" ID="{269AE336-F687-4694-81C1-C5B94189F3C8}">
+																	<PropertyList>
+																		<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+																		<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+																		<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Pokemon (A Button) - Sound Effect (HD).wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="108164889"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="Pokemon (A Button) - Sound Effect (HD)" ID="{269AE336-F687-4694-81C1-C5B94189F3C8}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
 											</ChildrenList>
 										</Folder>
 										<Folder Name="DittoVoice" ID="{586EAAD6-7D1A-4011-B34B-CD8F46DE6B4F}" ShortID="5240471">

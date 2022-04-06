@@ -15,9 +15,23 @@ namespace DittoMod.SkillStates
             base.OnEnter();
 
             dittocon = base.GetComponent<DittoController>();
-            dittocon.shellbell = true;
-            characterBody.AddBuff(Modules.Buffs.shellbellBuff);
-            
+            if (!characterBody.HasBuff(Modules.Buffs.shellbellBuff))
+            {
+                if (dittocon.shellbell = false && base.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_SHELLBELL_NAME")
+                {
+                    dittocon.shellbell = true;
+                    characterBody.AddBuff(Modules.Buffs.shellbellBuff);
+                    AkSoundEngine.PostEvent(1531773223, this.gameObject);
+                }
+                if (dittocon.shellbell2 = false && base.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_SHELLBELL_NAME")
+                {
+                    dittocon.shellbell2 = true;
+                    characterBody.AddBuff(Modules.Buffs.shellbellBuff);
+                    AkSoundEngine.PostEvent(1531773223, this.gameObject);
+                }
+            }
+                
+
         }
 
         public override void OnExit()

@@ -29,25 +29,105 @@ namespace DittoMod.Modules.Survivors
 		public bool rockyhelmet;
 		public bool scopelens;
 		public bool shellbell;
+		public bool choiceband2;
+		public bool choicescarf2;
+		public bool choicespecs2;
+		public bool leftovers2;
+		public bool rockyhelmet2;
+		public bool scopelens2;
+		public bool shellbell2;
 
 		private void Awake()
 		{
 			indicator = new Indicator(gameObject, LegacyResourcesAPI.Load<GameObject>("Prefabs/HuntressTrackingIndicator"));
 			//On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
-		}
-
-		private void Start()
-		{
-			inputBank = gameObject.GetComponent<InputBankTest>();
 			characterBody = gameObject.GetComponent<CharacterBody>();
-
+			inputBank = gameObject.GetComponent<InputBankTest>();
 			choiceband = false;
 			choicescarf = false;
 			choicespecs = false;
 			leftovers = false;
 			rockyhelmet = false;
-			scopelens = false;	
+			scopelens = false;
 			shellbell = false;
+			choiceband2 = false;
+			choicescarf2 = false;
+			choicespecs2 = false;
+			leftovers2 = false;
+			rockyhelmet2 = false;
+			scopelens2 = false;
+			shellbell2 = false;
+
+
+			if (characterBody.HasBuff(RoR2Content.Buffs.OnFire))
+			{
+				characterBody.RemoveBuff(RoR2Content.Buffs.OnFire);
+			}
+			if (characterBody.HasBuff(RoR2Content.Buffs.AffixBlue))
+			{
+				characterBody.RemoveBuff(RoR2Content.Buffs.AffixBlue);
+			}
+			if (characterBody.HasBuff(RoR2Content.Buffs.AffixEcho))
+			{
+				characterBody.RemoveBuff(RoR2Content.Buffs.AffixEcho);
+			}
+			if (characterBody.HasBuff(RoR2Content.Buffs.AffixHaunted))
+			{
+				characterBody.RemoveBuff(RoR2Content.Buffs.AffixHaunted);
+			}
+			if (characterBody.HasBuff(RoR2Content.Buffs.AffixLunar))
+			{
+				characterBody.RemoveBuff(RoR2Content.Buffs.AffixLunar);
+			}
+			if (characterBody.HasBuff(RoR2Content.Buffs.AffixPoison))
+			{
+				characterBody.RemoveBuff(RoR2Content.Buffs.AffixPoison);
+			}
+			if (characterBody.HasBuff(RoR2Content.Buffs.AffixRed))
+			{
+				characterBody.RemoveBuff(RoR2Content.Buffs.AffixRed);
+			}
+			if (characterBody.HasBuff(RoR2Content.Buffs.AffixWhite))
+			{
+				characterBody.RemoveBuff(RoR2Content.Buffs.AffixWhite);
+			}
+			if (characterBody.HasBuff(DittoMod.Modules.Assets.fireelitebuff))
+			{
+				characterBody.RemoveBuff(DittoMod.Modules.Assets.fireelitebuff);
+			}
+			if (characterBody.HasBuff(DittoMod.Modules.Assets.iceelitebuff))
+			{
+				characterBody.RemoveBuff(DittoMod.Modules.Assets.iceelitebuff);
+			}
+			if (characterBody.HasBuff(DittoMod.Modules.Assets.hauntedelitebuff))
+			{
+				characterBody.RemoveBuff(DittoMod.Modules.Assets.hauntedelitebuff);
+			}
+			if (characterBody.HasBuff(DittoMod.Modules.Assets.lightningelitebuff))
+			{
+				characterBody.RemoveBuff(DittoMod.Modules.Assets.lightningelitebuff);
+			}
+			if (characterBody.HasBuff(DittoMod.Modules.Assets.mendingelitebuff))
+			{
+				characterBody.RemoveBuff(DittoMod.Modules.Assets.mendingelitebuff);
+			}
+			if (characterBody.HasBuff(DittoMod.Modules.Assets.malachiteelitebuff))
+			{
+				characterBody.RemoveBuff(DittoMod.Modules.Assets.malachiteelitebuff);
+			}
+			if (characterBody.HasBuff(DittoMod.Modules.Assets.voidelitebuff))
+			{
+				characterBody.RemoveBuff(DittoMod.Modules.Assets.voidelitebuff);
+			}
+			if (characterBody.HasBuff(DittoMod.Modules.Assets.lunarelitebuff))
+			{
+				characterBody.RemoveBuff(DittoMod.Modules.Assets.lunarelitebuff);
+			}
+		}
+
+		private void Start()
+		{
+
 
 			//characterMaster = characterBody.master;
 
@@ -80,32 +160,75 @@ namespace DittoMod.Modules.Survivors
 				this.indicator.targetTransform = (this.trackingTarget ? this.trackingTarget.transform : null);
 			}
 
-			if(characterBody.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICE_BAND_NAME")
+			if(characterBody.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICEBAND_NAME" && !choiceband)
             {
+				choiceband = true;
 				characterBody.AddBuff(Modules.Buffs.choicebandBuff);
             }
-			if (characterBody.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICE_SCARF_NAME")
+			if (characterBody.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICESCARF_NAME" && !choicescarf)
 			{
+				choicescarf = true;
 				characterBody.AddBuff(Modules.Buffs.choicescarfBuff);
 			}
-			if (characterBody.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICE_SPECS_NAME")
+			if (characterBody.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICESPECS_NAME" && !choicespecs)
 			{
+				choicespecs = true;
 				characterBody.AddBuff(Modules.Buffs.choicespecsBuff);
 			}
-			if (characterBody.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_ROCKY_HELMET_NAME")
+			if (characterBody.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_ROCKYHELMET_NAME" && !rockyhelmet)
 			{
+				rockyhelmet = true;
 				characterBody.AddBuff(Modules.Buffs.rockyhelmetBuff);
 			}
-			if (characterBody.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LEFTOVERS_NAME")
+			if (characterBody.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LEFTOVERS_NAME" && !leftovers)
 			{
+				leftovers = true;
 				characterBody.AddBuff(Modules.Buffs.leftoversBuff);
 			}
-			if (characterBody.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_SCOPE_LENS_NAME")
+			if (characterBody.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_SCOPELENS_NAME" && !scopelens)
 			{
+				scopelens= true;
 				characterBody.AddBuff(Modules.Buffs.scopelensBuff);
 			}
-			if (characterBody.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_SHELL_BELL_NAME")
+			if (characterBody.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_SHELLBELL_NAME" && !shellbell)
 			{
+				shellbell = true;
+				characterBody.AddBuff(Modules.Buffs.shellbellBuff);
+			}
+
+			if (characterBody.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICEBAND_NAME" && !choiceband2)
+			{
+				choiceband2 = true;
+				characterBody.AddBuff(Modules.Buffs.choicebandBuff);
+			}
+			if (characterBody.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICESCARF_NAME" && !choicescarf2)
+			{
+				choicescarf2 = true;
+				characterBody.AddBuff(Modules.Buffs.choicescarfBuff);
+			}
+			if (characterBody.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICESPECS_NAME" && !choicespecs2)
+			{
+				choicespecs2 = true;
+				characterBody.AddBuff(Modules.Buffs.choicespecsBuff);
+			}
+			if (characterBody.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_ROCKYHELMET_NAME" && !rockyhelmet2)
+			{
+				rockyhelmet2 = true;
+				characterBody.AddBuff(Modules.Buffs.rockyhelmetBuff);
+			}
+			if (characterBody.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LEFTOVERS_NAME" && !leftovers2)
+			{
+				leftovers2 = true;
+				characterBody.AddBuff(Modules.Buffs.leftoversBuff);
+			}
+			if (characterBody.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_SCOPELENS_NAME" && !scopelens2)
+			{
+				scopelens2 = true;
+				characterBody.AddBuff(Modules.Buffs.scopelensBuff);
+			}
+			if (characterBody.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_SHELLBELL_NAME" && !shellbell2)
+			{
+				shellbell2 = true;
 				characterBody.AddBuff(Modules.Buffs.shellbellBuff);
 			}
 

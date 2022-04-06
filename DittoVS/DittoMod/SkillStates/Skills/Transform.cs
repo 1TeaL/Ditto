@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using RoR2.Orbs;
 using static RoR2.BulletAttack;
 using UnityEngine.Networking;
+using UnityEngine.AddressableAssets;
+using R2API;
 
 namespace DittoMod.SkillStates
 {
@@ -37,6 +39,8 @@ namespace DittoMod.SkillStates
             }
             hasFired = false;
 
+            PlayAnimation("Body", "BonusJump", "Attack.playbackRate", duration/2);
+
 
         }
 
@@ -56,7 +60,10 @@ namespace DittoMod.SkillStates
                 hasFired = true;
                 if (Target)
                 {
+
+
                     Debug.Log("Target");
+                    Debug.Log(BodyCatalog.FindBodyPrefab(BodyCatalog.GetBodyName(Target.healthComponent.body.bodyIndex)));
                     ChangeOrSetCharacter(characterBody.master.playerCharacterMasterController.networkUser, Target);
                     
                     
@@ -76,51 +83,65 @@ namespace DittoMod.SkillStates
 
         private void ChangeOrSetCharacter(NetworkUser player, HurtBox hurtBox)
         {
+            List<string> blacklist = new List<string>();
+            blacklist.Add("DroneCommanderBody");
+            blacklist.Add("ExplosivePotDestructibleBody");
+            blacklist.Add("SulfurPodBody");
+            blacklist.Add("MiniVoidRaidCrabBodyPhase1");
+            blacklist.Add("MiniVoidRaidCrabBodyPhase2");
+            blacklist.Add("MiniVoidRaidCrabBodyPhase3");
+            blacklist.Add("DittoBody");
+            blacklist.Add("MinorConstructBody");
+            blacklist.Add("MinorConstructOnKillBody");
 
             CharacterMaster master = player.master;
             CharacterBody oldBody = master.GetBody();
 
-            master.bodyPrefab = BodyCatalog.FindBodyPrefab(BodyCatalog.GetBodyName(hurtBox.healthComponent.body.bodyIndex));
-            
 
-            //CharacterBody newcharBody = master.GetBody();
-            
-
+            GameObject newbodyPrefab = BodyCatalog.FindBodyPrefab(BodyCatalog.GetBodyName(hurtBox.healthComponent.body.bodyIndex));
             
 
             CharacterBody body;
-            
-            
-            if (BodyCatalog.GetBodyName(oldBody.bodyIndex) == "CaptainBody")
-            {
-                master.inventory.RemoveItem(RoR2Content.Items.CaptainDefenseMatrix, 1);
-            }
 
-            if (master.bodyPrefab.name == "CaptainBody")
-            {
-                master.inventory.GiveItem(RoR2Content.Items.CaptainDefenseMatrix, 1);
-            }
 
-            if (BodyCatalog.GetBodyName(oldBody.bodyIndex) == "HereticBody")
+            if (!blacklist.Contains(newbodyPrefab.name))
             {
-                master.inventory.RemoveItem(RoR2Content.Items.LunarPrimaryReplacement, 1);
-                master.inventory.RemoveItem(RoR2Content.Items.LunarSecondaryReplacement, 1);
-                master.inventory.RemoveItem(RoR2Content.Items.LunarSpecialReplacement, 1);
-                master.inventory.RemoveItem(RoR2Content.Items.LunarUtilityReplacement, 1);
-            }
 
-            if (master.bodyPrefab.name != "HereticBody")
-            {
+                master.bodyPrefab = newbodyPrefab;
+                //newbodyPrefab.
+                
                 body = master.Respawn(master.GetBody().transform.position, master.GetBody().transform.rotation);
                 RigidbodyMotor rigid = body.gameObject.GetComponent<RigidbodyMotor>();
+
+                EquipmentSlot exists2 = body.gameObject.GetComponent<EquipmentSlot>();
+                bool flag6 = !exists2;
+                if (flag6)
+                {
+                    exists2 = body.gameObject.AddComponent<EquipmentSlot>();
+                }   
+                if (body.name == "CaptainBody")
+                {
+                    master.inventory.GiveItem(RoR2Content.Items.CaptainDefenseMatrix, 1);
+                }
+
+                if (body.name == "HereticBody")
+                {                    
+                    master.inventory.GiveItem(RoR2Content.Items.LunarPrimaryReplacement, 1);
+                    master.inventory.GiveItem(RoR2Content.Items.LunarSecondaryReplacement, 1);
+                    master.inventory.GiveItem(RoR2Content.Items.LunarSpecialReplacement, 1);
+                    master.inventory.GiveItem(RoR2Content.Items.LunarUtilityReplacement, 1);
+                    
+                }
+                    
 
                 if (rigid)
                 {
                     rigid.characterBody.moveSpeed = oldBody.moveSpeed;
                 }
-                
 
-                body.baseMaxHealth = oldBody.maxHealth;
+                body.baseMaxHealth = oldBody.baseMaxHealth + body.baseMaxHealth/10;
+                body.levelMaxHealth = oldBody.levelMaxHealth + body.levelMaxHealth / 10;
+                body.maxHealth = oldBody.maxHealth + body.maxHealth / 10 ;
                 body.baseRegen = oldBody.regen;
                 body.baseJumpCount = oldBody.baseJumpCount;
                 body.jumpPower = oldBody.jumpPower;
@@ -128,12 +149,10 @@ namespace DittoMod.SkillStates
                 if (body.characterMotor)
                 {
                     body.characterMotor.mass = oldBody.characterMotor.mass;
-                }             
+                }
                 body.baseArmor = oldBody.armor;
                 body.baseMoveSpeed = oldBody.baseMoveSpeed;
-                
 
-                //body.AddTimedBuffAuthority(Modules.Buffs.transformBuff.buffIndex, Modules.StaticValues.transformDuration);
                 body.AddTimedBuffAuthority(RoR2Content.Buffs.HiddenInvincibility.buffIndex, Modules.StaticValues.invincibilityDuration);
 
                 if (dittocon.choiceband)
@@ -161,6 +180,34 @@ namespace DittoMod.SkillStates
                     body.AddBuff(Modules.Buffs.scopelensBuff);
                 }
                 if (dittocon.shellbell)
+                {
+                    body.AddBuff(Modules.Buffs.shellbellBuff);
+                }
+                if (dittocon.choiceband2)
+                {
+                    body.AddBuff(Modules.Buffs.choicebandBuff);
+                }
+                if (dittocon.choicescarf2)
+                {
+                    body.AddBuff(Modules.Buffs.choicescarfBuff);
+                }
+                if (dittocon.choicespecs2)
+                {
+                    body.AddBuff(Modules.Buffs.choicespecsBuff);
+                }
+                if (dittocon.leftovers2)
+                {
+                    body.AddBuff(Modules.Buffs.leftoversBuff);
+                }
+                if (dittocon.rockyhelmet2)
+                {
+                    body.AddBuff(Modules.Buffs.rockyhelmetBuff);
+                }
+                if (dittocon.scopelens2)
+                {
+                    body.AddBuff(Modules.Buffs.scopelensBuff);
+                }
+                if (dittocon.shellbell2)
                 {
                     body.AddBuff(Modules.Buffs.shellbellBuff);
                 }
@@ -221,10 +268,6 @@ namespace DittoMod.SkillStates
                 {
                     body.AddBuff(DittoMod.Modules.Assets.malachiteelitebuff);
                 }
-                if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.speedelitebuff))
-                {
-                    body.AddBuff(DittoMod.Modules.Assets.speedelitebuff);
-                }
                 if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.voidelitebuff))
                 {
                     body.AddBuff(DittoMod.Modules.Assets.voidelitebuff);
@@ -233,18 +276,16 @@ namespace DittoMod.SkillStates
                 {
                     body.AddBuff(DittoMod.Modules.Assets.lunarelitebuff);
                 }
+                //if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.speedelitebuff))
+                //{
+                //    body.AddBuff(DittoMod.Modules.Assets.speedelitebuff);
+                //}            
+
+
             }
             else
             {
-                if (master.bodyPrefab.name == "HereticBody")
-                {
-                    master.inventory.GiveItem(RoR2Content.Items.LunarPrimaryReplacement, 1);
-                    master.inventory.GiveItem(RoR2Content.Items.LunarSecondaryReplacement, 1);
-                    master.inventory.GiveItem(RoR2Content.Items.LunarSpecialReplacement, 1);
-                    master.inventory.GiveItem(RoR2Content.Items.LunarUtilityReplacement, 1);
-                }
-
-                body = master.GetBody();
+                Chat.AddMessage("Ditto's <style=cIsUtility>Transform failed!</style>");
             }            
 
         }

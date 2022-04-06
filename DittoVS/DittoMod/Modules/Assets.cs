@@ -42,7 +42,7 @@ namespace DittoMod.Modules
         public static BuffDef lunarelitebuff = Addressables.LoadAssetAsync<BuffDef>("RoR2/Base/EliteLunar/bdEliteLunar.asset").WaitForCompletion();
         public static BuffDef malachiteelitebuff = Addressables.LoadAssetAsync<BuffDef>("RoR2/Base/ElitePoison/bdElitePoison.asset").WaitForCompletion();
         public static BuffDef mendingelitebuff = Addressables.LoadAssetAsync<BuffDef>("RoR2/DLC1/EliteEarth/bdEliteEarth.asset").WaitForCompletion();
-        public static BuffDef speedelitebuff = Addressables.LoadAssetAsync<BuffDef>("RoR2/DLC1/bdEliteSecretSpeed.asset").WaitForCompletion();
+        //public static BuffDef speedelitebuff = Addressables.LoadAssetAsync<BuffDef>("RoR2/DLC1/bdEliteSecretSpeed.asset").WaitForCompletion();
         public static BuffDef voidelitebuff = Addressables.LoadAssetAsync<BuffDef>("RoR2/DLC1/EliteVoid/bdEliteVoid.asset").WaitForCompletion();
         public static BuffDef invincibilitybuff = Addressables.LoadAssetAsync<BuffDef>("RoR2/DLC1/EliteVoid/bdEliteVoid.asset").WaitForCompletion();
 
