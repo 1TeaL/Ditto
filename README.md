@@ -142,10 +142,10 @@ Items should automatically activate their effects. If not, activate them with th
 </table>
 
 ## Numbers
-##### Armor = 15 + 0.5 per level
-##### Damage = 10 + 2 per level
-##### Regen = 1 + 0.2 per level (note: increases the lower his health is)
-##### Health = 150 + 30 per level
+##### Armor = 10 + 0.5 per level
+##### Damage = 15 + 3 per level
+##### Regen = 1 + 0.2 per level 
+##### Health = 100 + 20 per level
 ##### Movespeed = 7
 
 These stats are prone to change.
