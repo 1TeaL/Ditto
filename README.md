@@ -3,7 +3,9 @@ Ditto mod for Ror2
 Ditto!
 ## Ditto
 Adds Ditto, the transform Pokémon.
-#### Multiplayer works (hopefully) BESIDES NON-HOSTS MAYBE. 
+#### Multiplayer works (hopefully). 
+#### The FallenFriends mod prevents ditto from transforming so it can't be used together. 
+#### Dropinmultiplayer mod prevents lets you turn back to ditto with the /join_as ditto command. If you ever get stuck try to use it and let me know what monster/character had you stuck.
 #### Message me on the Risk of Rain 2 Modding Discord if there are any issues- TeaL#5571. 
 #### <a href="https://ko-fi.com/tealpopcorn"><img src="https://user-images.githubusercontent.com/93917577/160220529-efed5020-90ac-467e-98f2-27b5c162d744.png"> </a>
 If you enjoy my work, support me on Ko-fi!
@@ -36,8 +38,9 @@ If you enjoy my work, support me on Ko-fi!
 
 ## Latest Changelog, Next update(s)
 
-- 1.0.0 
-    - Release Ditto!(?)
+- 1.0.1 
+    - Fixed shopkeeper and void jailer transforms.
+    - noted that the FallenFriends mod can't be used in conjuction with ditto.
 
 - Next update(s)
     - Bug fixes. 
@@ -62,11 +65,11 @@ No Ragdoll yet
     Ditto copies every stat besides HP, regen, armor and movespeed
     Use Ditto's equipment to transform back to ditto. It can also drop naturally
     Ditto's secondary and utility skills are items that when activated give buffs that are carried over when transformed as well. They stack as well by having both equipped.
-    Aim to increase your HP as he has low base HP
+    Aim to increase your HP as it has low base HP
 
 ## Skills
 ### Passive
-Ditto comes with an equipment that transform yourself into a ditto. He has a double jump. He can sprint in any direction. He takes no fall damage.
+Ditto comes with an equipment that transform yourself into a ditto. It has a double jump. It can sprint in any direction. It takes no fall damage.
 <table>
 <thead>
   <tr>
@@ -144,7 +147,7 @@ Items should automatically activate their effects. If not, activate them with th
 ## Numbers
 ##### Armor = 10 + 0.5 per level
 ##### Damage = 15 + 3 per level
-##### Regen = 1 + 0.2 per level 
+##### Regen = 1 + 0.2 per level (note: increases the lower his health is)
 ##### Health = 100 + 20 per level
 ##### Movespeed = 7
 
@@ -152,11 +155,14 @@ These stats are prone to change.
 
 ## Changelog
 
+- 1.0.0 
+    - Release Ditto!(?)
 - rest of changelog on github
 
 
 ## Future plans
 ##### More items
+##### more monsters use equipment instead of blacklisting them
 ##### Item display for equipment
 
 
