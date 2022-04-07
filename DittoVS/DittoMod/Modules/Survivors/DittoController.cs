@@ -59,10 +59,6 @@ namespace DittoMod.Modules.Survivors
 			shellbell2 = false;
 
 
-			if (characterBody.HasBuff(RoR2Content.Buffs.OnFire))
-			{
-				characterBody.RemoveBuff(RoR2Content.Buffs.OnFire);
-			}
 			if (characterBody.HasBuff(RoR2Content.Buffs.AffixBlue))
 			{
 				characterBody.RemoveBuff(RoR2Content.Buffs.AffixBlue);
@@ -91,41 +87,41 @@ namespace DittoMod.Modules.Survivors
 			{
 				characterBody.RemoveBuff(RoR2Content.Buffs.AffixWhite);
 			}
-			if (characterBody.HasBuff(DittoMod.Modules.Assets.fireelitebuff))
-			{
-				characterBody.RemoveBuff(DittoMod.Modules.Assets.fireelitebuff);
-			}
-			if (characterBody.HasBuff(DittoMod.Modules.Assets.iceelitebuff))
-			{
-				characterBody.RemoveBuff(DittoMod.Modules.Assets.iceelitebuff);
-			}
-			if (characterBody.HasBuff(DittoMod.Modules.Assets.hauntedelitebuff))
-			{
-				characterBody.RemoveBuff(DittoMod.Modules.Assets.hauntedelitebuff);
-			}
-			if (characterBody.HasBuff(DittoMod.Modules.Assets.lightningelitebuff))
-			{
-				characterBody.RemoveBuff(DittoMod.Modules.Assets.lightningelitebuff);
-			}
-			if (characterBody.HasBuff(DittoMod.Modules.Assets.mendingelitebuff))
-			{
-				characterBody.RemoveBuff(DittoMod.Modules.Assets.mendingelitebuff);
-			}
-			if (characterBody.HasBuff(DittoMod.Modules.Assets.malachiteelitebuff))
-			{
-				characterBody.RemoveBuff(DittoMod.Modules.Assets.malachiteelitebuff);
-			}
+			//if (characterBody.HasBuff(DittoMod.Modules.Assets.fireelitebuff))
+			//{
+			//	characterBody.RemoveBuff(DittoMod.Modules.Assets.fireelitebuff);
+			//}
+			//if (characterBody.HasBuff(DittoMod.Modules.Assets.iceelitebuff))
+			//{
+			//	characterBody.RemoveBuff(DittoMod.Modules.Assets.iceelitebuff);
+			//}
+			//if (characterBody.HasBuff(DittoMod.Modules.Assets.hauntedelitebuff))
+			//{
+			//	characterBody.RemoveBuff(DittoMod.Modules.Assets.hauntedelitebuff);
+			//}
+			//if (characterBody.HasBuff(DittoMod.Modules.Assets.lightningelitebuff))
+			//{
+			//	characterBody.RemoveBuff(DittoMod.Modules.Assets.lightningelitebuff);
+			//}
+			//if (characterBody.HasBuff(DittoMod.Modules.Assets.malachiteelitebuff))
+			//{
+			//	characterBody.RemoveBuff(DittoMod.Modules.Assets.malachiteelitebuff);
+			//}
+			//if (characterBody.HasBuff(DittoMod.Modules.Assets.lunarelitebuff))
+			//{
+			//	characterBody.RemoveBuff(DittoMod.Modules.Assets.lunarelitebuff);
+			//}
 			if (characterBody.HasBuff(DittoMod.Modules.Assets.voidelitebuff))
 			{
 				characterBody.RemoveBuff(DittoMod.Modules.Assets.voidelitebuff);
 			}
-			if (characterBody.HasBuff(DittoMod.Modules.Assets.lunarelitebuff))
-			{
-				characterBody.RemoveBuff(DittoMod.Modules.Assets.lunarelitebuff);
-			}
-		}
+            if (characterBody.HasBuff(DittoMod.Modules.Assets.mendingelitebuff))
+            {
+                characterBody.RemoveBuff(DittoMod.Modules.Assets.mendingelitebuff);
+            }
+        }
 
-		private void Start()
+        private void Start()
 		{
 
 

@@ -57,6 +57,20 @@ namespace DittoMod
         private GameObject effectPrefab = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/effects/LightningStakeNova");
         public static DittoPlugin instance;
         public static CharacterBody DittoCharacterBody;
+        GameObject voidcrabphase1 = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/VoidRaidCrab/MiniVoidRaidCrabBodyPhase1.prefab").WaitForCompletion();
+        GameObject voidcrabphase2 = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/VoidRaidCrab/MiniVoidRaidCrabBodyPhase2.prefab").WaitForCompletion();
+        GameObject voidcrabphase3 = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/VoidRaidCrab/MiniVoidRaidCrabBodyPhase3.prefab").WaitForCompletion();
+        //GameObject shopkeeper = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Shopkeeper/ShopkeeperBody.prefab").WaitForCompletion();
+        GameObject xiconstruct = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/MajorAndMinorConstruct/MegaConstructBody.prefab").WaitForCompletion();
+        GameObject alphaconstruct = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/MajorAndMinorConstruct/MinorConstructBody.prefab").WaitForCompletion();
+        GameObject voidinfestor = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/EliteVoid/VoidInfestorBody.prefab").WaitForCompletion();
+        GameObject voidbarnacle = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/VoidBarnacle/VoidBarnacleBody.prefab").WaitForCompletion();
+        GameObject voidjailer = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/VoidJailer/VoidJailerBody.prefab").WaitForCompletion();
+        GameObject voidmegacrab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/VoidMegaCrab/VoidMegaCrabBody.prefab").WaitForCompletion();
+        GameObject droneman = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/DroneCommander/DroneCommanderBody.prefab").WaitForCompletion();
+        GameObject gip = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/Gup/GipBody.prefab").WaitForCompletion();
+        GameObject geep = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/Gup/GeepBody.prefab").WaitForCompletion();
+        GameObject gup = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/Gup/GupBody.prefab").WaitForCompletion();
 
         private void Awake()
         {
@@ -92,6 +106,7 @@ namespace DittoMod
             Hook();
 
             //give equipment slot
+            GameObject shopkeeper = LegacyResourcesAPI.Load<GameObject>("prefabs/characterbodies/ShopkeeperBody");
             GameObject beetlequeen = LegacyResourcesAPI.Load<GameObject>("prefabs/characterbodies/BeetleQueen2Body");
             GameObject golem = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/GolemBody");
             GameObject titan = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/TitanBody");
@@ -103,7 +118,6 @@ namespace DittoMod
             GameObject claydunestrider = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/ClayBossBody");
             GameObject roboballboss = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/RoboBallBossBody");
             GameObject superroboballboss = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/SuperRoboBallBossBody");
-            GameObject xiconstruct = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/MajorAndMinorConstruct/MegaConstructBody.prefab").WaitForCompletion();
             GameObject xiconstruct2 = PrefabAPI.InstantiateClone(xiconstruct, "1xiconstruct");
             GameObject grandparent = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/GrandParentBody");
             GameObject scavenger = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/ScavBody");
@@ -140,36 +154,25 @@ namespace DittoMod
             GameObject roboballgreen = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/RoboBallGreenBuddyBody");
             GameObject roboballred = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/RoboBallRedBuddyBody");
             GameObject bellbody = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/BellBody");
-            GameObject alphaconstruct = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/MajorAndMinorConstruct/MinorConstructBody.prefab").WaitForCompletion();
             GameObject alphaconstruct2 = PrefabAPI.InstantiateClone(alphaconstruct, "1alphaconstruct");
             GameObject minimushroom = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/MiniMushroomBody");
-            GameObject gip = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/Gup/GipBody.prefab").WaitForCompletion();
             GameObject gip2 = PrefabAPI.InstantiateClone(gip, "1gip");
-            GameObject geep = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/Gup/GeepBody.prefab").WaitForCompletion();
             GameObject geep2 = PrefabAPI.InstantiateClone(geep, "1geep");
-            GameObject gup = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/Gup/GupBody.prefab").WaitForCompletion();
             GameObject gup2 = PrefabAPI.InstantiateClone(gup, "1gup");
             GameObject hermitcrab = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/HermitCrabBody");
-            GameObject voidinfestor = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/EliteVoid/VoidInfestorBody.prefab").WaitForCompletion();
             GameObject voidinfestor2 = PrefabAPI.InstantiateClone(voidinfestor, "1voidinfestor");
-            GameObject voidbarnacle = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/VoidBarnacle/VoidBarnacleBody.prefab").WaitForCompletion();
             GameObject voidbarnacle2 = PrefabAPI.InstantiateClone(voidbarnacle, "1voidbarnacle");
             GameObject nullifier = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/NullifierBody");
-            GameObject voidjailer = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/VoidJailer/VoidJailerBody.prefab").WaitForCompletion();
             GameObject voidjailer2 = PrefabAPI.InstantiateClone(voidjailer, "PCVoidJailerBody");
-            GameObject voidmegacrab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/VoidMegaCrab/VoidMegaCrabBody.prefab").WaitForCompletion();
             GameObject voidmegacrab2 = PrefabAPI.InstantiateClone(voidmegacrab, "1voidmegacrab");
             GameObject lunarexploder = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/LunarExploderBody");
             GameObject lunargolem = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/LunarGolemBody");
             GameObject lunarwisp = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/LunarWispBody");
-            GameObject droneman = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/DroneCommander/DroneCommanderBody.prefab").WaitForCompletion();
             GameObject droneman2 = PrefabAPI.InstantiateClone(droneman, "1droneman");
-            GameObject voidcrabphase1 = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/VoidRaidCrab/MiniVoidRaidCrabBodyPhase1.prefab").WaitForCompletion();
             GameObject voidcrabphase12 = PrefabAPI.InstantiateClone(voidcrabphase1, "1voidcrabphase1"); 
-            GameObject voidcrabphase2 = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/VoidRaidCrab/MiniVoidRaidCrabBodyPhase2.prefab").WaitForCompletion();
             GameObject voidcrabphase22 = PrefabAPI.InstantiateClone(voidcrabphase2, "1voidcrabphase2");
-            GameObject voidcrabphase3 = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/VoidRaidCrab/MiniVoidRaidCrabBodyPhase3.prefab").WaitForCompletion();
-            GameObject voidcrabphase32 = PrefabAPI.InstantiateClone(voidcrabphase3, "1voidcrabphase3");
+            GameObject voidcrabphase32 = PrefabAPI.InstantiateClone(voidcrabphase3, "1voidcrabphase3"); 
+            //GameObject shopkeeper2 = PrefabAPI.InstantiateClone(shopkeeper, "1shopkeeper");
 
             //GameObject voidcrabphase12 = LegacyResourcesAPI.Load<GameObject>("RoR2/DLC1/VoidRaidCrab/MiniVoidRaidCrabBodyPhase1.prefab");
             //GameObject voidcrabphase22 = LegacyResourcesAPI.Load<GameObject>("RoR2/DLC1/VoidRaidCrab/MiniVoidRaidCrabBodyPhase2.prefab");
@@ -255,6 +258,7 @@ namespace DittoMod
             PolishMonsterToSurvivor(voidcrabphase12, 20f);
             PolishMonsterToSurvivor(voidcrabphase22, 20f);
             PolishMonsterToSurvivor(voidcrabphase32, 20f);
+            PolishMonsterToSurvivor(shopkeeper, 20f);
         }
 
         private void PolishMonsterToSurvivor(GameObject monsterSurvivor, float maxInteractionDistance)
@@ -551,15 +555,15 @@ namespace DittoMod
                 self.RemoveBuff(RoR2Content.Buffs.AffixPoison);
                 self.RemoveBuff(RoR2Content.Buffs.AffixRed);
                 self.RemoveBuff(RoR2Content.Buffs.AffixWhite);
-                self.RemoveBuff(DittoMod.Modules.Assets.fireelitebuff);
-                self.RemoveBuff(DittoMod.Modules.Assets.iceelitebuff);
-                self.RemoveBuff(DittoMod.Modules.Assets.hauntedelitebuff);
-                self.RemoveBuff(DittoMod.Modules.Assets.lightningelitebuff);
-                self.RemoveBuff(DittoMod.Modules.Assets.mendingelitebuff);
-                self.RemoveBuff(DittoMod.Modules.Assets.malachiteelitebuff);
-                //self.RemoveBuff(DittoMod.Modules.Assets.speedelitebuff);
-                self.RemoveBuff(DittoMod.Modules.Assets.voidelitebuff);
-                self.RemoveBuff(DittoMod.Modules.Assets.lunarelitebuff);
+                //self.RemoveBuff(DittoMod.Modules.Assets.fireelitebuff);
+                //self.RemoveBuff(DittoMod.Modules.Assets.iceelitebuff);
+                //self.RemoveBuff(DittoMod.Modules.Assets.hauntedelitebuff);
+                //self.RemoveBuff(DittoMod.Modules.Assets.lightningelitebuff);
+                //self.RemoveBuff(DittoMod.Modules.Assets.mendingelitebuff);
+                //self.RemoveBuff(DittoMod.Modules.Assets.malachiteelitebuff);
+                ////self.RemoveBuff(DittoMod.Modules.Assets.speedelitebuff);
+                //self.RemoveBuff(DittoMod.Modules.Assets.voidelitebuff);
+                //self.RemoveBuff(DittoMod.Modules.Assets.lunarelitebuff);
             }
         }
 

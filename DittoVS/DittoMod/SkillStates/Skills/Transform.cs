@@ -93,6 +93,9 @@ namespace DittoMod.SkillStates
             blacklist.Add("DittoBody");
             blacklist.Add("MinorConstructBody");
             blacklist.Add("MinorConstructOnKillBody");
+            blacklist.Add("ShopkeeperBody");
+            blacklist.Add("VoidJailerBody");
+            blacklist.Add("NullifierBody");
 
             CharacterMaster master = player.master;
             CharacterBody oldBody = master.GetBody();
@@ -144,6 +147,8 @@ namespace DittoMod.SkillStates
                 body.maxHealth = oldBody.maxHealth + body.maxHealth / 10 ;
                 body.baseRegen = oldBody.regen;
                 body.baseJumpCount = oldBody.baseJumpCount;
+                body.maxJumpCount = oldBody.maxJumpCount;
+                body.maxJumpHeight = oldBody.maxJumpHeight;
                 body.jumpPower = oldBody.jumpPower;
                 body.baseJumpPower = oldBody.baseJumpPower;
                 if (body.characterMotor)
@@ -212,10 +217,8 @@ namespace DittoMod.SkillStates
                     body.AddBuff(Modules.Buffs.shellbellBuff);
                 }
 
-                if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.OnFire))
-                {
-                    body.AddBuff(RoR2Content.Buffs.OnFire);
-                }
+                Debug.Log(hurtBox.healthComponent.body.activeBuffsList+"buffs");
+
                 if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixBlue))
                 {
                     body.AddBuff(RoR2Content.Buffs.AffixBlue);
@@ -244,38 +247,38 @@ namespace DittoMod.SkillStates
                 {
                     body.AddBuff(RoR2Content.Buffs.AffixWhite);
                 }
-                if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.fireelitebuff))
-                {
-                    body.AddBuff(DittoMod.Modules.Assets.fireelitebuff);
-                }
-                if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.iceelitebuff))
-                {
-                    body.AddBuff(DittoMod.Modules.Assets.iceelitebuff);
-                }
-                if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.hauntedelitebuff))
-                {
-                    body.AddBuff(DittoMod.Modules.Assets.hauntedelitebuff);
-                }
-                if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.lightningelitebuff))
-                {
-                    body.AddBuff(DittoMod.Modules.Assets.lightningelitebuff);
-                }
+                //if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.fireelitebuff))
+                //{
+                //    body.AddBuff(DittoMod.Modules.Assets.fireelitebuff);
+                //}
+                //if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.iceelitebuff))
+                //{
+                //    body.AddBuff(DittoMod.Modules.Assets.iceelitebuff);
+                //}
+                //if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.hauntedelitebuff))
+                //{
+                //    body.AddBuff(DittoMod.Modules.Assets.hauntedelitebuff);
+                //}
+                //if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.lightningelitebuff))
+                //{
+                //    body.AddBuff(DittoMod.Modules.Assets.lightningelitebuff);
+                //}
                 if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.mendingelitebuff))
                 {
                     body.AddBuff(DittoMod.Modules.Assets.mendingelitebuff);
                 }
-                if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.malachiteelitebuff))
-                {
-                    body.AddBuff(DittoMod.Modules.Assets.malachiteelitebuff);
-                }
+                //if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.malachiteelitebuff))
+                //{
+                //    body.AddBuff(DittoMod.Modules.Assets.malachiteelitebuff);
+                //}
                 if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.voidelitebuff))
                 {
                     body.AddBuff(DittoMod.Modules.Assets.voidelitebuff);
                 }
-                if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.lunarelitebuff))
-                {
-                    body.AddBuff(DittoMod.Modules.Assets.lunarelitebuff);
-                }
+                //if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.lunarelitebuff))
+                //{
+                //    body.AddBuff(DittoMod.Modules.Assets.lunarelitebuff);
+                //}
                 //if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.speedelitebuff))
                 //{
                 //    body.AddBuff(DittoMod.Modules.Assets.speedelitebuff);

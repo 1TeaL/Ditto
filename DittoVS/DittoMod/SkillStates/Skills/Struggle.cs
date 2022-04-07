@@ -57,6 +57,7 @@ namespace DittoMod.SkillStates
                 }
             }
 
+            PlayAnimation("Body", "BonusJump", "Attack.playbackRate", duration / 2);
             base.gameObject.layer = LayerIndex.fakeActor.intVal;
         }
 
