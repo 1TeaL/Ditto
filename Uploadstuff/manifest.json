@@ -1,8 +1,8 @@
 {
     "name": "DittoMod",
-    "version_number": "1.0.0",
-    "website_url": "https://github.com/1TeaL/DittoMod",
-    "description": "Who's that Pokémon?",
+    "version_number": "1.0.1",
+    "website_url": "https://github.com/1TeaL/Ditto",
+    "description": "Who's that Pokémon? 1.0.1 - bug fixes",
     "dependencies": [
          "tristanmcpherson-R2API-4.3.5"
     ]
