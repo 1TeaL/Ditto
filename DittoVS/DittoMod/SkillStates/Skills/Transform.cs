@@ -112,8 +112,15 @@ namespace DittoMod.SkillStates
 
                 master.bodyPrefab = newbodyPrefab;
                 //newbodyPrefab.
-                
+
                 body = master.Respawn(master.GetBody().transform.position, master.GetBody().transform.rotation);
+
+                //body = master.GetBody();
+
+                //body = master.TransformBody()
+
+                //body = master.DestroyBody();
+
                 RigidbodyMotor rigid = body.gameObject.GetComponent<RigidbodyMotor>();
 
                 EquipmentSlot exists2 = body.gameObject.GetComponent<EquipmentSlot>();
