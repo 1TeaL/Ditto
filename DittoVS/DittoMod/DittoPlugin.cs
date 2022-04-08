@@ -5,6 +5,7 @@ using DittoMod.Modules;
 //using DittoMod.Modules.Networking;
 using DittoMod.Modules.Survivors;
 using DittoMod.SkillStates;
+using EntityStates;
 using R2API;
 using R2API.Networking;
 using R2API.Utils;
@@ -45,9 +46,12 @@ namespace DittoMod
 
         public static bool scepterInstalled = false;
 
+        public float transformage;
+        public bool transformon;
+
         public const string MODUID = "com.TeaL.DittoMod";
         public const string MODNAME = "DittoMod";
-        public const string MODVERSION = "1.0.1";
+        public const string MODVERSION = "1.1.0";
 
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string developerPrefix = "TEAL";
@@ -71,6 +75,7 @@ namespace DittoMod
         GameObject gip = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/Gup/GipBody.prefab").WaitForCompletion();
         GameObject geep = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/Gup/GeepBody.prefab").WaitForCompletion();
         GameObject gup = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/Gup/GupBody.prefab").WaitForCompletion();
+        GameObject impboss = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ImpBoss/ImpBossBody.prefab").WaitForCompletion();
 
         private void Awake()
         {
@@ -122,6 +127,7 @@ namespace DittoMod
             GameObject grandparent = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/GrandParentBody");
             GameObject scavenger = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/ScavBody");
             GameObject brother = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/BrotherBody");
+            GameObject brotherhurt = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/BrotherHurtBody");
             GameObject drone1 = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/Drone1Body");
             GameObject drone2 = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/Drone2Body");
             GameObject turret1 = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/Turret1Body");
@@ -171,15 +177,8 @@ namespace DittoMod
             GameObject droneman2 = PrefabAPI.InstantiateClone(droneman, "1droneman");
             GameObject voidcrabphase12 = PrefabAPI.InstantiateClone(voidcrabphase1, "1voidcrabphase1"); 
             GameObject voidcrabphase22 = PrefabAPI.InstantiateClone(voidcrabphase2, "1voidcrabphase2");
-            GameObject voidcrabphase32 = PrefabAPI.InstantiateClone(voidcrabphase3, "1voidcrabphase3"); 
-            //GameObject shopkeeper2 = PrefabAPI.InstantiateClone(shopkeeper, "1shopkeeper");
-
-            //GameObject voidcrabphase12 = LegacyResourcesAPI.Load<GameObject>("RoR2/DLC1/VoidRaidCrab/MiniVoidRaidCrabBodyPhase1.prefab");
-            //GameObject voidcrabphase22 = LegacyResourcesAPI.Load<GameObject>("RoR2/DLC1/VoidRaidCrab/MiniVoidRaidCrabBodyPhase2.prefab");
-            //GameObject voidcrabphase32 = LegacyResourcesAPI.Load<GameObject>("RoR2/DLC1/VoidRaidCrab/MiniVoidRaidCrabBodyPhase3.prefab")
-            //GameObject VoidRaidCrabrOrig = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/VoidRaidCrab/MiniVoidRaidCrabBodyPhase2.prefab").WaitForCompletion();
-
-            //GameObject VoidRaidCrabPlayer = VoidRaidCrabrOrig.InstantiateClone("MyVoidRaidCrabBodyPhase2");
+            GameObject voidcrabphase32 = PrefabAPI.InstantiateClone(voidcrabphase3, "1voidcrabphase3");
+            GameObject impboss2 = PrefabAPI.InstantiateClone(impboss, "1impboss");
 
             //EquipmentSlot equipmentSlot = VoidRaidCrabPlayer.GetComponent<EquipmentSlot>();
 
@@ -193,33 +192,33 @@ namespace DittoMod
             //{
             //    exists = beetlequeen.AddComponent<EquipmentSlot>();
             //}
-            PolishMonsterToSurvivor(beetle, 5f);
-            PolishMonsterToSurvivor(beetleguard, 5f);
-            PolishMonsterToSurvivor(acidlarva, 5f);
-            PolishMonsterToSurvivor(lemurian, 5f);
-            PolishMonsterToSurvivor(lemurianbruiser, 5f);
-            PolishMonsterToSurvivor(flyingvermin, 5f);
-            PolishMonsterToSurvivor(vermin, 3f);
-            PolishMonsterToSurvivor(wisp, 5f);
-            PolishMonsterToSurvivor(greaterwisp, 5f);
-            PolishMonsterToSurvivor(imp, 5f);
-            PolishMonsterToSurvivor(jellyfish, 5f);
-            PolishMonsterToSurvivor(bison, 5f);
-            PolishMonsterToSurvivor(claybruiser, 5f);
-            PolishMonsterToSurvivor(claygrenadier, 5f);
-            PolishMonsterToSurvivor(vulture, 5f);
-            PolishMonsterToSurvivor(roboballmini, 5f);
-            PolishMonsterToSurvivor(roboballgreen, 5f);
-            PolishMonsterToSurvivor(roboballred, 5f);
-            PolishMonsterToSurvivor(bellbody, 5f);
-            PolishMonsterToSurvivor(alphaconstruct2, 5f);
-            PolishMonsterToSurvivor(minimushroom, 5f);
-            PolishMonsterToSurvivor(gip2, 10f);
-            PolishMonsterToSurvivor(geep2, 10f);
-            PolishMonsterToSurvivor(gup2, 10f);
-            PolishMonsterToSurvivor(hermitcrab, 10f);
-            PolishMonsterToSurvivor(voidinfestor2, 10f);
-            PolishMonsterToSurvivor(voidbarnacle2, 10f);
+            PolishMonsterToSurvivor(beetle, 20f);
+            PolishMonsterToSurvivor(beetleguard, 20f);
+            PolishMonsterToSurvivor(acidlarva, 20f);
+            PolishMonsterToSurvivor(lemurian, 20f);
+            PolishMonsterToSurvivor(lemurianbruiser, 20f);
+            PolishMonsterToSurvivor(flyingvermin, 20f);
+            PolishMonsterToSurvivor(vermin, 20f);
+            PolishMonsterToSurvivor(wisp, 20f);
+            PolishMonsterToSurvivor(greaterwisp, 20f);
+            PolishMonsterToSurvivor(imp, 20f);
+            PolishMonsterToSurvivor(jellyfish, 20f);
+            PolishMonsterToSurvivor(bison, 20f);
+            PolishMonsterToSurvivor(claybruiser, 20f);
+            PolishMonsterToSurvivor(claygrenadier, 20f);
+            PolishMonsterToSurvivor(vulture, 20f);
+            PolishMonsterToSurvivor(roboballmini, 20f);
+            PolishMonsterToSurvivor(roboballgreen, 20f);
+            PolishMonsterToSurvivor(roboballred, 20f);
+            PolishMonsterToSurvivor(bellbody, 20f);
+            PolishMonsterToSurvivor(alphaconstruct2, 20f);
+            PolishMonsterToSurvivor(minimushroom, 20f);
+            PolishMonsterToSurvivor(gip2, 20f);
+            PolishMonsterToSurvivor(geep2, 20f);
+            PolishMonsterToSurvivor(gup2, 20f);
+            PolishMonsterToSurvivor(hermitcrab, 20f);
+            PolishMonsterToSurvivor(voidinfestor2, 20f);
+            PolishMonsterToSurvivor(voidbarnacle2, 20f);
             PolishMonsterToSurvivor(nullifier, 10f);
             PolishMonsterToSurvivor(voidjailer2, 10f);
             PolishMonsterToSurvivor(voidmegacrab2, 10f);
@@ -235,20 +234,20 @@ namespace DittoMod
             PolishMonsterToSurvivor(magmaworm, 20f);
             PolishMonsterToSurvivor(overloadingworm, 20f);
             PolishMonsterToSurvivor(claydunestrider, 20f);
-            PolishMonsterToSurvivor(roboballboss, 10f);
+            PolishMonsterToSurvivor(roboballboss, 20f);
             PolishMonsterToSurvivor(superroboballboss, 20f);
             PolishMonsterToSurvivor(xiconstruct2, 20f);
             PolishMonsterToSurvivor(grandparent, 10f);
             PolishMonsterToSurvivor(scavenger, 20f);
             PolishMonsterToSurvivor(brother, 20f);
-            PolishMonsterToSurvivor(drone1, 5f);
-            PolishMonsterToSurvivor(drone2, 5f);
-            PolishMonsterToSurvivor(turret1, 5f);
-            PolishMonsterToSurvivor(missiledrone, 5f);
-            PolishMonsterToSurvivor(flamedrone, 5f);
-            PolishMonsterToSurvivor(backupdrone, 5f);
-            PolishMonsterToSurvivor(emergencydrone, 5f);
-            PolishMonsterToSurvivor(equipmentdrone, 5f);
+            PolishMonsterToSurvivor(drone1, 20f);
+            PolishMonsterToSurvivor(drone2, 20f);
+            PolishMonsterToSurvivor(turret1, 20f);
+            PolishMonsterToSurvivor(missiledrone, 20f);
+            PolishMonsterToSurvivor(flamedrone, 20f);
+            PolishMonsterToSurvivor(backupdrone, 20f);
+            PolishMonsterToSurvivor(emergencydrone, 20f);
+            PolishMonsterToSurvivor(equipmentdrone, 20f);
             PolishMonsterToSurvivor(megadrone, 20f);
             PolishMonsterToSurvivor(engiturret, 20f);
             PolishMonsterToSurvivor(engiwalkerturret, 20f);
@@ -259,6 +258,8 @@ namespace DittoMod
             PolishMonsterToSurvivor(voidcrabphase22, 20f);
             PolishMonsterToSurvivor(voidcrabphase32, 20f);
             PolishMonsterToSurvivor(shopkeeper, 20f);
+            PolishMonsterToSurvivor(impboss2, 20f);
+            PolishMonsterToSurvivor(brotherhurt, 20f);
         }
 
         private void PolishMonsterToSurvivor(GameObject monsterSurvivor, float maxInteractionDistance)
@@ -314,11 +315,15 @@ namespace DittoMod
             On.RoR2.CharacterBody.OnDeathStart += CharacterBody_OnDeathStart;
             On.RoR2.CharacterModel.Awake += CharacterModel_Awake;
             On.RoR2.CharacterMaster.Start += CharacterMaster_Start;
-            On.RoR2.CharacterBody.Start += CharacterBody_Start;
+            //On.RoR2.CharacterBody.Start += CharacterBody_Start;
             On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
+            //On.RoR2.TeleporterInteraction.FinishedState.OnEnter += TeleporterInteraction_FinishedState;
             GlobalEventManager.onServerDamageDealt += GlobalEventManager_OnDamageDealt;
+            //On.RoR2.CharacterBody.FixedUpdate += CharacterBody_FixedUpdate;
+            //On.RoR2.CharacterBody.Update += CharacterBody_Update;
         }
+
 
         //lifesteal
         private void GlobalEventManager_OnDamageDealt(DamageReport report)
@@ -539,50 +544,17 @@ namespace DittoMod
                 }
             }
         }
-        private void CharacterBody_Start(On.RoR2.CharacterBody.orig_Start orig, CharacterBody self)
-        {
-            orig.Invoke(self);
-
-            if (self.baseNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_NAME")
-            {
-                AkSoundEngine.PostEvent(3468082827, this.gameObject);
-
-                self.RemoveBuff(RoR2Content.Buffs.OnFire);
-                self.RemoveBuff(RoR2Content.Buffs.AffixBlue);
-                self.RemoveBuff(RoR2Content.Buffs.AffixEcho);
-                self.RemoveBuff(RoR2Content.Buffs.AffixHaunted);
-                self.RemoveBuff(RoR2Content.Buffs.AffixLunar);
-                self.RemoveBuff(RoR2Content.Buffs.AffixPoison);
-                self.RemoveBuff(RoR2Content.Buffs.AffixRed);
-                self.RemoveBuff(RoR2Content.Buffs.AffixWhite);
-                //self.RemoveBuff(DittoMod.Modules.Assets.fireelitebuff);
-                //self.RemoveBuff(DittoMod.Modules.Assets.iceelitebuff);
-                //self.RemoveBuff(DittoMod.Modules.Assets.hauntedelitebuff);
-                //self.RemoveBuff(DittoMod.Modules.Assets.lightningelitebuff);
-                //self.RemoveBuff(DittoMod.Modules.Assets.mendingelitebuff);
-                //self.RemoveBuff(DittoMod.Modules.Assets.malachiteelitebuff);
-                ////self.RemoveBuff(DittoMod.Modules.Assets.speedelitebuff);
-                //self.RemoveBuff(DittoMod.Modules.Assets.voidelitebuff);
-                //self.RemoveBuff(DittoMod.Modules.Assets.lunarelitebuff);
-            }
-        }
 
         private void CharacterModel_Awake(On.RoR2.CharacterModel.orig_Awake orig, CharacterModel self)
         {
             orig(self);
             if (self.gameObject.name.Contains("DittoDisplay"))
             {
-                AkSoundEngine.PostEvent(3468082827, this.gameObject);
+                AkSoundEngine.PostEvent(3468082827, self.gameObject);
             }
 
         }
-        
-        //private void CharacterBody_FixedUpdate(On.RoR2.CharacterBody.orig_FixedUpdate orig, CharacterBody self)
-        //{
-        //    orig(self);
-                        
 
-        //}
 
     }
 }

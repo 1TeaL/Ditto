@@ -17,17 +17,17 @@ namespace DittoMod.SkillStates
         private float duration = 1f;
         private float fireTime = 0.2f;
         private bool hasFired;
-        //private DittoMasterController dittocon;
         public DittoController dittocon;
+        public DittoMasterController dittomastercon;
         public HurtBox Target;
 
         public override void OnEnter()
         {
             base.OnEnter();
 
-            AkSoundEngine.PostEvent(1719197672, this.gameObject);
 
             dittocon = base.GetComponent<DittoController>();
+            dittomastercon = characterBody.master.gameObject.GetComponent<DittoMasterController>();
             if (dittocon && base.isAuthority)
             {
                 Target = dittocon.GetTrackingTarget();
@@ -61,9 +61,9 @@ namespace DittoMod.SkillStates
                 if (Target)
                 {
 
-
                     Debug.Log("Target");
                     Debug.Log(BodyCatalog.FindBodyPrefab(BodyCatalog.GetBodyName(Target.healthComponent.body.bodyIndex)));
+                    AkSoundEngine.PostEvent(1719197672, this.gameObject);
                     ChangeOrSetCharacter(characterBody.master.playerCharacterMasterController.networkUser, Target);
                     
                     
@@ -87,17 +87,38 @@ namespace DittoMod.SkillStates
             blacklist.Add("DroneCommanderBody");
             blacklist.Add("ExplosivePotDestructibleBody");
             blacklist.Add("SulfurPodBody");
-            blacklist.Add("MiniVoidRaidCrabBodyPhase1");
-            blacklist.Add("MiniVoidRaidCrabBodyPhase2");
-            blacklist.Add("MiniVoidRaidCrabBodyPhase3");
             blacklist.Add("DittoBody");
-            blacklist.Add("MinorConstructBody");
-            blacklist.Add("MinorConstructOnKillBody");
-            blacklist.Add("ShopkeeperBody");
-            blacklist.Add("VoidJailerBody");
-            blacklist.Add("NullifierBody");
+
+            List<string> speciallist = new List<string>();
+            speciallist.Add("NullifierBody");
+            speciallist.Add("VoidJailerBody");
+            speciallist.Add("MinorConstructBody");
+            speciallist.Add("MinorConstructOnKillBody");
+            speciallist.Add("MiniVoidRaidCrabBodyPhase1");
+            speciallist.Add("MiniVoidRaidCrabBodyPhase2");
+            speciallist.Add("MiniVoidRaidCrabBodyPhase3");
+            speciallist.Add("ElectricWormBody");
+            speciallist.Add("MagmaWormBody");
+            speciallist.Add("BeetleQueen2Body");
+            speciallist.Add("TitanBody");
+            speciallist.Add("TitanGoldBody");
+            speciallist.Add("VagrantBody");
+            speciallist.Add("GravekeeperBody");
+            speciallist.Add("ClayBossBody");
+            speciallist.Add("RoboBallBossBody");
+            speciallist.Add("SuperRoboBallBossBody");
+            speciallist.Add("MegaConstructBody");
+            speciallist.Add("VoidInfestorBody");
+            speciallist.Add("VoidBarnacleBody");
+            speciallist.Add("MegaConstructBody");
+            speciallist.Add("VoidMegaCrabBody");
+            speciallist.Add("GrandParentBody");
+            speciallist.Add("ImpBossBody");
+            speciallist.Add("BrotherBody");
+            speciallist.Add("BrotherHurtBody");
 
             CharacterMaster master = player.master;
+
             CharacterBody oldBody = master.GetBody();
 
 
@@ -111,15 +132,10 @@ namespace DittoMod.SkillStates
             {
 
                 master.bodyPrefab = newbodyPrefab;
-                //newbodyPrefab.
 
                 body = master.Respawn(master.GetBody().transform.position, master.GetBody().transform.rotation);
 
-                //body = master.GetBody();
-
-                //body = master.TransformBody()
-
-                //body = master.DestroyBody();
+                dittomastercon.transformed = true;
 
                 RigidbodyMotor rigid = body.gameObject.GetComponent<RigidbodyMotor>();
 
@@ -141,6 +157,11 @@ namespace DittoMod.SkillStates
                     master.inventory.GiveItem(RoR2Content.Items.LunarSpecialReplacement, 1);
                     master.inventory.GiveItem(RoR2Content.Items.LunarUtilityReplacement, 1);
                     
+                }
+
+                if (speciallist.Contains(newbodyPrefab.name))
+                {
+                    body.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, Modules.StaticValues.transformDuration);
                 }
                     
 
@@ -254,42 +275,14 @@ namespace DittoMod.SkillStates
                 {
                     body.AddBuff(RoR2Content.Buffs.AffixWhite);
                 }
-                //if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.fireelitebuff))
-                //{
-                //    body.AddBuff(DittoMod.Modules.Assets.fireelitebuff);
-                //}
-                //if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.iceelitebuff))
-                //{
-                //    body.AddBuff(DittoMod.Modules.Assets.iceelitebuff);
-                //}
-                //if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.hauntedelitebuff))
-                //{
-                //    body.AddBuff(DittoMod.Modules.Assets.hauntedelitebuff);
-                //}
-                //if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.lightningelitebuff))
-                //{
-                //    body.AddBuff(DittoMod.Modules.Assets.lightningelitebuff);
-                //}
                 if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.mendingelitebuff))
                 {
                     body.AddBuff(DittoMod.Modules.Assets.mendingelitebuff);
                 }
-                //if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.malachiteelitebuff))
-                //{
-                //    body.AddBuff(DittoMod.Modules.Assets.malachiteelitebuff);
-                //}
                 if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.voidelitebuff))
                 {
                     body.AddBuff(DittoMod.Modules.Assets.voidelitebuff);
-                }
-                //if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.lunarelitebuff))
-                //{
-                //    body.AddBuff(DittoMod.Modules.Assets.lunarelitebuff);
-                //}
-                //if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.speedelitebuff))
-                //{
-                //    body.AddBuff(DittoMod.Modules.Assets.speedelitebuff);
-                //}            
+                }           
 
 
             }

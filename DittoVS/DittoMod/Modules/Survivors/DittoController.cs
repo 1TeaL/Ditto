@@ -37,6 +37,9 @@ namespace DittoMod.Modules.Survivors
 		public bool scopelens2;
 		public bool shellbell2;
 
+		private int buffCountToApply;
+
+
 		private void Awake()
 		{
 			indicator = new Indicator(gameObject, LegacyResourcesAPI.Load<GameObject>("Prefabs/HuntressTrackingIndicator"));
@@ -58,6 +61,7 @@ namespace DittoMod.Modules.Survivors
 			scopelens2 = false;
 			shellbell2 = false;
 
+			buffCountToApply = 0;
 
 			if (characterBody.HasBuff(RoR2Content.Buffs.AffixBlue))
 			{
@@ -87,30 +91,6 @@ namespace DittoMod.Modules.Survivors
 			{
 				characterBody.RemoveBuff(RoR2Content.Buffs.AffixWhite);
 			}
-			//if (characterBody.HasBuff(DittoMod.Modules.Assets.fireelitebuff))
-			//{
-			//	characterBody.RemoveBuff(DittoMod.Modules.Assets.fireelitebuff);
-			//}
-			//if (characterBody.HasBuff(DittoMod.Modules.Assets.iceelitebuff))
-			//{
-			//	characterBody.RemoveBuff(DittoMod.Modules.Assets.iceelitebuff);
-			//}
-			//if (characterBody.HasBuff(DittoMod.Modules.Assets.hauntedelitebuff))
-			//{
-			//	characterBody.RemoveBuff(DittoMod.Modules.Assets.hauntedelitebuff);
-			//}
-			//if (characterBody.HasBuff(DittoMod.Modules.Assets.lightningelitebuff))
-			//{
-			//	characterBody.RemoveBuff(DittoMod.Modules.Assets.lightningelitebuff);
-			//}
-			//if (characterBody.HasBuff(DittoMod.Modules.Assets.malachiteelitebuff))
-			//{
-			//	characterBody.RemoveBuff(DittoMod.Modules.Assets.malachiteelitebuff);
-			//}
-			//if (characterBody.HasBuff(DittoMod.Modules.Assets.lunarelitebuff))
-			//{
-			//	characterBody.RemoveBuff(DittoMod.Modules.Assets.lunarelitebuff);
-			//}
 			if (characterBody.HasBuff(DittoMod.Modules.Assets.voidelitebuff))
 			{
 				characterBody.RemoveBuff(DittoMod.Modules.Assets.voidelitebuff);
@@ -125,10 +105,12 @@ namespace DittoMod.Modules.Survivors
 		{
 
 
-			//characterMaster = characterBody.master;
-
-			//characterMaster.gameObject.AddComponent<DittoMasterController>();
-		}
+            characterMaster = characterBody.master;
+            if (!characterMaster.gameObject.GetComponent<DittoMasterController>())
+			{
+				characterMaster.gameObject.AddComponent<DittoMasterController>();
+			}
+        }
 
 		public HurtBox GetTrackingTarget()
 		{
@@ -144,7 +126,16 @@ namespace DittoMod.Modules.Survivors
 		{
 			this.indicator.active = false;
 		}
-		private void FixedUpdate()
+		//public void AddToBuffCount(int numbertoadd)
+		//{
+		//	buffCountToApply += numbertoadd;
+		//}
+		//public int GetBuffCount()
+  //      {
+  //          return buffCountToApply;
+  //      }
+
+        private void FixedUpdate()
 		{
 			this.trackerUpdateStopwatch += Time.fixedDeltaTime;
 			if (this.trackerUpdateStopwatch >= 1f / this.trackerUpdateFrequency)
@@ -243,5 +234,9 @@ namespace DittoMod.Modules.Survivors
 			this.search.FilterOutGameObject(base.gameObject);
 			this.trackingTarget = this.search.GetResults().FirstOrDefault<HurtBox>();
 		}
+
+
+
+
 	}
 }

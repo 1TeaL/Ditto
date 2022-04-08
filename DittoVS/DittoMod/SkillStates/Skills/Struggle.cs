@@ -52,7 +52,7 @@ namespace DittoMod.SkillStates
             
             AkSoundEngine.PostEvent(500315785, this.gameObject);
 
-            PlayAnimation("Body", "BonusJump", "Attack.playbackRate", duration / 2);
+            PlayAnimation("Body", "BonusJump", "Attack.playbackRate", fireTime);
             base.gameObject.layer = LayerIndex.fakeActor.intVal;
         }
 

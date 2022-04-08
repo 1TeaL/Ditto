@@ -7,6 +7,7 @@ using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
 using DittoMod.Equipment;
+using DittoMod.Modules.Survivors;
 
 namespace DittoMod.Modules.Equipment
 {
@@ -97,7 +98,6 @@ namespace DittoMod.Modules.Equipment
             //Turns into Ditto
             public void BecomeDitto()
             {
-                
                 if (characterMaster.bodyPrefab.name == "CaptainBody")
                 {
                     characterMaster.inventory.RemoveItem(RoR2Content.Items.CaptainDefenseMatrix, 1);
@@ -123,15 +123,8 @@ namespace DittoMod.Modules.Equipment
                     body.RemoveBuff(RoR2Content.Buffs.AffixPoison);
                     body.RemoveBuff(RoR2Content.Buffs.AffixRed);
                     body.RemoveBuff(RoR2Content.Buffs.AffixWhite);
-                    //body.RemoveBuff(DittoMod.Modules.Assets.fireelitebuff);
-                    //body.RemoveBuff(DittoMod.Modules.Assets.iceelitebuff);
-                    //body.RemoveBuff(DittoMod.Modules.Assets.hauntedelitebuff);
-                    //body.RemoveBuff(DittoMod.Modules.Assets.lightningelitebuff);
                     body.RemoveBuff(DittoMod.Modules.Assets.mendingelitebuff);
-                    //body.RemoveBuff(DittoMod.Modules.Assets.malachiteelitebuff);
-                    ////body.RemoveBuff(DittoMod.Modules.Assets.speedelitebuff);
                     body.RemoveBuff(DittoMod.Modules.Assets.voidelitebuff);
-                    //body.RemoveBuff(DittoMod.Modules.Assets.lunarelitebuff);
                 }
                 
             }
