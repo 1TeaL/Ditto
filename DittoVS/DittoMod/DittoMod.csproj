@@ -33,22 +33,14 @@
 		<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	</PackageReference>
 	<PackageReference Include="BepInEx.Core" Version="5.4.19" />
+	<PackageReference Include="R2API" Version="4.3.5" />
 	<PackageReference Include="RiskOfRain2.GameLibs" Version="1.2.2-r.0" />
 	<PackageReference Include="UnityEngine.Modules" Version="2019.4.26" />
   </ItemGroup>
 	
   <ItemGroup>
-    <Reference Include="KinematicCharacterController">
-      <HintPath>C:\Theodore 1\Steam\SteamApps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\KinematicCharacterController.dll</HintPath>
-    </Reference>
-    <Reference Include="MiniRpcLib">
-      <HintPath>C:\Users\theod\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\the-popcorn-reckoning\BepInEx\plugins\wildbook-MiniRpcLib\MiniRpcLib.dll</HintPath>
-    </Reference>
-    <Reference Include="MMHOOK_RoR2">
-      <HintPath>C:\Users\theod\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\test\BepInEx\plugins\MMHOOK\MMHOOK_RoR2.dll</HintPath>
-    </Reference>
-    <Reference Include="R2API">
-      <HintPath>C:\Users\theod\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\the-popcorn-reckoning\BepInEx\plugins\tristanmcpherson-R2API\R2API\R2API.dll</HintPath>
+    <Reference Include="MMHOOK_RoR2, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\libs\MMHOOK_RoR2.dll</HintPath>
     </Reference>
   </ItemGroup>
 
