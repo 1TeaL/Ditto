@@ -13,13 +13,13 @@ namespace DittoMod.Modules.Survivors
     {
         private CharacterMaster characterMaster;
         private CharacterBody body;
-        public bool bosskilled;
+        public bool transformed;
         private int buffCountToApply;
         public float transformage;
 
         private void Awake()
         {
-            bosskilled = false;
+            transformed = false;
             //On.RoR2.Stage.Start += Stage_Start;
             //On.RoR2.CharacterMaster.Respawn += CharacterMaster_Respawn;
             On.RoR2.CharacterBody.Start += CharacterBody_Start;
@@ -42,7 +42,10 @@ namespace DittoMod.Modules.Survivors
             {
                 if (self.master.bodyPrefab != BodyCatalog.FindBodyPrefab("DittoBody"))
                 {
-                    self.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, 1);
+                    if (transformed)
+                    {
+                        self.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, 1);
+                    }
                 }
 
             }
@@ -81,10 +84,9 @@ namespace DittoMod.Modules.Survivors
                             if (buffCountToApply >= 2)
                             {
                                 self.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, (buffCountToApply - 1));
-                                if (!bosskilled)
-                                {
-                                    transformage = 0;
-                                }
+                                
+                                transformage = 0;
+                                
 
                             }
                         }
@@ -117,6 +119,7 @@ namespace DittoMod.Modules.Survivors
                             body.RemoveBuff(RoR2Content.Buffs.AffixWhite);
                             body.RemoveBuff(DittoMod.Modules.Assets.mendingelitebuff);
                             body.RemoveBuff(DittoMod.Modules.Assets.voidelitebuff);
+                            transformed = false;
 
                         }
                     }

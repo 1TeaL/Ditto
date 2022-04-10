@@ -88,6 +88,7 @@ namespace DittoMod.SkillStates
             blacklist.Add("ExplosivePotDestructibleBody");
             blacklist.Add("SulfurPodBody");
             blacklist.Add("DittoBody");
+            blacklist.Add("AffixEarthHealerBody");
 
             List<string> speciallist = new List<string>();
             speciallist.Add("NullifierBody");
@@ -130,6 +131,7 @@ namespace DittoMod.SkillStates
 
             if (!blacklist.Contains(newbodyPrefab.name))
             {
+                dittomastercon.transformed = true;
 
                 master.bodyPrefab = newbodyPrefab;
 
