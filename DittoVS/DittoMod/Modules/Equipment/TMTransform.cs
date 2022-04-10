@@ -29,6 +29,8 @@ namespace DittoMod.Modules.Equipment
 
         public override bool CanDrop => true;
 
+        public override bool IsLunar => true;
+
         public override float Cooldown => Modules.StaticValues.TransformEquipmentCooldown;
 
         public static GameObject ItemBodyModelPrefab;

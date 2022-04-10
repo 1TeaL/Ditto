@@ -135,7 +135,6 @@ namespace DittoMod.SkillStates
 
                 body = master.Respawn(master.GetBody().transform.position, master.GetBody().transform.rotation);
 
-                dittomastercon.transformed = true;
 
                 RigidbodyMotor rigid = body.gameObject.GetComponent<RigidbodyMotor>();
 
