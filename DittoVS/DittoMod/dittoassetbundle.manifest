@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1156169026
+CRC: 1645470826
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 01a45ab4fbc63e00f4a723688f5ae788
+    Hash: a2ee9197523dec4d2111e1d54dbb41ac
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 984717417d0e848b3811a6339662ed47
+    Hash: 98d2aefadf85bb344f8d51ed5f74a584
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -37,6 +37,8 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 108
   Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9a68da65c907acb4eb4dbcd042f172e7, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: fc41cd48bee14034db80323ab44fbd3e, type: 3}
 - Class: 114
@@ -81,6 +83,8 @@ Assets:
 - Assets/Ditto/Assets/Prefabs/DittoEquipmentModel.prefab
 - Assets/Ditto/GUI/ChoiceBand.png
 - Assets/Ditto/Animations/Armature_IdleAnimation.anim
+- Assets/Ditto/Assets/MeshDitto.mesh
+- Assets/Ditto/Assets/Prefabs/DittoItem.fbx
 - Assets/Ditto/GUI/TMtransform.PNG
 - Assets/Ditto/Assets/Materials/DittoEquipmentMat.mat
 - Assets/Ditto/Assets/ShinyDittoMat.mat
@@ -90,4 +94,5 @@ Assets:
 - Assets/Ditto/GUI/Leftovers.png
 - Assets/Ditto/Animations/animDittoDisplay.controller
 - Assets/Ditto/GUI/Struggle.png
+- Assets/Ditto/Assets/Prefabs/DittoItemModel.prefab
 Dependencies: []

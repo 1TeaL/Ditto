@@ -4,8 +4,6 @@ using RoR2;
 using UnityEngine;
 using System.Collections.Generic;
 using DittoMod.Modules;
-using RoR2.Orbs;
-using static RoR2.BulletAttack;
 using UnityEngine.Networking;
 using UnityEngine.AddressableAssets;
 using R2API;
@@ -14,7 +12,7 @@ namespace DittoMod.SkillStates
 {
     public class Transform : BaseSkillState
     {
- 
+
         private float duration = 1f;
         private float fireTime = 0.2f;
         private bool hasFired;
@@ -40,7 +38,7 @@ namespace DittoMod.SkillStates
             }
             hasFired = false;
 
-            PlayAnimation("Body", "BonusJump", "Attack.playbackRate", duration/2);
+            PlayAnimation("Body", "BonusJump", "Attack.playbackRate", duration / 2);
 
 
         }
@@ -50,14 +48,14 @@ namespace DittoMod.SkillStates
             base.OnExit();
         }
 
-           
+
 
         public override void FixedUpdate()
         {
-            base.FixedUpdate(); 
+            base.FixedUpdate();
 
             if (base.fixedAge >= this.fireTime && !this.hasFired)
-            {                              
+            {
                 hasFired = true;
                 if (Target)
                 {
@@ -66,8 +64,8 @@ namespace DittoMod.SkillStates
                     Debug.Log(BodyCatalog.FindBodyPrefab(BodyCatalog.GetBodyName(Target.healthComponent.body.bodyIndex)));
                     AkSoundEngine.PostEvent(1719197672, this.gameObject);
                     ChangeOrSetCharacter(characterBody.master.playerCharacterMasterController.networkUser, Target);
-                    
-                    
+
+
                     return;
                 }
             }
@@ -153,19 +151,19 @@ namespace DittoMod.SkillStates
                 if (flag6)
                 {
                     exists2 = body.gameObject.AddComponent<EquipmentSlot>();
-                }   
+                }
                 if (body.name == "CaptainBody")
                 {
                     master.inventory.GiveItem(RoR2Content.Items.CaptainDefenseMatrix, 1);
                 }
 
                 if (body.name == "HereticBody")
-                {                    
+                {
                     master.inventory.GiveItem(RoR2Content.Items.LunarPrimaryReplacement, 1);
                     master.inventory.GiveItem(RoR2Content.Items.LunarSecondaryReplacement, 1);
                     master.inventory.GiveItem(RoR2Content.Items.LunarSpecialReplacement, 1);
                     master.inventory.GiveItem(RoR2Content.Items.LunarUtilityReplacement, 1);
-                    
+
                 }
 
                 if (speciallist.Contains(newbodyPrefab.name))
@@ -173,16 +171,16 @@ namespace DittoMod.SkillStates
                     dittomastercon.transformed = true;
                     //body.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, Modules.StaticValues.transformDuration);
                 }
-                    
+
 
                 if (rigid)
                 {
                     rigid.characterBody.moveSpeed = oldBody.moveSpeed;
                 }
 
-                body.baseMaxHealth = oldBody.baseMaxHealth + body.baseMaxHealth/10;
+                body.baseMaxHealth = oldBody.baseMaxHealth + body.baseMaxHealth / 10;
                 body.levelMaxHealth = oldBody.levelMaxHealth + body.levelMaxHealth / 10;
-                body.maxHealth = oldBody.maxHealth + body.maxHealth / 10 ;
+                body.maxHealth = oldBody.maxHealth + body.maxHealth / 10;
                 body.baseRegen = oldBody.regen;
                 body.baseJumpCount = oldBody.baseJumpCount;
                 body.maxJumpCount = oldBody.maxJumpCount;
@@ -271,7 +269,7 @@ namespace DittoMod.SkillStates
                     }
                 }
 
-                Debug.Log(hurtBox.healthComponent.body.activeBuffsList+"buffs");
+                Debug.Log(hurtBox.healthComponent.body.activeBuffsList + "buffs");
 
                 if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixBlue))
                 {
@@ -308,7 +306,7 @@ namespace DittoMod.SkillStates
                 if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.voidelitebuff))
                 {
                     body.AddBuff(DittoMod.Modules.Assets.voidelitebuff);
-                }           
+                }
 
 
             }
@@ -316,7 +314,7 @@ namespace DittoMod.SkillStates
             {
                 dittomastercon.transformed = false;
                 Chat.AddMessage("Ditto's <style=cIsUtility>Transform failed!</style>");
-            }            
+            }
 
         }
 

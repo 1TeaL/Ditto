@@ -159,7 +159,7 @@ namespace DittoMod
             GameObject equipmentdrone = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/EquipmentDroneBody");
             GameObject megadrone = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/MegaDroneBody");
             GameObject engiturret = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/EngiTurretBody");
-            GameObject engiwalkerturret= LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/EngiWalkerTurretBody");
+            GameObject engiwalkerturret = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/EngiWalkerTurretBody");
             GameObject squidturret = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/SquidTurretBody");
             GameObject urchinturret = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/UrchinTurretBody");
             GameObject beetle = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/BeetleBody");
@@ -196,7 +196,7 @@ namespace DittoMod
             GameObject lunargolem = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/LunarGolemBody");
             GameObject lunarwisp = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/LunarWispBody");
             GameObject droneman2 = PrefabAPI.InstantiateClone(droneman, "1droneman");
-            GameObject voidcrabphase12 = PrefabAPI.InstantiateClone(voidcrabphase1, "1voidcrabphase1"); 
+            GameObject voidcrabphase12 = PrefabAPI.InstantiateClone(voidcrabphase1, "1voidcrabphase1");
             GameObject voidcrabphase22 = PrefabAPI.InstantiateClone(voidcrabphase2, "1voidcrabphase2");
             GameObject voidcrabphase32 = PrefabAPI.InstantiateClone(voidcrabphase3, "1voidcrabphase3");
             GameObject impboss2 = PrefabAPI.InstantiateClone(impboss, "1impboss");
@@ -478,17 +478,17 @@ namespace DittoMod
             //buffs 
             orig.Invoke(self);
 
-            
+
             if (self.HasBuff(Modules.Buffs.choicebandBuff))
             {
                 int buffnumber = self.GetBuffCount(Modules.Buffs.choicebandBuff);
-                if(buffnumber > 0)
+                if (buffnumber > 0)
                 {
-                    if(buffnumber >= 1 && buffnumber <2)
+                    if (buffnumber >= 1 && buffnumber < 2)
                     {
                         self.attackSpeed *= Modules.StaticValues.choicebandboost;
                     }
-                    if(buffnumber >= 2)
+                    if (buffnumber >= 2)
                     {
                         self.attackSpeed *= Modules.StaticValues.choicebandboost2;
                     }
@@ -562,7 +562,7 @@ namespace DittoMod
                     }
                 }
             }
-                        
+
         }
 
         private void CharacterBody_OnDeathStart(On.RoR2.CharacterBody.orig_OnDeathStart orig, CharacterBody self)
