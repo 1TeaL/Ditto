@@ -3,8 +3,7 @@ using EntityStates;
 using RoR2;
 using UnityEngine;
 using System.Collections.Generic;
-using RoR2.Orbs;
-using static RoR2.BulletAttack;
+using DittoMod.Modules;
 using UnityEngine.Networking;
 using UnityEngine.AddressableAssets;
 using R2API;
@@ -13,7 +12,7 @@ namespace DittoMod.SkillStates
 {
     public class Transform : BaseSkillState
     {
- 
+
         private float duration = 1f;
         private float fireTime = 0.2f;
         private bool hasFired;
@@ -39,7 +38,7 @@ namespace DittoMod.SkillStates
             }
             hasFired = false;
 
-            PlayAnimation("Body", "BonusJump", "Attack.playbackRate", duration/2);
+            PlayAnimation("Body", "BonusJump", "Attack.playbackRate", duration / 2);
 
 
         }
@@ -49,14 +48,14 @@ namespace DittoMod.SkillStates
             base.OnExit();
         }
 
-           
+
 
         public override void FixedUpdate()
         {
-            base.FixedUpdate(); 
+            base.FixedUpdate();
 
             if (base.fixedAge >= this.fireTime && !this.hasFired)
-            {                              
+            {
                 hasFired = true;
                 if (Target)
                 {
@@ -65,8 +64,8 @@ namespace DittoMod.SkillStates
                     Debug.Log(BodyCatalog.FindBodyPrefab(BodyCatalog.GetBodyName(Target.healthComponent.body.bodyIndex)));
                     AkSoundEngine.PostEvent(1719197672, this.gameObject);
                     ChangeOrSetCharacter(characterBody.master.playerCharacterMasterController.networkUser, Target);
-                    
-                    
+
+
                     return;
                 }
             }
@@ -124,18 +123,25 @@ namespace DittoMod.SkillStates
 
 
             GameObject newbodyPrefab = BodyCatalog.FindBodyPrefab(BodyCatalog.GetBodyName(hurtBox.healthComponent.body.bodyIndex));
-            
+
+            var targetMaster = hurtBox.healthComponent.body.master;
 
             CharacterBody body;
 
 
             if (!blacklist.Contains(newbodyPrefab.name))
             {
-                dittomastercon.transformed = true;
 
                 master.bodyPrefab = newbodyPrefab;
 
-                body = master.Respawn(master.GetBody().transform.position, master.GetBody().transform.rotation);
+                //body = master.Respawn(master.GetBody().transform.position, master.GetBody().transform.rotation);
+
+                master.TransformBody(BodyCatalog.GetBodyName(hurtBox.healthComponent.body.bodyIndex));
+
+                body = master.GetBody();
+
+                if (Config.copyLoadout.Value)
+                    body.SetLoadoutServer(targetMaster.loadout);
 
 
                 RigidbodyMotor rigid = body.gameObject.GetComponent<RigidbodyMotor>();
@@ -145,35 +151,36 @@ namespace DittoMod.SkillStates
                 if (flag6)
                 {
                     exists2 = body.gameObject.AddComponent<EquipmentSlot>();
-                }   
+                }
                 if (body.name == "CaptainBody")
                 {
                     master.inventory.GiveItem(RoR2Content.Items.CaptainDefenseMatrix, 1);
                 }
 
                 if (body.name == "HereticBody")
-                {                    
+                {
                     master.inventory.GiveItem(RoR2Content.Items.LunarPrimaryReplacement, 1);
                     master.inventory.GiveItem(RoR2Content.Items.LunarSecondaryReplacement, 1);
                     master.inventory.GiveItem(RoR2Content.Items.LunarSpecialReplacement, 1);
                     master.inventory.GiveItem(RoR2Content.Items.LunarUtilityReplacement, 1);
-                    
+
                 }
 
                 if (speciallist.Contains(newbodyPrefab.name))
                 {
-                    body.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, Modules.StaticValues.transformDuration);
+                    dittomastercon.transformed = true;
+                    //body.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, Modules.StaticValues.transformDuration);
                 }
-                    
+
 
                 if (rigid)
                 {
                     rigid.characterBody.moveSpeed = oldBody.moveSpeed;
                 }
 
-                body.baseMaxHealth = oldBody.baseMaxHealth + body.baseMaxHealth/10;
+                body.baseMaxHealth = oldBody.baseMaxHealth + body.baseMaxHealth / 10;
                 body.levelMaxHealth = oldBody.levelMaxHealth + body.levelMaxHealth / 10;
-                body.maxHealth = oldBody.maxHealth + body.maxHealth / 10 ;
+                body.maxHealth = oldBody.maxHealth + body.maxHealth / 10;
                 body.baseRegen = oldBody.regen;
                 body.baseJumpCount = oldBody.baseJumpCount;
                 body.maxJumpCount = oldBody.maxJumpCount;
@@ -189,64 +196,80 @@ namespace DittoMod.SkillStates
 
                 body.AddTimedBuffAuthority(RoR2Content.Buffs.HiddenInvincibility.buffIndex, Modules.StaticValues.invincibilityDuration);
 
-                if (dittocon.choiceband)
+                if (Config.choiceOnTeammate.Value && targetMaster.playerCharacterMasterController || !targetMaster.playerCharacterMasterController)
                 {
-                    body.AddBuff(Modules.Buffs.choicebandBuff);
-                }
-                if (dittocon.choicescarf)
-                {
-                    body.AddBuff(Modules.Buffs.choicescarfBuff);
-                }
-                if (dittocon.choicespecs)
-                {
-                    body.AddBuff(Modules.Buffs.choicespecsBuff);
-                }
-                if (dittocon.leftovers)
-                {
-                    body.AddBuff(Modules.Buffs.leftoversBuff);
-                }
-                if (dittocon.rockyhelmet)
-                {
-                    body.AddBuff(Modules.Buffs.rockyhelmetBuff);
-                }
-                if (dittocon.scopelens)
-                {
-                    body.AddBuff(Modules.Buffs.scopelensBuff);
-                }
-                if (dittocon.shellbell)
-                {
-                    body.AddBuff(Modules.Buffs.shellbellBuff);
-                }
-                if (dittocon.choiceband2)
-                {
-                    body.AddBuff(Modules.Buffs.choicebandBuff);
-                }
-                if (dittocon.choicescarf2)
-                {
-                    body.AddBuff(Modules.Buffs.choicescarfBuff);
-                }
-                if (dittocon.choicespecs2)
-                {
-                    body.AddBuff(Modules.Buffs.choicespecsBuff);
-                }
-                if (dittocon.leftovers2)
-                {
-                    body.AddBuff(Modules.Buffs.leftoversBuff);
-                }
-                if (dittocon.rockyhelmet2)
-                {
-                    body.AddBuff(Modules.Buffs.rockyhelmetBuff);
-                }
-                if (dittocon.scopelens2)
-                {
-                    body.AddBuff(Modules.Buffs.scopelensBuff);
-                }
-                if (dittocon.shellbell2)
-                {
-                    body.AddBuff(Modules.Buffs.shellbellBuff);
+                    if (dittocon.choiceband)
+                    {
+                        body.AddBuff(Modules.Buffs.choicebandBuff);
+                    }
+
+                    if (dittocon.choicescarf)
+                    {
+                        body.AddBuff(Modules.Buffs.choicescarfBuff);
+                    }
+
+                    if (dittocon.choicespecs)
+                    {
+                        body.AddBuff(Modules.Buffs.choicespecsBuff);
+                    }
+
+                    if (dittocon.leftovers)
+                    {
+                        body.AddBuff(Modules.Buffs.leftoversBuff);
+                    }
+
+                    if (dittocon.rockyhelmet)
+                    {
+                        body.AddBuff(Modules.Buffs.rockyhelmetBuff);
+                    }
+
+                    if (dittocon.scopelens)
+                    {
+                        body.AddBuff(Modules.Buffs.scopelensBuff);
+                    }
+
+                    if (dittocon.shellbell)
+                    {
+                        body.AddBuff(Modules.Buffs.shellbellBuff);
+                    }
+
+                    if (dittocon.choiceband2)
+                    {
+                        body.AddBuff(Modules.Buffs.choicebandBuff);
+                    }
+
+                    if (dittocon.choicescarf2)
+                    {
+                        body.AddBuff(Modules.Buffs.choicescarfBuff);
+                    }
+
+                    if (dittocon.choicespecs2)
+                    {
+                        body.AddBuff(Modules.Buffs.choicespecsBuff);
+                    }
+
+                    if (dittocon.leftovers2)
+                    {
+                        body.AddBuff(Modules.Buffs.leftoversBuff);
+                    }
+
+                    if (dittocon.rockyhelmet2)
+                    {
+                        body.AddBuff(Modules.Buffs.rockyhelmetBuff);
+                    }
+
+                    if (dittocon.scopelens2)
+                    {
+                        body.AddBuff(Modules.Buffs.scopelensBuff);
+                    }
+
+                    if (dittocon.shellbell2)
+                    {
+                        body.AddBuff(Modules.Buffs.shellbellBuff);
+                    }
                 }
 
-                Debug.Log(hurtBox.healthComponent.body.activeBuffsList+"buffs");
+                Debug.Log(hurtBox.healthComponent.body.activeBuffsList + "buffs");
 
                 if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixBlue))
                 {
@@ -283,14 +306,15 @@ namespace DittoMod.SkillStates
                 if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.voidelitebuff))
                 {
                     body.AddBuff(DittoMod.Modules.Assets.voidelitebuff);
-                }           
+                }
 
 
             }
             else
             {
+                dittomastercon.transformed = false;
                 Chat.AddMessage("Ditto's <style=cIsUtility>Transform failed!</style>");
-            }            
+            }
 
         }
 

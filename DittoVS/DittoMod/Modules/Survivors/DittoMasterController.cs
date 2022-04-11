@@ -105,9 +105,15 @@ namespace DittoMod.Modules.Survivors
                                 self.master.inventory.RemoveItem(RoR2Content.Items.LunarUtilityReplacement, 1);
                             }
 
-                            self.master.bodyPrefab = BodyCatalog.FindBodyPrefab("DittoBody");
+                            //self.master.bodyPrefab = BodyCatalog.FindBodyPrefab("DittoBody");
                             CharacterBody body;
-                            body = self.master.Respawn(self.master.GetBody().transform.position, self.master.GetBody().transform.rotation);
+
+
+                            //body = self.master.Respawn(self.master.GetBody().transform.position, self.master.GetBody().transform.rotation);
+
+                            self.master.TransformBody("DittoBody");
+
+                            body = self.master.GetBody();
 
                             body.RemoveBuff(RoR2Content.Buffs.OnFire);
                             body.RemoveBuff(RoR2Content.Buffs.AffixBlue);
