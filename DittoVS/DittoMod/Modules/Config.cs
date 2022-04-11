@@ -13,7 +13,7 @@ namespace DittoMod.Modules
         {
             choiceOnTeammate = DittoPlugin.instance.Config.Bind("General", "Get Buffs From Teammates",true, "Whether you should get your ditto buffs when transforming into a teammate.");
             copyLoadout = DittoPlugin.instance.Config.Bind("General", "Copy loadout on transform",true, "Should you copy the loadout of characters you transform into.");
-            copyLoadout = DittoPlugin.instance.Config.Bind("General", "Copy fractional health",true, "Should you copy the fractional health of your previous state when transforming.");
+            copyHealth = DittoPlugin.instance.Config.Bind("General", "Copy fractional health",true, "Should you copy the fractional health of your previous state when transforming.");
         }
 
         // this helper automatically makes config entries for disabling survivors
