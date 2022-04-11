@@ -30,7 +30,7 @@ namespace DittoMod.Modules.Items
 
         public override ItemTier Tier => ItemTier.Lunar;
 
-        public override GameObject ItemModel => Modules.Assets.DittoEquipmentPrefab;
+        public override GameObject ItemModel => Modules.Assets.DittoItemPrefab;
 
         public override Sprite ItemIcon => Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texDittoIcon");
 
