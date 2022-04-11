@@ -3,6 +3,7 @@ using EntityStates;
 using RoR2;
 using UnityEngine;
 using System.Collections.Generic;
+using DittoMod.Modules;
 using RoR2.Orbs;
 using static RoR2.BulletAttack;
 using UnityEngine.Networking;
@@ -124,7 +125,8 @@ namespace DittoMod.SkillStates
 
 
             GameObject newbodyPrefab = BodyCatalog.FindBodyPrefab(BodyCatalog.GetBodyName(hurtBox.healthComponent.body.bodyIndex));
-            
+
+            var targetMaster = hurtBox.healthComponent.body.master;
 
             CharacterBody body;
 
@@ -135,6 +137,10 @@ namespace DittoMod.SkillStates
                 master.bodyPrefab = newbodyPrefab;
 
                 body = master.Respawn(master.GetBody().transform.position, master.GetBody().transform.rotation);
+                
+                //master.TransformBody(BodyCatalog.GetBodyName(hurtBox.healthComponent.body.bodyIndex));
+                if(Config.copyLoadout.Value)
+                    body.SetLoadoutServer(targetMaster.loadout);
 
 
                 RigidbodyMotor rigid = body.gameObject.GetComponent<RigidbodyMotor>();
@@ -189,61 +195,77 @@ namespace DittoMod.SkillStates
 
                 body.AddTimedBuffAuthority(RoR2Content.Buffs.HiddenInvincibility.buffIndex, Modules.StaticValues.invincibilityDuration);
 
-                if (dittocon.choiceband)
+                if (Config.choiceOnTeammate.Value && targetMaster.playerCharacterMasterController || !targetMaster.playerCharacterMasterController)
                 {
-                    body.AddBuff(Modules.Buffs.choicebandBuff);
-                }
-                if (dittocon.choicescarf)
-                {
-                    body.AddBuff(Modules.Buffs.choicescarfBuff);
-                }
-                if (dittocon.choicespecs)
-                {
-                    body.AddBuff(Modules.Buffs.choicespecsBuff);
-                }
-                if (dittocon.leftovers)
-                {
-                    body.AddBuff(Modules.Buffs.leftoversBuff);
-                }
-                if (dittocon.rockyhelmet)
-                {
-                    body.AddBuff(Modules.Buffs.rockyhelmetBuff);
-                }
-                if (dittocon.scopelens)
-                {
-                    body.AddBuff(Modules.Buffs.scopelensBuff);
-                }
-                if (dittocon.shellbell)
-                {
-                    body.AddBuff(Modules.Buffs.shellbellBuff);
-                }
-                if (dittocon.choiceband2)
-                {
-                    body.AddBuff(Modules.Buffs.choicebandBuff);
-                }
-                if (dittocon.choicescarf2)
-                {
-                    body.AddBuff(Modules.Buffs.choicescarfBuff);
-                }
-                if (dittocon.choicespecs2)
-                {
-                    body.AddBuff(Modules.Buffs.choicespecsBuff);
-                }
-                if (dittocon.leftovers2)
-                {
-                    body.AddBuff(Modules.Buffs.leftoversBuff);
-                }
-                if (dittocon.rockyhelmet2)
-                {
-                    body.AddBuff(Modules.Buffs.rockyhelmetBuff);
-                }
-                if (dittocon.scopelens2)
-                {
-                    body.AddBuff(Modules.Buffs.scopelensBuff);
-                }
-                if (dittocon.shellbell2)
-                {
-                    body.AddBuff(Modules.Buffs.shellbellBuff);
+                    if (dittocon.choiceband)
+                    {
+                        body.AddBuff(Modules.Buffs.choicebandBuff);
+                    }
+
+                    if (dittocon.choicescarf)
+                    {
+                        body.AddBuff(Modules.Buffs.choicescarfBuff);
+                    }
+
+                    if (dittocon.choicespecs)
+                    {
+                        body.AddBuff(Modules.Buffs.choicespecsBuff);
+                    }
+
+                    if (dittocon.leftovers)
+                    {
+                        body.AddBuff(Modules.Buffs.leftoversBuff);
+                    }
+
+                    if (dittocon.rockyhelmet)
+                    {
+                        body.AddBuff(Modules.Buffs.rockyhelmetBuff);
+                    }
+
+                    if (dittocon.scopelens)
+                    {
+                        body.AddBuff(Modules.Buffs.scopelensBuff);
+                    }
+
+                    if (dittocon.shellbell)
+                    {
+                        body.AddBuff(Modules.Buffs.shellbellBuff);
+                    }
+
+                    if (dittocon.choiceband2)
+                    {
+                        body.AddBuff(Modules.Buffs.choicebandBuff);
+                    }
+
+                    if (dittocon.choicescarf2)
+                    {
+                        body.AddBuff(Modules.Buffs.choicescarfBuff);
+                    }
+
+                    if (dittocon.choicespecs2)
+                    {
+                        body.AddBuff(Modules.Buffs.choicespecsBuff);
+                    }
+
+                    if (dittocon.leftovers2)
+                    {
+                        body.AddBuff(Modules.Buffs.leftoversBuff);
+                    }
+
+                    if (dittocon.rockyhelmet2)
+                    {
+                        body.AddBuff(Modules.Buffs.rockyhelmetBuff);
+                    }
+
+                    if (dittocon.scopelens2)
+                    {
+                        body.AddBuff(Modules.Buffs.scopelensBuff);
+                    }
+
+                    if (dittocon.shellbell2)
+                    {
+                        body.AddBuff(Modules.Buffs.shellbellBuff);
+                    }
                 }
 
                 Debug.Log(hurtBox.healthComponent.body.activeBuffsList+"buffs");
