@@ -136,10 +136,13 @@ namespace DittoMod.SkillStates
 
                 master.bodyPrefab = newbodyPrefab;
 
-                body = master.Respawn(master.GetBody().transform.position, master.GetBody().transform.rotation);
-                
-                //master.TransformBody(BodyCatalog.GetBodyName(hurtBox.healthComponent.body.bodyIndex));
-                if(Config.copyLoadout.Value)
+                //body = master.Respawn(master.GetBody().transform.position, master.GetBody().transform.rotation);
+
+                master.TransformBody(BodyCatalog.GetBodyName(hurtBox.healthComponent.body.bodyIndex));
+
+                body = master.GetBody();
+
+                if (Config.copyLoadout.Value)
                     body.SetLoadoutServer(targetMaster.loadout);
 
 

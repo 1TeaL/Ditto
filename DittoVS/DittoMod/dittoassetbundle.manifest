@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 283571154
+CRC: 1156169026
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: d4296ede2964dd933a8c66e3b4f63815
+    Hash: 01a45ab4fbc63e00f4a723688f5ae788
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 98d2aefadf85bb344f8d51ed5f74a584
+    Hash: 984717417d0e848b3811a6339662ed47
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -37,8 +37,6 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 108
   Script: {instanceID: 0}
-- Class: 114
-  Script: {fileID: 11500000, guid: 9a68da65c907acb4eb4dbcd042f172e7, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: fc41cd48bee14034db80323ab44fbd3e, type: 3}
 - Class: 114
@@ -71,25 +69,23 @@ Assets:
 - Assets/Ditto/GUI/DittoGen5.jpg
 - Assets/Ditto/Assets/DittoDisplay.prefab
 - Assets/Ditto/Assets/metamon_col.png
-- Assets/Ditto/GUI/Materials/TMtransform.mat
+- Assets/Ditto/Assets/Materials/TMtransform.mat
 - Assets/Ditto/GUI/Ability.png
 - Assets/Ditto/GUI/RockyHelmet.png
 - Assets/Ditto/GUI/ScopeLens.png
 - Assets/Ditto/Animations/Armature_Walking.anim
 - Assets/Ditto/GUI/ShellBell.png
-- Assets/Ditto/Assets/cylinder.fbx
+- Assets/Ditto/Assets/Prefabs/cylinder.fbx
 - Assets/Ditto/Assets/DittoMat.mat
 - Assets/Ditto/Assets/Ditto.fbx
-- Assets/Ditto/Assets/DittoEquipmentModel.prefab
+- Assets/Ditto/Assets/Prefabs/DittoEquipmentModel.prefab
 - Assets/Ditto/GUI/ChoiceBand.png
 - Assets/Ditto/Animations/Armature_IdleAnimation.anim
-- Assets/Ditto/Assets/MeshDitto.mesh
 - Assets/Ditto/GUI/TMtransform.PNG
-- Assets/Ditto/GUI/Materials/DittoEquipmentMat.mat
+- Assets/Ditto/Assets/Materials/DittoEquipmentMat.mat
 - Assets/Ditto/Assets/ShinyDittoMat.mat
 - Assets/Ditto/Animations/Armature_Landing.anim
-- Assets/Ditto/Assets/DittoItemModel.prefab
-- Assets/Ditto/GUI/Materials/DittoGen5.mat
+- Assets/Ditto/Assets/Materials/DittoGen5.mat
 - Assets/Ditto/GUI/ChoiceScarf.png
 - Assets/Ditto/GUI/Leftovers.png
 - Assets/Ditto/Animations/animDittoDisplay.controller

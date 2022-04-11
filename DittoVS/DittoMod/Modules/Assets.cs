@@ -49,8 +49,8 @@ namespace DittoMod.Modules
 
         //Ditto Equipment Obj
         internal static GameObject DittoEquipmentPrefab;
-        //Ditto Item Obk
-        internal static GameObject DittoItemPrefab;
+        //Ditto Item Obj
+        //internal static GameObject DittoItemPrefab;
 
         internal static void Initialize()
         {
@@ -102,7 +102,7 @@ namespace DittoMod.Modules
             //Ditto Equipment prefab
             DittoEquipmentPrefab = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("DittoEquipmentModel");
 
-            DittoEquipmentPrefab = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("DittoItemModel");
+            //DittoItemPrefab = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("DittoItemModel");
         }
 
         private static GameObject CreateTracer(string originalTracerName, string newTracerName)

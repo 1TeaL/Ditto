@@ -107,7 +107,10 @@ namespace DittoMod.Modules.Survivors
 
                             self.master.bodyPrefab = BodyCatalog.FindBodyPrefab("DittoBody");
                             CharacterBody body;
-                            body = self.master.Respawn(self.master.GetBody().transform.position, self.master.GetBody().transform.rotation);
+                            self.master.TransformBody("DittoBody");
+
+                            body = self.master.GetBody();
+                            //body = self.master.Respawn(self.master.GetBody().transform.position, self.master.GetBody().transform.rotation);
 
                             body.RemoveBuff(RoR2Content.Buffs.OnFire);
                             body.RemoveBuff(RoR2Content.Buffs.AffixBlue);
