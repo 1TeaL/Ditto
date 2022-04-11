@@ -16,10 +16,38 @@ namespace DittoMod.Modules.Survivors
         public bool transformed;
         private int buffCountToApply;
         public float transformage;
+        public bool choiceband;
+        public bool choicescarf;
+        public bool choicespecs;
+        public bool leftovers;
+        public bool rockyhelmet;
+        public bool scopelens;
+        public bool shellbell;
+        public bool choiceband2;
+        public bool choicescarf2;
+        public bool choicespecs2;
+        public bool leftovers2;
+        public bool rockyhelmet2;
+        public bool scopelens2;
+        public bool shellbell2;
 
         private void Awake()
         {
             transformed = false;
+            choiceband = false;
+            choicescarf = false;
+            choicespecs = false;
+            leftovers = false;
+            rockyhelmet = false;
+            scopelens = false;
+            shellbell = false;
+            choiceband2 = false;
+            choicescarf2 = false;
+            choicespecs2 = false;
+            leftovers2 = false;
+            rockyhelmet2 = false;
+            scopelens2 = false;
+            shellbell2 = false;
             //On.RoR2.Stage.Start += Stage_Start;
             //On.RoR2.CharacterMaster.Respawn += CharacterMaster_Respawn;
             On.RoR2.CharacterBody.Start += CharacterBody_Start;
@@ -33,38 +61,111 @@ namespace DittoMod.Modules.Survivors
             //Debug.Log(transformed + "istransformed");
 
 
+
         }
 
         private void CharacterBody_Start(On.RoR2.CharacterBody.orig_Start orig, CharacterBody self)
         {
             orig(self);
+            List<string> speciallist = new List<string>();
+            speciallist.Add("NullifierBody");
+            speciallist.Add("VoidJailerBody");
+            speciallist.Add("MinorConstructBody");
+            speciallist.Add("MinorConstructOnKillBody");
+            speciallist.Add("MiniVoidRaidCrabBodyPhase1");
+            speciallist.Add("MiniVoidRaidCrabBodyPhase2");
+            speciallist.Add("MiniVoidRaidCrabBodyPhase3");
+            speciallist.Add("ElectricWormBody");
+            speciallist.Add("MagmaWormBody");
+            speciallist.Add("BeetleQueen2Body");
+            speciallist.Add("TitanBody");
+            speciallist.Add("TitanGoldBody");
+            speciallist.Add("VagrantBody");
+            speciallist.Add("GravekeeperBody");
+            speciallist.Add("ClayBossBody");
+            speciallist.Add("RoboBallBossBody");
+            speciallist.Add("SuperRoboBallBossBody");
+            speciallist.Add("MegaConstructBody");
+            speciallist.Add("VoidInfestorBody");
+            speciallist.Add("VoidBarnacleBody");
+            speciallist.Add("MegaConstructBody");
+            speciallist.Add("VoidMegaCrabBody");
+            speciallist.Add("GrandParentBody");
+            speciallist.Add("ImpBossBody");
+            speciallist.Add("BrotherBody");
+            speciallist.Add("BrotherHurtBody");
+
             if (self.master.gameObject.GetComponent<DittoMasterController>())
             {
                 if (self.master.bodyPrefab != BodyCatalog.FindBodyPrefab("DittoBody"))
                 {
-                    if (transformed)
+                    if (speciallist.Contains(self.master.bodyPrefab.name))
                     {
-                        self.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, 1);
+                        if (transformed)
+                        {
+                            self.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, 1);
+                        }
+                    }
+                    else
+                    {
+                        if (Config.choiceOnTeammate.Value)
+                        {
+                            if (choiceband)
+                            {
+                                self.AddBuff(Modules.Buffs.choicebandBuff);
+                            }
+                            if (choicescarf)
+                            {
+                                self.AddBuff(Modules.Buffs.choicescarfBuff);
+                            }
+                            if (choicespecs)
+                            {
+                                self.AddBuff(Modules.Buffs.choicespecsBuff);
+                            }
+                            if (rockyhelmet)
+                            {
+                                self.AddBuff(Modules.Buffs.rockyhelmetBuff);
+                            }
+                            if (scopelens)
+                            {
+                                self.AddBuff(Modules.Buffs.scopelensBuff);
+                            }
+                            if (shellbell)
+                            {
+                                self.AddBuff(Modules.Buffs.shellbellBuff);
+                            }
+                            if (choiceband2)
+                            {
+                                self.AddBuff(Modules.Buffs.choicebandBuff);
+                            }
+                            if (choicescarf2)
+                            {
+                                self.AddBuff(Modules.Buffs.choicescarfBuff);
+                            }
+                            if (choicespecs2)
+                            {
+                                self.AddBuff(Modules.Buffs.choicespecsBuff);
+                            }
+                            if (rockyhelmet2)
+                            {
+                                self.AddBuff(Modules.Buffs.rockyhelmetBuff);
+                            }
+                            if (scopelens2)
+                            {
+                                self.AddBuff(Modules.Buffs.scopelensBuff);
+                            }
+                            if (shellbell2)
+                            {
+                                self.AddBuff(Modules.Buffs.shellbellBuff);
+                            }
+
+                        }
                     }
                 }
 
             }
 
         }
-
-        //private CharacterBody CharacterMaster_Respawn(On.RoR2.CharacterMaster.orig_Respawn orig, CharacterMaster self, Vector3 footPosition, Quaternion rotation)
-        //{
-        //    if (self.gameObject.GetComponent<DittoMasterController>())
-        //    {
-        //        if (self.bodyPrefab != BodyCatalog.FindBodyPrefab("DittoBody"))
-        //        {
-        //            self.GetBody().SetBuffCount(Modules.Buffs.transformBuff.buffIndex, 1);
-        //        }
-
-        //    }      
-
-        //    return orig(self, footPosition, rotation);
-        //}
 
 
         private void CharacterBody_FixedUpdate(On.RoR2.CharacterBody.orig_FixedUpdate orig, CharacterBody self)

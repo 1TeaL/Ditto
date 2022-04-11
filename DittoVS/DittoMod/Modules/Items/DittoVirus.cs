@@ -30,7 +30,7 @@ namespace DittoMod.Modules.Items
 
         public override ItemTier Tier => ItemTier.Lunar;
 
-        public override GameObject ItemModel => Modules.Assets.DittoEquipmentPrefab;
+        public override GameObject ItemModel => Modules.Assets.DittoItemPrefab;
 
         public override Sprite ItemIcon => Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texDittoIcon");
 
@@ -105,8 +105,9 @@ namespace DittoMod.Modules.Items
                     {
                         if (self.body.master.bodyPrefab.name != "DittoBody")
                         {
+                            self.body.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, 1);
 
-                            body = self.body.master.Respawn(self.body.master.GetBody().transform.position, self.body.master.GetBody().transform.rotation);
+                            body = self.body;
                             body.healthComponent.health = oldBody.healthComponent.health;
                             body.baseMaxHealth = oldBody.baseMaxHealth;
                             body.levelMaxHealth = oldBody.levelMaxHealth;

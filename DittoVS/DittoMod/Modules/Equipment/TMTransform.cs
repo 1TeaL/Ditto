@@ -94,12 +94,12 @@ namespace DittoMod.Modules.Equipment
 
             public void Start()
             {
-                AkSoundEngine.PostEvent(1719197672, this.gameObject);
             }
 
             //Turns into Ditto
             public void BecomeDitto()
             {
+                AkSoundEngine.PostEvent(1719197672, this.gameObject);
                 if (characterMaster.bodyPrefab.name == "CaptainBody")
                 {
                     characterMaster.inventory.RemoveItem(RoR2Content.Items.CaptainDefenseMatrix, 1);
