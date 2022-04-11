@@ -44,7 +44,7 @@ namespace DittoMod.Modules.Survivors
                 {
                     if (transformed)
                     {
-                        self.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, 1);
+                        self.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, 30);
                     }
                 }
 

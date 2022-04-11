@@ -1,6 +1,7 @@
 ﻿using BepInEx;
 using BepInEx.Bootstrap;
 using DittoMod.Equipment;
+using DittoMod.Items;
 using DittoMod.Modules;
 //using DittoMod.Modules.Networking;
 using DittoMod.Modules.Survivors;
@@ -77,6 +78,13 @@ namespace DittoMod
         GameObject gup = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/Gup/GupBody.prefab").WaitForCompletion();
         GameObject impboss = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ImpBoss/ImpBossBody.prefab").WaitForCompletion();
 
+
+        public List<ItemBase> Items = new List<ItemBase>();
+        public List<EquipmentBase> Equipments = new List<EquipmentBase>();
+
+        public static Dictionary<ItemBase, bool> ItemStatusDictionary = new Dictionary<ItemBase, bool>();
+        public static Dictionary<EquipmentBase, bool> EquipmentStatusDictionary = new Dictionary<EquipmentBase, bool>();
+
         private void Awake()
         {
             instance = this;
@@ -102,6 +110,19 @@ namespace DittoMod
                 EquipmentBase equipment = (EquipmentBase)System.Activator.CreateInstance(equipmentType);
                 equipment.Init();
             }
+
+            //Item Initialization
+            var ItemTypes = Assembly.GetExecutingAssembly().GetTypes().Where(type => !type.IsAbstract && type.IsSubclassOf(typeof(ItemBase)));
+
+            foreach (var itemType in ItemTypes)
+            {
+                ItemBase item = (ItemBase)System.Activator.CreateInstance(itemType);
+                if (ValidateItem(item, Items))
+                {
+                    item.Init(Config);
+                }
+            }
+
 
             // now make a content pack and add it- this part will change with the next update
             new Modules.ContentPacks().Initialize();
@@ -261,7 +282,31 @@ namespace DittoMod
             PolishMonsterToSurvivor(impboss2, 20f);
             PolishMonsterToSurvivor(brotherhurt, 20f);
         }
+        public bool ValidateItem(ItemBase item, List<ItemBase> itemList)
+        {
+            var enabled = Config.Bind<bool>("Item: " + item.ItemName, "Enable Item?", true, "Should this item appear in runs?").Value;
+            var aiBlacklist = Config.Bind<bool>("Item: " + item.ItemName, "Blacklist Item from AI Use?", false, "Should the AI not be able to obtain this item?").Value;
+            var printerBlacklist = Config.Bind<bool>("Item: " + item.ItemName, "Blacklist Item from Printers?", false, "Should the printers be able to print this item?").Value;
+            var requireUnlock = Config.Bind<bool>("Item: " + item.ItemName, "Require Unlock", true, "Should we require this item to be unlocked before it appears in runs? (Will only affect items with associated unlockables.)").Value;
 
+            ItemStatusDictionary.Add(item, enabled);
+
+            if (enabled)
+            {
+                itemList.Add(item);
+                if (aiBlacklist)
+                {
+                    item.AIBlacklisted = true;
+                }
+                if (printerBlacklist)
+                {
+                    item.PrinterBlacklisted = true;
+                }
+
+                item.RequireUnlock = requireUnlock;
+            }
+            return enabled;
+        }
         private void PolishMonsterToSurvivor(GameObject monsterSurvivor, float maxInteractionDistance)
         {
             NetworkIdentity networkIdentity = monsterSurvivor.GetComponent<NetworkIdentity>();

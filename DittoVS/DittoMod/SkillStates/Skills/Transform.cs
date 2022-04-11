@@ -131,7 +131,6 @@ namespace DittoMod.SkillStates
 
             if (!blacklist.Contains(newbodyPrefab.name))
             {
-                dittomastercon.transformed = true;
 
                 master.bodyPrefab = newbodyPrefab;
 
@@ -162,7 +161,8 @@ namespace DittoMod.SkillStates
 
                 if (speciallist.Contains(newbodyPrefab.name))
                 {
-                    body.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, Modules.StaticValues.transformDuration);
+                    dittomastercon.transformed = true;
+                    //body.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, Modules.StaticValues.transformDuration);
                 }
                     
 
@@ -289,6 +289,7 @@ namespace DittoMod.SkillStates
             }
             else
             {
+                dittomastercon.transformed = false;
                 Chat.AddMessage("Ditto's <style=cIsUtility>Transform failed!</style>");
             }            
 

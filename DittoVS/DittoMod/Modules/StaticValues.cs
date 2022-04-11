@@ -27,6 +27,8 @@ namespace DittoMod.Modules
 
         internal const int transformDuration = 30;
 
+        internal const int enemytransformTimer = 5;
+
 
     }
 }
