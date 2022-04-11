@@ -94,7 +94,6 @@ namespace DittoMod.Modules.Equipment
 
             public void Start()
             {
-                AkSoundEngine.PostEvent(1719197672, this.gameObject);
             }
 
             //Turns into Ditto
