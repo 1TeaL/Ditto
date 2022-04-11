@@ -100,6 +100,7 @@ namespace DittoMod.Modules.Equipment
             //Turns into Ditto
             public void BecomeDitto()
             {
+                var oldHealth = body.healthComponent.health / body.healthComponent.fullHealth;
                 if (characterMaster.bodyPrefab.name == "CaptainBody")
                 {
                     characterMaster.inventory.RemoveItem(RoR2Content.Items.CaptainDefenseMatrix, 1);
@@ -116,6 +117,8 @@ namespace DittoMod.Modules.Equipment
                 {
                     characterMaster.bodyPrefab = BodyCatalog.FindBodyPrefab("DittoBody");
                     body = characterMaster.Respawn(characterMaster.GetBody().transform.position, characterMaster.GetBody().transform.rotation);
+                    if (Config.copyHealth.Value)
+                        body.healthComponent.health = body.healthComponent.fullHealth * oldHealth;
 
                     body.RemoveBuff(RoR2Content.Buffs.OnFire);
                     body.RemoveBuff(RoR2Content.Buffs.AffixBlue);

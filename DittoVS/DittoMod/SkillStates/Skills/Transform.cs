@@ -123,6 +123,7 @@ namespace DittoMod.SkillStates
 
             CharacterBody oldBody = master.GetBody();
 
+            var oldHealth = oldBody.healthComponent.health/oldBody.healthComponent.fullHealth;
 
             GameObject newbodyPrefab = BodyCatalog.FindBodyPrefab(BodyCatalog.GetBodyName(hurtBox.healthComponent.body.bodyIndex));
 
@@ -143,6 +144,8 @@ namespace DittoMod.SkillStates
                 if(Config.copyLoadout.Value)
                     body.SetLoadoutServer(targetMaster.loadout);
 
+                if (Config.copyHealth.Value)
+                    body.healthComponent.health = oldHealth * body.healthComponent.fullHealth;
 
                 RigidbodyMotor rigid = body.gameObject.GetComponent<RigidbodyMotor>();
 
