@@ -88,6 +88,7 @@ namespace DittoMod.SkillStates
             blacklist.Add("SulfurPodBody");
             blacklist.Add("DittoBody");
             blacklist.Add("AffixEarthHealerBody");
+            blacklist.Add("MinorConstructAttachableBody");
 
             List<string> speciallist = new List<string>();
             speciallist.Add("NullifierBody");
