@@ -5,8 +5,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using DittoMod.Modules;
 using UnityEngine.Networking;
-using UnityEngine.AddressableAssets;
-using R2API;
+using RoR2.ExpansionManagement;
 
 namespace DittoMod.SkillStates
 {
@@ -124,10 +123,19 @@ namespace DittoMod.SkillStates
 
             var oldHealth = oldBody.healthComponent.health/oldBody.healthComponent.fullHealth;
 
-            GameObject newbodyPrefab = BodyCatalog.FindBodyPrefab(BodyCatalog.GetBodyName(hurtBox.healthComponent.body.bodyIndex));
+            var name = BodyCatalog.GetBodyName(hurtBox.healthComponent.body.bodyIndex);
+            GameObject newbodyPrefab = BodyCatalog.FindBodyPrefab(name);
 
             var targetMaster = hurtBox.healthComponent.body.master;
 
+            var survivorDef = SurvivorCatalog.FindSurvivorDefFromBody(newbodyPrefab);
+            if (survivorDef && !survivorDef.CheckUserHasRequiredEntitlement(master.playerCharacterMasterController.networkUser))
+                return;
+            
+            var requirementComponent = newbodyPrefab.GetComponent<ExpansionRequirementComponent>();
+            if (requirementComponent && !requirementComponent.PlayerCanUseBody(master.playerCharacterMasterController))
+                return;
+            
             CharacterBody body;
 
 
