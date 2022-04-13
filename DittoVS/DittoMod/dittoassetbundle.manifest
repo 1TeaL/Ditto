@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1645470826
+CRC: 4175948162
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: a2ee9197523dec4d2111e1d54dbb41ac
+    Hash: b38531d6ecbc9b39197c48e5a3f6238a
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 98d2aefadf85bb344f8d51ed5f74a584
+    Hash: 289c7a9900d3473dfbad0c4a497537de
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -25,7 +25,7 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
-- Class: 54
+- Class: 64
   Script: {instanceID: 0}
 - Class: 74
   Script: {instanceID: 0}
@@ -38,10 +38,6 @@ ClassTypes:
 - Class: 108
   Script: {instanceID: 0}
 - Class: 114
-  Script: {fileID: 11500000, guid: 9a68da65c907acb4eb4dbcd042f172e7, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: fc41cd48bee14034db80323ab44fbd3e, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: 261c50d8a80898e4ebf2e8e415ea6766, type: 3}
 - Class: 115
   Script: {instanceID: 0}
@@ -49,50 +45,50 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 137
   Script: {instanceID: 0}
-- Class: 144
-  Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/Ditto/Assets/DittoBaseSkin.png
-- Assets/Ditto/Animations/Armature_Idle.anim
-- Assets/Ditto/Assets/DittoAvatar.asset
-- Assets/Ditto/Assets/mdlDitto.prefab
-- Assets/Ditto/Animations/animDitto.controller
-- Assets/Ditto/Animations/Armature_Falling.anim
-- Assets/Ditto/Assets/dittoshinytexture.png
-- Assets/Ditto/GUI/ChoiceSpecs.png
-- Assets/Ditto/Animations/Armature_Jumping.anim
-- Assets/Ditto/GUI/texDittoIcon.tif
-- Assets/Ditto/Assets/DittoShinySkin.png
-- Assets/Ditto/GUI/TMtransformSprite.PNG
-- Assets/Ditto/GUI/Transform.png
-- Assets/Ditto/GUI/DittoGen5.jpg
-- Assets/Ditto/Assets/DittoDisplay.prefab
 - Assets/Ditto/Assets/metamon_col.png
-- Assets/Ditto/Assets/Materials/TMtransform.mat
-- Assets/Ditto/GUI/Ability.png
-- Assets/Ditto/GUI/RockyHelmet.png
-- Assets/Ditto/GUI/ScopeLens.png
-- Assets/Ditto/Animations/Armature_Walking.anim
-- Assets/Ditto/GUI/ShellBell.png
-- Assets/Ditto/Assets/Prefabs/cylinder.fbx
-- Assets/Ditto/Assets/DittoMat.mat
-- Assets/Ditto/Assets/Ditto.fbx
 - Assets/Ditto/Assets/Prefabs/DittoEquipmentModel.prefab
-- Assets/Ditto/GUI/ChoiceBand.png
-- Assets/Ditto/Animations/Armature_IdleAnimation.anim
-- Assets/Ditto/Assets/MeshDitto.mesh
-- Assets/Ditto/Assets/Prefabs/DittoItem.fbx
-- Assets/Ditto/GUI/TMtransform.PNG
+- Assets/Ditto/GUI/ScopeLens.png
+- Assets/Ditto/GUI/AssaultVest.png
+- Assets/Ditto/Animations/Armature_Walking.anim
+- Assets/Ditto/Animations/Armature_Idle.anim
+- Assets/Ditto/GUI/texDittoIcon.tif
+- Assets/Ditto/Assets/mdlDittobroken.prefab
+- Assets/Ditto/GUI/TMtransformSprite.PNG
+- Assets/Ditto/Assets/dittoshinytexture.png
+- Assets/Ditto/Assets/DittoBaseSkin.png
 - Assets/Ditto/Assets/Materials/DittoEquipmentMat.mat
-- Assets/Ditto/Assets/ShinyDittoMat.mat
-- Assets/Ditto/Animations/Armature_Landing.anim
-- Assets/Ditto/Assets/Materials/DittoGen5.mat
-- Assets/Ditto/GUI/ChoiceScarf.png
+- Assets/Ditto/Assets/Materials/TMtransform.mat
+- Assets/Ditto/GUI/ShellBell.png
 - Assets/Ditto/GUI/Leftovers.png
-- Assets/Ditto/Animations/animDittoDisplay.controller
 - Assets/Ditto/GUI/Struggle.png
-- Assets/Ditto/Assets/Prefabs/DittoItemModel.prefab
+- Assets/Ditto/Assets/DittoAvatar.asset
+- Assets/Ditto/GUI/LifeOrb.png
+- Assets/Ditto/Assets/DittoDisplay.prefab
+- Assets/Ditto/GUI/ChoiceSpecs.png
+- Assets/Ditto/GUI/TMtransform.PNG
+- Assets/Ditto/GUI/DittoGen5.jpg
+- Assets/Ditto/GUI/ChoiceBand.png
+- Assets/Ditto/GUI/Transform.png
+- Assets/Ditto/Assets/DittoDisplaybroken.prefab
+- Assets/Ditto/GUI/Ability.png
+- Assets/Ditto/Assets/DittoShinySkin.png
+- Assets/Ditto/GUI/ChoiceScarf.png
+- Assets/Ditto/Animations/animDitto.controller
+- Assets/Ditto/GUI/RockyHelmet.png
+- Assets/Ditto/Animations/Armature_Jumping.anim
+- Assets/Ditto/Animations/Armature_IdleAnimation.anim
+- Assets/Ditto/Assets/mdlDitto.prefab
+- Assets/Ditto/Assets/DittoMat.mat
+- Assets/Ditto/Animations/Armature_Landing.anim
+- Assets/Ditto/Assets/ShinyDittoMat.mat
+- Assets/Ditto/Assets/Ditto.fbx
+- Assets/Ditto/Animations/animDittoDisplay.controller
+- Assets/Ditto/Assets/Materials/DittoGen5.mat
+- Assets/Ditto/GUI/LuckyEgg.png
+- Assets/Ditto/Animations/Armature_Falling.anim
+- Assets/Ditto/Assets/Prefabs/cylinder.fbx
 Dependencies: []
