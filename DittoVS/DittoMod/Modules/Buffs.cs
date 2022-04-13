@@ -12,10 +12,13 @@ namespace DittoMod.Modules
         internal static List<BuffDef> buffDefs = new List<BuffDef>();
 
         internal static BuffDef transformBuff;
+        internal static BuffDef assaultvestBuff;
         internal static BuffDef choicescarfBuff;
         internal static BuffDef choicebandBuff;
         internal static BuffDef choicespecsBuff;
         internal static BuffDef leftoversBuff;
+        internal static BuffDef lifeorbBuff;
+        internal static BuffDef luckyeggBuff;
         internal static BuffDef rockyhelmetBuff;
         internal static BuffDef scopelensBuff;
         internal static BuffDef shellbellBuff;
@@ -23,10 +26,13 @@ namespace DittoMod.Modules
         internal static void RegisterBuffs()
         {
             transformBuff = Buffs.AddNewBuff("transformBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("Transform"), Color.white, true, false);
+            assaultvestBuff = Buffs.AddNewBuff("assaultvestBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("AssaultVest"), Color.white, true, false);
             choicescarfBuff = Buffs.AddNewBuff("choicescarfBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("ChoiceScarf"), Color.white, true, false);
             choicebandBuff = Buffs.AddNewBuff("choicebandBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("ChoiceBand"), Color.white, true, false);
             choicespecsBuff = Buffs.AddNewBuff("choicespecsBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("ChoiceSpecs"), Color.white, true, false);
             leftoversBuff = Buffs.AddNewBuff("leftoversBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("Leftovers"), Color.white, true, false);
+            lifeorbBuff = Buffs.AddNewBuff("lifeorbBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("LifeOrb"), Color.white, true, false);
+            luckyeggBuff = Buffs.AddNewBuff("luckyeggBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("LuckyEgg"), Color.white, true, false);
             rockyhelmetBuff = Buffs.AddNewBuff("rockyhelmetBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("RockyHelmet"), Color.white, true, false);
             scopelensBuff = Buffs.AddNewBuff("scopelensBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("ScopeLens"), Color.white, true, false);
             shellbellBuff = Buffs.AddNewBuff("shellbellBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("ShellBell"), Color.white, true, false);

@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1645470826
+CRC: 2267007353
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: a2ee9197523dec4d2111e1d54dbb41ac
+    Hash: f9f62600e32e9bb7001aa2d848738f4c
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 98d2aefadf85bb344f8d51ed5f74a584
+    Hash: 984717417d0e848b3811a6339662ed47
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -38,8 +38,6 @@ ClassTypes:
 - Class: 108
   Script: {instanceID: 0}
 - Class: 114
-  Script: {fileID: 11500000, guid: 9a68da65c907acb4eb4dbcd042f172e7, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: fc41cd48bee14034db80323ab44fbd3e, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 261c50d8a80898e4ebf2e8e415ea6766, type: 3}
@@ -60,12 +58,14 @@ Assets:
 - Assets/Ditto/Assets/DittoAvatar.asset
 - Assets/Ditto/Assets/mdlDitto.prefab
 - Assets/Ditto/Animations/animDitto.controller
+- Assets/Ditto/GUI/LifeOrb.png
 - Assets/Ditto/Animations/Armature_Falling.anim
 - Assets/Ditto/Assets/dittoshinytexture.png
 - Assets/Ditto/GUI/ChoiceSpecs.png
 - Assets/Ditto/Animations/Armature_Jumping.anim
 - Assets/Ditto/GUI/texDittoIcon.tif
 - Assets/Ditto/Assets/DittoShinySkin.png
+- Assets/Ditto/GUI/AssaultVest.png
 - Assets/Ditto/GUI/TMtransformSprite.PNG
 - Assets/Ditto/GUI/Transform.png
 - Assets/Ditto/GUI/DittoGen5.jpg
@@ -83,7 +83,6 @@ Assets:
 - Assets/Ditto/Assets/Prefabs/DittoEquipmentModel.prefab
 - Assets/Ditto/GUI/ChoiceBand.png
 - Assets/Ditto/Animations/Armature_IdleAnimation.anim
-- Assets/Ditto/Assets/MeshDitto.mesh
 - Assets/Ditto/Assets/Prefabs/DittoItem.fbx
 - Assets/Ditto/GUI/TMtransform.PNG
 - Assets/Ditto/Assets/Materials/DittoEquipmentMat.mat
@@ -91,6 +90,7 @@ Assets:
 - Assets/Ditto/Animations/Armature_Landing.anim
 - Assets/Ditto/Assets/Materials/DittoGen5.mat
 - Assets/Ditto/GUI/ChoiceScarf.png
+- Assets/Ditto/GUI/LuckyEgg.png
 - Assets/Ditto/GUI/Leftovers.png
 - Assets/Ditto/Animations/animDittoDisplay.controller
 - Assets/Ditto/GUI/Struggle.png

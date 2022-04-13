@@ -369,9 +369,8 @@ namespace DittoMod
             //On.RoR2.CharacterBody.Update += CharacterBody_Update;
         }
 
-
-        //lifesteal
-        private void GlobalEventManager_OnDamageDealt(DamageReport report)
+            //lifesteal
+            private void GlobalEventManager_OnDamageDealt(DamageReport report)
         {
 
             bool flag = !report.attacker || !report.attackerBody;
@@ -397,6 +396,7 @@ namespace DittoMod
 
         private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
         {
+            //rocky helmet
             if (self.body.HasBuff(Modules.Buffs.rockyhelmetBuff.buffIndex))
             {
                 int buffnumber = self.body.GetBuffCount(Modules.Buffs.rockyhelmetBuff);
@@ -479,6 +479,21 @@ namespace DittoMod
             orig.Invoke(self);
 
 
+            if (self.HasBuff(Modules.Buffs.assaultvestBuff))
+            {
+                int buffnumber = self.GetBuffCount(Modules.Buffs.assaultvestBuff);
+                if (buffnumber > 0)
+                {
+                    if (buffnumber >= 1 && buffnumber < 2)
+                    {
+                        self.armor += Modules.StaticValues.assaultvestboost;
+                    }
+                    if (buffnumber >= 2)
+                    {
+                        self.armor += Modules.StaticValues.assaultvestboost2;
+                    }
+                }
+            }
             if (self.HasBuff(Modules.Buffs.choicebandBuff))
             {
                 int buffnumber = self.GetBuffCount(Modules.Buffs.choicebandBuff);
@@ -516,26 +531,17 @@ namespace DittoMod
                 {
                     if (buffnumber >= 1 && buffnumber < 2)
                     {
-                        self.damage *= Modules.StaticValues.choicespecsboost;
+                        self.skillLocator.primary.cooldownScale *= Modules.StaticValues.choicespecsboost;
+                        self.skillLocator.secondary.cooldownScale *= Modules.StaticValues.choicespecsboost;
+                        //self.skillLocator.utility.cooldownScale *= Modules.StaticValues.choicespecsboost;
+                        //self.skillLocator.special.cooldownScale *= Modules.StaticValues.choicespecsboost;                        
                     }
                     if (buffnumber >= 2)
                     {
-                        self.damage *= Modules.StaticValues.choicespecsboost2;
-                    }
-                }
-            }
-            if (self.HasBuff(Modules.Buffs.scopelensBuff))
-            {
-                int buffnumber = self.GetBuffCount(Modules.Buffs.scopelensBuff);
-                if (buffnumber > 0)
-                {
-                    if (buffnumber >= 1 && buffnumber < 2)
-                    {
-                        self.crit += Modules.StaticValues.scopelensboost;
-                    }
-                    if (buffnumber >= 2)
-                    {
-                        self.crit += Modules.StaticValues.scopelensboost2;
+                        //self.skillLocator.primary.cooldownScale *= Modules.StaticValues.choicespecsboost2;
+                        //self.skillLocator.secondary.cooldownScale *= Modules.StaticValues.choicespecsboost2;
+                        self.skillLocator.utility.cooldownScale *= Modules.StaticValues.choicespecsboost2;
+                        self.skillLocator.special.cooldownScale *= Modules.StaticValues.choicespecsboost2;
                     }
                 }
             }
@@ -562,7 +568,51 @@ namespace DittoMod
                     }
                 }
             }
-
+            if (self.HasBuff(Modules.Buffs.lifeorbBuff))
+            {
+                int buffnumber = self.GetBuffCount(Modules.Buffs.lifeorbBuff);
+                if (buffnumber > 0)
+                {
+                    if (buffnumber >= 1 && buffnumber < 2)
+                    {
+                        self.damage *= Modules.StaticValues.lifeorbboost;
+                    }
+                    if (buffnumber >= 2)
+                    {
+                        self.damage *= Modules.StaticValues.lifeorbboost2;
+                    }
+                }
+            }
+            if (self.HasBuff(Modules.Buffs.luckyeggBuff))
+            {
+                int buffnumber = self.GetBuffCount(Modules.Buffs.luckyeggBuff);
+                if (buffnumber > 0)
+                {
+                    if (buffnumber >= 1 && buffnumber < 2)
+                    {
+                        self.experience *= Modules.StaticValues.luckyeggboost;
+                    }
+                    if (buffnumber >= 2)
+                    {
+                        self.experience *= Modules.StaticValues.luckyeggboost2;
+                    }
+                }
+            }
+            if (self.HasBuff(Modules.Buffs.scopelensBuff))
+            {
+                int buffnumber = self.GetBuffCount(Modules.Buffs.scopelensBuff);
+                if (buffnumber > 0)
+                {
+                    if (buffnumber >= 1 && buffnumber < 2)
+                    {
+                        self.crit += Modules.StaticValues.scopelensboost;
+                    }
+                    if (buffnumber >= 2)
+                    {
+                        self.crit += Modules.StaticValues.scopelensboost2;
+                    }
+                }
+            }
         }
 
         private void CharacterBody_OnDeathStart(On.RoR2.CharacterBody.orig_OnDeathStart orig, CharacterBody self)

@@ -99,7 +99,6 @@ namespace DittoMod.Modules.Equipment
             //Turns into Ditto
             public void BecomeDitto()
             {
-                AkSoundEngine.PostEvent(1719197672, this.gameObject);
                 var oldHealth = body.healthComponent.health / body.healthComponent.fullHealth;
                 if (characterMaster.bodyPrefab.name == "CaptainBody")
                 {
@@ -115,6 +114,7 @@ namespace DittoMod.Modules.Equipment
 
                 if (characterMaster.bodyPrefab.name != "DittoBody")
                 {
+                    AkSoundEngine.PostEvent(1719197672, this.gameObject);
                     //characterMaster.bodyPrefab = BodyCatalog.FindBodyPrefab("DittoBody");
                     //body = characterMaster.Respawn(characterMaster.GetBody().transform.position, characterMaster.GetBody().transform.rotation);
                     characterMaster.TransformBody("DittoBody");

@@ -44,20 +44,26 @@ namespace DittoMod.Modules
             #endregion
 
             #region Items
+            LanguageAPI.Add(prefix + "ASSAULTVEST_NAME", "Assault Vest");
+            LanguageAPI.Add(prefix + "ASSAULTVEST_DESCRIPTION", $"Equip an Assault Vest, granting <style=cIsUtility>{(StaticValues.assaultvestboost)} armor</style>" + "</style>.");
             LanguageAPI.Add(prefix + "CHOICEBAND_NAME", "Choice Band");
-            LanguageAPI.Add(prefix + "CHOICEBAND_DESCRIPTION", $"Equip a Choice Band, granting <style=cIsDamage>{100f * (StaticValues.choicebandboost - 1f)}%</style>" + " attackspeed</style>.");
+            LanguageAPI.Add(prefix + "CHOICEBAND_DESCRIPTION", $"Equip a Choice Band, granting <style=cIsDamage>{100f * (StaticValues.choicebandboost - 1f)}% attackspeed </style>" + "</style>.");
             LanguageAPI.Add(prefix + "CHOICESCARF_NAME", "Choice Scarf");
-            LanguageAPI.Add(prefix + "CHOICESCARF_DESCRIPTION", $"Equip a Choice Scarf, granting <style=cIsDamage>{100f * (StaticValues.choicescarfboost - 1f)}%</style>" + " movespeed</style>.");
+            LanguageAPI.Add(prefix + "CHOICESCARF_DESCRIPTION", $"Equip a Choice Scarf, granting <style=cIsDamage>{100f * (StaticValues.choicescarfboost - 1f)}% movespeed</style>" + " </style>.");
             LanguageAPI.Add(prefix + "CHOICESPECS_NAME", "Choice Specs");
-            LanguageAPI.Add(prefix + "CHOICESPECS_DESCRIPTION", $"Equip a Choice Specs, granting <style=cIsDamage>{100f * (StaticValues.choicespecsboost - 1f)}%</style>" + " damage</style>.");
+            LanguageAPI.Add(prefix + "CHOICESPECS_DESCRIPTION", $"Equip a Choice Specs, granting <style=cIsUtility>{100f * (StaticValues.choicespecsboost)}% cooldown reduction </style>" + "on your primary and secondary for the first item, and the same on utility and special on the second item.</style>.");
             LanguageAPI.Add(prefix + "LEFTOVERS_NAME", "Leftovers");
             LanguageAPI.Add(prefix + "LEFTOVERS_DESCRIPTION", $"Equip a Leftovers, granting " + Helpers.Passive($"{100f * (StaticValues.leftoversregen)}% of your max health regen") + " per second</style>.");
+            LanguageAPI.Add(prefix + "LIFEORB_NAME", "Life Orb");
+            LanguageAPI.Add(prefix + "LIFEORB_DESCRIPTION", $"Equip a Life Orb, granting <style=cIsDamage>{100f * (StaticValues.lifeorbboost- 1f)}% damage</style>" + " </style>.");
+            LanguageAPI.Add(prefix + "LUCKYEGG_NAME", "Lucky Egg");
+            LanguageAPI.Add(prefix + "LUCKYEGG_DESCRIPTION", $"Equip a Lucky Egg, granting <style=cIsUtility>{100f * (StaticValues.luckyeggboost - 1f)}% extra experience gain</style>" + " </style>.");
             LanguageAPI.Add(prefix + "ROCKYHELMET_NAME", "Rocky Helmet");
             LanguageAPI.Add(prefix + "ROCKYHELMET_DESCRIPTION", $"Equip a Rocky Helmet, dealing <style=cIsDamage>{100f * StaticValues.rockyhelmetreflect}% damage</style>" + " to attackers</style>.");
             LanguageAPI.Add(prefix + "SCOPELENS_NAME", "Scope Lens");
-            LanguageAPI.Add(prefix + "SCOPELENS_DESCRIPTION", $"Equip a Scope Lens, granting <style=cIsDamage>{StaticValues.scopelensboost}%</style>" + " critical hit chance</style>.");
+            LanguageAPI.Add(prefix + "SCOPELENS_DESCRIPTION", $"Equip a Scope Lens, granting <style=cIsDamage>{StaticValues.scopelensboost}% critical hit chance</style>" + " </style>.");
             LanguageAPI.Add(prefix + "SHELLBELL_NAME", "Shell Bell");
-            LanguageAPI.Add(prefix + "SHELLBELL_DESCRIPTION", $"Equip a Shell Bell, granting <style=cIsDamage>{100f * (StaticValues.shellbelllifesteal)}%</style>" + " lifesteal</style>.");
+            LanguageAPI.Add(prefix + "SHELLBELL_DESCRIPTION", $"Equip a Shell Bell, granting <style=cIsUtility>{100f * (StaticValues.shellbelllifesteal)}% lifesteal</style>" + " </style>.");
             #endregion
 
             #region Special
