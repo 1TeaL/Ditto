@@ -401,34 +401,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a32fb17ad7dfd7b4f8b893feaf7d7512, type: 3}
-<<<<<<< Updated upstream
 --- !u!1001 &3346283647668179095
 =======
 --- !u!1001 &3697879842408177089
->>>>>>> Stashed changes
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-<<<<<<< Updated upstream
     - target: {fileID: 2669120031757535755, guid: 217776532b50c1f47b44d7b3dec78a06,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2669120031757535755, guid: 217776532b50c1f47b44d7b3dec78a06,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2669120031757535755, guid: 217776532b50c1f47b44d7b3dec78a06,
-=======
-    - target: {fileID: 79166374521939665, guid: a63e7ce5f9db5db45b8ce00fd54d0171,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 79166374521939665, guid: a63e7ce5f9db5db45b8ce00fd54d0171,
         type: 3}
@@ -436,12 +421,10 @@ PrefabInstance:
       value: -0.0009349124
       objectReference: {fileID: 0}
     - target: {fileID: 79166374521939665, guid: a63e7ce5f9db5db45b8ce00fd54d0171,
->>>>>>> Stashed changes
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-<<<<<<< Updated upstream
     - target: {fileID: 2669120031757535755, guid: 217776532b50c1f47b44d7b3dec78a06,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -473,24 +456,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 3.6219773e-15
-      objectReference: {fileID: 0}
-    - target: {fileID: 79166374521939665, guid: a63e7ce5f9db5db45b8ce00fd54d0171,
->>>>>>> Stashed changes
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-<<<<<<< Updated upstream
-    - target: {fileID: 2669120031757535755, guid: 217776532b50c1f47b44d7b3dec78a06,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-=======
-    - target: {fileID: 79166374521939665, guid: a63e7ce5f9db5db45b8ce00fd54d0171,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 4
->>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 2669120031757535755, guid: 217776532b50c1f47b44d7b3dec78a06,
         type: 3}
