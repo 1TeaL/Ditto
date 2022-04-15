@@ -15,9 +15,9 @@ namespace DittoMod.Modules.Items
 
         public static GameObject ItemBodyModelPrefab;
 
-        public float procChance { get; private set; } = 1f;
-        public float stackChance { get; private set; } = 0.5f;
-        public float capChance { get; private set; } = 5f;
+        public float procChance { get; private set; } = 50f;
+        public float stackChance { get; private set; } = 50f;
+        public float capChance { get; private set; } = 100f;
         public override string ItemName => "Ditto Virus";
 
         public override string ItemLangTokenName => "DITTO_VIRUS";
