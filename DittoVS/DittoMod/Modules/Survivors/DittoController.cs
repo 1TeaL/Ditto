@@ -23,17 +23,23 @@ namespace DittoMod.Modules.Survivors
 		private string origName;
 		public DittoMasterController dittomastercon;
 
+		public bool assaultvest;
 		public bool choiceband;
 		public bool choicescarf;
 		public bool choicespecs;
 		public bool leftovers;
+		public bool lifeorb;
+		public bool luckyegg;
 		public bool rockyhelmet;
 		public bool scopelens;
 		public bool shellbell;
+		public bool assaultvest2;
 		public bool choiceband2;
 		public bool choicescarf2;
 		public bool choicespecs2;
 		public bool leftovers2;
+		public bool lifeorb2;
+		public bool luckyegg2;
 		public bool rockyhelmet2;
 		public bool scopelens2;
 		public bool shellbell2;
@@ -47,17 +53,24 @@ namespace DittoMod.Modules.Survivors
 			//On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
 			characterBody = gameObject.GetComponent<CharacterBody>();
 			inputBank = gameObject.GetComponent<InputBankTest>();
+
+			assaultvest = false;
 			choiceband = false;
 			choicescarf = false;
 			choicespecs = false;
 			leftovers = false;
+			lifeorb = false;
+			luckyegg = false;
 			rockyhelmet = false;
 			scopelens = false;
 			shellbell = false;
+			assaultvest2 = false;
 			choiceband2 = false;
 			choicescarf2 = false;
 			choicespecs2 = false;
 			leftovers2 = false;
+			lifeorb2 = false;
+			luckyegg2 = false;
 			rockyhelmet2 = false;
 			scopelens2 = false;
 			shellbell2 = false;

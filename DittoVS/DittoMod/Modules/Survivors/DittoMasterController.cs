@@ -16,17 +16,23 @@ namespace DittoMod.Modules.Survivors
         public bool transformed;
         private int buffCountToApply;
         public float transformage;
+        public bool assaultvest;
         public bool choiceband;
         public bool choicescarf;
         public bool choicespecs;
         public bool leftovers;
+        public bool lifeorb;
+        public bool luckyegg;
         public bool rockyhelmet;
         public bool scopelens;
         public bool shellbell;
+        public bool assaultvest2;
         public bool choiceband2;
         public bool choicescarf2;
         public bool choicespecs2;
         public bool leftovers2;
+        public bool lifeorb2;
+        public bool luckyegg2;
         public bool rockyhelmet2;
         public bool scopelens2;
         public bool shellbell2;
@@ -34,23 +40,30 @@ namespace DittoMod.Modules.Survivors
         private void Awake()
         {
             transformed = false;
+            assaultvest = false;
             choiceband = false;
             choicescarf = false;
             choicespecs = false;
             leftovers = false;
+            lifeorb = false;
+            luckyegg = false;
             rockyhelmet = false;
             scopelens = false;
             shellbell = false;
+            assaultvest2 = false;
             choiceband2 = false;
             choicescarf2 = false;
             choicespecs2 = false;
             leftovers2 = false;
+            lifeorb2 = false;
+            luckyegg2 = false;
             rockyhelmet2 = false;
             scopelens2 = false;
             shellbell2 = false;
             //On.RoR2.Stage.Start += Stage_Start;
             //On.RoR2.CharacterMaster.Respawn += CharacterMaster_Respawn;
-            //On.RoR2.CharacterBody.Start += CharacterBody_Start;
+
+            On.RoR2.CharacterBody.Start += CharacterBody_Start;
             On.RoR2.CharacterBody.FixedUpdate += CharacterBody_FixedUpdate;
         }
 
@@ -110,6 +123,10 @@ namespace DittoMod.Modules.Survivors
                     {
                         if (Config.choiceOnTeammate.Value)
                         {
+                            if (assaultvest)
+                            {
+                                self.AddBuff(Modules.Buffs.assaultvestBuff);
+                            }
                             if (choiceband)
                             {
                                 self.AddBuff(Modules.Buffs.choicebandBuff);
@@ -121,6 +138,18 @@ namespace DittoMod.Modules.Survivors
                             if (choicespecs)
                             {
                                 self.AddBuff(Modules.Buffs.choicespecsBuff);
+                            }
+                            if (leftovers)
+                            {
+                                self.AddBuff(Modules.Buffs.leftoversBuff);
+                            }
+                            if (lifeorb)
+                            {
+                                self.AddBuff(Modules.Buffs.lifeorbBuff);
+                            }
+                            if (luckyegg)
+                            {
+                                self.AddBuff(Modules.Buffs.luckyeggBuff);
                             }
                             if (rockyhelmet)
                             {
@@ -134,6 +163,10 @@ namespace DittoMod.Modules.Survivors
                             {
                                 self.AddBuff(Modules.Buffs.shellbellBuff);
                             }
+                            if (assaultvest2)
+                            {
+                                self.AddBuff(Modules.Buffs.assaultvestBuff);
+                            }
                             if (choiceband2)
                             {
                                 self.AddBuff(Modules.Buffs.choicebandBuff);
@@ -145,6 +178,18 @@ namespace DittoMod.Modules.Survivors
                             if (choicespecs2)
                             {
                                 self.AddBuff(Modules.Buffs.choicespecsBuff);
+                            }
+                            if (leftovers2)
+                            {
+                                self.AddBuff(Modules.Buffs.leftoversBuff);
+                            }
+                            if (lifeorb2)
+                            {
+                                self.AddBuff(Modules.Buffs.lifeorbBuff);
+                            }
+                            if (luckyegg2)
+                            {
+                                self.AddBuff(Modules.Buffs.luckyeggBuff);
                             }
                             if (rockyhelmet2)
                             {
@@ -185,9 +230,9 @@ namespace DittoMod.Modules.Survivors
                             if (buffCountToApply >= 2)
                             {
                                 self.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, (buffCountToApply - 1));
-                                
+
                                 transformage = 0;
-                                
+
 
                             }
                         }
@@ -232,10 +277,10 @@ namespace DittoMod.Modules.Survivors
                     }
 
                     else transformage += Time.fixedDeltaTime;
-                }                 
+                }
 
 
-            }         
+            }
 
 
         }
