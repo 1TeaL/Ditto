@@ -9,8 +9,8 @@ using System.Runtime.CompilerServices;
 
 namespace DittoMod.Modules.Survivors
 {
-    
-    
+
+
     internal class Ditto : SurvivorBase
     {
 
@@ -56,7 +56,7 @@ namespace DittoMod.Modules.Survivors
 
         internal override Type characterMainState { get; set; } = typeof(EntityStates.GenericCharacterMain);
 
- //item display stuffs
+        //item display stuffs
         internal override ItemDisplayRuleSet itemDisplayRuleSet { get; set; }
         internal override List<ItemDisplayRuleSet.KeyAssetRuleGroup> itemDisplayRules { get; set; }
 
@@ -94,7 +94,7 @@ namespace DittoMod.Modules.Survivors
         {
             Skills.CreateSkillFamilies(bodyPrefab);
 
-            string prefix = DittoPlugin.developerPrefix +"_DITTO_BODY_";
+            string prefix = DittoPlugin.developerPrefix + "_DITTO_BODY_";
 
             #region Passive
             SkillLocator skillloc = bodyPrefab.GetComponent<SkillLocator>();
@@ -106,7 +106,7 @@ namespace DittoMod.Modules.Survivors
 
             #region Primary
 
-            SkillDef airforceSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+            SkillDef struggleSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
 
                 skillName = prefix + "PRIMARY_NAME",
@@ -132,11 +132,36 @@ namespace DittoMod.Modules.Survivors
                 keywordTokens = new string[] { "KEYWORD_AGILE" }
             });
 
-            Modules.Skills.AddPrimarySkill(bodyPrefab, airforceSkillDef);
+            Modules.Skills.AddPrimarySkill(bodyPrefab, struggleSkillDef);
 
             #endregion
 
             #region Items
+            SkillDef AssaultVest = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "ASSAULTVEST_NAME",
+                skillNameToken = prefix + "ASSAULTVEST_NAME",
+                skillDescriptionToken = prefix + "ASSAULTVEST_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("AssaultVest"),
+                activationState = new SerializableEntityStateType(typeof(SkillStates.AssaultVest)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 0f,
+                beginSkillCooldownOnSkillEnd = true,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = false,
+                interruptPriority = InterruptPriority.Skill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { "KEYWORD_AGILE" }
+
+            });
             SkillDef ChoiceBand = Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = prefix + "CHOICEBAND_NAME",
@@ -159,7 +184,7 @@ namespace DittoMod.Modules.Survivors
                 rechargeStock = 1,
                 requiredStock = 1,
                 stockToConsume = 1,
-                keywordTokens = new string[] { "KEYWORD_AGILE"}
+                keywordTokens = new string[] { "KEYWORD_AGILE" }
 
             });
             SkillDef ChoiceScarf = Skills.CreateSkillDef(new SkillDefInfo
@@ -219,6 +244,56 @@ namespace DittoMod.Modules.Survivors
                 skillDescriptionToken = prefix + "LEFTOVERS_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Leftovers"),
                 activationState = new SerializableEntityStateType(typeof(SkillStates.Leftovers)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 0f,
+                beginSkillCooldownOnSkillEnd = true,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = false,
+                interruptPriority = InterruptPriority.Skill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { "KEYWORD_AGILE" }
+
+            });
+            SkillDef LifeOrb = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "LIFEORB_NAME",
+                skillNameToken = prefix + "LIFEORB_NAME",
+                skillDescriptionToken = prefix + "LIFEORB_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("LifeOrb"),
+                activationState = new SerializableEntityStateType(typeof(SkillStates.LifeOrb)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 0f,
+                beginSkillCooldownOnSkillEnd = true,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = false,
+                interruptPriority = InterruptPriority.Skill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { "KEYWORD_AGILE" }
+
+            });
+            SkillDef LuckyEgg = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "LUCKYEGG_NAME",
+                skillNameToken = prefix + "LUCKYEGG_NAME",
+                skillDescriptionToken = prefix + "LUCKYEGG_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("LuckyEgg"),
+                activationState = new SerializableEntityStateType(typeof(SkillStates.LuckyEgg)),
                 activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
                 baseRechargeInterval = 0f,
@@ -425,7 +500,7 @@ namespace DittoMod.Modules.Survivors
             });
             #endregion
         }
-        
+
 
         internal override void InitializeSkins()
         {
