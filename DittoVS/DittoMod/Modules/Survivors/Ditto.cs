@@ -391,38 +391,16 @@ namespace DittoMod.Modules.Survivors
             #endregion
 
             #region Secondary
-            //SkillDef skillDef21 = Skills.CreateSkillDef(new SkillDefInfo
-            //{
-            //    skillName = prefix + "SECONDARY_NAME",
-            //    skillNameToken = prefix + "SECONDARY_NAME",
-            //    skillDescriptionToken = prefix + "SECONDARY_DESCRIPTION",
-            //    skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("blackwhip"),
-            //    activationState = new SerializableEntityStateType(typeof(SkillStates.Transform)),
-            //    activationStateMachineName = "Weapon",
-            //    baseMaxStock = 1,
-            //    baseRechargeInterval = 3f,
-            //    beginSkillCooldownOnSkillEnd = true,
-            //    canceledFromSprinting = false,
-            //    forceSprintDuringState = false,
-            //    fullRestockOnAssign = false,
-            //    interruptPriority = InterruptPriority.Skill,
-            //    resetCooldownTimerOnUse = false,
-            //    isCombatSkill = true,
-            //    mustKeyPress = true,
-            //    cancelSprintingOnActivation = false,
-            //    rechargeStock = 1,
-            //    requiredStock = 1,
-            //    stockToConsume = 1,
-            //    keywordTokens = new string[] { "KEYWORD_AGILE", "KEYWORD_STUNNING" }
-
-            //}) ;
 
             Skills.AddSecondarySkills(this.bodyPrefab, new SkillDef[]
             {
+                AssaultVest,
                 ChoiceBand,
                 ChoiceScarf,
                 ChoiceSpecs,
                 Leftovers,
+                LifeOrb,
+                LuckyEgg,
                 RockyHelmet,
                 ScopeLens,
                 ShellBell,
@@ -430,37 +408,15 @@ namespace DittoMod.Modules.Survivors
             #endregion
 
             #region Utility
-            //SkillDef skillDef31 = Skills.CreateSkillDef(new SkillDefInfo
-            //{
-            //    skillName = prefix + "UTILITY_NAME",
-            //    skillNameToken = prefix + "UTILITY_NAME",
-            //    skillDescriptionToken = prefix + "UTILITY_DESCRIPTION",
-            //    skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Floatactivate"),
-            //    activationState = new SerializableEntityStateType(typeof(SkillStates.Transform)),
-            //    activationStateMachineName = "Body",
-            //    baseMaxStock = 1,
-            //    baseRechargeInterval = 10f,
-            //    beginSkillCooldownOnSkillEnd = true,
-            //    canceledFromSprinting = false,
-            //    forceSprintDuringState = false,
-            //    fullRestockOnAssign = false,
-            //    interruptPriority = InterruptPriority.Skill,
-            //    resetCooldownTimerOnUse = false,
-            //    isCombatSkill = false,
-            //    mustKeyPress = true,
-            //    cancelSprintingOnActivation = false,
-            //    rechargeStock = 1,
-            //    requiredStock = 1,
-            //    stockToConsume = 1,
-            //    keywordTokens = new string[] { "KEYWORD_AGILE" }
-
-            //});
             Skills.AddUtilitySkills(this.bodyPrefab, new SkillDef[]
             {
+                AssaultVest,
                 ChoiceBand,
                 ChoiceScarf,
                 ChoiceSpecs,
                 Leftovers,
+                LifeOrb,
+                LuckyEgg,
                 RockyHelmet,
                 ScopeLens,
                 ShellBell,

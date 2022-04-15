@@ -15,7 +15,7 @@ namespace DittoMod.Modules.Items
 
         public static GameObject ItemBodyModelPrefab;
 
-        public float procChance { get; private set; } = 50f;
+        public float procChance { get; private set; } = 1f;
         public float stackChance { get; private set; } = 50f;
         public float capChance { get; private set; } = 100f;
         public override string ItemName => "Ditto Virus";
@@ -25,8 +25,8 @@ namespace DittoMod.Modules.Items
         public override string ItemPickupDesc => $"Chance to transform an enemy into a ditto after 5 seconds.";
 
         public override string ItemFullDescription => $"<style=cIsUtility>{procChance}%</style>"
-            + $"<style=cStack >{stackChance}%</style>"
-            + $"per stack, up to " + $"<style=cStack >{capChance}%</style>"
+            + $"<style=cStack>{stackChance}%</style>"
+            + $"per stack, up to " + $"<style=cStack>{capChance}%</style>"
             + "chance to <style=cWorldEvent>transform</style> an enemy into a ditto with "
             + "<style=cIsUtility>1 random buff</style>"
             + ".";
@@ -94,6 +94,7 @@ namespace DittoMod.Modules.Items
             speciallist.Add("ImpBossBody");
             speciallist.Add("BrotherBody");
             speciallist.Add("BrotherHurtBody");
+            speciallist.Add("DittoBody");
 
             if (!NetworkServer.active || !victim || !damageInfo.attacker || damageInfo.procCoefficient <= 0f || damageInfo.procChainMask.HasProc(ProcType.Missile)) return;
 
@@ -117,59 +118,60 @@ namespace DittoMod.Modules.Items
             {
                 if (!vicb.isChampion)
                 {
-                    if (vicb.master.bodyPrefab.name != "DittoBody")
+                    if (speciallist.Contains(vicb.master.bodyPrefab.name))
                     {
                         //self.body.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, 1);
                         vicb.master.TransformBody("DittoBody");
 
+                        body = vicb.master.GetBody();
                         AkSoundEngine.PostEvent(1531773223, vicb.gameObject);
 
-                        vicb.SetBuffCount(Modules.Buffs.choicebandBuff.buffIndex, 0);
-                        vicb.SetBuffCount(Modules.Buffs.choicescarfBuff.buffIndex, 0);
-                        vicb.SetBuffCount(Modules.Buffs.choicespecsBuff.buffIndex, 0);
-                        vicb.SetBuffCount(Modules.Buffs.rockyhelmetBuff.buffIndex, 0);
-                        vicb.SetBuffCount(Modules.Buffs.scopelensBuff.buffIndex, 0);
-                        vicb.SetBuffCount(Modules.Buffs.shellbellBuff.buffIndex, 0);
+                        body.SetBuffCount(Modules.Buffs.choicebandBuff.buffIndex, 0);
+                        body.SetBuffCount(Modules.Buffs.choicescarfBuff.buffIndex, 0);
+                        body.SetBuffCount(Modules.Buffs.choicespecsBuff.buffIndex, 0);
+                        body.SetBuffCount(Modules.Buffs.rockyhelmetBuff.buffIndex, 0);
+                        body.SetBuffCount(Modules.Buffs.scopelensBuff.buffIndex, 0);
+                        body.SetBuffCount(Modules.Buffs.shellbellBuff.buffIndex, 0);
 
                         int rand = UnityEngine.Random.Range(0, 5);
                         if (rand == 0)
                         {
-                            vicb.SetBuffCount(Modules.Buffs.choicebandBuff.buffIndex, 1);
+                            body.SetBuffCount(Modules.Buffs.choicebandBuff.buffIndex, 1);
                         }
                         if (rand == 1)
                         {
-                            vicb.SetBuffCount(Modules.Buffs.choicescarfBuff.buffIndex, 1);
+                            body.SetBuffCount(Modules.Buffs.choicescarfBuff.buffIndex, 1);
                         }
                         if (rand == 2)
                         {
-                            vicb.SetBuffCount(Modules.Buffs.choicespecsBuff.buffIndex, 1);
+                            body.SetBuffCount(Modules.Buffs.choicespecsBuff.buffIndex, 1);
                         }
                         if (rand == 3)
                         {
-                            vicb.SetBuffCount(Modules.Buffs.rockyhelmetBuff.buffIndex, 1);
+                            body.SetBuffCount(Modules.Buffs.rockyhelmetBuff.buffIndex, 1);
                         }
                         if (rand == 4)
                         {
-                            vicb.SetBuffCount(Modules.Buffs.scopelensBuff.buffIndex, 1);
+                            body.SetBuffCount(Modules.Buffs.scopelensBuff.buffIndex, 1);
                         }
                         if (rand == 5)
                         {
-                            vicb.SetBuffCount(Modules.Buffs.shellbellBuff.buffIndex, 1);
+                            body.SetBuffCount(Modules.Buffs.shellbellBuff.buffIndex, 1);
                         }
 
 
-                        var oldHealth = vicb.healthComponent.health / vicb.healthComponent.fullHealth;
-                        vicb.healthComponent.health = vicb.healthComponent.fullHealth * oldHealth;
-                        vicb.healthComponent.health = oldBody.healthComponent.health;
-                        vicb.baseMaxHealth = oldBody.baseMaxHealth;
-                        vicb.levelMaxHealth = oldBody.levelMaxHealth;
-                        vicb.maxHealth = oldBody.maxHealth;
-                        vicb.baseRegen = oldBody.regen;
-                        vicb.baseJumpCount = oldBody.baseJumpCount;
-                        vicb.maxJumpCount = oldBody.maxJumpCount;
-                        vicb.maxJumpHeight = oldBody.maxJumpHeight;
-                        vicb.jumpPower = oldBody.jumpPower;
-                        vicb.baseJumpPower = oldBody.baseJumpPower;
+                        var oldHealth = oldBody.healthComponent.health / oldBody.healthComponent.fullHealth;
+                        body.healthComponent.health = body.healthComponent.fullHealth * oldHealth;
+                        body.healthComponent.health = oldBody.healthComponent.health;
+                        body.baseMaxHealth = oldBody.baseMaxHealth;
+                        body.levelMaxHealth = oldBody.levelMaxHealth;
+                        body.maxHealth = oldBody.maxHealth;
+                        body.baseRegen = oldBody.regen;
+                        body.baseJumpCount = oldBody.baseJumpCount;
+                        body.maxJumpCount = oldBody.maxJumpCount;
+                        body.maxJumpHeight = oldBody.maxJumpHeight;
+                        body.jumpPower = oldBody.jumpPower;
+                        body.baseJumpPower = oldBody.baseJumpPower;
 
 
                     }

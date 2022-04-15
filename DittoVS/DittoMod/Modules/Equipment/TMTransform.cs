@@ -115,11 +115,11 @@ namespace DittoMod.Modules.Equipment
 
                 if (characterMaster.bodyPrefab.name != "DittoBody")
                 {
-                    //characterMaster.bodyPrefab = BodyCatalog.FindBodyPrefab("DittoBody");
-                    //body = characterMaster.Respawn(characterMaster.GetBody().transform.position, characterMaster.GetBody().transform.rotation);
-                    characterMaster.TransformBody("DittoBody");
-                    
-                    body = characterMaster.GetBody();
+                    characterMaster.bodyPrefab = BodyCatalog.FindBodyPrefab("DittoBody");
+                    body = characterMaster.Respawn(characterMaster.GetBody().transform.position, characterMaster.GetBody().transform.rotation);
+                    //characterMaster.TransformBody("DittoBody");
+
+                    //body = characterMaster.GetBody();
                     if (Config.copyHealth.Value)
                         body.healthComponent.health = body.healthComponent.fullHealth * oldHealth;
 
