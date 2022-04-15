@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1454928753924973133}
   - component: {fileID: 3734617377621661319}
   - component: {fileID: 7732150824013397692}
+  - component: {fileID: 7199395372634135781}
   m_Layer: 0
   m_Name: DittoEquipmentModel
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2942252193002846034}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -40,7 +41,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2942252193002846034}
-  m_Mesh: {fileID: 2534964839176971238, guid: edf4b569cb772ae48997675ab53fb18b, type: 3}
+  m_Mesh: {fileID: 2534964839176971238, guid: 4334d6bf4ca4f13468cf6ac0cae3d454, type: 3}
 --- !u!23 &3734617377621661319
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -59,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ba81bd7512c2e2a418b70515b5e6402d, type: 2}
+  - {fileID: 2100000, guid: 3cd2c954bab9c664c9b8c450352e2e33, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -137,7 +138,21 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 7.64e-43, y: 7.1e-44, z: 0, w: 19.632523}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!64 &7199395372634135781
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2942252193002846034}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2534964839176971238, guid: 4334d6bf4ca4f13468cf6ac0cae3d454, type: 3}

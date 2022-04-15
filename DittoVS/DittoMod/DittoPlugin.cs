@@ -421,7 +421,10 @@ namespace DittoMod
                         if (damageInfo.attacker.gameObject.GetComponent<CharacterBody>().baseNameToken
                             != DittoPlugin.developerPrefix + "_DITTO_BODY_NAME" && damageInfo.attacker != null)
                         {
-                            damageInfo.attacker.GetComponent<CharacterBody>().healthComponent.TakeDamage(damageInfo2);
+                            if (damageInfo.attacker.gameObject.GetComponent<CharacterBody>())
+                            {
+                                damageInfo.attacker.GetComponent<CharacterBody>().healthComponent.TakeDamage(damageInfo2);
+                            }
                         }
 
                         Vector3 enemyPos = damageInfo.attacker.transform.position;
@@ -454,7 +457,10 @@ namespace DittoMod
                             if (damageInfo.attacker.gameObject.GetComponent<CharacterBody>().baseNameToken
                                 != DittoPlugin.developerPrefix + "_DITTO_BODY_NAME" && damageInfo.attacker != null)
                             {
-                                damageInfo.attacker.GetComponent<CharacterBody>().healthComponent.TakeDamage(damageInfo2);
+                                if (damageInfo.attacker.gameObject.GetComponent<CharacterBody>())
+                                {
+                                    damageInfo.attacker.GetComponent<CharacterBody>().healthComponent.TakeDamage(damageInfo2);
+                                }
                             }
 
                             Vector3 enemyPos = damageInfo.attacker.transform.position;
