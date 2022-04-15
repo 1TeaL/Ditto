@@ -163,6 +163,7 @@ namespace DittoMod.Modules.Survivors
 				this.SearchForTarget(aimRay);
 				this.indicator.targetTransform = (this.trackingTarget ? this.trackingTarget.transform : null);
 			}
+
             if (characterBody.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_ASSAULTVEST_NAME" && !assaultvest)
             {
                 dittomastercon.assaultvest = true;
