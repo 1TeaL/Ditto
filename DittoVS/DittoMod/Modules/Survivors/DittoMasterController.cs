@@ -50,7 +50,7 @@ namespace DittoMod.Modules.Survivors
             shellbell2 = false;
             //On.RoR2.Stage.Start += Stage_Start;
             //On.RoR2.CharacterMaster.Respawn += CharacterMaster_Respawn;
-            On.RoR2.CharacterBody.Start += CharacterBody_Start;
+            //On.RoR2.CharacterBody.Start += CharacterBody_Start;
             On.RoR2.CharacterBody.FixedUpdate += CharacterBody_FixedUpdate;
         }
 

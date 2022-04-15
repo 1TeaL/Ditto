@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 4175948162
+CRC: 982382836
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: b38531d6ecbc9b39197c48e5a3f6238a
+    Hash: 58d1d02202b1a3ac160ef6158455421d
   TypeTreeHash:
     serializedVersion: 2
     Hash: 289c7a9900d3473dfbad0c4a497537de
@@ -56,32 +56,34 @@ Assets:
 - Assets/Ditto/Animations/Armature_Walking.anim
 - Assets/Ditto/Animations/Armature_Idle.anim
 - Assets/Ditto/GUI/texDittoIcon.tif
-- Assets/Ditto/Assets/mdlDittobroken.prefab
+- Assets/Ditto/Assets/DittoDisplay.prefab
 - Assets/Ditto/GUI/TMtransformSprite.PNG
 - Assets/Ditto/Assets/dittoshinytexture.png
 - Assets/Ditto/Assets/DittoBaseSkin.png
 - Assets/Ditto/Assets/Materials/DittoEquipmentMat.mat
 - Assets/Ditto/Assets/Materials/TMtransform.mat
+- Assets/Ditto/Assets/mdlDitto.prefab
 - Assets/Ditto/GUI/ShellBell.png
 - Assets/Ditto/GUI/Leftovers.png
 - Assets/Ditto/GUI/Struggle.png
 - Assets/Ditto/Assets/DittoAvatar.asset
 - Assets/Ditto/GUI/LifeOrb.png
-- Assets/Ditto/Assets/DittoDisplay.prefab
+- Assets/Ditto/Assets/Prefabs/DittoItemModel.prefab
 - Assets/Ditto/GUI/ChoiceSpecs.png
 - Assets/Ditto/GUI/TMtransform.PNG
 - Assets/Ditto/GUI/DittoGen5.jpg
 - Assets/Ditto/GUI/ChoiceBand.png
+- Assets/Ditto/Assets/Prefabs/DittoItemModel.fbx
 - Assets/Ditto/GUI/Transform.png
-- Assets/Ditto/Assets/DittoDisplaybroken.prefab
 - Assets/Ditto/GUI/Ability.png
 - Assets/Ditto/Assets/DittoShinySkin.png
 - Assets/Ditto/GUI/ChoiceScarf.png
 - Assets/Ditto/Animations/animDitto.controller
 - Assets/Ditto/GUI/RockyHelmet.png
 - Assets/Ditto/Animations/Armature_Jumping.anim
+- Assets/Ditto/Assets/Prefabs/DittoItemMat.mat
 - Assets/Ditto/Animations/Armature_IdleAnimation.anim
-- Assets/Ditto/Assets/mdlDitto.prefab
+- Assets/Ditto/Assets/MeshDitto.mesh
 - Assets/Ditto/Assets/DittoMat.mat
 - Assets/Ditto/Animations/Armature_Landing.anim
 - Assets/Ditto/Assets/ShinyDittoMat.mat
