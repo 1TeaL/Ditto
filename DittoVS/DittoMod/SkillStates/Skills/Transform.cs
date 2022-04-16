@@ -88,6 +88,11 @@ namespace DittoMod.SkillStates
             blacklist.Add("DittoBody");
             blacklist.Add("AffixEarthHealerBody");
             blacklist.Add("MinorConstructAttachableBody");
+            blacklist.Add("ClayGrenadierBody");
+            blacklist.Add("SMMaulingRockLarge");
+            blacklist.Add("SMMaulingRockMedium");
+            blacklist.Add("SMMaulingRockSmall");
+            blacklist.Add("VultureEggBody");
 
             List<string> speciallist = new List<string>();
             speciallist.Add("NullifierBody");
@@ -208,80 +213,26 @@ namespace DittoMod.SkillStates
 
                 body.AddTimedBuffAuthority(RoR2Content.Buffs.HiddenInvincibility.buffIndex, Modules.StaticValues.invincibilityDuration);
 
-                if (Config.choiceOnTeammate.Value && targetMaster.playerCharacterMasterController || !targetMaster.playerCharacterMasterController)
+                if (targetMaster.playerCharacterMasterController || !targetMaster.playerCharacterMasterController)
                 {
-                    if (dittocon.choiceband)
+                    
+                    if (!Config.choiceOnTeammate.Value)
                     {
-                        body.AddBuff(Modules.Buffs.choicebandBuff);
-                    }
+                        body.SetBuffCount(Modules.Buffs.assaultvestBuff.buffIndex, 0);
+                        body.SetBuffCount(Modules.Buffs.choicebandBuff.buffIndex, 0);
+                        body.SetBuffCount(Modules.Buffs.choicescarfBuff.buffIndex, 0);
+                        body.SetBuffCount(Modules.Buffs.choicespecsBuff.buffIndex, 0);
+                        body.SetBuffCount(Modules.Buffs.leftoversBuff.buffIndex, 0);
+                        body.SetBuffCount(Modules.Buffs.lifeorbBuff.buffIndex, 0);
+                        body.SetBuffCount(Modules.Buffs.luckyeggBuff.buffIndex, 0);
+                        body.SetBuffCount(Modules.Buffs.rockyhelmetBuff.buffIndex, 0);
+                        body.SetBuffCount(Modules.Buffs.scopelensBuff.buffIndex, 0);
+                        body.SetBuffCount(Modules.Buffs.shellbellBuff.buffIndex, 0);
 
-                    if (dittocon.choicescarf)
-                    {
-                        body.AddBuff(Modules.Buffs.choicescarfBuff);
-                    }
-
-                    if (dittocon.choicespecs)
-                    {
-                        body.AddBuff(Modules.Buffs.choicespecsBuff);
-                    }
-
-                    if (dittocon.leftovers)
-                    {
-                        body.AddBuff(Modules.Buffs.leftoversBuff);
-                    }
-
-                    if (dittocon.rockyhelmet)
-                    {
-                        body.AddBuff(Modules.Buffs.rockyhelmetBuff);
-                    }
-
-                    if (dittocon.scopelens)
-                    {
-                        body.AddBuff(Modules.Buffs.scopelensBuff);
-                    }
-
-                    if (dittocon.shellbell)
-                    {
-                        body.AddBuff(Modules.Buffs.shellbellBuff);
-                    }
-
-                    if (dittocon.choiceband2)
-                    {
-                        body.AddBuff(Modules.Buffs.choicebandBuff);
-                    }
-
-                    if (dittocon.choicescarf2)
-                    {
-                        body.AddBuff(Modules.Buffs.choicescarfBuff);
-                    }
-
-                    if (dittocon.choicespecs2)
-                    {
-                        body.AddBuff(Modules.Buffs.choicespecsBuff);
-                    }
-
-                    if (dittocon.leftovers2)
-                    {
-                        body.AddBuff(Modules.Buffs.leftoversBuff);
-                    }
-
-                    if (dittocon.rockyhelmet2)
-                    {
-                        body.AddBuff(Modules.Buffs.rockyhelmetBuff);
-                    }
-
-                    if (dittocon.scopelens2)
-                    {
-                        body.AddBuff(Modules.Buffs.scopelensBuff);
-                    }
-
-                    if (dittocon.shellbell2)
-                    {
-                        body.AddBuff(Modules.Buffs.shellbellBuff);
                     }
                 }
 
-                Debug.Log(hurtBox.healthComponent.body.activeBuffsList + "buffs");
+                //Debug.Log(hurtBox.healthComponent.body.activeBuffsList + "buffs");
 
                 if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixBlue))
                 {

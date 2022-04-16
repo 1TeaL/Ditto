@@ -16,6 +16,18 @@ namespace DittoMod.Modules.Survivors
 
         internal override string bodyName { get; set; } = "Ditto";
 
+
+        internal static SkillDef avestSkillDef;
+        internal static SkillDef cbandSkillDef;
+        internal static SkillDef cscarfSkillDef;
+        internal static SkillDef cspecSkillDef;
+        internal static SkillDef leftSkillDef;
+        internal static SkillDef loSkillDef;
+        internal static SkillDef luckySkillDef;
+        internal static SkillDef rhSkillDef;
+        internal static SkillDef scopeSkillDef;
+        internal static SkillDef shellSkillDef;
+
         internal override GameObject bodyPrefab { get; set; }
         internal override GameObject displayPrefab { get; set; }
 

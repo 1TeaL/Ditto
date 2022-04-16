@@ -5,7 +5,7 @@ using DittoMod.Modules.Survivors;
 
 namespace DittoMod.SkillStates
 {
-    public class LuckyEgg : BaseSkillState
+    public class LifeOrb : BaseSkillState
     {
         public float duration = 0.1f;
         public DittoController dittocon;
@@ -15,18 +15,18 @@ namespace DittoMod.SkillStates
             base.OnEnter();
 
             dittocon = base.GetComponent<DittoController>();
-            if (!characterBody.HasBuff(Modules.Buffs.leftoversBuff))
+            if (!characterBody.HasBuff(Modules.Buffs.lifeorbBuff))
             {
-                if (dittocon.luckyegg = false && base.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LUCKYEGG_NAME")
+                if (dittocon.leftovers = false && base.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LIFEORB_NAME")
                 {
-                    dittocon.luckyegg = true;
-                    characterBody.AddBuff(Modules.Buffs.leftoversBuff);
+                    dittocon.leftovers = true;
+                    characterBody.AddBuff(Modules.Buffs.lifeorbBuff);
                     AkSoundEngine.PostEvent(1531773223, this.gameObject);
                 }
-                if (dittocon.luckyegg2 = false && base.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LUCKYEGG_NAME")
+                if (dittocon.leftovers2 = false && base.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LIFEORB_NAME")
                 {
-                    dittocon.luckyegg2 = true;
-                    characterBody.AddBuff(Modules.Buffs.leftoversBuff);
+                    dittocon.leftovers2 = true;
+                    characterBody.AddBuff(Modules.Buffs.lifeorbBuff);
                     AkSoundEngine.PostEvent(1531773223, this.gameObject);
                 }
             }
@@ -60,8 +60,6 @@ namespace DittoMod.SkillStates
         {
             return InterruptPriority.Skill;
         }
+
     }
 }
-
-
-

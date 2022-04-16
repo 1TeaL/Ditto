@@ -57,7 +57,7 @@ namespace DittoMod.Modules
             LanguageAPI.Add(prefix + "LIFEORB_NAME", "Life Orb");
             LanguageAPI.Add(prefix + "LIFEORB_DESCRIPTION", $"Equip a Life Orb, granting <style=cIsDamage>{100f * (StaticValues.lifeorbboost - 1f)}% damage</style>" + " </style>.");
             LanguageAPI.Add(prefix + "LUCKYEGG_NAME", "Lucky Egg");
-            LanguageAPI.Add(prefix + "LUCKYEGG_DESCRIPTION", $"Equip a Lucky Egg, granting <style=cIsUtility>{100f * (StaticValues.luckyeggboost - 1f)}% extra experience gain</style>" + " </style>.");
+            LanguageAPI.Add(prefix + "LUCKYEGG_DESCRIPTION", $"Equip a Lucky Egg, granting <style=cIsUtility>1 luck</style>" + " </style>.");
             LanguageAPI.Add(prefix + "ROCKYHELMET_NAME", "Rocky Helmet");
             LanguageAPI.Add(prefix + "ROCKYHELMET_DESCRIPTION", $"Equip a Rocky Helmet, dealing <style=cIsDamage>{100f * StaticValues.rockyhelmetreflect}% damage</style>" + " to attackers</style>.");
             LanguageAPI.Add(prefix + "SCOPELENS_NAME", "Scope Lens");

@@ -14,11 +14,11 @@ namespace DittoMod.Modules
         internal const float choicespecsboost = 0.5f;
         internal const float leftoversregen = 0.03125f;
         internal const float lifeorbboost = 1.5f;
-        internal const float luckyeggboost = 1.5f;
+        internal const float luckyeggboost = 1f;
         internal const float rockyhelmetreflect = 1f;
         internal const float scopelensboost = 30f;
         internal const float shellbelllifesteal = 0.05f;
-        internal const float assaultvestboost2 = 100f;
+        internal const float assaultvestboost2 = 200f;
         internal const float choicebandboost2 = 2f;
         internal const float choicescarfboost2 = 2f;
         internal const float choicespecsboost2 = 0.5f;

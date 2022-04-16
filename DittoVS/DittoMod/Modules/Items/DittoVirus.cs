@@ -1,7 +1,9 @@
 ﻿using BepInEx.Configuration;
 using DittoMod.Items;
+using DittoMod.Modules.Survivors;
 using R2API;
 using RoR2;
+using RoR2.Skills;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +18,7 @@ namespace DittoMod.Modules.Items
         public static GameObject ItemBodyModelPrefab;
 
         public float procChance { get; private set; } = 1f;
-        public float stackChance { get; private set; } = 50f;
+        public float stackChance { get; private set; } = 100f;
         public float capChance { get; private set; } = 100f;
         public override string ItemName => "Ditto Virus";
 
@@ -24,11 +26,10 @@ namespace DittoMod.Modules.Items
 
         public override string ItemPickupDesc => $"Chance to transform an enemy into a ditto after 5 seconds.";
 
-        public override string ItemFullDescription => $"<style=cIsUtility>{procChance}%</style>"
-            + $"<style=cStack>{stackChance}%</style>"
-            + $"per stack, up to " + $"<style=cStack>{capChance}%</style>"
-            + "chance to <style=cWorldEvent>transform</style> an enemy into a ditto with "
-            + "<style=cIsUtility>1 random buff</style>"
+        public override string ItemFullDescription => $"<style=cIsUtility>{procChance}% </style>"
+            + $"<style=cStack>(+ {stackChance}% per stack, up to {capChance}%)</style>"
+            + " chance to <style=cWorldEvent>transform</style> an enemy into a ditto with "
+            + "<style=cIsUtility>random items equipped</style>"
             + ".";
 
         public override string ItemLore => "The day will come when Ditto's rule the world. ";
@@ -40,6 +41,18 @@ namespace DittoMod.Modules.Items
         public override GameObject ItemModel => Modules.Assets.DittoItemPrefab;
 
         public override Sprite ItemIcon => Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texDittoIcon");
+
+
+        public static SkillDef avestSkillDef = Ditto.avestSkillDef;
+        public static SkillDef cbandSkillDef = Ditto.cbandSkillDef;
+        public static SkillDef cscarfSkillDef = Ditto.cscarfSkillDef;
+        public static SkillDef cspecSkillDef = Ditto.cspecSkillDef;
+        public static SkillDef leftSkillDef = Ditto.leftSkillDef;
+        public static SkillDef loSkillDef = Ditto.loSkillDef;
+        public static SkillDef luckySkillDef = Ditto.luckySkillDef;
+        public static SkillDef rhSkillDef = Ditto.rhSkillDef;
+        public static SkillDef scopeSkillDef = Ditto.scopeSkillDef;
+        public static SkillDef shellSkillDef = Ditto.shellSkillDef;
 
 
         public override void Init(ConfigFile config)
@@ -59,7 +72,7 @@ namespace DittoMod.Modules.Items
         public override void Hooks()
         {
 
-            On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
+            //On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             On.RoR2.GlobalEventManager.OnHitEnemy += On_GEMOnHitEnemy;
 
         }
@@ -126,39 +139,80 @@ namespace DittoMod.Modules.Items
                         body = vicb.master.GetBody();
                         AkSoundEngine.PostEvent(1531773223, vicb.gameObject);
 
-                        body.SetBuffCount(Modules.Buffs.choicebandBuff.buffIndex, 0);
-                        body.SetBuffCount(Modules.Buffs.choicescarfBuff.buffIndex, 0);
-                        body.SetBuffCount(Modules.Buffs.choicespecsBuff.buffIndex, 0);
-                        body.SetBuffCount(Modules.Buffs.rockyhelmetBuff.buffIndex, 0);
-                        body.SetBuffCount(Modules.Buffs.scopelensBuff.buffIndex, 0);
-                        body.SetBuffCount(Modules.Buffs.shellbellBuff.buffIndex, 0);
-
-                        int rand = UnityEngine.Random.Range(0, 5);
+                        int rand = UnityEngine.Random.Range(0, 8);
                         if (rand == 0)
                         {
-                            body.SetBuffCount(Modules.Buffs.choicebandBuff.buffIndex, 1);
+                            body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.avestSkillDef, GenericSkill.SkillOverridePriority.Contextual);
                         }
                         if (rand == 1)
                         {
-                            body.SetBuffCount(Modules.Buffs.choicescarfBuff.buffIndex, 1);
+                            body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.cbandSkillDef, GenericSkill.SkillOverridePriority.Contextual);
                         }
                         if (rand == 2)
                         {
-                            body.SetBuffCount(Modules.Buffs.choicespecsBuff.buffIndex, 1);
+                            body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.cscarfSkillDef, GenericSkill.SkillOverridePriority.Contextual);
                         }
                         if (rand == 3)
                         {
-                            body.SetBuffCount(Modules.Buffs.rockyhelmetBuff.buffIndex, 1);
+                            body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.cspecSkillDef, GenericSkill.SkillOverridePriority.Contextual);
                         }
                         if (rand == 4)
                         {
-                            body.SetBuffCount(Modules.Buffs.scopelensBuff.buffIndex, 1);
+                            body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.leftSkillDef, GenericSkill.SkillOverridePriority.Contextual);
                         }
                         if (rand == 5)
                         {
-                            body.SetBuffCount(Modules.Buffs.shellbellBuff.buffIndex, 1);
+                            body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.loSkillDef, GenericSkill.SkillOverridePriority.Contextual);
                         }
-
+                        if (rand == 6)
+                        {
+                            body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.luckySkillDef, GenericSkill.SkillOverridePriority.Contextual);
+                        }
+                        if (rand == 7)
+                        {
+                            body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.scopeSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+                        }
+                        if (rand == 8)
+                        {
+                            body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.shellSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+                        }
+                        int rand2 = UnityEngine.Random.Range(0, 8);
+                        if (rand2 == 0)
+                        {
+                            body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.avestSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+                        }
+                        if (rand2 == 1)
+                        {
+                            body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.cbandSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+                        }
+                        if (rand2 == 2)
+                        {
+                            body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.cscarfSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+                        }
+                        if (rand2 == 3)
+                        {
+                            body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.cspecSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+                        }
+                        if (rand2 == 4)
+                        {
+                            body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.leftSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+                        }
+                        if (rand2 == 5)
+                        {
+                            body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.loSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+                        }
+                        if (rand2 == 6)
+                        {
+                            body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.luckySkillDef, GenericSkill.SkillOverridePriority.Contextual);
+                        }
+                        if (rand2 == 7)
+                        {
+                            body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.scopeSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+                        }
+                        if (rand2 == 8)
+                        {
+                            body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.shellSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+                        }
 
                         var oldHealth = oldBody.healthComponent.health / oldBody.healthComponent.fullHealth;
                         body.healthComponent.health = body.healthComponent.fullHealth * oldHealth;
@@ -183,89 +237,132 @@ namespace DittoMod.Modules.Items
 
         }
 
-        private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo di)
-        {
+        //private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo di)
+        //{
 
 
-            orig(self, di);
+        //    orig(self, di);
 
 
-            CharacterBody oldBody = self.body;
-            CharacterBody body;
+        //    CharacterBody oldBody = self.body;
+        //    CharacterBody body;
 
-            if (di == null || di.rejected || !di.attacker || di.attacker == self.gameObject) return;
+        //    if (di == null || di.rejected || !di.attacker || di.attacker == self.gameObject) return;
 
-            var cb = di.attacker.GetComponent<CharacterBody>();
-            if (cb)
-            {
-                var icnt = GetCount(cb);
-                if (icnt < 1) return;
-                var proc = cb.master ? Util.CheckRoll(procChance, cb.master) : Util.CheckRoll(procChance);
-                if (proc)
-                {
-                    if (!self.body.isChampion)
-                    {
-                        if (self.body.master.bodyPrefab.name != "DittoBody")
-                        {
-                            //self.body.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, 1);
-                            self.body.master.TransformBody("DittoBody");
+        //    var cb = di.attacker.GetComponent<CharacterBody>();
+        //    if (cb)
+        //    {
+        //        var icnt = GetCount(cb);
+        //        if (icnt < 1) return;
+        //        var proc = cb.master ? Util.CheckRoll(procChance, cb.master) : Util.CheckRoll(procChance);
+        //        if (proc)
+        //        {
+        //            if (!self.body.isChampion)
+        //            {
+        //                if (self.body.master.bodyPrefab.name != "DittoBody")
+        //                {
+        //                    //self.body.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, 1);
+        //                    self.body.master.TransformBody("DittoBody");
+        //                    body = self.body;
 
-                            AkSoundEngine.PostEvent(1531773223, self.gameObject);
+        //                    AkSoundEngine.PostEvent(1531773223, self.gameObject);
 
-                            self.body.SetBuffCount(Modules.Buffs.choicebandBuff.buffIndex, 0);
-                            self.body.SetBuffCount(Modules.Buffs.choicescarfBuff.buffIndex, 0);
-                            self.body.SetBuffCount(Modules.Buffs.choicespecsBuff.buffIndex, 0);
-                            self.body.SetBuffCount(Modules.Buffs.rockyhelmetBuff.buffIndex, 0);
-                            self.body.SetBuffCount(Modules.Buffs.scopelensBuff.buffIndex, 0);
-                            self.body.SetBuffCount(Modules.Buffs.shellbellBuff.buffIndex, 0);
+        //                    int rand = UnityEngine.Random.Range(0, 8);
+        //                    if (rand == 0)
+        //                    {
+        //                        body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.avestSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+        //                    }
+        //                    if (rand == 1)
+        //                    {
+        //                        body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.cbandSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+        //                    }
+        //                    if (rand == 2)
+        //                    {
+        //                        body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.cscarfSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+        //                    }
+        //                    if (rand == 3)
+        //                    {
+        //                        body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.cspecSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+        //                    }
+        //                    if (rand == 4)
+        //                    {
+        //                        body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.leftSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+        //                    }
+        //                    if (rand == 5)
+        //                    {
+        //                        body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.loSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+        //                    }
+        //                    if (rand == 6)
+        //                    {
+        //                        body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.luckySkillDef, GenericSkill.SkillOverridePriority.Contextual);
+        //                    }
+        //                    if (rand == 7)
+        //                    {
+        //                        body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.scopeSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+        //                    }
+        //                    if (rand == 8)
+        //                    {
+        //                        body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.shellSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+        //                    }
+        //                    int rand2 = UnityEngine.Random.Range(0, 8);
+        //                    if (rand2 == 0)
+        //                    {
+        //                        body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.avestSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+        //                    }
+        //                    if (rand2 == 1)
+        //                    {
+        //                        body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.cbandSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+        //                    }
+        //                    if (rand2 == 2)
+        //                    {
+        //                        body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.cscarfSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+        //                    }
+        //                    if (rand2 == 3)
+        //                    {
+        //                        body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.cspecSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+        //                    }
+        //                    if (rand2 == 4)
+        //                    {
+        //                        body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.leftSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+        //                    }
+        //                    if (rand2 == 5)
+        //                    {
+        //                        body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.loSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+        //                    }
+        //                    if (rand2 == 6)
+        //                    {
+        //                        body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.luckySkillDef, GenericSkill.SkillOverridePriority.Contextual);
+        //                    }
+        //                    if (rand2 == 7)
+        //                    {
+        //                        body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.scopeSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+        //                    }
+        //                    if (rand2 == 8)
+        //                    {
+        //                        body.skillLocator.secondary.SetSkillOverride(body.skillLocator.secondary, Ditto.shellSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+        //                    }
 
-                            int rand = UnityEngine.Random.Range(0, 5);
-                            if (rand == 0)
-                            {
-                                self.body.SetBuffCount(Modules.Buffs.choicebandBuff.buffIndex, 1);
-                            }
-                            if (rand == 1)
-                            {
-                                self.body.SetBuffCount(Modules.Buffs.choicescarfBuff.buffIndex, 1);
-                            }
-                            if (rand == 2)
-                            {
-                                self.body.SetBuffCount(Modules.Buffs.choicespecsBuff.buffIndex, 1);
-                            }
-                            if (rand == 3)
-                            {
-                                self.body.SetBuffCount(Modules.Buffs.rockyhelmetBuff.buffIndex, 1);
-                            }
-                            if (rand == 4)
-                            {
-                                self.body.SetBuffCount(Modules.Buffs.scopelensBuff.buffIndex, 1);
-                            }
-                            if (rand == 5)
-                            {
-                                self.body.SetBuffCount(Modules.Buffs.shellbellBuff.buffIndex, 1);
-                            }
+        //                    body = self.body;
 
-                            body = self.body;
-
-                            var oldHealth = body.healthComponent.health / body.healthComponent.fullHealth;
-                            body.healthComponent.health = body.healthComponent.fullHealth * oldHealth;
-                            body.healthComponent.health = oldBody.healthComponent.health;
-                            body.baseMaxHealth = oldBody.baseMaxHealth;
-                            body.levelMaxHealth = oldBody.levelMaxHealth;
-                            body.maxHealth = oldBody.maxHealth;
-                            body.baseRegen = oldBody.regen;
-                            body.baseJumpCount = oldBody.baseJumpCount;
-                            body.maxJumpCount = oldBody.maxJumpCount;
-                            body.maxJumpHeight = oldBody.maxJumpHeight;
-                            body.jumpPower = oldBody.jumpPower;
-                            body.baseJumpPower = oldBody.baseJumpPower;
+        //                    var oldHealth = body.healthComponent.health / body.healthComponent.fullHealth;
+        //                    body.healthComponent.health = body.healthComponent.fullHealth * oldHealth;
+        //                    body.healthComponent.health = oldBody.healthComponent.health;
+        //                    body.baseMaxHealth = oldBody.baseMaxHealth;
+        //                    body.levelMaxHealth = oldBody.levelMaxHealth;
+        //                    body.maxHealth = oldBody.maxHealth;
+        //                    body.baseRegen = oldBody.regen;
+        //                    body.baseJumpCount = oldBody.baseJumpCount;
+        //                    body.maxJumpCount = oldBody.maxJumpCount;
+        //                    body.maxJumpHeight = oldBody.maxJumpHeight;
+        //                    body.jumpPower = oldBody.jumpPower;
+        //                    body.baseJumpPower = oldBody.baseJumpPower;
 
 
-                        }
+        //                }
 
-                    }
-                }
-            }
-        }
+        //            }
+        //        }
+        //    }
+        //}
     }
 }
