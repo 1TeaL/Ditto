@@ -47,8 +47,8 @@ namespace DittoMod
 
         public static bool scepterInstalled = false;
 
-        public float transformage;
-        public bool transformon;
+        public DittoController dittocon;
+        public DittoMasterController dittomastercon;
 
         public const string MODUID = "com.TeaL.DittoMod";
         public const string MODNAME = "DittoMod";
@@ -671,7 +671,8 @@ namespace DittoMod
                 {
                     //Give equipment
                     self.inventory.GiveEquipmentString("EQUIPMENT_TM_TRANSFORM");
-                    //setup UI
+                    //reset buff bool
+
                 }
             }
         }
@@ -682,6 +683,55 @@ namespace DittoMod
             if (self.gameObject.name.Contains("DittoDisplay"))
             {
                 AkSoundEngine.PostEvent(3468082827, self.gameObject);
+
+
+                //dittocon = self.body.gameObject.GetComponent<DittoController>();
+                //dittomastercon = self.body.master.gameObject.GetComponent<DittoMasterController>();
+
+                //dittocon.assaultvest = false;
+                //dittocon.choiceband = false;
+                //dittocon.choicescarf = false;
+                //dittocon.choicespecs = false;
+                //dittocon.leftovers = false;
+                //dittocon.lifeorb = false;
+                //dittocon.luckyegg = false;
+                //dittocon.rockyhelmet = false;
+                //dittocon.scopelens = false;
+                //dittocon.shellbell = false;
+                //dittocon.assaultvest2 = false;
+                //dittocon.choiceband2 = false;
+                //dittocon.choicescarf2 = false;
+                //dittocon.choicespecs2 = false;
+                //dittocon.leftovers2 = false;
+                //dittocon.lifeorb2 = false;
+                //dittocon.luckyegg2 = false;
+                //dittocon.rockyhelmet2 = false;
+                //dittocon.scopelens2 = false;
+                //dittocon.shellbell2 = false;
+
+                //dittomastercon.transformed = false;
+                //dittomastercon.assaultvest = false;
+                //dittomastercon.choiceband = false;
+                //dittomastercon.choicescarf = false;
+                //dittomastercon.choicespecs = false;
+                //dittomastercon.leftovers = false;
+                //dittomastercon.lifeorb = false;
+                //dittomastercon.luckyegg = false;
+                //dittomastercon.rockyhelmet = false;
+                //dittomastercon.scopelens = false;
+                //dittomastercon.shellbell = false;
+                //dittomastercon.assaultvest2 = false;
+                //dittomastercon.choiceband2 = false;
+                //dittomastercon.choicescarf2 = false;
+                //dittomastercon.choicespecs2 = false;
+                //dittomastercon.leftovers2 = false;
+                //dittomastercon.lifeorb2 = false;
+                //dittomastercon.luckyegg2 = false;
+                //dittomastercon.rockyhelmet2 = false;
+                //dittomastercon.scopelens2 = false;
+                //dittomastercon.shellbell2 = false;
+
+
             }
 
         }

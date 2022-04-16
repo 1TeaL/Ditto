@@ -208,13 +208,18 @@ namespace DittoMod.SkillStates
                 {
                     body.characterMotor.mass = oldBody.characterMotor.mass;
                 }
-                body.baseArmor = oldBody.armor;
+                body.baseArmor = oldBody.baseArmor;
+                body.armor = oldBody.armor;
                 body.baseMoveSpeed = oldBody.baseMoveSpeed;
 
                 body.AddTimedBuffAuthority(RoR2Content.Buffs.HiddenInvincibility.buffIndex, Modules.StaticValues.invincibilityDuration);
 
                 if (targetMaster.playerCharacterMasterController || !targetMaster.playerCharacterMasterController)
                 {
+                    if (Config.choiceOnTeammate.Value)
+                    {
+
+                    }
                     
                     if (!Config.choiceOnTeammate.Value)
                     {
