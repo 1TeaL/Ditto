@@ -12,6 +12,7 @@ namespace DittoMod.Modules.Survivors
     public class DittoMasterController : MonoBehaviour
     {
         public DittoController dittocon;
+        public DittoMasterController dittomastercon;
         private CharacterMaster characterMaster;
         private CharacterBody body;
         public bool transformed;
@@ -67,7 +68,9 @@ namespace DittoMod.Modules.Survivors
             On.RoR2.CharacterBody.Start += CharacterBody_Start;
             On.RoR2.CharacterBody.FixedUpdate += CharacterBody_FixedUpdate;
             On.RoR2.CharacterMaster.OnInventoryChanged += CharacterMaster_OnInventoryChanged;
-            
+            On.RoR2.CharacterModel.Awake += CharacterModel_Awake;
+            On.RoR2.Run.BeginGameOver += Run_BeginGameOver;
+
         }
 
         private void Start()
@@ -97,6 +100,7 @@ namespace DittoMod.Modules.Survivors
             //Debug.Log(transformed + "istransformed");
             CharacterBody self = characterMaster.GetBody();
 
+            dittomastercon = characterMaster.gameObject.GetComponent<DittoMasterController>();
             dittocon = self.gameObject.GetComponent<DittoController>();
 
             dittocon.assaultvest = false;
@@ -271,6 +275,46 @@ namespace DittoMod.Modules.Survivors
         }
 
 
+        private void Run_BeginGameOver(On.RoR2.Run.orig_BeginGameOver orig, Run self, GameEndingDef gameEndingDef)
+        {
+            orig(self, gameEndingDef);
+            //Destroy(dittomastercon);
+
+        }
+
+        private void CharacterModel_Awake(On.RoR2.CharacterModel.orig_Awake orig, CharacterModel self)
+        {
+            orig(self);
+            if (self.gameObject.name.Contains("DittoDisplay"))
+            {
+
+                transformed = false;
+                assaultvest = false;
+                choiceband = false;
+                choicescarf = false;
+                choicespecs = false;
+                leftovers = false;
+                lifeorb = false;
+                luckyegg = false;
+                rockyhelmet = false;
+                scopelens = false;
+                shellbell = false;
+                assaultvest2 = false;
+                choiceband2 = false;
+                choicescarf2 = false;
+                choicespecs2 = false;
+                leftovers2 = false;
+                lifeorb2 = false;
+                luckyegg2 = false;
+                rockyhelmet2 = false;
+                scopelens2 = false;
+                shellbell2 = false;
+
+            }
+            //Destroy(dittomastercon);
+
+
+        }
 
         //private CharacterBody CharacterMaster_Respawn(On.RoR2.CharacterMaster.orig_Respawn orig, CharacterMaster self, Vector3 footPosition, Quaternion rotation)
         //{
