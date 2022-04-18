@@ -408,19 +408,8 @@ namespace DittoMod
 
                         var damageInfo2 = new DamageInfo();
 
-                        //damageInfo2.damage = self.body.damage * Modules.StaticValues.rockyhelmetreflect;
-                        //damageInfo2.position = damageInfo.attacker.transform.position;
-                        //damageInfo2.force = Vector3.zero;
-                        //damageInfo2.damageColorIndex = DamageColorIndex.Default;
-                        //damageInfo2.crit = Util.CheckRoll(self.body.crit, self.body.master);
-                        //damageInfo2.attacker = self.gameObject;
-                        //damageInfo2.inflictor = null;
-                        //damageInfo2.damageType = DamageType.BypassArmor | DamageType.Generic;
-                        //damageInfo2.procCoefficient = 1f;
-                        //damageInfo2.procChainMask = default(ProcChainMask);
-
                         blastAttack = new BlastAttack();
-                        blastAttack.radius = 10f;
+                        blastAttack.radius = 8f;
                         blastAttack.procCoefficient = 1;
                         blastAttack.position = self.transform.position;
                         blastAttack.attacker = self.gameObject;
@@ -435,10 +424,6 @@ namespace DittoMod
                         if (damageInfo.attacker.gameObject.GetComponent<CharacterBody>().baseNameToken
                             != DittoPlugin.developerPrefix + "_DITTO_BODY_NAME" && damageInfo.attacker != null)
                         {
-                            //if (damageInfo.attacker.GetComponent<CharacterBody>())
-                            //{
-                            //    damageInfo.attacker.GetComponent<CharacterBody>().healthComponent.TakeDamage(damageInfo2);
-                            //}
                             blastAttack.Fire();
                         }
 
@@ -450,73 +435,36 @@ namespace DittoMod
                             rotation = Quaternion.LookRotation(self.transform.position)
 
                         }, false);
-
-                        //Vector3 enemyPos = damageInfo.attacker.transform.position;
-                        //EffectManager.SpawnEffect(effectPrefab, new EffectData
-                        //{
-                        //    origin = enemyPos,
-                        //    scale = 1f,
-                        //    rotation = Quaternion.LookRotation(enemyPos - self.body.transform.position)
-
-                        //}, false);
                     }
                     if (buffnumber >= 2)
                     {
-                        if (buffnumber >= 1 && buffnumber < 2)
+                        blastAttack = new BlastAttack();
+                        blastAttack.radius = 16f;
+                        blastAttack.procCoefficient = 2;
+                        blastAttack.position = self.transform.position;
+                        blastAttack.attacker = self.gameObject;
+                        blastAttack.crit = Util.CheckRoll(self.body.crit, self.body.master);
+                        blastAttack.baseDamage = self.body.damage * Modules.StaticValues.rockyhelmetreflect2;
+                        blastAttack.falloffModel = BlastAttack.FalloffModel.None;
+                        blastAttack.baseForce = 100f;
+                        blastAttack.teamIndex = TeamComponent.GetObjectTeam(blastAttack.attacker);
+                        blastAttack.damageType = DamageType.Stun1s | DamageType.BypassArmor;
+                        blastAttack.attackerFiltering = AttackerFiltering.NeverHitSelf;
+
+                        if (damageInfo.attacker.gameObject.GetComponent<CharacterBody>().baseNameToken
+                            != DittoPlugin.developerPrefix + "_DITTO_BODY_NAME" && damageInfo.attacker != null)
                         {
-
-                            //damageInfo2.damage = self.body.damage * Modules.StaticValues.rockyhelmetreflect;
-                            //damageInfo2.position = damageInfo.attacker.transform.position;
-                            //damageInfo2.force = Vector3.zero;
-                            //damageInfo2.damageColorIndex = DamageColorIndex.Default;
-                            //damageInfo2.crit = Util.CheckRoll(self.body.crit, self.body.master);
-                            //damageInfo2.attacker = self.gameObject;
-                            //damageInfo2.inflictor = null;
-                            //damageInfo2.damageType = DamageType.BypassArmor | DamageType.Generic;
-                            //damageInfo2.procCoefficient = 1f;
-                            //damageInfo2.procChainMask = default(ProcChainMask);
-
-                            blastAttack = new BlastAttack();
-                            blastAttack.radius = 10f;
-                            blastAttack.procCoefficient = 1;
-                            blastAttack.position = self.transform.position;
-                            blastAttack.attacker = self.gameObject;
-                            blastAttack.crit = Util.CheckRoll(self.body.crit, self.body.master);
-                            blastAttack.baseDamage = self.body.damage * Modules.StaticValues.rockyhelmetreflect2;
-                            blastAttack.falloffModel = BlastAttack.FalloffModel.None;
-                            blastAttack.baseForce = 100f;
-                            blastAttack.teamIndex = TeamComponent.GetObjectTeam(blastAttack.attacker);
-                            blastAttack.damageType = DamageType.Stun1s | DamageType.BypassArmor;
-                            blastAttack.attackerFiltering = AttackerFiltering.NeverHitSelf;
-
-                            if (damageInfo.attacker.gameObject.GetComponent<CharacterBody>().baseNameToken
-                                != DittoPlugin.developerPrefix + "_DITTO_BODY_NAME" && damageInfo.attacker != null)
-                            {
-                                //if (damageInfo.attacker.GetComponent<CharacterBody>())
-                                //{
-                                //    damageInfo.attacker.GetComponent<CharacterBody>().healthComponent.TakeDamage(damageInfo2);
-                                //}
-                                blastAttack.Fire();
-                            }
-
-
-                            EffectManager.SpawnEffect(effectPrefab, new EffectData
-                            {
-                                origin = self.transform.position,
-                                scale = 10f,
-                                rotation = Quaternion.LookRotation(self.transform.position)
-
-                            }, false);
-
-                            //Vector3 enemyPos = damageInfo.attacker.transform.position;
-                            //EffectManager.SpawnEffect(effectPrefab, new EffectData
-                            //{
-                            //    origin = enemyPos,
-                            //    scale = 1f,
-                            //    rotation = Quaternion.LookRotation(enemyPos - self.body.transform.position)
-
-                            //}, false);
+                            blastAttack.Fire();
                         }
+
+
+                        EffectManager.SpawnEffect(effectPrefab, new EffectData
+                        {
+                            origin = self.transform.position,
+                            scale = 10f,
+                            rotation = Quaternion.LookRotation(self.transform.position)
+
+                        }, false);
                     }
                 }
 
@@ -584,13 +532,13 @@ namespace DittoMod
                     {
                         self.skillLocator.primary.cooldownScale *= Modules.StaticValues.choicespecsboost;
                         self.skillLocator.secondary.cooldownScale *= Modules.StaticValues.choicespecsboost;
-                        //self.skillLocator.utility.cooldownScale *= Modules.StaticValues.choicespecsboost;
-                        //self.skillLocator.special.cooldownScale *= Modules.StaticValues.choicespecsboost;                        
+                        self.skillLocator.utility.cooldownScale *= Modules.StaticValues.choicespecsboost;
+                        self.skillLocator.special.cooldownScale *= Modules.StaticValues.choicespecsboost;
                     }
                     if (buffnumber >= 2)
                     {
-                        //self.skillLocator.primary.cooldownScale *= Modules.StaticValues.choicespecsboost2;
-                        //self.skillLocator.secondary.cooldownScale *= Modules.StaticValues.choicespecsboost2;
+                        self.skillLocator.primary.cooldownScale *= Modules.StaticValues.choicespecsboost2;
+                        self.skillLocator.secondary.cooldownScale *= Modules.StaticValues.choicespecsboost2;
                         self.skillLocator.utility.cooldownScale *= Modules.StaticValues.choicespecsboost2;
                         self.skillLocator.special.cooldownScale *= Modules.StaticValues.choicespecsboost2;
                     }

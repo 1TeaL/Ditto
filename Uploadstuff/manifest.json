@@ -1,8 +1,8 @@
 {
     "name": "DittoMod",
-    "version_number": "1.0.1",
+    "version_number": "1.1.0",
     "website_url": "https://github.com/1TeaL/Ditto",
-    "description": "Who's that Pokémon? 1.0.1 - bug fixes",
+    "description": "Who's that Pokémon? 1.1.0 - HUGE bug fixes regarding transformations, limited timers on powerful transformations, changed and new items, ",
     "dependencies": [
          "tristanmcpherson-R2API-4.3.5"
     ]

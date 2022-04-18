@@ -11,7 +11,7 @@ namespace DittoMod.Modules
         internal const float assaultvestboost = 100f;
         internal const float choicebandboost = 1.5f;
         internal const float choicescarfboost = 1.5f;
-        internal const float choicespecsboost = 0.5f;
+        internal const float choicespecsboost = 0.75f;
         internal const float leftoversregen = 0.03125f;
         internal const float lifeorbboost = 1.5f;
         internal const float luckyeggboost = 1f;
