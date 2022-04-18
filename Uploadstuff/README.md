@@ -34,6 +34,8 @@ If you enjoy my work, support me on Ko-fi!
 
 ## Latest Changelog, Next update(s)
 
+- 1.1.1 
+    - Hotfix so buffs don't carry over runs.
 - 1.1.0 
     - Changed the method in which Ditto transforms, doesn't respawn as the character anymore- should cause less issues. (Credits to Bubbet).
     - Checks if player owns the dlc before allowing them to transform into railgunner or void fiend as people without it would die. (Credits to Bubbet).
