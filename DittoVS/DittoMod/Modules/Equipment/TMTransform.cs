@@ -27,7 +27,7 @@ namespace DittoMod.Modules.Equipment
             
         public override Sprite EquipmentIcon => Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("TMtransformSprite");
 
-        public override bool CanDrop => true;
+        public override bool CanDrop => false;
 
         public override bool IsLunar => true;
 
