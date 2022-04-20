@@ -16,7 +16,7 @@ namespace DittoMod.Modules.Survivors
         private CharacterMaster characterMaster;
         private CharacterBody body;
         public bool transformed;
-        private int buffCountToApply;
+        //private int buffCountToApply;
         public float transformage;
         public bool assaultvest;
         public bool choiceband;
@@ -367,29 +367,31 @@ namespace DittoMod.Modules.Survivors
             speciallist.Add("NullifierBody");
             speciallist.Add("VoidJailerBody");
             speciallist.Add("MinorConstructBody");
+            speciallist.Add("VoidInfestorBody");
+            speciallist.Add("VoidBarnacleBody");
             speciallist.Add("MinorConstructOnKillBody");
             speciallist.Add("MiniVoidRaidCrabBodyPhase1");
             speciallist.Add("MiniVoidRaidCrabBodyPhase2");
             speciallist.Add("MiniVoidRaidCrabBodyPhase3");
-            speciallist.Add("ElectricWormBody");
-            speciallist.Add("MagmaWormBody");
-            speciallist.Add("BeetleQueen2Body");
-            speciallist.Add("TitanBody");
-            speciallist.Add("TitanGoldBody");
-            speciallist.Add("VagrantBody");
-            speciallist.Add("GravekeeperBody");
-            speciallist.Add("ClayBossBody");
-            speciallist.Add("RoboBallBossBody");
-            speciallist.Add("SuperRoboBallBossBody");
-            speciallist.Add("MegaConstructBody");
-            speciallist.Add("VoidInfestorBody");
-            speciallist.Add("VoidBarnacleBody");
-            speciallist.Add("MegaConstructBody");
-            speciallist.Add("VoidMegaCrabBody");
-            speciallist.Add("GrandParentBody");
-            speciallist.Add("ImpBossBody");
-            speciallist.Add("BrotherBody");
-            speciallist.Add("BrotherHurtBody");
+
+            List<string> bosslist = new List<string>();
+            bosslist.Add("ElectricWormBody");
+            bosslist.Add("MagmaWormBody");
+            bosslist.Add("BeetleQueen2Body");
+            bosslist.Add("TitanBody");
+            bosslist.Add("TitanGoldBody");
+            bosslist.Add("VagrantBody");
+            bosslist.Add("GravekeeperBody");
+            bosslist.Add("ClayBossBody");
+            bosslist.Add("RoboBallBossBody");
+            bosslist.Add("SuperRoboBallBossBody");
+            bosslist.Add("MegaConstructBody");
+            bosslist.Add("VoidMegaCrabBody");
+            bosslist.Add("GrandParentBody");
+            bosslist.Add("ImpBossBody");
+            bosslist.Add("BrotherBody");
+            bosslist.Add("BrotherHurtBody");
+            bosslist.Add("ScavBody");
 
             if (self.master.gameObject.GetComponent<DittoMasterController>())
             {
@@ -490,6 +492,16 @@ namespace DittoMod.Modules.Survivors
                         if (transformed)
                         {
                             self.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, 30);
+                        }
+                    }
+                    if (bosslist.Contains(self.master.bodyPrefab.name))
+                    {
+                        if (transformed)
+                        {
+                            if (Config.bossTimer.Value)
+                            {
+                                self.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, 30);
+                            }                            
                         }
                     }
                     if (Config.choiceOnTeammate.Value)
@@ -604,12 +616,13 @@ namespace DittoMod.Modules.Survivors
 
                     if (transformage > 1f)
                     {
-                        buffCountToApply = self.GetBuffCount(Modules.Buffs.transformBuff.buffIndex);
+                        int buffCountToApply = self.GetBuffCount(Modules.Buffs.transformBuff.buffIndex);
                         if (buffCountToApply > 1)
                         {
                             if (buffCountToApply >= 2)
                             {
-                                self.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, (buffCountToApply - 1));
+                                //self.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, (buffCountToApply - 1));
+                                self.RemoveBuff(Modules.Buffs.transformBuff.buffIndex);
 
                                 transformage = 0;
 

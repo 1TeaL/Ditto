@@ -34,6 +34,13 @@ If you enjoy my work, support me on Ko-fi!
 
 ## Latest Changelog, Next update(s)
 
+- 1.1.3 
+    - Forgot to add scavenger to be included in the timers list.
+- 1.1.2 
+    - *DELETE CONFIGS FOR THIS*: Added Config so you can disable timers for bosses. This still adds a timer to specific transformations that can cause a softlock such as the void final boss and other void enemies.
+    - Fixed transformation timers so it doesn't decrease at multiple stacks at a time during the run.
+    - Fixed TM- Transform from being accessed by bottled chaos. 
+    - Fixed some grammar issues in the character menu. 
 - 1.1.1 
     - Hotfix so buffs don't carry over runs.
 - 1.1.0 

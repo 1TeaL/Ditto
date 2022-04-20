@@ -52,7 +52,7 @@ namespace DittoMod
 
         public const string MODUID = "com.TeaL.DittoMod";
         public const string MODNAME = "DittoMod";
-        public const string MODVERSION = "1.1.1";
+        public const string MODVERSION = "1.1.3";
 
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string developerPrefix = "TEAL";
@@ -434,7 +434,7 @@ namespace DittoMod
                             scale = 10f,
                             rotation = Quaternion.LookRotation(self.transform.position)
 
-                        }, false);
+                        }, true);
                     }
                     if (buffnumber >= 2)
                     {
@@ -464,7 +464,7 @@ namespace DittoMod
                             scale = 10f,
                             rotation = Quaternion.LookRotation(self.transform.position)
 
-                        }, false);
+                        }, true);
                     }
                 }
 

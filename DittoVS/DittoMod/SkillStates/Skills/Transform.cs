@@ -121,6 +121,7 @@ namespace DittoMod.SkillStates
             speciallist.Add("ImpBossBody");
             speciallist.Add("BrotherBody");
             speciallist.Add("BrotherHurtBody");
+            speciallist.Add("ScavBody");
 
             CharacterMaster master = player.master;
 
