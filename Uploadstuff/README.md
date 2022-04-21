@@ -34,6 +34,8 @@ If you enjoy my work, support me on Ko-fi!
 
 ## Latest Changelog, Next update(s)
 
+- 1.1.4 
+    - Fixed contentpack identifier
 - 1.1.3 
     - Forgot to add scavenger to be included in the timers list.
 - 1.1.2 

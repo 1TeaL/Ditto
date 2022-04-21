@@ -5,7 +5,7 @@ namespace DittoMod.Modules
     internal class ContentPacks : IContentPackProvider
     {
         internal ContentPack contentPack = new ContentPack();
-        public string identifier => DittoPlugin.MODUID;
+        public string identifier => DittoPlugin.MODUID + "alt_CONTENT_PACK";
 
         public void Initialize()
         {
