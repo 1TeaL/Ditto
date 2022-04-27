@@ -193,8 +193,14 @@ namespace DittoMod.SkillStates
 
                 if (rigid)
                 {
-                    rigid.characterBody.moveSpeed = oldBody.moveSpeed;
+                    rigid.characterBody.moveSpeed = oldBody.moveSpeed * Config.movespeedMultiplier.Value;
                 }
+                float damage = body.damage * Config.damageMultiplier.Value;
+                float basedamage = body.baseDamage * Config.damageMultiplier.Value;
+                float leveldamage = body.levelDamage * Config.damageMultiplier.Value;
+                float attackspeed = body.attackSpeed* Config.attackspeedMultiplier.Value;
+                float baseattackspeed = body.baseAttackSpeed * Config.attackspeedMultiplier.Value;
+                float levelattackspeed = body.levelAttackSpeed * Config.attackspeedMultiplier.Value;
 
                 body.baseMaxHealth = oldBody.baseMaxHealth + body.baseMaxHealth / 10;
                 body.levelMaxHealth = oldBody.levelMaxHealth + body.levelMaxHealth / 10;
@@ -205,13 +211,21 @@ namespace DittoMod.SkillStates
                 body.maxJumpHeight = oldBody.maxJumpHeight;
                 body.jumpPower = oldBody.jumpPower;
                 body.baseJumpPower = oldBody.baseJumpPower;
+                body.damage = damage;
+                body.baseDamage = basedamage;
+                body.levelDamage = leveldamage;
+                body.attackSpeed = attackspeed;
+                body.baseAttackSpeed = baseattackspeed;
+                body.levelAttackSpeed = levelattackspeed;
                 if (body.characterMotor)
                 {
                     body.characterMotor.mass = oldBody.characterMotor.mass;
                 }
                 body.baseArmor = oldBody.baseArmor;
                 body.armor = oldBody.armor;
-                body.baseMoveSpeed = oldBody.baseMoveSpeed;
+                body.baseMoveSpeed = oldBody.baseMoveSpeed * Config.movespeedMultiplier.Value;
+                body.moveSpeed = oldBody.moveSpeed * Config.movespeedMultiplier.Value;
+                body.levelMoveSpeed = oldBody.levelMoveSpeed * Config.movespeedMultiplier.Value;
 
                 body.AddTimedBuffAuthority(RoR2Content.Buffs.HiddenInvincibility.buffIndex, Modules.StaticValues.invincibilityDuration);
 

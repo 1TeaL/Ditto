@@ -9,6 +9,9 @@ namespace DittoMod.Modules
         public static ConfigEntry<bool> copyLoadout;
         public static ConfigEntry<bool> copyHealth;
         public static ConfigEntry<bool> bossTimer;
+        public static ConfigEntry<float> damageMultiplier;
+        public static ConfigEntry<float> movespeedMultiplier;
+        public static ConfigEntry<float> attackspeedMultiplier;
 
         public static void ReadConfig()
         {
@@ -16,6 +19,10 @@ namespace DittoMod.Modules
             copyLoadout = DittoPlugin.instance.Config.Bind("General", "Copy loadout on transform",true, "Should you copy the loadout of characters you transform into.");
             copyHealth = DittoPlugin.instance.Config.Bind("General", "Copy fractional health",true, "Should you copy the fractional health of your previous state when transforming.");
             bossTimer = DittoPlugin.instance.Config.Bind("General", "Adds timers to Boss transformations", true, "Should you add a timer to bosses when transforming.");
+            damageMultiplier = DittoPlugin.instance.Config.Bind<float>("General", "Transform damage multiplier", 1f, "Adjusts damage multiplier for your transform.");
+            movespeedMultiplier = DittoPlugin.instance.Config.Bind<float>("General", "Transform movespeed multiplier", 1f, "Adjusts movespeed multiplier for your transform.");
+            attackspeedMultiplier = DittoPlugin.instance.Config.Bind<float>("General", "Transform attackspeed multiplier", 1f, "Adjusts attackspeed multiplier for your transform.");
+
         }
 
         // this helper automatically makes config entries for disabling survivors

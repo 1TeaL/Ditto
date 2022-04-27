@@ -34,6 +34,11 @@ If you enjoy my work, support me on Ko-fi!
 
 ## Latest Changelog, Next update(s)
 
+- 1.1.6 
+    - Added achievement back hehe. 
+- 1.1.5 
+    - *DELETE CONFIGS FOR THIS*: Added Config so you can multiply damage, attackspeed and movespeed of your transformations. 
+    - Added shiny skin back without the achievement. 
 - 1.1.4 
     - Fixed contentpack identifier
 - 1.1.3 

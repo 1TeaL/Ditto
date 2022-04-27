@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace DittoMod.Modules.Achievements
 {
+    [RegisterAchievement(DittoPlugin.developerPrefix + "_DITTO_BODY_MASTERYUNLOCKABLE_ACHIEVEMENT",
+        DittoPlugin.developerPrefix + "_DITTO_BODY_MASTERYUNLOCKABLE_REWARD_ID", null, null)]
     internal class MasteryAchievement : ModdedUnlockable
     {
         public override string AchievementIdentifier { get; } = DittoPlugin.developerPrefix + "_DITTO_BODY_MASTERYUNLOCKABLE_ACHIEVEMENT_ID";
