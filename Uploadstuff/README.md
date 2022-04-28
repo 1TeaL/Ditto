@@ -34,6 +34,8 @@ If you enjoy my work, support me on Ko-fi!
 
 ## Latest Changelog, Next update(s)
 
+- 1.1.7 
+    - Fixed adding achievement back..  
 - 1.1.6 
     - Added achievement back hehe. 
 - 1.1.5 
