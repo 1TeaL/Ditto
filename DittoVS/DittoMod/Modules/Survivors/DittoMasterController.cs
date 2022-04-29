@@ -346,6 +346,8 @@ namespace DittoMod.Modules.Survivors
 
         private void CharacterMaster_OnInventoryChanged(On.RoR2.CharacterMaster.orig_OnInventoryChanged orig, CharacterMaster self)
         {
+            orig.Invoke(self);
+
             self.luck = 0;
             if (luckyegg)
             {
