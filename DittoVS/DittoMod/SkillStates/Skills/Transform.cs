@@ -220,6 +220,7 @@ namespace DittoMod.SkillStates
                 if (body.characterMotor)
                 {
                     body.characterMotor.mass = oldBody.characterMotor.mass;
+                    body.characterMotor.jumpCount = oldBody.characterMotor.jumpCount;
                 }
                 body.baseArmor = oldBody.baseArmor;
                 body.armor = oldBody.armor;

@@ -664,8 +664,8 @@ namespace DittoMod.Modules.Survivors
                             body.RemoveBuff(RoR2Content.Buffs.AffixPoison);
                             body.RemoveBuff(RoR2Content.Buffs.AffixRed);
                             body.RemoveBuff(RoR2Content.Buffs.AffixWhite);
-                            body.RemoveBuff(DittoMod.Modules.Assets.mendingelitebuff);
-                            body.RemoveBuff(DittoMod.Modules.Assets.voidelitebuff);
+                            body.RemoveBuff(DLC1Content.Buffs.EliteEarth);
+                            body.RemoveBuff(DLC1Content.Buffs.EliteVoid);
                             transformed = false;
 
                         }
