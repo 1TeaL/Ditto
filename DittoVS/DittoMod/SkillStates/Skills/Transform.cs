@@ -258,10 +258,6 @@ namespace DittoMod.SkillStates
                 {
                     body.AddBuff(RoR2Content.Buffs.AffixBlue);
                 }
-                if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixEcho))
-                {
-                    body.AddBuff(RoR2Content.Buffs.AffixEcho);
-                }
                 if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixHaunted))
                 {
                     body.AddBuff(RoR2Content.Buffs.AffixHaunted);
@@ -282,13 +278,13 @@ namespace DittoMod.SkillStates
                 {
                     body.AddBuff(RoR2Content.Buffs.AffixWhite);
                 }
-                if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.mendingelitebuff))
+                if (hurtBox.healthComponent.body.HasBuff(DLC1Content.Buffs.EliteEarth))
                 {
-                    body.AddBuff(DittoMod.Modules.Assets.mendingelitebuff);
+                    body.AddBuff(DLC1Content.Buffs.EliteEarth);
                 }
-                if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.voidelitebuff))
+                if (hurtBox.healthComponent.body.HasBuff(DLC1Content.Buffs.EliteVoid))
                 {
-                    body.AddBuff(DittoMod.Modules.Assets.voidelitebuff);
+                    body.AddBuff(DLC1Content.Buffs.EliteVoid);
                 }
 
 
