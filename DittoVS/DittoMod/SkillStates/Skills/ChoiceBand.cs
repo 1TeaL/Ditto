@@ -14,23 +14,6 @@ namespace DittoMod.SkillStates
         {
             base.OnEnter();
 
-            dittocon = base.GetComponent<DittoController>();
-            if (!characterBody.HasBuff(Modules.Buffs.choicebandBuff))
-            {
-                if (dittocon.choiceband = false && base.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICEBAND_NAME")
-                {
-                    dittocon.choiceband = true;
-                    characterBody.AddBuff(Modules.Buffs.choicebandBuff);
-                    AkSoundEngine.PostEvent(1531773223, this.gameObject);
-                }
-                if (dittocon.choiceband2 = false && base.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICEBAND_NAME")
-                {
-                    dittocon.choiceband2 = true;
-                    characterBody.AddBuff(Modules.Buffs.choicebandBuff);
-                    AkSoundEngine.PostEvent(1531773223, this.gameObject);
-                }
-            }
-
 
         }
 

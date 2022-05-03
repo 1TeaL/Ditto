@@ -34,6 +34,8 @@ If you enjoy my work, support me on Ko-fi!
 
 ## Latest Changelog, Next update(s)
 
+- 1.1.9 
+    - Stability/cleaner code.
 - 1.1.8 
     - Fixed mmhook dependency.
 - 1.1.7 

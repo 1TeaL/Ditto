@@ -126,28 +126,6 @@ namespace DittoMod.Modules.Equipment
 
                     body = characterMaster.GetBody();
 
-                    dittocon.transformed = false;
-                    dittocon.assaultvest = false;
-                    dittocon.choiceband = false;
-                    dittocon.choicescarf = false;
-                    dittocon.choicespecs = false;
-                    dittocon.leftovers = false;
-                    dittocon.lifeorb = false;
-                    dittocon.luckyegg = false;
-                    dittocon.rockyhelmet = false;
-                    dittocon.scopelens = false;
-                    dittocon.shellbell = false;
-                    dittocon.assaultvest2 = false;
-                    dittocon.choiceband2 = false;
-                    dittocon.choicescarf2 = false;
-                    dittocon.choicespecs2 = false;
-                    dittocon.leftovers2 = false;
-                    dittocon.lifeorb2 = false;
-                    dittocon.luckyegg2 = false;
-                    dittocon.rockyhelmet2 = false;
-                    dittocon.scopelens2 = false;
-                    dittocon.shellbell2 = false;
-
                     dittomastercon.transformed = false;
                     dittomastercon.assaultvest = false;
                     dittomastercon.choiceband = false;
@@ -174,7 +152,6 @@ namespace DittoMod.Modules.Equipment
 
                     body.RemoveBuff(RoR2Content.Buffs.OnFire);
                     body.RemoveBuff(RoR2Content.Buffs.AffixBlue);
-                    body.RemoveBuff(RoR2Content.Buffs.AffixEcho);
                     body.RemoveBuff(RoR2Content.Buffs.AffixHaunted);
                     body.RemoveBuff(RoR2Content.Buffs.AffixLunar);
                     body.RemoveBuff(RoR2Content.Buffs.AffixPoison);

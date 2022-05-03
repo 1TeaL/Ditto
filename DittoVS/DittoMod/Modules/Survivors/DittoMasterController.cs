@@ -69,7 +69,6 @@ namespace DittoMod.Modules.Survivors
             //On.RoR2.CharacterBody.FixedUpdate += CharacterBody_FixedUpdate;
             On.RoR2.CharacterMaster.OnInventoryChanged += CharacterMaster_OnInventoryChanged;
             On.RoR2.CharacterModel.Awake += CharacterModel_Awake;
-            On.RoR2.Run.BeginGameOver += Run_BeginGameOver;
 
         }
 
@@ -275,13 +274,6 @@ namespace DittoMod.Modules.Survivors
         }
 
 
-        private void Run_BeginGameOver(On.RoR2.Run.orig_BeginGameOver orig, Run self, GameEndingDef gameEndingDef)
-        {
-            orig(self, gameEndingDef);
-            //Destroy(dittomastercon);
-
-        }
-
         private void CharacterModel_Awake(On.RoR2.CharacterModel.orig_Awake orig, CharacterModel self)
         {
             orig(self);
@@ -315,34 +307,6 @@ namespace DittoMod.Modules.Survivors
 
 
         }
-
-        //private CharacterBody CharacterMaster_Respawn(On.RoR2.CharacterMaster.orig_Respawn orig, CharacterMaster self, Vector3 footPosition, Quaternion rotation)
-        //{
-        //    transformed = false;
-        //    assaultvest = false;
-        //    choiceband = false;
-        //    choicescarf = false;
-        //    choicespecs = false;
-        //    leftovers = false;
-        //    lifeorb = false;
-        //    luckyegg = false;
-        //    rockyhelmet = false;
-        //    scopelens = false;
-        //    shellbell = false;
-        //    assaultvest2 = false;
-        //    choiceband2 = false;
-        //    choicescarf2 = false;
-        //    choicespecs2 = false;
-        //    leftovers2 = false;
-        //    lifeorb2 = false;
-        //    luckyegg2 = false;
-        //    rockyhelmet2 = false;
-        //    scopelens2 = false;
-        //    shellbell2 = false;
-
-        //    orig.Invoke(self, footPosition, rotation);
-        //    return body;
-        //}
 
         private void CharacterMaster_OnInventoryChanged(On.RoR2.CharacterMaster.orig_OnInventoryChanged orig, CharacterMaster self)
         {
@@ -601,8 +565,6 @@ namespace DittoMod.Modules.Survivors
 
         }
 
-
-        //private void CharacterBody_FixedUpdate(On.RoR2.CharacterBody.orig_FixedUpdate orig, CharacterBody self)
         private void FixedUpdate()
         {
             //orig(self);
@@ -658,7 +620,6 @@ namespace DittoMod.Modules.Survivors
 
                             body.RemoveBuff(RoR2Content.Buffs.OnFire);
                             body.RemoveBuff(RoR2Content.Buffs.AffixBlue);
-                            body.RemoveBuff(RoR2Content.Buffs.AffixEcho);
                             body.RemoveBuff(RoR2Content.Buffs.AffixHaunted);
                             body.RemoveBuff(RoR2Content.Buffs.AffixLunar);
                             body.RemoveBuff(RoR2Content.Buffs.AffixPoison);

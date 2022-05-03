@@ -13,24 +13,7 @@ namespace DittoMod.SkillStates
         public override void OnEnter()
         {
             base.OnEnter();
-
-            dittocon = base.GetComponent<DittoController>();
-            if (!characterBody.HasBuff(Modules.Buffs.rockyhelmetBuff))
-            {
-                if (dittocon.rockyhelmet = false && base.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_ROCKYHELMET_NAME")
-                {
-                    dittocon.rockyhelmet = true;
-                    characterBody.AddBuff(Modules.Buffs.rockyhelmetBuff);
-                    AkSoundEngine.PostEvent(1531773223, this.gameObject);
-                }
-                if (dittocon.rockyhelmet2 = false && base.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_ROCKYHELMET_NAME")
-                {
-                    dittocon.rockyhelmet2 = true;
-                    characterBody.AddBuff(Modules.Buffs.rockyhelmetBuff);
-                    AkSoundEngine.PostEvent(1531773223, this.gameObject);
-                }
-            }
-
+ 
 
 
         }
