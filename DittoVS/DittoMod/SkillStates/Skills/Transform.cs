@@ -93,6 +93,7 @@ namespace DittoMod.SkillStates
             blacklist.Add("SMMaulingRockMedium");
             blacklist.Add("SMMaulingRockSmall");
             blacklist.Add("VultureEggBody");
+            blacklist.Add("VoidInfestorBody");
 
             List<string> speciallist = new List<string>();
             speciallist.Add("NullifierBody");

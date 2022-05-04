@@ -34,6 +34,9 @@ If you enjoy my work, support me on Ko-fi!
 
 ## Latest Changelog, Next update(s)
 
+- 1.1.10 
+    - Fixed code being too clean, rocky helmet bug fix with the void cradles.
+    - Blacklisted Void Infestor from transforms as it's coded such that void infestor dies when it possesses an enemy.
 - 1.1.9 
     - Stability/cleaner code.
 - 1.1.8 

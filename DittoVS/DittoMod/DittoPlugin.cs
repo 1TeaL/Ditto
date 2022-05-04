@@ -52,7 +52,7 @@ namespace DittoMod
 
         public const string MODUID = "com.TeaL.DittoMod";
         public const string MODNAME = "DittoMod";
-        public const string MODVERSION = "1.1.8";
+        public const string MODVERSION = "1.1.10";
 
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string developerPrefix = "TEAL";
@@ -397,78 +397,82 @@ namespace DittoMod
 
         private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
         {
-            bool flag = (damageInfo.damageType & DamageType.BypassArmor) > DamageType.Generic;
-            if (!flag && damageInfo.damage > 0f)
+            if (damageInfo.attacker)
             {
-                //rocky helmet
-                if (self.body.HasBuff(Modules.Buffs.rockyhelmetBuff.buffIndex))
+                bool flag = (damageInfo.damageType & DamageType.BypassArmor) > DamageType.Generic;
+                if (!flag && damageInfo.damage > 0f)
                 {
-                    int buffnumber = self.body.GetBuffCount(Modules.Buffs.rockyhelmetBuff);
-                    if (buffnumber > 0)
+                    //rocky helmet
+                    if (self.body.HasBuff(Modules.Buffs.rockyhelmetBuff.buffIndex))
                     {
-                        if (buffnumber >= 1 && buffnumber < 2)
+                        int buffnumber = self.body.GetBuffCount(Modules.Buffs.rockyhelmetBuff);
+                        if (buffnumber > 0)
                         {
-
-                            var damageInfo2 = new DamageInfo();
-
-                            blastAttack = new BlastAttack();
-                            blastAttack.radius = 8f;
-                            blastAttack.procCoefficient = 1;
-                            blastAttack.position = self.transform.position;
-                            blastAttack.attacker = self.gameObject;
-                            blastAttack.crit = Util.CheckRoll(self.body.crit, self.body.master);
-                            blastAttack.baseDamage = self.body.damage * Modules.StaticValues.rockyhelmetreflect;
-                            blastAttack.falloffModel = BlastAttack.FalloffModel.None;
-                            blastAttack.baseForce = 100f;
-                            blastAttack.teamIndex = TeamComponent.GetObjectTeam(blastAttack.attacker);
-                            blastAttack.damageType = DamageType.Stun1s | DamageType.BypassArmor;
-                            blastAttack.attackerFiltering = AttackerFiltering.NeverHitSelf;
-
-                            if (damageInfo.attacker.gameObject.GetComponent<CharacterBody>().baseNameToken
-                                != DittoPlugin.developerPrefix + "_DITTO_BODY_NAME" && damageInfo.attacker != null)
+                            if (buffnumber >= 1 && buffnumber < 2)
                             {
-                                blastAttack.Fire();
+
+                                var damageInfo2 = new DamageInfo();
+
+                                blastAttack = new BlastAttack();
+                                blastAttack.radius = 8f;
+                                blastAttack.procCoefficient = 1;
+                                blastAttack.position = self.transform.position;
+                                blastAttack.attacker = self.gameObject;
+                                blastAttack.crit = Util.CheckRoll(self.body.crit, self.body.master);
+                                blastAttack.baseDamage = self.body.damage * Modules.StaticValues.rockyhelmetreflect;
+                                blastAttack.falloffModel = BlastAttack.FalloffModel.None;
+                                blastAttack.baseForce = 100f;
+                                blastAttack.teamIndex = TeamComponent.GetObjectTeam(blastAttack.attacker);
+                                blastAttack.damageType = DamageType.Stun1s | DamageType.BypassArmor;
+                                blastAttack.attackerFiltering = AttackerFiltering.NeverHitSelf;
+
+                                if (damageInfo.attacker.gameObject.GetComponent<CharacterBody>().baseNameToken
+                                    != DittoPlugin.developerPrefix + "_DITTO_BODY_NAME" && damageInfo.attacker != null)
+                                {
+                                    blastAttack.Fire();
+                                }
+
+
+                                EffectManager.SpawnEffect(effectPrefab, new EffectData
+                                {
+                                    origin = self.transform.position,
+                                    scale = 10f,
+                                    rotation = Quaternion.LookRotation(self.transform.position)
+
+                                }, true);
                             }
-
-
-                            EffectManager.SpawnEffect(effectPrefab, new EffectData
+                            if (buffnumber >= 2)
                             {
-                                origin = self.transform.position,
-                                scale = 10f,
-                                rotation = Quaternion.LookRotation(self.transform.position)
+                                blastAttack = new BlastAttack();
+                                blastAttack.radius = 16f;
+                                blastAttack.procCoefficient = 2;
+                                blastAttack.position = self.transform.position;
+                                blastAttack.attacker = self.gameObject;
+                                blastAttack.crit = Util.CheckRoll(self.body.crit, self.body.master);
+                                blastAttack.baseDamage = self.body.damage * Modules.StaticValues.rockyhelmetreflect2;
+                                blastAttack.falloffModel = BlastAttack.FalloffModel.None;
+                                blastAttack.baseForce = 100f;
+                                blastAttack.teamIndex = TeamComponent.GetObjectTeam(blastAttack.attacker);
+                                blastAttack.damageType = DamageType.Stun1s | DamageType.BypassArmor;
+                                blastAttack.attackerFiltering = AttackerFiltering.NeverHitSelf;
 
-                            }, true);
-                        }
-                        if (buffnumber >= 2)
-                        {
-                            blastAttack = new BlastAttack();
-                            blastAttack.radius = 16f;
-                            blastAttack.procCoefficient = 2;
-                            blastAttack.position = self.transform.position;
-                            blastAttack.attacker = self.gameObject;
-                            blastAttack.crit = Util.CheckRoll(self.body.crit, self.body.master);
-                            blastAttack.baseDamage = self.body.damage * Modules.StaticValues.rockyhelmetreflect2;
-                            blastAttack.falloffModel = BlastAttack.FalloffModel.None;
-                            blastAttack.baseForce = 100f;
-                            blastAttack.teamIndex = TeamComponent.GetObjectTeam(blastAttack.attacker);
-                            blastAttack.damageType = DamageType.Stun1s | DamageType.BypassArmor;
-                            blastAttack.attackerFiltering = AttackerFiltering.NeverHitSelf;
+                                if (damageInfo.attacker.gameObject.GetComponent<CharacterBody>().baseNameToken
+                                    != DittoPlugin.developerPrefix + "_DITTO_BODY_NAME")
+                                {
+                                    blastAttack.Fire();
+                                }
 
-                            if (damageInfo.attacker.gameObject.GetComponent<CharacterBody>().baseNameToken
-                                != DittoPlugin.developerPrefix + "_DITTO_BODY_NAME" && damageInfo.attacker != null)
-                            {
-                                blastAttack.Fire();
+
+                                EffectManager.SpawnEffect(effectPrefab, new EffectData
+                                {
+                                    origin = self.transform.position,
+                                    scale = 10f,
+                                    rotation = Quaternion.LookRotation(self.transform.position)
+
+                                }, true);
                             }
-
-
-                            EffectManager.SpawnEffect(effectPrefab, new EffectData
-                            {
-                                origin = self.transform.position,
-                                scale = 10f,
-                                rotation = Quaternion.LookRotation(self.transform.position)
-
-                            }, true);
                         }
+
                     }
 
                 }
