@@ -69,8 +69,6 @@ namespace DittoMod.Modules.Survivors
             //On.RoR2.CharacterBody.FixedUpdate += CharacterBody_FixedUpdate;
             On.RoR2.CharacterMaster.OnInventoryChanged += CharacterMaster_OnInventoryChanged;
             On.RoR2.CharacterModel.Awake += CharacterModel_Awake;
-            On.RoR2.Run.BeginGameOver += Run_BeginGameOver;
-
         }
 
         private void Start()
@@ -99,7 +97,7 @@ namespace DittoMod.Modules.Survivors
             characterMaster = gameObject.GetComponent<CharacterMaster>();
             //Debug.Log(transformed + "istransformed");
             CharacterBody self = characterMaster.GetBody();
-
+            
             dittomastercon = characterMaster.gameObject.GetComponent<DittoMasterController>();
             dittocon = self.gameObject.GetComponent<DittoController>();
 
@@ -275,12 +273,6 @@ namespace DittoMod.Modules.Survivors
         }
 
 
-        private void Run_BeginGameOver(On.RoR2.Run.orig_BeginGameOver orig, Run self, GameEndingDef gameEndingDef)
-        {
-            orig(self, gameEndingDef);
-            //Destroy(dittomastercon);
-
-        }
 
         private void CharacterModel_Awake(On.RoR2.CharacterModel.orig_Awake orig, CharacterModel self)
         {
@@ -310,6 +302,26 @@ namespace DittoMod.Modules.Survivors
                 scopelens2 = false;
                 shellbell2 = false;
 
+                dittocon.assaultvest = false;
+                dittocon.choiceband = false;
+                dittocon.choicescarf = false;
+                dittocon.choicespecs = false;
+                dittocon.leftovers = false;
+                dittocon.lifeorb = false;
+                dittocon.luckyegg = false;
+                dittocon.rockyhelmet = false;
+                dittocon.scopelens = false;
+                dittocon.shellbell = false;
+                dittocon.assaultvest2 = false;
+                dittocon.choiceband2 = false;
+                dittocon.choicescarf2 = false;
+                dittocon.choicespecs2 = false;
+                dittocon.leftovers2 = false;
+                dittocon.lifeorb2 = false;
+                dittocon.luckyegg2 = false;
+                dittocon.rockyhelmet2 = false;
+                dittocon.scopelens2 = false;
+                dittocon.shellbell2 = false;
             }
             //Destroy(dittomastercon);
 
@@ -409,6 +421,8 @@ namespace DittoMod.Modules.Survivors
                     self.SetBuffCount(Modules.Buffs.rockyhelmetBuff.buffIndex, 0);
                     self.SetBuffCount(Modules.Buffs.scopelensBuff.buffIndex, 0);
                     self.SetBuffCount(Modules.Buffs.shellbellBuff.buffIndex, 0);
+
+
 
                     if (characterMaster.GetBody().skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LUCKYEGG_NAME" && !luckyegg)
                     {
@@ -750,7 +764,7 @@ namespace DittoMod.Modules.Survivors
         //private void CharacterBody_FixedUpdate(On.RoR2.CharacterBody.orig_FixedUpdate orig, CharacterBody self)
         private void FixedUpdate()
         {
-            //orig(self);
+
 
             characterMaster = gameObject.GetComponent<CharacterMaster>();
             //Debug.Log(transformed + "istransformed");

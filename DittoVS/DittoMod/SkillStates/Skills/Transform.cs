@@ -94,6 +94,9 @@ namespace DittoMod.SkillStates
             blacklist.Add("SMMaulingRockSmall");
             blacklist.Add("VultureEggBody");
             blacklist.Add("VoidInfestorBody");
+            blacklist.Add("GokuBody");
+            blacklist.Add("VegetaBody");
+            blacklist.Add("TrunksBody");
 
             List<string> speciallist = new List<string>();
             speciallist.Add("NullifierBody");
@@ -159,6 +162,8 @@ namespace DittoMod.SkillStates
 
                 if (Config.copyLoadout.Value)
                     body.SetLoadoutServer(targetMaster.loadout);
+
+
 
                 if (Config.copyHealth.Value)
                     body.healthComponent.health = oldHealth * body.healthComponent.fullHealth;
