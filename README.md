@@ -11,6 +11,12 @@ If you enjoy my work, support me on Ko-fi!
 ## Popcorn Factory
 <b>Check out other mods from the Popcorn Factory team!</b>
 <div>
+    <a href="https://thunderstore.io/package/PopcornFactory/ShigarakiMod/">
+        <img src="https://user-images.githubusercontent.com/93917577/168004591-39480a52-c7fe-4962-997f-cd9460bb4d4a.png"><br>
+        <p>ShigarakiMod (My other Mod!)</p>
+    </a>
+</div>
+<div>
     <a href="https://thunderstore.io/package/TeaL/DekuMod/">
         <img src="https://cdn.discordapp.com/attachments/399901440023330816/960043614036168784/TeaL-DekuMod-3.1.1.png.128x128_q95.png"><br>
         <p>DekuMod (My other Mod!)</p>
@@ -136,7 +142,7 @@ Ditto comes with an equipment that transform yourself into a ditto. It has a dou
 ## Numbers
 ##### Armor = 10 + 0.5 per level
 ##### Damage = 20 + 4 per level
-##### Regen = 1 + 0.2 per level (note: increases the lower his health is)
+##### Regen = 1 + 0.2 per level 
 ##### Health = 206 + 48 per level
 ##### Movespeed = 7
 
@@ -206,6 +212,7 @@ These stats are prone to change.
 ##### MonsterMash (CherryDye) for code that lets characters who don't have an equipment slot use equipment.
   
 ## OG Pictures
+![128x128Icon](https://user-images.githubusercontent.com/93917577/168004690-23b6d040-5f89-4b62-916b-c40d774bff02.png)
 ![DittoGen5](https://user-images.githubusercontent.com/93917577/161869849-cb6e122f-925a-4f11-83bd-4f594a6071ce.jpg)
 ![characterselect](https://user-images.githubusercontent.com/93917577/161882257-dd41f57e-fa05-4fa9-841c-e8ee1623c64a.PNG)
 ![Icon](https://user-images.githubusercontent.com/93917577/161894364-16d5ad23-589e-42b1-9a3c-7bbb90589377.png)
