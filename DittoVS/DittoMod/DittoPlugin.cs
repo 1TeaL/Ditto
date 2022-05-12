@@ -52,7 +52,7 @@ namespace DittoMod
 
         public const string MODUID = "com.TeaL.DittoMod";
         public const string MODNAME = "DittoMod";
-        public const string MODVERSION = "1.1.10";
+        public const string MODVERSION = "1.2.0";
 
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string developerPrefix = "TEAL";
@@ -397,12 +397,12 @@ namespace DittoMod
 
         private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
         {
-            if (damageInfo.attacker)
+            //rocky helmet
+            if (damageInfo != null && damageInfo.attacker && damageInfo.attacker.GetComponent<CharacterBody>())
             {
                 bool flag = (damageInfo.damageType & DamageType.BypassArmor) > DamageType.Generic;
                 if (!flag && damageInfo.damage > 0f)
                 {
-                    //rocky helmet
                     if (self.body.HasBuff(Modules.Buffs.rockyhelmetBuff.buffIndex))
                     {
                         int buffnumber = self.body.GetBuffCount(Modules.Buffs.rockyhelmetBuff);
@@ -426,8 +426,7 @@ namespace DittoMod
                                 blastAttack.damageType = DamageType.Stun1s | DamageType.BypassArmor;
                                 blastAttack.attackerFiltering = AttackerFiltering.NeverHitSelf;
 
-                                if (damageInfo.attacker.gameObject.GetComponent<CharacterBody>().baseNameToken
-                                    != DittoPlugin.developerPrefix + "_DITTO_BODY_NAME" && damageInfo.attacker != null)
+                                if (damageInfo.attacker.GetComponent<CharacterBody>().masterObjectId != self.body.masterObjectId)
                                 {
                                     blastAttack.Fire();
                                 }
@@ -456,8 +455,7 @@ namespace DittoMod
                                 blastAttack.damageType = DamageType.Stun1s | DamageType.BypassArmor;
                                 blastAttack.attackerFiltering = AttackerFiltering.NeverHitSelf;
 
-                                if (damageInfo.attacker.gameObject.GetComponent<CharacterBody>().baseNameToken
-                                    != DittoPlugin.developerPrefix + "_DITTO_BODY_NAME")
+                                if (damageInfo.attacker.GetComponent<CharacterBody>().masterObjectId != self.body.masterObjectId)
                                 {
                                     blastAttack.Fire();
                                 }
@@ -476,6 +474,7 @@ namespace DittoMod
                     }
 
                 }
+                
 
             }
             orig.Invoke(self, damageInfo);
@@ -564,6 +563,7 @@ namespace DittoMod
                         HealthComponent hp = self.healthComponent;
                         float regenValue = hp.fullCombinedHealth * Modules.StaticValues.leftoversregen;
                         self.regen += regenValue;
+                        //Chat.AddMessage("hpregen activated");
                     }
                     if (buffnumber >= 2)
                     {
@@ -571,6 +571,7 @@ namespace DittoMod
                         HealthComponent hp = self.healthComponent;
                         float regenValue = hp.fullCombinedHealth * Modules.StaticValues.leftoversregen2;
                         self.regen += regenValue;
+                        //Chat.AddMessage("hpregen activated");
                     }
                 }
             }

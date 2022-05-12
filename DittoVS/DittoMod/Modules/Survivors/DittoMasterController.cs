@@ -797,13 +797,13 @@ namespace DittoMod.Modules.Survivors
                             {
                                 self.master.inventory.RemoveItem(RoR2Content.Items.CaptainDefenseMatrix, 1);
                             }
-                            if (self.master.bodyPrefab.name == "HereticBody")
-                            {
-                                self.master.inventory.RemoveItem(RoR2Content.Items.LunarPrimaryReplacement, 1);
-                                self.master.inventory.RemoveItem(RoR2Content.Items.LunarSecondaryReplacement, 1);
-                                self.master.inventory.RemoveItem(RoR2Content.Items.LunarSpecialReplacement, 1);
-                                self.master.inventory.RemoveItem(RoR2Content.Items.LunarUtilityReplacement, 1);
-                            }
+                            //if (self.master.bodyPrefab.name == "HereticBody")
+                            //{
+                            //    self.master.inventory.RemoveItem(RoR2Content.Items.LunarPrimaryReplacement, 1);
+                            //    self.master.inventory.RemoveItem(RoR2Content.Items.LunarSecondaryReplacement, 1);
+                            //    self.master.inventory.RemoveItem(RoR2Content.Items.LunarSpecialReplacement, 1);
+                            //    self.master.inventory.RemoveItem(RoR2Content.Items.LunarUtilityReplacement, 1);
+                            //}
 
                             //self.master.bodyPrefab = BodyCatalog.FindBodyPrefab("DittoBody");
                             CharacterBody body;

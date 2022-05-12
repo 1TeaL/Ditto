@@ -208,9 +208,9 @@ namespace DittoMod.SkillStates
                 float baseattackspeed = body.baseAttackSpeed * Config.attackspeedMultiplier.Value;
                 float levelattackspeed = body.levelAttackSpeed * Config.attackspeedMultiplier.Value;
 
-                body.baseMaxHealth = oldBody.baseMaxHealth + body.baseMaxHealth / 10;
-                body.levelMaxHealth = oldBody.levelMaxHealth + body.levelMaxHealth / 10;
-                body.maxHealth = oldBody.maxHealth + body.maxHealth / 10;
+                body.baseMaxHealth = oldBody.baseMaxHealth + body.baseMaxHealth / 5;
+                body.levelMaxHealth = oldBody.levelMaxHealth + body.levelMaxHealth / 5;
+                body.maxHealth = oldBody.maxHealth + body.maxHealth / 5;
                 body.baseRegen = oldBody.regen;
                 body.baseJumpCount = oldBody.baseJumpCount;
                 body.maxJumpCount = oldBody.maxJumpCount;
