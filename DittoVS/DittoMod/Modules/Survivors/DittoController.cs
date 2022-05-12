@@ -158,13 +158,13 @@ namespace DittoMod.Modules.Survivors
 			{
 				characterBody.RemoveBuff(RoR2Content.Buffs.AffixWhite);
 			}
-			if (characterBody.HasBuff(DittoMod.Modules.Assets.voidelitebuff))
+			if (characterBody.HasBuff(DLC1Content.Buffs.EliteEarth))
 			{
-				characterBody.RemoveBuff(DittoMod.Modules.Assets.voidelitebuff);
+				characterBody.RemoveBuff(DLC1Content.Buffs.EliteEarth);
 			}
-			if (characterBody.HasBuff(DittoMod.Modules.Assets.mendingelitebuff))
+			if (characterBody.HasBuff(DLC1Content.Buffs.EliteEarth))
 			{
-				characterBody.RemoveBuff(DittoMod.Modules.Assets.mendingelitebuff);
+				characterBody.RemoveBuff(DLC1Content.Buffs.EliteEarth);
 			}
 
 		}

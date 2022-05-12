@@ -34,46 +34,15 @@ If you enjoy my work, support me on Ko-fi!
 
 ## Latest Changelog, Next update(s)
 
-- 1.1.8 
-    - Fixed mmhook dependency.
-- 1.1.7 
-    - Fixed adding achievement back..  
-- 1.1.6 
-    - Added achievement back hehe. 
-- 1.1.5 
-    - *DELETE CONFIGS FOR THIS*: Added Config so you can multiply damage, attackspeed and movespeed of your transformations. 
-    - Added shiny skin back without the achievement. 
-- 1.1.4 
-    - Fixed contentpack identifier
-- 1.1.3 
-    - Forgot to add scavenger to be included in the timers list.
-- 1.1.2 
-    - *DELETE CONFIGS FOR THIS*: Added Config so you can disable timers for bosses. This still adds a timer to specific transformations that can cause a softlock such as the void final boss and other void enemies.
-    - Fixed transformation timers so it doesn't decrease at multiple stacks at a time during the run.
-    - Fixed TM- Transform from being accessed by bottled chaos. 
-    - Fixed some grammar issues in the character menu. 
-- 1.1.1 
-    - Hotfix so buffs don't carry over runs.
-- 1.1.0 
-    - Changed the method in which Ditto transforms, doesn't respawn as the character anymore- should cause less issues. (Credits to Bubbet).
-    - Checks if player owns the dlc before allowing them to transform into railgunner or void fiend as people without it would die. (Credits to Bubbet).
-    - Added configs to the above additions as well as whether buffs should be carried over to the transformations (Credits to Bubbet).
-    - Buffs now carry over when respawned/entering a new stage.
-    - Changed TM00 - Transform? Equipment to the lunar pool. This will prevent it from being called by bottled chaos.
-    - New Secondary and Utility 'Items' and changes
-        - *CHANGED* - Rocky Helmet now does a blast attack that stuns around you. A second stack doubles the radius and proc chance.
-        - *CHANGED* - Choice Specs now reduces cooldowns by 25% per stack.
-        - *NEW*- Assault Vest grants 100 armor per stack.
-        - *NEW*- Life Orb grants the damage boost of old choice specs per stack.
-        - *NEW*- Lucky Egg grants 1 luck per stack (acts as a Clover).
-    - Disabled transformations for Xi construct attachable constructs, Siren's Call Vulture eggs, Sky Meadows rock transforms, Mending Elite's healing orb, Clay Grenadier.
-    - Adjusted sound balance so that struggle sfx is only played 10% of the time, fixed Ditto playing Deku's voice in the character select menu (fixed on Deku's end).     
-    - Transforming into bosses and specific monsters will set a 30 second timer to the transformation, this should nerf how overpowered becoming a strong boss is such as an overloading worm, or abusing scavenger item gain.  
-        - Due to the above change, more transformations are now available, including ones that don't have equipment slots. 
-        - If player revives/goes to the next stage with transformations that have the timer will reset to 30 seconds.
+- 1.2 
+    - Fixed buffs carrying over between stages and transformations, fixed rocky helmet bugs.
+    - Buffed Ditto base HP 100 + 20/level -> 206 + 48/level.
+    - Buffed Ditto base Damage 15 + 3/level -> 20 + 4/level.
+    - Buffed Ditto's transform HP from being Ditto's HP + 10% of the Target's -> Ditto's HP + 20% of the Target's .
 
 - Next update(s)
     - Bug fixes. 
+    - Using extraskillslots mod to let ditto transform with a skill instead of an equipment?
     - Adding pokemon abilities to replace one of the item skill slots instead?
 
 <img src="https://user-images.githubusercontent.com/93917577/161882257-dd41f57e-fa05-4fa9-841c-e8ee1623c64a.PNG">
@@ -163,14 +132,56 @@ Ditto comes with an equipment that transform yourself into a ditto. It has a dou
 
 ## Numbers
 ##### Armor = 10 + 0.5 per level
-##### Damage = 15 + 3 per level
+##### Damage = 20 + 4 per level
 ##### Regen = 1 + 0.2 per level (note: increases the lower his health is)
-##### Health = 100 + 20 per level
+##### Health = 206 + 48 per level
 ##### Movespeed = 7
 
 These stats are prone to change.
 
 ## Changelog
+- 1.1.10 
+    - Fixed code being too clean, rocky helmet bug fix with the void cradles.
+    - Blacklisted Void Infestor from transforms as it's coded such that void infestor dies when it possesses an enemy.
+- 1.1.9 
+    - Stability/cleaner code.
+- 1.1.8 
+    - Fixed mmhook dependency.
+- 1.1.7 
+    - Fixed adding achievement back..  
+- 1.1.6 
+    - Added achievement back hehe. 
+- 1.1.5 
+    - *DELETE CONFIGS FOR THIS*: Added Config so you can multiply damage, attackspeed and movespeed of your transformations. 
+    - Added shiny skin back without the achievement. 
+- 1.1.4 
+    - Fixed contentpack identifier
+- 1.1.3 
+    - Forgot to add scavenger to be included in the timers list.
+- 1.1.2 
+    - *DELETE CONFIGS FOR THIS*: Added Config so you can disable timers for bosses. This still adds a timer to specific transformations that can cause a softlock such as the void final boss and other void enemies.
+    - Fixed transformation timers so it doesn't decrease at multiple stacks at a time during the run.
+    - Fixed TM- Transform from being accessed by bottled chaos. 
+    - Fixed some grammar issues in the character menu. 
+- 1.1.1 
+    - Hotfix so buffs don't carry over runs.
+- 1.1.0 
+    - Changed the method in which Ditto transforms, doesn't respawn as the character anymore- should cause less issues. (Credits to Bubbet).
+    - Checks if player owns the dlc before allowing them to transform into railgunner or void fiend as people without it would die. (Credits to Bubbet).
+    - Added configs to the above additions as well as whether buffs should be carried over to the transformations (Credits to Bubbet).
+    - Buffs now carry over when respawned/entering a new stage.
+    - Changed TM00 - Transform? Equipment to the lunar pool. This will prevent it from being called by bottled chaos.
+    - New Secondary and Utility 'Items' and changes
+        - *CHANGED* - Rocky Helmet now does a blast attack that stuns around you. A second stack doubles the radius and proc chance.
+        - *CHANGED* - Choice Specs now reduces cooldowns by 25% per stack.
+        - *NEW*- Assault Vest grants 100 armor per stack.
+        - *NEW*- Life Orb grants the damage boost of old choice specs per stack.
+        - *NEW*- Lucky Egg grants 1 luck per stack (acts as a Clover).
+    - Disabled transformations for Xi construct attachable constructs, Siren's Call Vulture eggs, Sky Meadows rock transforms, Mending Elite's healing orb, Clay Grenadier.
+    - Adjusted sound balance so that struggle sfx is only played 10% of the time, fixed Ditto playing Deku's voice in the character select menu (fixed on Deku's end).     
+    - Transforming into bosses and specific monsters will set a 30 second timer to the transformation, this should nerf how overpowered becoming a strong boss is such as an overloading worm, or abusing scavenger item gain.  
+        - Due to the above change, more transformations are now available, including ones that don't have equipment slots. 
+        - If player revives/goes to the next stage with transformations that have the timer will reset to 30 seconds.
 
 - 1.0.1 
     - Fixed shopkeeper and void jailer transforms.

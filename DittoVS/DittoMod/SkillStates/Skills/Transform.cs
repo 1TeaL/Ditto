@@ -93,6 +93,10 @@ namespace DittoMod.SkillStates
             blacklist.Add("SMMaulingRockMedium");
             blacklist.Add("SMMaulingRockSmall");
             blacklist.Add("VultureEggBody");
+            blacklist.Add("VoidInfestorBody");
+            blacklist.Add("GokuBody");
+            blacklist.Add("VegetaBody");
+            blacklist.Add("TrunksBody");
 
             List<string> speciallist = new List<string>();
             speciallist.Add("NullifierBody");
@@ -202,9 +206,9 @@ namespace DittoMod.SkillStates
                 float baseattackspeed = body.baseAttackSpeed * Config.attackspeedMultiplier.Value;
                 float levelattackspeed = body.levelAttackSpeed * Config.attackspeedMultiplier.Value;
 
-                body.baseMaxHealth = oldBody.baseMaxHealth + body.baseMaxHealth / 10;
-                body.levelMaxHealth = oldBody.levelMaxHealth + body.levelMaxHealth / 10;
-                body.maxHealth = oldBody.maxHealth + body.maxHealth / 10;
+                body.baseMaxHealth = oldBody.baseMaxHealth + body.baseMaxHealth / 5;
+                body.levelMaxHealth = oldBody.levelMaxHealth + body.levelMaxHealth / 5;
+                body.maxHealth = oldBody.maxHealth + body.maxHealth / 5;
                 body.baseRegen = oldBody.regen;
                 body.baseJumpCount = oldBody.baseJumpCount;
                 body.maxJumpCount = oldBody.maxJumpCount;
@@ -282,13 +286,13 @@ namespace DittoMod.SkillStates
                 {
                     body.AddBuff(RoR2Content.Buffs.AffixWhite);
                 }
-                if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.mendingelitebuff))
+                if (hurtBox.healthComponent.body.HasBuff(DLC1Content.Buffs.EliteEarth))
                 {
-                    body.AddBuff(DittoMod.Modules.Assets.mendingelitebuff);
+                    body.AddBuff(DLC1Content.Buffs.EliteEarth);
                 }
-                if (hurtBox.healthComponent.body.HasBuff(DittoMod.Modules.Assets.voidelitebuff))
+                if (hurtBox.healthComponent.body.HasBuff(DLC1Content.Buffs.EliteVoid))
                 {
-                    body.AddBuff(DittoMod.Modules.Assets.voidelitebuff);
+                    body.AddBuff(DLC1Content.Buffs.EliteVoid);
                 }
 
 
