@@ -133,7 +133,7 @@ Ditto comes with an equipment that transform yourself into a ditto. It has a dou
 ## Numbers
 ##### Armor = 10 + 0.5 per level
 ##### Damage = 20 + 4 per level
-##### Regen = 1 + 0.2 per level (note: increases the lower his health is)
+##### Regen = 1 + 0.2 per level 
 ##### Health = 206 + 48 per level
 ##### Movespeed = 7
 
