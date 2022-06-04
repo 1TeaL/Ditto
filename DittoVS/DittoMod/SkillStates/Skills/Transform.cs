@@ -37,7 +37,7 @@ namespace DittoMod.SkillStates
             }
             hasFired = false;
 
-            PlayAnimation("Body", "BonusJump", "Attack.playbackRate", duration / 2);
+            //PlayAnimation("Body", "BonusJump", "Attack.playbackRate", duration / 2);
 
 
         }
@@ -77,7 +77,11 @@ namespace DittoMod.SkillStates
             }
         }
 
+        public void dropEquipment(EquipmentDef def)
+        {
+            PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(def.equipmentIndex), base.transform.position + Vector3.up * 1.5f, Vector3.up * 20f + base.transform.forward * 2f);
 
+        }
 
         private void ChangeOrSetCharacter(NetworkUser player, HurtBox hurtBox)
         {
@@ -97,6 +101,7 @@ namespace DittoMod.SkillStates
             blacklist.Add("GokuBody");
             blacklist.Add("VegetaBody");
             blacklist.Add("TrunksBody");
+            blacklist.Add("BeetleWard");
 
             List<string> speciallist = new List<string>();
             speciallist.Add("NullifierBody");
@@ -154,7 +159,8 @@ namespace DittoMod.SkillStates
 
                 master.bodyPrefab = newbodyPrefab;
 
-                //body = master.Respawn(master.GetBody().transform.position, master.GetBody().transform.rotation);
+                EntityStateMachine EntityStateMachine = newbodyPrefab.GetComponent<EntityStateMachine>();
+                EntityStateMachine.initialStateType = new SerializableEntityStateType(typeof(SkillStates.BaseStates.SpawnState));
 
                 master.TransformBody(BodyCatalog.GetBodyName(hurtBox.healthComponent.body.bodyIndex));
 
@@ -235,6 +241,7 @@ namespace DittoMod.SkillStates
                 body.levelMoveSpeed = oldBody.levelMoveSpeed * Config.movespeedMultiplier.Value;
 
                 body.AddTimedBuffAuthority(RoR2Content.Buffs.HiddenInvincibility.buffIndex, Modules.StaticValues.invincibilityDuration);
+                body.SetBuffCount(Modules.Buffs.transformdeBuff.buffIndex, Modules.StaticValues.transformDuration);
 
                 if (targetMaster.playerCharacterMasterController || !targetMaster.playerCharacterMasterController)
                 {
@@ -261,37 +268,40 @@ namespace DittoMod.SkillStates
 
                 //Debug.Log(hurtBox.healthComponent.body.activeBuffsList + "buffs");
 
-                if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixBlue))
+                if (hurtBox.healthComponent.body.isElite)
                 {
-                    body.AddBuff(RoR2Content.Buffs.AffixBlue);
-                }
-                if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixHaunted))
-                {
-                    body.AddBuff(RoR2Content.Buffs.AffixHaunted);
-                }
-                if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixLunar))
-                {
-                    body.AddBuff(RoR2Content.Buffs.AffixLunar);
-                }
-                if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixPoison))
-                {
-                    body.AddBuff(RoR2Content.Buffs.AffixPoison);
-                }
-                if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixRed))
-                {
-                    body.AddBuff(RoR2Content.Buffs.AffixRed);
-                }
-                if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixWhite))
-                {
-                    body.AddBuff(RoR2Content.Buffs.AffixWhite);
-                }
-                if (hurtBox.healthComponent.body.HasBuff(DLC1Content.Buffs.EliteEarth))
-                {
-                    body.AddBuff(DLC1Content.Buffs.EliteEarth);
-                }
-                if (hurtBox.healthComponent.body.HasBuff(DLC1Content.Buffs.EliteVoid))
-                {
-                    body.AddBuff(DLC1Content.Buffs.EliteVoid);
+                    if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixBlue))
+                    {
+                        dropEquipment(RoR2Content.Elites.Lightning.eliteEquipmentDef);
+                    }
+                    if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixHaunted))
+                    {
+                        dropEquipment(RoR2Content.Elites.Haunted.eliteEquipmentDef);
+                    }
+                    if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixLunar))
+                    {
+                        dropEquipment(RoR2Content.Elites.Lunar.eliteEquipmentDef);
+                    }
+                    if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixPoison))
+                    {
+                        dropEquipment(RoR2Content.Elites.Poison.eliteEquipmentDef);
+                    }
+                    if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixRed))
+                    {
+                        dropEquipment(RoR2Content.Elites.Fire.eliteEquipmentDef);
+                    }
+                    if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixWhite))
+                    {
+                        dropEquipment(RoR2Content.Elites.Ice.eliteEquipmentDef);
+                    }
+                    if (hurtBox.healthComponent.body.HasBuff(DLC1Content.Buffs.EliteEarth))
+                    {
+                        dropEquipment(DLC1Content.Elites.Earth.eliteEquipmentDef);
+                    }
+                    if (hurtBox.healthComponent.body.HasBuff(DLC1Content.Buffs.EliteVoid))
+                    {
+                        dropEquipment(DLC1Content.Elites.Void.eliteEquipmentDef);
+                    }
                 }
 
 

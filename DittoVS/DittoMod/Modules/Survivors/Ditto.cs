@@ -73,12 +73,16 @@ namespace DittoMod.Modules.Survivors
         internal override List<ItemDisplayRuleSet.KeyAssetRuleGroup> itemDisplayRules { get; set; }
 
         internal override UnlockableDef characterUnlockableDef { get; set; }
+        public static SkillDef TransformDittoDef { get; private set; }
+
         private static UnlockableDef masterySkinUnlockableDef;
 
         internal override void InitializeCharacter()
         {
             base.InitializeCharacter();
             bodyPrefab.AddComponent<DittoController>();
+            EntityStateMachine EntityStateMachine = bodyPrefab.GetComponent<EntityStateMachine>();
+            EntityStateMachine.initialStateType = new SerializableEntityStateType(typeof(SkillStates.BaseStates.SpawnState));
         }
 
         internal override void InitializeUnlockables()
@@ -105,6 +109,7 @@ namespace DittoMod.Modules.Survivors
         internal override void InitializeSkills()
         {
             Skills.CreateSkillFamilies(bodyPrefab);
+
 
             string prefix = DittoPlugin.developerPrefix + "_DITTO_BODY_";
 
@@ -467,6 +472,7 @@ namespace DittoMod.Modules.Survivors
                 skillDef41,
             });
             #endregion
+
         }
 
 

@@ -6,7 +6,7 @@ namespace DittoMod.Modules
     {
 
         internal const float struggleDamageCoefficient = 0.3f;
-        internal const float invincibilityDuration = 7f;
+        internal const float invincibilityDuration = 1f;
 
         internal const float assaultvestboost = 100f;
         internal const float choicebandboost = 1.5f;

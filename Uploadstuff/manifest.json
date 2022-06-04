@@ -1,8 +1,8 @@
 {
     "name": "DittoMod",
-    "version_number": "1.2.0",
+    "version_number": "1.3.0",
     "website_url": "https://github.com/1TeaL/Ditto",
-    "description": "Who's that Pokémon? 1.2.0- fixes item buffs carrying over. Buffs to Ditto.",
+    "description": "Who's that Pokémon? 1.3.0- Instant Transforms! Hotkey to transform back to Ditto!",
     "dependencies": [
          "tristanmcpherson-R2API-4.3.5"
     ]

@@ -12,6 +12,7 @@ namespace DittoMod.Modules
         internal static List<BuffDef> buffDefs = new List<BuffDef>();
 
         internal static BuffDef transformBuff;
+        internal static BuffDef transformdeBuff;
         internal static BuffDef assaultvestBuff;
         internal static BuffDef choicescarfBuff;
         internal static BuffDef choicebandBuff;
@@ -25,6 +26,9 @@ namespace DittoMod.Modules
 
         internal static void RegisterBuffs()
         {
+            Sprite fractureddebuff = Addressables.LoadAssetAsync<BuffDef>("RoR2/DLC1/BleedOnHitVoid/bdFracture.asset").WaitForCompletion().iconSprite;
+
+            transformdeBuff = Buffs.AddNewBuff("transformdeBuff", fractureddebuff, Color.white, true, true);
             transformBuff = Buffs.AddNewBuff("transformBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("Transform"), Color.white, true, false);
             assaultvestBuff = Buffs.AddNewBuff("assaultvestBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("AssaultVest"), Color.white, true, false);
             choicescarfBuff = Buffs.AddNewBuff("choicescarfBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("ChoiceScarf"), Color.white, true, false);

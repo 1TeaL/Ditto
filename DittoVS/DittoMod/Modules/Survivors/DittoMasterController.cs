@@ -17,7 +17,7 @@ namespace DittoMod.Modules.Survivors
         private CharacterBody body;
         public bool transformed;
         //private int buffCountToApply;
-        public float transformage;
+        public float transformage2;
         public bool assaultvest;
         public bool choiceband;
         public bool choicescarf;
@@ -39,7 +39,7 @@ namespace DittoMod.Modules.Survivors
         public bool scopelens2;
         public bool shellbell2;
 
-        private void Awake()
+        public void Awake()
         {
             transformed = false;
             assaultvest = false;
@@ -71,7 +71,7 @@ namespace DittoMod.Modules.Survivors
             On.RoR2.CharacterModel.Awake += CharacterModel_Awake;
         }
 
-        private void Start()
+        public void Start()
         {
             transformed = false;
             assaultvest = false;
@@ -100,6 +100,7 @@ namespace DittoMod.Modules.Survivors
             
             dittomastercon = characterMaster.gameObject.GetComponent<DittoMasterController>();
             dittocon = self.gameObject.GetComponent<DittoController>();
+
 
             dittocon.assaultvest = false;
             dittocon.choiceband = false;
@@ -373,7 +374,7 @@ namespace DittoMod.Modules.Survivors
             self.luck -= self.inventory.GetItemCount(RoR2Content.Items.LunarBadLuck);
         }
 
-        private void CharacterBody_Start(On.RoR2.CharacterBody.orig_Start orig, CharacterBody self)
+        public void CharacterBody_Start(On.RoR2.CharacterBody.orig_Start orig, CharacterBody self)
         {
             orig.Invoke(self);
 
@@ -409,6 +410,7 @@ namespace DittoMod.Modules.Survivors
 
             if (self.master.gameObject.GetComponent<DittoMasterController>())
             {
+
                 if (self.master.bodyPrefab == BodyCatalog.FindBodyPrefab("DittoBody"))
                 {
                     self.SetBuffCount(Modules.Buffs.assaultvestBuff.buffIndex, 0);
@@ -762,20 +764,71 @@ namespace DittoMod.Modules.Survivors
 
 
         //private void CharacterBody_FixedUpdate(On.RoR2.CharacterBody.orig_FixedUpdate orig, CharacterBody self)
-        private void FixedUpdate()
+        public void FixedUpdate()
         {
-
 
             characterMaster = gameObject.GetComponent<CharacterMaster>();
             //Debug.Log(transformed + "istransformed");
             CharacterBody self = characterMaster.GetBody();
+            //extrainputBankTest = self.gameObject.GetComponent<ExtraInputBankTest>();
+            //transformback
+            if (Input.GetKeyDown(Config.transformHotkey.Value) && !self.HasBuff(Modules.Buffs.transformdeBuff.buffIndex))
+            {
+                self.SetBuffCount(Modules.Buffs.transformdeBuff.buffIndex, Modules.StaticValues.transformDuration * 2);
+                AkSoundEngine.PostEvent(1719197672, this.gameObject);
+                var oldHealth = self.healthComponent.health / self.healthComponent.fullHealth;
+                if (characterMaster.bodyPrefab.name == "CaptainBody")
+                {
+                    characterMaster.inventory.RemoveItem(RoR2Content.Items.CaptainDefenseMatrix, 1);
+                }
+                if (characterMaster.bodyPrefab.name == "HereticBody")
+                {
+                    characterMaster.inventory.RemoveItem(RoR2Content.Items.LunarPrimaryReplacement, 1);
+                    characterMaster.inventory.RemoveItem(RoR2Content.Items.LunarSecondaryReplacement, 1);
+                    characterMaster.inventory.RemoveItem(RoR2Content.Items.LunarSpecialReplacement, 1);
+                    characterMaster.inventory.RemoveItem(RoR2Content.Items.LunarUtilityReplacement, 1);
+                }
+
+                if (characterMaster.bodyPrefab.name != "DittoBody")
+                {
+                    characterMaster.TransformBody("DittoBody");
+
+                    body = characterMaster.GetBody();
+
+                    dittomastercon.transformed = false;
+                    dittomastercon.assaultvest = false;
+                    dittomastercon.choiceband = false;
+                    dittomastercon.choicescarf = false;
+                    dittomastercon.choicespecs = false;
+                    dittomastercon.leftovers = false;
+                    dittomastercon.lifeorb = false;
+                    dittomastercon.luckyegg = false;
+                    dittomastercon.rockyhelmet = false;
+                    dittomastercon.scopelens = false;
+                    dittomastercon.shellbell = false;
+                    dittomastercon.assaultvest2 = false;
+                    dittomastercon.choiceband2 = false;
+                    dittomastercon.choicescarf2 = false;
+                    dittomastercon.choicespecs2 = false;
+                    dittomastercon.leftovers2 = false;
+                    dittomastercon.lifeorb2 = false;
+                    dittomastercon.luckyegg2 = false;
+                    dittomastercon.rockyhelmet2 = false;
+                    dittomastercon.scopelens2 = false;
+                    dittomastercon.shellbell2 = false;
+                    if (Config.copyHealth.Value)
+                        body.healthComponent.health = body.healthComponent.fullHealth * oldHealth;
+
+                }
+
+            }
 
             if (self.hasEffectiveAuthority)
             {
                 if (self.HasBuff(Modules.Buffs.transformBuff.buffIndex))
                 {
 
-                    if (transformage > 1f)
+                    if (transformage2 > 1f)
                     {
                         int buffCountToApply = self.GetBuffCount(Modules.Buffs.transformBuff.buffIndex);
                         if (buffCountToApply > 1)
@@ -785,7 +838,7 @@ namespace DittoMod.Modules.Survivors
                                 //self.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, (buffCountToApply - 1));
                                 self.RemoveBuff(Modules.Buffs.transformBuff.buffIndex);
 
-                                transformage = 0;
+                                transformage2 = 0;
 
 
                             }
@@ -815,24 +868,41 @@ namespace DittoMod.Modules.Survivors
 
                             body = self.master.GetBody();
 
-                            body.RemoveBuff(RoR2Content.Buffs.OnFire);
-                            body.RemoveBuff(RoR2Content.Buffs.AffixBlue);
-                            body.RemoveBuff(RoR2Content.Buffs.AffixEcho);
-                            body.RemoveBuff(RoR2Content.Buffs.AffixHaunted);
-                            body.RemoveBuff(RoR2Content.Buffs.AffixLunar);
-                            body.RemoveBuff(RoR2Content.Buffs.AffixPoison);
-                            body.RemoveBuff(RoR2Content.Buffs.AffixRed);
-                            body.RemoveBuff(RoR2Content.Buffs.AffixWhite);
-                            body.RemoveBuff(DLC1Content.Buffs.EliteEarth);
-                            body.RemoveBuff(DLC1Content.Buffs.EliteVoid);
                             transformed = false;
 
                         }
                     }
 
-                    else transformage += Time.fixedDeltaTime;
+                    else transformage2 += Time.fixedDeltaTime;
                 }
 
+                if (self.HasBuff(Modules.Buffs.transformdeBuff.buffIndex))
+                {
+
+                    if (transformage2 > 1f)
+                    {
+                        int buffCountToApply2 = self.GetBuffCount(Modules.Buffs.transformdeBuff.buffIndex);
+                        if (buffCountToApply2 > 1)
+                        {
+                            if (buffCountToApply2 >= 2)
+                            {
+                                //self.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, (buffCountToApply - 1));
+                                self.RemoveBuff(Modules.Buffs.transformdeBuff.buffIndex);
+
+                                transformage2 = 0;
+
+
+                            }
+                        }
+                        else
+                        {
+                            self.RemoveBuff(Modules.Buffs.transformdeBuff.buffIndex);
+
+                        }
+                    }
+
+                    else transformage2 += Time.fixedDeltaTime;
+                }
 
             }
 

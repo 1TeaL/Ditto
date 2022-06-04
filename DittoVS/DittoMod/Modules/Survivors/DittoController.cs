@@ -130,42 +130,6 @@ namespace DittoMod.Modules.Survivors
 			//dittomastercon.rockyhelmet2 = false;
 			//dittomastercon.scopelens2 = false;
 			//dittomastercon.shellbell2 = false;
-			if (characterBody.HasBuff(RoR2Content.Buffs.AffixBlue))
-			{
-				characterBody.RemoveBuff(RoR2Content.Buffs.AffixBlue);
-			}
-			if (characterBody.HasBuff(RoR2Content.Buffs.AffixEcho))
-			{
-				characterBody.RemoveBuff(RoR2Content.Buffs.AffixEcho);
-			}
-			if (characterBody.HasBuff(RoR2Content.Buffs.AffixHaunted))
-			{
-				characterBody.RemoveBuff(RoR2Content.Buffs.AffixHaunted);
-			}
-			if (characterBody.HasBuff(RoR2Content.Buffs.AffixLunar))
-			{
-				characterBody.RemoveBuff(RoR2Content.Buffs.AffixLunar);
-			}
-			if (characterBody.HasBuff(RoR2Content.Buffs.AffixPoison))
-			{
-				characterBody.RemoveBuff(RoR2Content.Buffs.AffixPoison);
-			}
-			if (characterBody.HasBuff(RoR2Content.Buffs.AffixRed))
-			{
-				characterBody.RemoveBuff(RoR2Content.Buffs.AffixRed);
-			}
-			if (characterBody.HasBuff(RoR2Content.Buffs.AffixWhite))
-			{
-				characterBody.RemoveBuff(RoR2Content.Buffs.AffixWhite);
-			}
-			if (characterBody.HasBuff(DLC1Content.Buffs.EliteEarth))
-			{
-				characterBody.RemoveBuff(DLC1Content.Buffs.EliteEarth);
-			}
-			if (characterBody.HasBuff(DLC1Content.Buffs.EliteEarth))
-			{
-				characterBody.RemoveBuff(DLC1Content.Buffs.EliteEarth);
-			}
 
 		}
 

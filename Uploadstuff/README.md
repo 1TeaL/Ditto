@@ -8,6 +8,12 @@ If you enjoy my work, support me on Ko-fi!
 ## Popcorn Factory
 <b>Check out other mods from the Popcorn Factory team!</b>
 <div>
+    <a href="https://thunderstore.io/package/PopcornFactory/ShigarakiMod/">
+        <img src="https://user-images.githubusercontent.com/93917577/168004591-39480a52-c7fe-4962-997f-cd9460bb4d4a.png"><br>
+        <p>ShigarakiMod (My other Mod!)</p>
+    </a>
+</div>
+<div>
     <a href="https://thunderstore.io/package/TeaL/DekuMod/">
         <img src="https://cdn.discordapp.com/attachments/399901440023330816/960043614036168784/TeaL-DekuMod-3.1.1.png.128x128_q95.png"><br>
         <p>DekuMod (My other Mod!)</p>
@@ -34,11 +40,10 @@ If you enjoy my work, support me on Ko-fi!
 
 ## Latest Changelog, Next update(s)
 
-- 1.2 
-    - Fixed buffs carrying over between stages and transformations, fixed rocky helmet bugs.
-    - Buffed Ditto base HP 100 + 20/level -> 206 + 48/level.
-    - Buffed Ditto base Damage 15 + 3/level -> 20 + 4/level.
-    - Buffed Ditto's transform HP from being Ditto's HP + 10% of the Target's -> Ditto's HP + 20% of the Target's .
+- 1.3 
+    - Transforms now instantly happen without a spawn animation to save time. With this I changed it so you only get 1 second of invincibility.
+    - Transform hotkey added! By default it is F, and can be configured in the Configs!
+
 
 - Next update(s)
     - Bug fixes. 
@@ -67,7 +72,7 @@ No Ragdoll yet
 
 ## Skills
 ### Passive
-Ditto comes with an equipment that transform yourself into a ditto. It has a double jump. It can sprint in any direction. It takes no fall damage.
+Ditto comes with an equipment that transform yourself into a ditto. It has a double jump. It can sprint in any direction. It takes no fall damage. Press F(default) to transform back to ditto as well.
 <table>
 <thead>
   <tr>
@@ -140,6 +145,11 @@ Ditto comes with an equipment that transform yourself into a ditto. It has a dou
 These stats are prone to change.
 
 ## Changelog
+- 1.2 
+    - Fixed buffs carrying over between stages and transformations, fixed rocky helmet bugs.
+    - Buffed Ditto base HP 100 + 20/level -> 206 + 48/level.
+    - Buffed Ditto base Damage 15 + 3/level -> 20 + 4/level.
+    - Buffed Ditto's transform HP from being Ditto's HP + 10% of the Target's -> Ditto's HP + 20% of the Target's .
 - 1.1.10 
     - Fixed code being too clean, rocky helmet bug fix with the void cradles.
     - Blacklisted Void Infestor from transforms as it's coded such that void infestor dies when it possesses an enemy.
@@ -152,14 +162,14 @@ These stats are prone to change.
 - 1.1.6 
     - Added achievement back hehe. 
 - 1.1.5 
-    - *DELETE CONFIGS FOR THIS*: Added Config so you can multiply damage, attackspeed and movespeed of your transformations. 
+    - Added Config so you can multiply damage, attackspeed and movespeed of your transformations. 
     - Added shiny skin back without the achievement. 
 - 1.1.4 
     - Fixed contentpack identifier
 - 1.1.3 
     - Forgot to add scavenger to be included in the timers list.
 - 1.1.2 
-    - *DELETE CONFIGS FOR THIS*: Added Config so you can disable timers for bosses. This still adds a timer to specific transformations that can cause a softlock such as the void final boss and other void enemies.
+    - Added Config so you can disable timers for bosses. This still adds a timer to specific transformations that can cause a softlock such as the void final boss and other void enemies.
     - Fixed transformation timers so it doesn't decrease at multiple stacks at a time during the run.
     - Fixed TM- Transform from being accessed by bottled chaos. 
     - Fixed some grammar issues in the character menu. 

@@ -68,7 +68,7 @@ namespace DittoMod.Modules
 
             #region Special
             LanguageAPI.Add(prefix + "SPECIAL_NAME", "Transform");
-            LanguageAPI.Add(prefix + "SPECIAL_DESCRIPTION", $"Transform into the character you're looking at.");
+            LanguageAPI.Add(prefix + "SPECIAL_DESCRIPTION", $"Transform into the character you're looking at. Press {Config.transformHotkey.Value} to transform back.");
             #endregion
 
             #region Achievements
