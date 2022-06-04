@@ -43,6 +43,8 @@ If you enjoy my work, support me on Ko-fi!
 
 ## Latest Changelog, Next update(s)
 
+- 1.3.1 
+    - Forgot to mention equipments now drop from elites.
 - 1.3 
     - Transforms now instantly happen without a spawn animation to save time. With this I changed it so you only get 1 second of invincibility.
     - Transform hotkey added! By default it is F, and can be configured in the Configs!
@@ -69,7 +71,8 @@ No Ragdoll yet
 ## Overview
     Ditto can transform into any character/monster
     Ditto copies every stat besides HP, regen, armor and movespeed
-    Use Ditto's equipment to transform back to ditto. It can also drop naturally
+    Use Ditto's equipment to transform back to ditto. It can also drop naturally.
+    Ditto drops an elite's equipment when transforming.
     Ditto's secondary and utility skills are items that when activated give buffs that are carried over when transformed as well. They stack as well by having both equipped.
     Aim to increase your HP as it has low base HP
 
