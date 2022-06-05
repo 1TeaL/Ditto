@@ -68,7 +68,7 @@ namespace DittoMod.Modules
 
             #region Special
             LanguageAPI.Add(prefix + "SPECIAL_NAME", "Transform");
-            LanguageAPI.Add(prefix + "SPECIAL_DESCRIPTION", $"Transform into the character you're looking at. Drop the elite's equipment. Press {Config.transformHotkey.Value} to transform back.");
+            LanguageAPI.Add(prefix + "SPECIAL_DESCRIPTION", $"Transform into the character you're looking at. Drop the elite's equipment. After {StaticValues.transformDuration}, you can press {Config.transformHotkey.Value} to transform back.");
             #endregion
 
             #region Achievements

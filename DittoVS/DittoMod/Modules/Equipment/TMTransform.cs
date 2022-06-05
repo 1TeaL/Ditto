@@ -104,7 +104,7 @@ namespace DittoMod.Modules.Equipment
             public void BecomeDitto()
             {
                 AkSoundEngine.PostEvent(1719197672, this.gameObject);
-                var oldHealth = body.healthComponent.health / body.healthComponent.fullHealth;
+                //var oldHealth = body.healthComponent.health / body.healthComponent.fullHealth;
                 if (characterMaster.bodyPrefab.name == "CaptainBody")
                 {
                     characterMaster.inventory.RemoveItem(RoR2Content.Items.CaptainDefenseMatrix, 1);
@@ -124,7 +124,7 @@ namespace DittoMod.Modules.Equipment
                     //characterMaster.GetBody().AddBuff(Modules.Buffs.transformBuff.buffIndex);
                     characterMaster.TransformBody("DittoBody");
 
-                    body = characterMaster.GetBody();
+                    //body = characterMaster.GetBody();
 
                     dittomastercon.transformed = false;
                     dittomastercon.assaultvest = false;

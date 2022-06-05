@@ -40,6 +40,8 @@ If you enjoy my work, support me on Ko-fi!
 
 ## Latest Changelog, Next update(s)
 
+- 1.3.2 
+    - Fixed equipment not working.
 - 1.3.1 
     - Forgot to mention equipments now drop from elites.
 - 1.3 

@@ -772,9 +772,12 @@ namespace DittoMod.Modules.Survivors
             CharacterBody self = characterMaster.GetBody();
             //extrainputBankTest = self.gameObject.GetComponent<ExtraInputBankTest>();
             //transformback
+            if (Input.GetKeyDown(Config.transformHotkey.Value) && self.HasBuff(Modules.Buffs.transformdeBuff.buffIndex))
+            {
+                Chat.AddMessage("Can't <style=cIsUtility>Transform </style>back yet, wait for the debuff to expire.");
+            }
             if (Input.GetKeyDown(Config.transformHotkey.Value) && !self.HasBuff(Modules.Buffs.transformdeBuff.buffIndex))
             {
-                self.SetBuffCount(Modules.Buffs.transformdeBuff.buffIndex, Modules.StaticValues.transformDuration * 2);
                 AkSoundEngine.PostEvent(1719197672, this.gameObject);
                 var oldHealth = self.healthComponent.health / self.healthComponent.fullHealth;
                 if (characterMaster.bodyPrefab.name == "CaptainBody")
