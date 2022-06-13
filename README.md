@@ -43,6 +43,9 @@ If you enjoy my work, support me on Ko-fi!
 
 ## Latest Changelog, Next update(s)
 
+- 1.3.3 
+    - Added config to disable dropping aspects when transforming into Elites.
+    - Fixed item buff passives not properly given to Ditto as well as previous run buffs carrying over.
 - 1.3.2 
     - Fixed equipment not working.
 - 1.3.1 
