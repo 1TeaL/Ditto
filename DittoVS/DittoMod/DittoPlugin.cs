@@ -52,7 +52,7 @@ namespace DittoMod
 
         public const string MODUID = "com.TeaL.DittoMod";
         public const string MODNAME = "DittoMod";
-        public const string MODVERSION = "1.3.3";
+        public const string MODVERSION = "1.3.4";
 
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string developerPrefix = "TEAL";
@@ -485,125 +485,153 @@ namespace DittoMod
             //buffs 
             orig.Invoke(self);
 
+            if (self && self.master.gameObject.GetComponent<DittoMasterController>())
+            {
 
-            if (self.HasBuff(Modules.Buffs.assaultvestBuff))
-            {
-                int buffnumber = self.GetBuffCount(Modules.Buffs.assaultvestBuff);
-                if (buffnumber > 0)
+                if (self.HasBuff(Modules.Buffs.assaultvestBuff))
                 {
-                    if (buffnumber >= 1 && buffnumber < 2)
+                    int buffnumber = self.GetBuffCount(Modules.Buffs.assaultvestBuff);
+                    if (buffnumber > 0)
                     {
-                        self.armor += Modules.StaticValues.assaultvestboost;
-                    }
-                    if (buffnumber >= 2)
-                    {
-                        self.armor += Modules.StaticValues.assaultvestboost2;
+                        if (buffnumber >= 1 && buffnumber < 2)
+                        {
+                            self.armor += Modules.StaticValues.assaultvestboost;
+                        }
+                        if (buffnumber >= 2)
+                        {
+                            self.armor += Modules.StaticValues.assaultvestboost2;
+                        }
                     }
                 }
-            }
-            if (self.HasBuff(Modules.Buffs.choicebandBuff))
-            {
-                int buffnumber = self.GetBuffCount(Modules.Buffs.choicebandBuff);
-                if (buffnumber > 0)
+                if (self.HasBuff(Modules.Buffs.choicebandBuff))
                 {
-                    if (buffnumber >= 1 && buffnumber < 2)
+                    int buffnumber = self.GetBuffCount(Modules.Buffs.choicebandBuff);
+                    if (buffnumber > 0)
                     {
-                        self.attackSpeed *= Modules.StaticValues.choicebandboost;
-                    }
-                    if (buffnumber >= 2)
-                    {
-                        self.attackSpeed *= Modules.StaticValues.choicebandboost2;
+                        if (buffnumber >= 1 && buffnumber < 2)
+                        {
+                            self.attackSpeed *= Modules.StaticValues.choicebandboost;
+                        }
+                        if (buffnumber >= 2)
+                        {
+                            self.attackSpeed *= Modules.StaticValues.choicebandboost2;
+                        }
                     }
                 }
-            }
-            if (self.HasBuff(Modules.Buffs.choicescarfBuff))
-            {
-                int buffnumber = self.GetBuffCount(Modules.Buffs.choicescarfBuff);
-                if (buffnumber > 0)
+                if (self.HasBuff(Modules.Buffs.choicescarfBuff))
                 {
-                    if (buffnumber >= 1 && buffnumber < 2)
+                    int buffnumber = self.GetBuffCount(Modules.Buffs.choicescarfBuff);
+                    if (buffnumber > 0)
                     {
-                        self.moveSpeed *= Modules.StaticValues.choicescarfboost;
-                    }
-                    if (buffnumber >= 2)
-                    {
-                        self.moveSpeed *= Modules.StaticValues.choicescarfboost2;
+                        if (buffnumber >= 1 && buffnumber < 2)
+                        {
+                            self.moveSpeed *= Modules.StaticValues.choicescarfboost;
+                        }
+                        if (buffnumber >= 2)
+                        {
+                            self.moveSpeed *= Modules.StaticValues.choicescarfboost2;
+                        }
                     }
                 }
-            }
-            if (self.HasBuff(Modules.Buffs.choicespecsBuff))
-            {
-                int buffnumber = self.GetBuffCount(Modules.Buffs.choicespecsBuff);
-                if (buffnumber > 0)
+                if (self.HasBuff(Modules.Buffs.choicespecsBuff))
                 {
-                    if (buffnumber >= 1 && buffnumber < 2)
+                    int buffnumber = self.GetBuffCount(Modules.Buffs.choicespecsBuff);
+                    if (buffnumber > 0)
                     {
-                        self.skillLocator.primary.cooldownScale *= Modules.StaticValues.choicespecsboost;
-                        self.skillLocator.secondary.cooldownScale *= Modules.StaticValues.choicespecsboost;
-                        self.skillLocator.utility.cooldownScale *= Modules.StaticValues.choicespecsboost;
-                        self.skillLocator.special.cooldownScale *= Modules.StaticValues.choicespecsboost;
-                    }
-                    if (buffnumber >= 2)
-                    {
-                        self.skillLocator.primary.cooldownScale *= Modules.StaticValues.choicespecsboost2;
-                        self.skillLocator.secondary.cooldownScale *= Modules.StaticValues.choicespecsboost2;
-                        self.skillLocator.utility.cooldownScale *= Modules.StaticValues.choicespecsboost2;
-                        self.skillLocator.special.cooldownScale *= Modules.StaticValues.choicespecsboost2;
+                        if (buffnumber >= 1 && buffnumber < 2)
+                        {
+                            if (self.skillLocator.primary)
+                            {
+                                self.skillLocator.primary.cooldownScale *= Modules.StaticValues.choicespecsboost;
+                            }
+                            if (self.skillLocator.secondary)
+                            {
+                                self.skillLocator.secondary.cooldownScale *= Modules.StaticValues.choicespecsboost;
+                            }
+                            if (self.skillLocator.utility)
+                            {
+                                self.skillLocator.utility.cooldownScale *= Modules.StaticValues.choicespecsboost;
+                            }
+                            if (self.skillLocator.special)
+                            {
+                                self.skillLocator.special.cooldownScale *= Modules.StaticValues.choicespecsboost;
+                            }
+                        }
+                        if (buffnumber >= 2)
+                        {
+                            if (self.skillLocator.primary)
+                            {
+                                self.skillLocator.primary.cooldownScale *= Modules.StaticValues.choicespecsboost2;
+                            }
+                            if (self.skillLocator.secondary)
+                            {
+                                self.skillLocator.secondary.cooldownScale *= Modules.StaticValues.choicespecsboost2;
+                            }
+                            if (self.skillLocator.utility)
+                            {
+                                self.skillLocator.utility.cooldownScale *= Modules.StaticValues.choicespecsboost2;
+                            }
+                            if (self.skillLocator.special)
+                            {
+                                self.skillLocator.special.cooldownScale *= Modules.StaticValues.choicespecsboost2;
+                            }
+                        }
                     }
                 }
-            }
-            if (self.HasBuff(Modules.Buffs.leftoversBuff))
-            {
-                int buffnumber = self.GetBuffCount(Modules.Buffs.leftoversBuff);
-                if (buffnumber > 0)
+                if (self.HasBuff(Modules.Buffs.leftoversBuff))
                 {
-                    if (buffnumber >= 1 && buffnumber < 2)
+                    int buffnumber = self.GetBuffCount(Modules.Buffs.leftoversBuff);
+                    if (buffnumber > 0)
                     {
+                        if (buffnumber >= 1 && buffnumber < 2)
+                        {
 
-                        HealthComponent hp = self.healthComponent;
-                        float regenValue = hp.fullCombinedHealth * Modules.StaticValues.leftoversregen;
-                        self.regen += regenValue;
-                        //Chat.AddMessage("hpregen activated");
-                    }
-                    if (buffnumber >= 2)
-                    {
+                            HealthComponent hp = self.healthComponent;
+                            float regenValue = hp.fullCombinedHealth * Modules.StaticValues.leftoversregen;
+                            self.regen += regenValue;
+                            //Chat.AddMessage("hpregen activated");
+                        }
+                        if (buffnumber >= 2)
+                        {
 
-                        HealthComponent hp = self.healthComponent;
-                        float regenValue = hp.fullCombinedHealth * Modules.StaticValues.leftoversregen2;
-                        self.regen += regenValue;
-                        //Chat.AddMessage("hpregen activated");
+                            HealthComponent hp = self.healthComponent;
+                            float regenValue = hp.fullCombinedHealth * Modules.StaticValues.leftoversregen2;
+                            self.regen += regenValue;
+                            //Chat.AddMessage("hpregen activated");
+                        }
                     }
                 }
-            }
-            if (self.HasBuff(Modules.Buffs.lifeorbBuff))
-            {
-                int buffnumber = self.GetBuffCount(Modules.Buffs.lifeorbBuff);
-                if (buffnumber > 0)
+                if (self.HasBuff(Modules.Buffs.lifeorbBuff))
                 {
-                    if (buffnumber >= 1 && buffnumber < 2)
+                    int buffnumber = self.GetBuffCount(Modules.Buffs.lifeorbBuff);
+                    if (buffnumber > 0)
                     {
-                        self.damage *= Modules.StaticValues.lifeorbboost;
-                    }
-                    if (buffnumber >= 2)
-                    {
-                        self.damage *= Modules.StaticValues.lifeorbboost2;
+                        if (buffnumber >= 1 && buffnumber < 2)
+                        {
+                            self.damage *= Modules.StaticValues.lifeorbboost;
+                        }
+                        if (buffnumber >= 2)
+                        {
+                            self.damage *= Modules.StaticValues.lifeorbboost2;
+                        }
                     }
                 }
-            }
-            if (self.HasBuff(Modules.Buffs.scopelensBuff))
-            {
-                int buffnumber = self.GetBuffCount(Modules.Buffs.scopelensBuff);
-                if (buffnumber > 0)
+                if (self.HasBuff(Modules.Buffs.scopelensBuff))
                 {
-                    if (buffnumber >= 1 && buffnumber < 2)
+                    int buffnumber = self.GetBuffCount(Modules.Buffs.scopelensBuff);
+                    if (buffnumber > 0)
                     {
-                        self.crit += Modules.StaticValues.scopelensboost;
-                    }
-                    if (buffnumber >= 2)
-                    {
-                        self.crit += Modules.StaticValues.scopelensboost2;
+                        if (buffnumber >= 1 && buffnumber < 2)
+                        {
+                            self.crit += Modules.StaticValues.scopelensboost;
+                        }
+                        if (buffnumber >= 2)
+                        {
+                            self.crit += Modules.StaticValues.scopelensboost2;
+                        }
                     }
                 }
+
             }
         }
 

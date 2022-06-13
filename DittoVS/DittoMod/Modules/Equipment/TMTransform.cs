@@ -126,27 +126,6 @@ namespace DittoMod.Modules.Equipment
 
                     //body = characterMaster.GetBody();
 
-                    dittomastercon.transformed = false;
-                    dittomastercon.assaultvest = false;
-                    dittomastercon.choiceband = false;
-                    dittomastercon.choicescarf = false;
-                    dittomastercon.choicespecs = false;
-                    dittomastercon.leftovers = false;
-                    dittomastercon.lifeorb = false;
-                    dittomastercon.luckyegg = false;
-                    dittomastercon.rockyhelmet = false;
-                    dittomastercon.scopelens = false;
-                    dittomastercon.shellbell = false;
-                    dittomastercon.assaultvest2 = false;
-                    dittomastercon.choiceband2 = false;
-                    dittomastercon.choicescarf2 = false;
-                    dittomastercon.choicespecs2 = false;
-                    dittomastercon.leftovers2 = false;
-                    dittomastercon.lifeorb2 = false;
-                    dittomastercon.luckyegg2 = false;
-                    dittomastercon.rockyhelmet2 = false;
-                    dittomastercon.scopelens2 = false;
-                    dittomastercon.shellbell2 = false;
                     //if (Config.copyHealth.Value)
                     //    body.healthComponent.health = body.healthComponent.fullHealth * oldHealth;
 
