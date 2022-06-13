@@ -268,40 +268,44 @@ namespace DittoMod.SkillStates
 
                 //Debug.Log(hurtBox.healthComponent.body.activeBuffsList + "buffs");
 
-                if (hurtBox.healthComponent.body.isElite)
+                if(Config.grabAspect.Value == true)
                 {
-                    if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixBlue))
+                    if (hurtBox.healthComponent.body.isElite)
                     {
-                        dropEquipment(RoR2Content.Elites.Lightning.eliteEquipmentDef);
+                        if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixBlue))
+                        {
+                            dropEquipment(RoR2Content.Elites.Lightning.eliteEquipmentDef);
+                        }
+                        if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixHaunted))
+                        {
+                            dropEquipment(RoR2Content.Elites.Haunted.eliteEquipmentDef);
+                        }
+                        if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixLunar))
+                        {
+                            dropEquipment(RoR2Content.Elites.Lunar.eliteEquipmentDef);
+                        }
+                        if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixPoison))
+                        {
+                            dropEquipment(RoR2Content.Elites.Poison.eliteEquipmentDef);
+                        }
+                        if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixRed))
+                        {
+                            dropEquipment(RoR2Content.Elites.Fire.eliteEquipmentDef);
+                        }
+                        if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixWhite))
+                        {
+                            dropEquipment(RoR2Content.Elites.Ice.eliteEquipmentDef);
+                        }
+                        if (hurtBox.healthComponent.body.HasBuff(DLC1Content.Buffs.EliteEarth))
+                        {
+                            dropEquipment(DLC1Content.Elites.Earth.eliteEquipmentDef);
+                        }
+                        if (hurtBox.healthComponent.body.HasBuff(DLC1Content.Buffs.EliteVoid))
+                        {
+                            dropEquipment(DLC1Content.Elites.Void.eliteEquipmentDef);
+                        }
                     }
-                    if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixHaunted))
-                    {
-                        dropEquipment(RoR2Content.Elites.Haunted.eliteEquipmentDef);
-                    }
-                    if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixLunar))
-                    {
-                        dropEquipment(RoR2Content.Elites.Lunar.eliteEquipmentDef);
-                    }
-                    if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixPoison))
-                    {
-                        dropEquipment(RoR2Content.Elites.Poison.eliteEquipmentDef);
-                    }
-                    if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixRed))
-                    {
-                        dropEquipment(RoR2Content.Elites.Fire.eliteEquipmentDef);
-                    }
-                    if (hurtBox.healthComponent.body.HasBuff(RoR2Content.Buffs.AffixWhite))
-                    {
-                        dropEquipment(RoR2Content.Elites.Ice.eliteEquipmentDef);
-                    }
-                    if (hurtBox.healthComponent.body.HasBuff(DLC1Content.Buffs.EliteEarth))
-                    {
-                        dropEquipment(DLC1Content.Elites.Earth.eliteEquipmentDef);
-                    }
-                    if (hurtBox.healthComponent.body.HasBuff(DLC1Content.Buffs.EliteVoid))
-                    {
-                        dropEquipment(DLC1Content.Elites.Void.eliteEquipmentDef);
-                    }
+
                 }
 
 

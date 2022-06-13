@@ -66,9 +66,37 @@ namespace DittoMod.Modules.Survivors
             //On.RoR2.CharacterMaster.Respawn += CharacterMaster_Respawn;
 
             On.RoR2.CharacterBody.Start += CharacterBody_Start;
+            On.RoR2.Run.Start += Run_Start; ;
             //On.RoR2.CharacterBody.FixedUpdate += CharacterBody_FixedUpdate;
             On.RoR2.CharacterMaster.OnInventoryChanged += CharacterMaster_OnInventoryChanged;
             On.RoR2.CharacterModel.Awake += CharacterModel_Awake;
+        }
+
+        private void Run_Start(On.RoR2.Run.orig_Start orig, Run self)
+        {
+            orig.Invoke(self);
+            transformed = false;
+            assaultvest = false;
+            choiceband = false;
+            choicescarf = false;
+            choicespecs = false;
+            leftovers = false;
+            lifeorb = false;
+            luckyegg = false;
+            rockyhelmet = false;
+            scopelens = false;
+            shellbell = false;
+            assaultvest2 = false;
+            choiceband2 = false;
+            choicescarf2 = false;
+            choicespecs2 = false;
+            leftovers2 = false;
+            lifeorb2 = false;
+            luckyegg2 = false;
+            rockyhelmet2 = false;
+            scopelens2 = false;
+            shellbell2 = false;
+
         }
 
         public void Start()
@@ -667,94 +695,92 @@ namespace DittoMod.Modules.Survivors
                             }
                         }
                     }
-                    if (Config.choiceOnTeammate.Value)
+                    if (assaultvest && assaultvest2)
                     {
-                        if (assaultvest && assaultvest2)
-                        {
-                            self.SetBuffCount(Modules.Buffs.assaultvestBuff.buffIndex, 2);
-                        }
-                        else if (assaultvest | assaultvest2)
-                        {
-                            self.SetBuffCount(Modules.Buffs.assaultvestBuff.buffIndex, 1);
-                        }
-                        if (choiceband && choiceband2)
-                        {
-                            self.SetBuffCount(Modules.Buffs.choicebandBuff.buffIndex, 2);
-                        }
-                        else if (choiceband | choiceband2)
-                        {
-                            self.SetBuffCount(Modules.Buffs.choicebandBuff.buffIndex, 1);
-                        }
-                        if (choicescarf && choicescarf2)
-                        {
-                            self.SetBuffCount(Modules.Buffs.choicescarfBuff.buffIndex, 2);
-                        }
-                        else if (choicescarf | choicescarf2)
-                        {
-                            self.SetBuffCount(Modules.Buffs.choicescarfBuff.buffIndex, 1);
-                        }
-                        if (choicespecs && choicespecs2)
-                        {
-                            self.SetBuffCount(Modules.Buffs.choicespecsBuff.buffIndex, 2);
-                        }
-                        else if (choicespecs | choicespecs2)
-                        {
-                            self.SetBuffCount(Modules.Buffs.choicespecsBuff.buffIndex, 1);
-                        }
-                        if (leftovers && leftovers2)
-                        {
-                            self.SetBuffCount(Modules.Buffs.leftoversBuff.buffIndex, 2);
-                        }
-                        else if (leftovers | leftovers2)
-                        {
-                            self.SetBuffCount(Modules.Buffs.leftoversBuff.buffIndex, 1);
-                        }
-                        if (lifeorb && lifeorb2)
-                        {
-                            self.SetBuffCount(Modules.Buffs.lifeorbBuff.buffIndex, 2);
-                        }
-                        else if (lifeorb | lifeorb2)
-                        {
-                            self.SetBuffCount(Modules.Buffs.lifeorbBuff.buffIndex, 1);
-                        }
-                        if (luckyegg && luckyegg2)
-                        {
-                            self.master.luck = 0;
-                            self.SetBuffCount(Modules.Buffs.luckyeggBuff.buffIndex, 2);
-                            self.master.luck += 2f;
-                        }
-                        else if (luckyegg | luckyegg2)
-                        {
-                            self.master.luck = 0;
-                            self.SetBuffCount(Modules.Buffs.luckyeggBuff.buffIndex, 1);
-                            self.master.luck += 1f;
-                        }
-                        if (rockyhelmet && rockyhelmet2)
-                        {
-                            self.SetBuffCount(Modules.Buffs.rockyhelmetBuff.buffIndex, 2);
-                        }
-                        else if (rockyhelmet | rockyhelmet2)
-                        {
-                            self.SetBuffCount(Modules.Buffs.rockyhelmetBuff.buffIndex, 1);
-                        }
-                        if (scopelens && scopelens2)
-                        {
-                            self.SetBuffCount(Modules.Buffs.scopelensBuff.buffIndex, 2);
-                        }
-                        else if (scopelens | scopelens2)
-                        {
-                            self.SetBuffCount(Modules.Buffs.scopelensBuff.buffIndex, 1);
-                        }
-                        if (shellbell && shellbell2)
-                        {
-                            self.SetBuffCount(Modules.Buffs.shellbellBuff.buffIndex, 2);
-                        }
-                        else if (shellbell | shellbell2)
-                        {
-                            self.SetBuffCount(Modules.Buffs.shellbellBuff.buffIndex, 1);
-                        }
-
+                        self.SetBuffCount(Modules.Buffs.assaultvestBuff.buffIndex, 2);
                     }
+                    else if (assaultvest | assaultvest2)
+                    {
+                        self.SetBuffCount(Modules.Buffs.assaultvestBuff.buffIndex, 1);
+                    }
+                    if (choiceband && choiceband2)
+                    {
+                        self.SetBuffCount(Modules.Buffs.choicebandBuff.buffIndex, 2);
+                    }
+                    else if (choiceband | choiceband2)
+                    {
+                        self.SetBuffCount(Modules.Buffs.choicebandBuff.buffIndex, 1);
+                    }
+                    if (choicescarf && choicescarf2)
+                    {
+                        self.SetBuffCount(Modules.Buffs.choicescarfBuff.buffIndex, 2);
+                    }
+                    else if (choicescarf | choicescarf2)
+                    {
+                        self.SetBuffCount(Modules.Buffs.choicescarfBuff.buffIndex, 1);
+                    }
+                    if (choicespecs && choicespecs2)
+                    {
+                        self.SetBuffCount(Modules.Buffs.choicespecsBuff.buffIndex, 2);
+                    }
+                    else if (choicespecs | choicespecs2)
+                    {
+                        self.SetBuffCount(Modules.Buffs.choicespecsBuff.buffIndex, 1);
+                    }
+                    if (leftovers && leftovers2)
+                    {
+                        self.SetBuffCount(Modules.Buffs.leftoversBuff.buffIndex, 2);
+                    }
+                    else if (leftovers | leftovers2)
+                    {
+                        self.SetBuffCount(Modules.Buffs.leftoversBuff.buffIndex, 1);
+                    }
+                    if (lifeorb && lifeorb2)
+                    {
+                        self.SetBuffCount(Modules.Buffs.lifeorbBuff.buffIndex, 2);
+                    }
+                    else if (lifeorb | lifeorb2)
+                    {
+                        self.SetBuffCount(Modules.Buffs.lifeorbBuff.buffIndex, 1);
+                    }
+                    if (luckyegg && luckyegg2)
+                    {
+                        self.master.luck = 0;
+                        self.SetBuffCount(Modules.Buffs.luckyeggBuff.buffIndex, 2);
+                        self.master.luck += 2f;
+                    }
+                    else if (luckyegg | luckyegg2)
+                    {
+                        self.master.luck = 0;
+                        self.SetBuffCount(Modules.Buffs.luckyeggBuff.buffIndex, 1);
+                        self.master.luck += 1f;
+                    }
+                    if (rockyhelmet && rockyhelmet2)
+                    {
+                        self.SetBuffCount(Modules.Buffs.rockyhelmetBuff.buffIndex, 2);
+                    }
+                    else if (rockyhelmet | rockyhelmet2)
+                    {
+                        self.SetBuffCount(Modules.Buffs.rockyhelmetBuff.buffIndex, 1);
+                    }
+                    if (scopelens && scopelens2)
+                    {
+                        self.SetBuffCount(Modules.Buffs.scopelensBuff.buffIndex, 2);
+                    }
+                    else if (scopelens | scopelens2)
+                    {
+                        self.SetBuffCount(Modules.Buffs.scopelensBuff.buffIndex, 1);
+                    }
+                    if (shellbell && shellbell2)
+                    {
+                        self.SetBuffCount(Modules.Buffs.shellbellBuff.buffIndex, 2);
+                    }
+                    else if (shellbell | shellbell2)
+                    {
+                        self.SetBuffCount(Modules.Buffs.shellbellBuff.buffIndex, 1);
+                    }
+
+                    
 
                 }
 
@@ -798,27 +824,6 @@ namespace DittoMod.Modules.Survivors
 
                     body = characterMaster.GetBody();
 
-                    dittomastercon.transformed = false;
-                    dittomastercon.assaultvest = false;
-                    dittomastercon.choiceband = false;
-                    dittomastercon.choicescarf = false;
-                    dittomastercon.choicespecs = false;
-                    dittomastercon.leftovers = false;
-                    dittomastercon.lifeorb = false;
-                    dittomastercon.luckyegg = false;
-                    dittomastercon.rockyhelmet = false;
-                    dittomastercon.scopelens = false;
-                    dittomastercon.shellbell = false;
-                    dittomastercon.assaultvest2 = false;
-                    dittomastercon.choiceband2 = false;
-                    dittomastercon.choicescarf2 = false;
-                    dittomastercon.choicespecs2 = false;
-                    dittomastercon.leftovers2 = false;
-                    dittomastercon.lifeorb2 = false;
-                    dittomastercon.luckyegg2 = false;
-                    dittomastercon.rockyhelmet2 = false;
-                    dittomastercon.scopelens2 = false;
-                    dittomastercon.shellbell2 = false;
                     if (Config.copyHealth.Value)
                         body.healthComponent.health = body.healthComponent.fullHealth * oldHealth;
 
