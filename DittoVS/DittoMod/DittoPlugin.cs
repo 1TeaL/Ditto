@@ -36,7 +36,8 @@ namespace DittoMod
         "PrefabAPI",
         "LanguageAPI",
         "SoundAPI",
-        "ItemAPI"
+        "ItemAPI",
+        "RecalculateStatsAPI",
     })]
 
     public class DittoPlugin : BaseUnityPlugin
@@ -52,7 +53,7 @@ namespace DittoMod
 
         public const string MODUID = "com.TeaL.DittoMod";
         public const string MODNAME = "DittoMod";
-        public const string MODVERSION = "1.3.4";
+        public const string MODVERSION = "1.3.5";
 
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string developerPrefix = "TEAL";
@@ -92,6 +93,7 @@ namespace DittoMod
             DittoCharacterBody = null;
             DittoPlugin.instance = this;
 
+            Modules.StaticValues.LoadList(); // load blacklist and speciallist
             // load assets and read config
             Modules.Assets.Initialize();
             Modules.Config.ReadConfig();
@@ -358,11 +360,12 @@ namespace DittoMod
         private void Hook()
         {
             // run hooks here, disabling one is as simple as commenting out the line
+            R2API.RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
             On.RoR2.CharacterBody.OnDeathStart += CharacterBody_OnDeathStart;
             On.RoR2.CharacterModel.Awake += CharacterModel_Awake;
             On.RoR2.CharacterMaster.Start += CharacterMaster_Start;
             //On.RoR2.CharacterBody.Start += CharacterBody_Start;
-            On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
+            //On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             //On.RoR2.TeleporterInteraction.FinishedState.OnEnter += TeleporterInteraction_FinishedState;
             GlobalEventManager.onServerDamageDealt += GlobalEventManager_OnDamageDealt;
@@ -370,10 +373,84 @@ namespace DittoMod
             //On.RoR2.CharacterBody.Update += CharacterBody_Update;
         }
 
+        private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
+        {
+            if (sender)
+            {
+
+                if (sender.HasBuff(Modules.Buffs.assaultvestBuff))
+                {
+                    args.armorAdd += (sender.GetBuffCount(Buffs.assaultvestBuff) * Modules.StaticValues.assaultvestboost);
+
+                }
+                if (sender.HasBuff(Modules.Buffs.choicebandBuff))
+                {
+                    args.baseAttackSpeedAdd += (sender.GetBuffCount(Buffs.choicebandBuff) * (Modules.StaticValues.choicebandboost - 1));
+
+                }
+                if (sender.HasBuff(Modules.Buffs.choicescarfBuff))
+                {
+                    args.moveSpeedMultAdd += (sender.GetBuffCount(Buffs.choicescarfBuff) * (Modules.StaticValues.choicescarfboost - 1));
+
+                }
+                if (sender.HasBuff(Modules.Buffs.choicespecsBuff))
+                {
+                    int buffnumber = sender.GetBuffCount(Modules.Buffs.choicespecsBuff);
+                    if (buffnumber > 0)
+                    {
+                        if (buffnumber >= 1 && buffnumber < 2)
+                        {
+                            args.cooldownReductionAdd += (1 - StaticValues.choicespecsboost);
+                        }
+                        if (buffnumber >= 2)
+                        {
+                            args.cooldownReductionAdd += (1 - StaticValues.choicespecsboost2);
+                        }
+                    }
+                }
+                if (sender.HasBuff(Modules.Buffs.leftoversBuff))
+                {
+                    int buffnumber = sender.GetBuffCount(Modules.Buffs.leftoversBuff);
+                    if (buffnumber > 0)
+                    {
+                        if (buffnumber >= 1 && buffnumber < 2)
+                        {
+
+                            HealthComponent hp = sender.healthComponent;
+                            float regenValue = hp.fullCombinedHealth * Modules.StaticValues.leftoversregen;
+                            args.baseRegenAdd += regenValue;
+                        }
+                        if (buffnumber >= 2)
+                        {
+
+                            HealthComponent hp = sender.healthComponent;
+                            float regenValue = hp.fullCombinedHealth * Modules.StaticValues.leftoversregen2;
+                            args.baseRegenAdd += regenValue;
+                        }
+                    }
+                }
+                if (sender.HasBuff(Modules.Buffs.lifeorbBuff))
+                {
+                    args.damageMultAdd += (sender.GetBuffCount(Buffs.lifeorbBuff) * (Modules.StaticValues.lifeorbboost - 1));
+
+                }
+                if (sender.HasBuff(Modules.Buffs.scopelensBuff))
+                {
+                    args.critAdd += (sender.GetBuffCount(Buffs.scopelensBuff) * Modules.StaticValues.scopelensboost);
+
+                }
+
+                              
+
+
+            }
+
+        }
+
         //lifesteal
         private void GlobalEventManager_OnDamageDealt(DamageReport report)
         {
-
+            
             bool flag = !report.attacker || !report.attackerBody;
             if (!flag && report.attackerBody.HasBuff(Modules.Buffs.shellbellBuff))
             {
@@ -485,154 +562,159 @@ namespace DittoMod
             //buffs 
             orig.Invoke(self);
 
-            if (self && self.master.gameObject.GetComponent<DittoMasterController>())
-            {
+            //if (self)
+            //{
+            //    if (self.master.gameObject.GetComponent<DittoMasterController>())
+            //    {
 
-                if (self.HasBuff(Modules.Buffs.assaultvestBuff))
-                {
-                    int buffnumber = self.GetBuffCount(Modules.Buffs.assaultvestBuff);
-                    if (buffnumber > 0)
-                    {
-                        if (buffnumber >= 1 && buffnumber < 2)
-                        {
-                            self.armor += Modules.StaticValues.assaultvestboost;
-                        }
-                        if (buffnumber >= 2)
-                        {
-                            self.armor += Modules.StaticValues.assaultvestboost2;
-                        }
-                    }
-                }
-                if (self.HasBuff(Modules.Buffs.choicebandBuff))
-                {
-                    int buffnumber = self.GetBuffCount(Modules.Buffs.choicebandBuff);
-                    if (buffnumber > 0)
-                    {
-                        if (buffnumber >= 1 && buffnumber < 2)
-                        {
-                            self.attackSpeed *= Modules.StaticValues.choicebandboost;
-                        }
-                        if (buffnumber >= 2)
-                        {
-                            self.attackSpeed *= Modules.StaticValues.choicebandboost2;
-                        }
-                    }
-                }
-                if (self.HasBuff(Modules.Buffs.choicescarfBuff))
-                {
-                    int buffnumber = self.GetBuffCount(Modules.Buffs.choicescarfBuff);
-                    if (buffnumber > 0)
-                    {
-                        if (buffnumber >= 1 && buffnumber < 2)
-                        {
-                            self.moveSpeed *= Modules.StaticValues.choicescarfboost;
-                        }
-                        if (buffnumber >= 2)
-                        {
-                            self.moveSpeed *= Modules.StaticValues.choicescarfboost2;
-                        }
-                    }
-                }
-                if (self.HasBuff(Modules.Buffs.choicespecsBuff))
-                {
-                    int buffnumber = self.GetBuffCount(Modules.Buffs.choicespecsBuff);
-                    if (buffnumber > 0)
-                    {
-                        if (buffnumber >= 1 && buffnumber < 2)
-                        {
-                            if (self.skillLocator.primary)
-                            {
-                                self.skillLocator.primary.cooldownScale *= Modules.StaticValues.choicespecsboost;
-                            }
-                            if (self.skillLocator.secondary)
-                            {
-                                self.skillLocator.secondary.cooldownScale *= Modules.StaticValues.choicespecsboost;
-                            }
-                            if (self.skillLocator.utility)
-                            {
-                                self.skillLocator.utility.cooldownScale *= Modules.StaticValues.choicespecsboost;
-                            }
-                            if (self.skillLocator.special)
-                            {
-                                self.skillLocator.special.cooldownScale *= Modules.StaticValues.choicespecsboost;
-                            }
-                        }
-                        if (buffnumber >= 2)
-                        {
-                            if (self.skillLocator.primary)
-                            {
-                                self.skillLocator.primary.cooldownScale *= Modules.StaticValues.choicespecsboost2;
-                            }
-                            if (self.skillLocator.secondary)
-                            {
-                                self.skillLocator.secondary.cooldownScale *= Modules.StaticValues.choicespecsboost2;
-                            }
-                            if (self.skillLocator.utility)
-                            {
-                                self.skillLocator.utility.cooldownScale *= Modules.StaticValues.choicespecsboost2;
-                            }
-                            if (self.skillLocator.special)
-                            {
-                                self.skillLocator.special.cooldownScale *= Modules.StaticValues.choicespecsboost2;
-                            }
-                        }
-                    }
-                }
-                if (self.HasBuff(Modules.Buffs.leftoversBuff))
-                {
-                    int buffnumber = self.GetBuffCount(Modules.Buffs.leftoversBuff);
-                    if (buffnumber > 0)
-                    {
-                        if (buffnumber >= 1 && buffnumber < 2)
-                        {
+            //        if (self.HasBuff(Modules.Buffs.assaultvestBuff))
+            //        {
+            //            int buffnumber = self.GetBuffCount(Modules.Buffs.assaultvestBuff);
+            //            if (buffnumber > 0)
+            //            {
+            //                if (buffnumber >= 1 && buffnumber < 2)
+            //                {
+            //                    self.armor += Modules.StaticValues.assaultvestboost;
+            //                }
+            //                if (buffnumber >= 2)
+            //                {
+            //                    self.armor += Modules.StaticValues.assaultvestboost2;
+            //                }
+            //            }
+            //        }
+            //        if (self.HasBuff(Modules.Buffs.choicebandBuff))
+            //        {
+            //            int buffnumber = self.GetBuffCount(Modules.Buffs.choicebandBuff);
+            //            if (buffnumber > 0)
+            //            {
+            //                if (buffnumber >= 1 && buffnumber < 2)
+            //                {
+            //                    self.attackSpeed *= Modules.StaticValues.choicebandboost;
+            //                }
+            //                if (buffnumber >= 2)
+            //                {
+            //                    self.attackSpeed *= Modules.StaticValues.choicebandboost2;
+            //                }
+            //            }
+            //        }
+            //        if (self.HasBuff(Modules.Buffs.choicescarfBuff))
+            //        {
+            //            int buffnumber = self.GetBuffCount(Modules.Buffs.choicescarfBuff);
+            //            if (buffnumber > 0)
+            //            {
+            //                if (buffnumber >= 1 && buffnumber < 2)
+            //                {
+            //                    self.moveSpeed *= Modules.StaticValues.choicescarfboost;
+            //                }
+            //                if (buffnumber >= 2)
+            //                {
+            //                    self.moveSpeed *= Modules.StaticValues.choicescarfboost2;
+            //                }
+            //            }
+            //        }
+            //        if (self.HasBuff(Modules.Buffs.choicespecsBuff))
+            //        {
+            //            int buffnumber = self.GetBuffCount(Modules.Buffs.choicespecsBuff);
+            //            if (buffnumber > 0)
+            //            {
+            //                if (buffnumber >= 1 && buffnumber < 2)
+            //                {
+            //                    if (self.skillLocator.primary)
+            //                    {
+            //                        self.skillLocator.primary.cooldownScale *= Modules.StaticValues.choicespecsboost;
+            //                    }
+            //                    if (self.skillLocator.secondary)
+            //                    {
+            //                        self.skillLocator.secondary.cooldownScale *= Modules.StaticValues.choicespecsboost;
+            //                    }
+            //                    if (self.skillLocator.utility)
+            //                    {
+            //                        self.skillLocator.utility.cooldownScale *= Modules.StaticValues.choicespecsboost;
+            //                    }
+            //                    if (self.skillLocator.special)
+            //                    {
+            //                        self.skillLocator.special.cooldownScale *= Modules.StaticValues.choicespecsboost;
+            //                    }
+            //                }
+            //                if (buffnumber >= 2)
+            //                {
+            //                    if (self.skillLocator.primary)
+            //                    {
+            //                        self.skillLocator.primary.cooldownScale *= Modules.StaticValues.choicespecsboost2;
+            //                    }
+            //                    if (self.skillLocator.secondary)
+            //                    {
+            //                        self.skillLocator.secondary.cooldownScale *= Modules.StaticValues.choicespecsboost2;
+            //                    }
+            //                    if (self.skillLocator.utility)
+            //                    {
+            //                        self.skillLocator.utility.cooldownScale *= Modules.StaticValues.choicespecsboost2;
+            //                    }
+            //                    if (self.skillLocator.special)
+            //                    {
+            //                        self.skillLocator.special.cooldownScale *= Modules.StaticValues.choicespecsboost2;
+            //                    }
+            //                }
+            //            }
+            //        }
+            //        if (self.HasBuff(Modules.Buffs.leftoversBuff))
+            //        {
+            //            int buffnumber = self.GetBuffCount(Modules.Buffs.leftoversBuff);
+            //            if (buffnumber > 0)
+            //            {
+            //                if (buffnumber >= 1 && buffnumber < 2)
+            //                {
 
-                            HealthComponent hp = self.healthComponent;
-                            float regenValue = hp.fullCombinedHealth * Modules.StaticValues.leftoversregen;
-                            self.regen += regenValue;
-                            //Chat.AddMessage("hpregen activated");
-                        }
-                        if (buffnumber >= 2)
-                        {
+            //                    HealthComponent hp = self.healthComponent;
+            //                    float regenValue = hp.fullCombinedHealth * Modules.StaticValues.leftoversregen;
+            //                    self.regen += regenValue;
+            //                    //Chat.AddMessage("hpregen activated");
+            //                }
+            //                if (buffnumber >= 2)
+            //                {
 
-                            HealthComponent hp = self.healthComponent;
-                            float regenValue = hp.fullCombinedHealth * Modules.StaticValues.leftoversregen2;
-                            self.regen += regenValue;
-                            //Chat.AddMessage("hpregen activated");
-                        }
-                    }
-                }
-                if (self.HasBuff(Modules.Buffs.lifeorbBuff))
-                {
-                    int buffnumber = self.GetBuffCount(Modules.Buffs.lifeorbBuff);
-                    if (buffnumber > 0)
-                    {
-                        if (buffnumber >= 1 && buffnumber < 2)
-                        {
-                            self.damage *= Modules.StaticValues.lifeorbboost;
-                        }
-                        if (buffnumber >= 2)
-                        {
-                            self.damage *= Modules.StaticValues.lifeorbboost2;
-                        }
-                    }
-                }
-                if (self.HasBuff(Modules.Buffs.scopelensBuff))
-                {
-                    int buffnumber = self.GetBuffCount(Modules.Buffs.scopelensBuff);
-                    if (buffnumber > 0)
-                    {
-                        if (buffnumber >= 1 && buffnumber < 2)
-                        {
-                            self.crit += Modules.StaticValues.scopelensboost;
-                        }
-                        if (buffnumber >= 2)
-                        {
-                            self.crit += Modules.StaticValues.scopelensboost2;
-                        }
-                    }
-                }
+            //                    HealthComponent hp = self.healthComponent;
+            //                    float regenValue = hp.fullCombinedHealth * Modules.StaticValues.leftoversregen2;
+            //                    self.regen += regenValue;
+            //                    //Chat.AddMessage("hpregen activated");
+            //                }
+            //            }
+            //        }
+            //        if (self.HasBuff(Modules.Buffs.lifeorbBuff))
+            //        {
+            //            int buffnumber = self.GetBuffCount(Modules.Buffs.lifeorbBuff);
+            //            if (buffnumber > 0)
+            //            {
+            //                if (buffnumber >= 1 && buffnumber < 2)
+            //                {
+            //                    self.damage *= Modules.StaticValues.lifeorbboost;
+            //                }
+            //                if (buffnumber >= 2)
+            //                {
+            //                    self.damage *= Modules.StaticValues.lifeorbboost2;
+            //                }
+            //            }
+            //        }
+            //        if (self.HasBuff(Modules.Buffs.scopelensBuff))
+            //        {
+            //            int buffnumber = self.GetBuffCount(Modules.Buffs.scopelensBuff);
+            //            if (buffnumber > 0)
+            //            {
+            //                if (buffnumber >= 1 && buffnumber < 2)
+            //                {
+            //                    self.crit += Modules.StaticValues.scopelensboost;
+            //                }
+            //                if (buffnumber >= 2)
+            //                {
+            //                    self.crit += Modules.StaticValues.scopelensboost2;
+            //                }
+            //            }
+            //        }
 
-            }
+            //    }
+
+            //}
+     
         }
 
         private void CharacterBody_OnDeathStart(On.RoR2.CharacterBody.orig_OnDeathStart orig, CharacterBody self)

@@ -1,8 +1,8 @@
 {
     "name": "DittoMod",
-    "version_number": "1.3.4",
+    "version_number": "1.3.5",
     "website_url": "https://github.com/1TeaL/Ditto",
-    "description": "Who's that Pokémon? 1.3.1- Instant Transforms! Hotkey to transform back to Ditto! Elites drop equipment! 1.3.3 - bug fixes, config for aspects",
+    "description": "Who's that Pokémon? 1.3.1- Instant Transforms! Hotkey to transform back to Ditto! Elites drop equipment! 1.3.5 - error fix",
     "dependencies": [
          "tristanmcpherson-R2API-4.3.5"
     ]

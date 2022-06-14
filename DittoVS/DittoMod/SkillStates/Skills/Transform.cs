@@ -85,52 +85,6 @@ namespace DittoMod.SkillStates
 
         private void ChangeOrSetCharacter(NetworkUser player, HurtBox hurtBox)
         {
-            List<string> blacklist = new List<string>();
-            blacklist.Add("DroneCommanderBody");
-            blacklist.Add("ExplosivePotDestructibleBody");
-            blacklist.Add("SulfurPodBody");
-            blacklist.Add("DittoBody");
-            blacklist.Add("AffixEarthHealerBody");
-            blacklist.Add("MinorConstructAttachableBody");
-            blacklist.Add("ClayGrenadierBody");
-            blacklist.Add("SMMaulingRockLarge");
-            blacklist.Add("SMMaulingRockMedium");
-            blacklist.Add("SMMaulingRockSmall");
-            blacklist.Add("VultureEggBody");
-            blacklist.Add("VoidInfestorBody");
-            blacklist.Add("GokuBody");
-            blacklist.Add("VegetaBody");
-            blacklist.Add("TrunksBody");
-            blacklist.Add("BeetleWard");
-
-            List<string> speciallist = new List<string>();
-            speciallist.Add("NullifierBody");
-            speciallist.Add("VoidJailerBody");
-            speciallist.Add("MinorConstructBody");
-            speciallist.Add("MinorConstructOnKillBody");
-            speciallist.Add("MiniVoidRaidCrabBodyPhase1");
-            speciallist.Add("MiniVoidRaidCrabBodyPhase2");
-            speciallist.Add("MiniVoidRaidCrabBodyPhase3");
-            speciallist.Add("ElectricWormBody");
-            speciallist.Add("MagmaWormBody");
-            speciallist.Add("BeetleQueen2Body");
-            speciallist.Add("TitanBody");
-            speciallist.Add("TitanGoldBody");
-            speciallist.Add("VagrantBody");
-            speciallist.Add("GravekeeperBody");
-            speciallist.Add("ClayBossBody");
-            speciallist.Add("RoboBallBossBody");
-            speciallist.Add("SuperRoboBallBossBody");
-            speciallist.Add("MegaConstructBody");
-            speciallist.Add("VoidInfestorBody");
-            speciallist.Add("VoidBarnacleBody");
-            speciallist.Add("MegaConstructBody");
-            speciallist.Add("VoidMegaCrabBody");
-            speciallist.Add("GrandParentBody");
-            speciallist.Add("ImpBossBody");
-            speciallist.Add("BrotherBody");
-            speciallist.Add("BrotherHurtBody");
-            speciallist.Add("ScavBody");
 
             CharacterMaster master = player.master;
 
@@ -154,7 +108,7 @@ namespace DittoMod.SkillStates
             CharacterBody body;
 
 
-            if (!blacklist.Contains(newbodyPrefab.name))
+            if (!Modules.StaticValues.blacklist.Contains(newbodyPrefab.name))
             {
 
                 master.bodyPrefab = newbodyPrefab;
@@ -196,7 +150,7 @@ namespace DittoMod.SkillStates
 
                 }
 
-                if (speciallist.Contains(newbodyPrefab.name))
+                if (Modules.StaticValues.speciallist.Contains(newbodyPrefab.name))
                 {
                     dittomastercon.transformed = true;
                     //body.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, Modules.StaticValues.transformDuration);

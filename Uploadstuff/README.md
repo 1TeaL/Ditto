@@ -40,6 +40,8 @@ If you enjoy my work, support me on Ko-fi!
 
 ## Latest Changelog, Next update(s)
 
+- 1.3.5 
+    - Hopefully fixed null errors and fps issues.
 - 1.3.4 
     - Fixed item buff passives not properly given to Ditto in future runs (hopefully).
 - 1.3.3 

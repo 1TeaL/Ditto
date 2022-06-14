@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DittoMod.Modules
 {
@@ -35,6 +36,75 @@ namespace DittoMod.Modules
 
         internal const int enemytransformTimer = 5;
 
+        public static List<string> blacklist = new List<string>();
+        public static List<string> speciallist = new List<string>();
+        public static List<string> bosslist = new List<string>();
 
+        public static void LoadList()
+        {
+            blacklist.Add("DroneCommanderBody");
+            blacklist.Add("ExplosivePotDestructibleBody");
+            blacklist.Add("SulfurPodBody");
+            blacklist.Add("DittoBody");
+            blacklist.Add("AffixEarthHealerBody");
+            blacklist.Add("MinorConstructAttachableBody");
+            blacklist.Add("ClayGrenadierBody");
+            blacklist.Add("SMMaulingRockLarge");
+            blacklist.Add("SMMaulingRockMedium");
+            blacklist.Add("SMMaulingRockSmall");
+            blacklist.Add("VultureEggBody");
+            blacklist.Add("VoidInfestorBody");
+            blacklist.Add("GokuBody");
+            blacklist.Add("VegetaBody");
+            blacklist.Add("TrunksBody");
+            blacklist.Add("BeetleWard");
+
+            speciallist.Add("NullifierBody");
+            speciallist.Add("VoidJailerBody");
+            speciallist.Add("MinorConstructBody");
+            speciallist.Add("MinorConstructOnKillBody");
+            speciallist.Add("MiniVoidRaidCrabBodyPhase1");
+            speciallist.Add("MiniVoidRaidCrabBodyPhase2");
+            speciallist.Add("MiniVoidRaidCrabBodyPhase3");
+            speciallist.Add("ElectricWormBody");
+            speciallist.Add("MagmaWormBody");
+            speciallist.Add("BeetleQueen2Body");
+            speciallist.Add("TitanBody");
+            speciallist.Add("TitanGoldBody");
+            speciallist.Add("VagrantBody");
+            speciallist.Add("GravekeeperBody");
+            speciallist.Add("ClayBossBody");
+            speciallist.Add("RoboBallBossBody");
+            speciallist.Add("SuperRoboBallBossBody");
+            speciallist.Add("MegaConstructBody");
+            speciallist.Add("VoidInfestorBody");
+            speciallist.Add("VoidBarnacleBody");
+            speciallist.Add("MegaConstructBody");
+            speciallist.Add("VoidMegaCrabBody");
+            speciallist.Add("GrandParentBody");
+            speciallist.Add("ImpBossBody");
+            speciallist.Add("BrotherBody");
+            speciallist.Add("BrotherHurtBody");
+            speciallist.Add("ScavBody");
+
+            bosslist.Add("ElectricWormBody");
+            bosslist.Add("MagmaWormBody");
+            bosslist.Add("BeetleQueen2Body");
+            bosslist.Add("TitanBody");
+            bosslist.Add("TitanGoldBody");
+            bosslist.Add("VagrantBody");
+            bosslist.Add("GravekeeperBody");
+            bosslist.Add("ClayBossBody");
+            bosslist.Add("RoboBallBossBody");
+            bosslist.Add("SuperRoboBallBossBody");
+            bosslist.Add("MegaConstructBody");
+            bosslist.Add("VoidMegaCrabBody");
+            bosslist.Add("GrandParentBody");
+            bosslist.Add("ImpBossBody");
+            bosslist.Add("BrotherBody");
+            bosslist.Add("BrotherHurtBody");
+            bosslist.Add("ScavBody");
+
+        }
     }
 }
