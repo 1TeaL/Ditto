@@ -87,23 +87,23 @@ namespace DittoMod.Modules
             speciallist.Add("BrotherHurtBody");
             speciallist.Add("ScavBody");
 
-            bosslist.Add("ElectricWormBody");
-            bosslist.Add("MagmaWormBody");
-            bosslist.Add("BeetleQueen2Body");
-            bosslist.Add("TitanBody");
-            bosslist.Add("TitanGoldBody");
-            bosslist.Add("VagrantBody");
-            bosslist.Add("GravekeeperBody");
-            bosslist.Add("ClayBossBody");
-            bosslist.Add("RoboBallBossBody");
-            bosslist.Add("SuperRoboBallBossBody");
-            bosslist.Add("MegaConstructBody");
-            bosslist.Add("VoidMegaCrabBody");
-            bosslist.Add("GrandParentBody");
-            bosslist.Add("ImpBossBody");
-            bosslist.Add("BrotherBody");
-            bosslist.Add("BrotherHurtBody");
-            bosslist.Add("ScavBody");
+            //bosslist.Add("ElectricWormBody");
+            //bosslist.Add("MagmaWormBody");
+            //bosslist.Add("BeetleQueen2Body");
+            //bosslist.Add("TitanBody");
+            //bosslist.Add("TitanGoldBody");
+            //bosslist.Add("VagrantBody");
+            //bosslist.Add("GravekeeperBody");
+            //bosslist.Add("ClayBossBody");
+            //bosslist.Add("RoboBallBossBody");
+            //bosslist.Add("SuperRoboBallBossBody");
+            //bosslist.Add("MegaConstructBody");
+            //bosslist.Add("VoidMegaCrabBody");
+            //bosslist.Add("GrandParentBody");
+            //bosslist.Add("ImpBossBody");
+            //bosslist.Add("BrotherBody");
+            //bosslist.Add("BrotherHurtBody");
+            //bosslist.Add("ScavBody");
 
         }
     }

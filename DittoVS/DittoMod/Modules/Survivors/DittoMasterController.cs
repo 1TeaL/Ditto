@@ -666,17 +666,9 @@ namespace DittoMod.Modules.Survivors
                         }
                         else if (self.master.bodyPrefab.name != BodyCatalog.FindBodyPrefab("DittoBody").name)
                         {
-                            if (Modules.StaticValues.speciallist.Contains(self.master.bodyPrefab.name))
-                            {
-                                if (transformed)
-                                {
-                                    self.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, 30);
-                                }
-                            }
-
                             if (Config.bossTimer.Value)
                             {
-                                if (Modules.StaticValues.bosslist.Contains(self.master.bodyPrefab.name))
+                                if (Modules.StaticValues.speciallist.Contains(self.master.bodyPrefab.name))
                                 {
                                     if (transformed)
                                     {
