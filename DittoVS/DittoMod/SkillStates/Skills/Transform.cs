@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using DittoMod.Modules;
 using UnityEngine.Networking;
 using RoR2.ExpansionManagement;
+using R2API.Networking;
 
 namespace DittoMod.SkillStates
 {
@@ -153,7 +154,7 @@ namespace DittoMod.SkillStates
                 if (Modules.StaticValues.speciallist.Contains(newbodyPrefab.name))
                 {
                     dittomastercon.transformed = true;
-                    //body.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, Modules.StaticValues.transformDuration);
+                    //body.ApplyBuff(Modules.Buffs.transformBuff.buffIndex, Modules.StaticValues.transformDuration);
                 }
 
 
@@ -195,7 +196,7 @@ namespace DittoMod.SkillStates
                 body.levelMoveSpeed = oldBody.levelMoveSpeed * Config.movespeedMultiplier.Value;
 
                 body.AddTimedBuffAuthority(RoR2Content.Buffs.HiddenInvincibility.buffIndex, Modules.StaticValues.invincibilityDuration);
-                body.SetBuffCount(Modules.Buffs.transformdeBuff.buffIndex, Modules.StaticValues.transformDuration);
+                body.ApplyBuff(Modules.Buffs.transformdeBuff.buffIndex, Modules.StaticValues.transformDuration);
 
                 if (targetMaster.playerCharacterMasterController || !targetMaster.playerCharacterMasterController)
                 {
@@ -206,16 +207,16 @@ namespace DittoMod.SkillStates
                     
                     if (!Config.choiceOnTeammate.Value)
                     {
-                        body.SetBuffCount(Modules.Buffs.assaultvestBuff.buffIndex, 0);
-                        body.SetBuffCount(Modules.Buffs.choicebandBuff.buffIndex, 0);
-                        body.SetBuffCount(Modules.Buffs.choicescarfBuff.buffIndex, 0);
-                        body.SetBuffCount(Modules.Buffs.choicespecsBuff.buffIndex, 0);
-                        body.SetBuffCount(Modules.Buffs.leftoversBuff.buffIndex, 0);
-                        body.SetBuffCount(Modules.Buffs.lifeorbBuff.buffIndex, 0);
-                        body.SetBuffCount(Modules.Buffs.luckyeggBuff.buffIndex, 0);
-                        body.SetBuffCount(Modules.Buffs.rockyhelmetBuff.buffIndex, 0);
-                        body.SetBuffCount(Modules.Buffs.scopelensBuff.buffIndex, 0);
-                        body.SetBuffCount(Modules.Buffs.shellbellBuff.buffIndex, 0);
+                        body.ApplyBuff(Modules.Buffs.assaultvestBuff.buffIndex, 0);
+                        body.ApplyBuff(Modules.Buffs.choicebandBuff.buffIndex, 0);
+                        body.ApplyBuff(Modules.Buffs.choicescarfBuff.buffIndex, 0);
+                        body.ApplyBuff(Modules.Buffs.choicespecsBuff.buffIndex, 0);
+                        body.ApplyBuff(Modules.Buffs.leftoversBuff.buffIndex, 0);
+                        body.ApplyBuff(Modules.Buffs.lifeorbBuff.buffIndex, 0);
+                        body.ApplyBuff(Modules.Buffs.luckyeggBuff.buffIndex, 0);
+                        body.ApplyBuff(Modules.Buffs.rockyhelmetBuff.buffIndex, 0);
+                        body.ApplyBuff(Modules.Buffs.scopelensBuff.buffIndex, 0);
+                        body.ApplyBuff(Modules.Buffs.shellbellBuff.buffIndex, 0);
 
                     }
                 }

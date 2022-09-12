@@ -407,6 +407,210 @@ namespace DittoMod.Modules.Survivors
 
             #endregion
 
+            #region Abilities
+            SkillDef FlameBody = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "FLAMEBODY_NAME",
+                skillNameToken = prefix + "FLAMEBODY_NAME",
+                skillDescriptionToken = prefix + "FLAMEBODY_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("FlameBody"),
+                activationState = new SerializableEntityStateType(typeof(SkillStates.FlameBody)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 0f,
+                beginSkillCooldownOnSkillEnd = true,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = false,
+                interruptPriority = InterruptPriority.Skill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { "KEYWORD_AGILE" }
+
+            });
+            SkillDef HugePower = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "HUGEPOWER_NAME",
+                skillNameToken = prefix + "HUGEPOWER_NAME",
+                skillDescriptionToken = prefix + "HUGEPOWER_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("HugePower"),
+                activationState = new SerializableEntityStateType(typeof(SkillStates.HugePower)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 0f,
+                beginSkillCooldownOnSkillEnd = true,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = false,
+                interruptPriority = InterruptPriority.Skill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { "KEYWORD_AGILE" }
+
+            });
+            SkillDef Levitate = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "LEVITATE_NAME",
+                skillNameToken = prefix + "LEVITATE_NAME",
+                skillDescriptionToken = prefix + "LEVITATE_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Levitate"),
+                activationState = new SerializableEntityStateType(typeof(SkillStates.Levitate)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 0f,
+                beginSkillCooldownOnSkillEnd = true,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = false,
+                interruptPriority = InterruptPriority.Skill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { "KEYWORD_AGILE" }
+
+            });
+            SkillDef MagicGuard = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "MAGICGUARD_NAME",
+                skillNameToken = prefix + "MAGICGUARD_NAME",
+                skillDescriptionToken = prefix + "MAGICGUARD_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("MagicGuard"),
+                activationState = new SerializableEntityStateType(typeof(SkillStates.MagicGuard)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 0f,
+                beginSkillCooldownOnSkillEnd = true,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = false,
+                interruptPriority = InterruptPriority.Skill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { "KEYWORD_AGILE" }
+
+            });
+            SkillDef Moody = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "MOODY_NAME",
+                skillNameToken = prefix + "MOODY_NAME",
+                skillDescriptionToken = prefix + "MOODY_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Moody"),
+                activationState = new SerializableEntityStateType(typeof(SkillStates.Moody)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 0f,
+                beginSkillCooldownOnSkillEnd = true,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = false,
+                interruptPriority = InterruptPriority.Skill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { "KEYWORD_AGILE" }
+
+            });
+            SkillDef Moxie = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "MOXIE_NAME",
+                skillNameToken = prefix + "MOXIE_NAME",
+                skillDescriptionToken = prefix + "MOXIE_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Moxie"),
+                activationState = new SerializableEntityStateType(typeof(SkillStates.Moxie)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 0f,
+                beginSkillCooldownOnSkillEnd = true,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = false,
+                interruptPriority = InterruptPriority.Skill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { "KEYWORD_AGILE" }
+
+            });
+            SkillDef Multiscale = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "MULTISCALE_NAME",
+                skillNameToken = prefix + "MULTISCALE_NAME",
+                skillDescriptionToken = prefix + "MULTISCALE_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Multiscale"),
+                activationState = new SerializableEntityStateType(typeof(SkillStates.Multiscale)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 0f,
+                beginSkillCooldownOnSkillEnd = true,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = false,
+                interruptPriority = InterruptPriority.Skill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { "KEYWORD_AGILE" }
+
+            });
+            SkillDef Sniper = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "SNIPER_NAME",
+                skillNameToken = prefix + "SNIPER_NAME",
+                skillDescriptionToken = prefix + "SNIPER_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Sniper"),
+                activationState = new SerializableEntityStateType(typeof(SkillStates.Sniper)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 0f,
+                beginSkillCooldownOnSkillEnd = true,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = false,
+                interruptPriority = InterruptPriority.Skill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { "KEYWORD_AGILE" }
+
+            });
+
+            #endregion
+
             #region Secondary
 
             Skills.AddSecondarySkills(this.bodyPrefab, new SkillDef[]

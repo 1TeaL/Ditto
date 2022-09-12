@@ -1,4 +1,5 @@
-﻿using RoR2;
+﻿using R2API.Networking;
+using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace DittoMod.Modules.Survivors
         private CharacterBody body;
         public bool transformed;
         //private int buffCountToApply;
-        public float transformage2;
+        public float transformage1;
         public bool assaultvest;
         public bool choiceband;
         public bool choicescarf;
@@ -29,16 +30,6 @@ namespace DittoMod.Modules.Survivors
         public bool rockyhelmet;
         public bool scopelens;
         public bool shellbell;
-        public bool assaultvest2;
-        public bool choiceband2;
-        public bool choicescarf2;
-        public bool choicespecs2;
-        public bool leftovers2;
-        public bool lifeorb2;
-        public bool luckyegg2;
-        public bool rockyhelmet2;
-        public bool scopelens2;
-        public bool shellbell2;
         private bool givebuffs;
 
         public bool hookgiven;
@@ -56,16 +47,6 @@ namespace DittoMod.Modules.Survivors
             rockyhelmet = false;
             scopelens = false;
             shellbell = false;
-            assaultvest2 = false;
-            choiceband2 = false;
-            choicescarf2 = false;
-            choicespecs2 = false;
-            leftovers2 = false;
-            lifeorb2 = false;
-            luckyegg2 = false;
-            rockyhelmet2 = false;
-            scopelens2 = false;
-            shellbell2 = false;
             //On.RoR2.Stage.Start += Stage_Start;
             //On.RoR2.CharacterMaster.Respawn += CharacterMaster_Respawn;
             if (!hookgiven)
@@ -93,16 +74,6 @@ namespace DittoMod.Modules.Survivors
             rockyhelmet = false;
             scopelens = false;
             shellbell = false;
-            assaultvest2 = false;
-            choiceband2 = false;
-            choicescarf2 = false;
-            choicespecs2 = false;
-            leftovers2 = false;
-            lifeorb2 = false;
-            luckyegg2 = false;
-            rockyhelmet2 = false;
-            scopelens2 = false;
-            shellbell2 = false;
 
         }
 
@@ -128,16 +99,6 @@ namespace DittoMod.Modules.Survivors
             rockyhelmet = false;
             scopelens = false;
             shellbell = false;
-            assaultvest2 = false;
-            choiceband2 = false;
-            choicescarf2 = false;
-            choicespecs2 = false;
-            leftovers2 = false;
-            lifeorb2 = false;
-            luckyegg2 = false;
-            rockyhelmet2 = false;
-            scopelens2 = false;
-            shellbell2 = false;
             characterMaster = gameObject.GetComponent<CharacterMaster>();
             //Debug.Log(transformed + "istransformed");
             self = characterMaster.GetBody();
@@ -146,50 +107,21 @@ namespace DittoMod.Modules.Survivors
             dittocon = self.gameObject.GetComponent<DittoController>();
 
 
-            dittocon.assaultvest = false;
-            dittocon.choiceband = false;
-            dittocon.choicescarf = false;
-            dittocon.choicespecs = false;
-            dittocon.leftovers = false;
-            dittocon.lifeorb = false;
-            dittocon.luckyegg = false;
-            dittocon.rockyhelmet = false;
-            dittocon.scopelens = false;
-            dittocon.shellbell = false;
-            dittocon.assaultvest2 = false;
-            dittocon.choiceband2 = false;
-            dittocon.choicescarf2 = false;
-            dittocon.choicespecs2 = false;
-            dittocon.leftovers2 = false;
-            dittocon.lifeorb2 = false;
-            dittocon.luckyegg2 = false;
-            dittocon.rockyhelmet2 = false;
-            dittocon.scopelens2 = false;
-            dittocon.shellbell2 = false;
-
-            self.SetBuffCount(Modules.Buffs.assaultvestBuff.buffIndex, 0);
-            self.SetBuffCount(Modules.Buffs.choicebandBuff.buffIndex, 0);
-            self.SetBuffCount(Modules.Buffs.choicescarfBuff.buffIndex, 0);
-            self.SetBuffCount(Modules.Buffs.choicespecsBuff.buffIndex, 0);
-            self.SetBuffCount(Modules.Buffs.leftoversBuff.buffIndex, 0);
-            self.SetBuffCount(Modules.Buffs.lifeorbBuff.buffIndex, 0);
-            self.SetBuffCount(Modules.Buffs.luckyeggBuff.buffIndex, 0);
-            self.SetBuffCount(Modules.Buffs.rockyhelmetBuff.buffIndex, 0);
-            self.SetBuffCount(Modules.Buffs.scopelensBuff.buffIndex, 0);
-            self.SetBuffCount(Modules.Buffs.shellbellBuff.buffIndex, 0);
+            self.ApplyBuff(Modules.Buffs.assaultvestBuff.buffIndex, 0, -1);
+            self.ApplyBuff(Modules.Buffs.choicebandBuff.buffIndex, 0, -1);
+            self.ApplyBuff(Modules.Buffs.choicescarfBuff.buffIndex, 0, -1);
+            self.ApplyBuff(Modules.Buffs.choicespecsBuff.buffIndex, 0, -1);
+            self.ApplyBuff(Modules.Buffs.leftoversBuff.buffIndex, 0, -1);
+            self.ApplyBuff(Modules.Buffs.lifeorbBuff.buffIndex, 0, -1);
+            self.ApplyBuff(Modules.Buffs.luckyeggBuff.buffIndex, 0, -1);
+            self.ApplyBuff(Modules.Buffs.rockyhelmetBuff.buffIndex, 0, -1);
+            self.ApplyBuff(Modules.Buffs.scopelensBuff.buffIndex, 0, -1);
+            self.ApplyBuff(Modules.Buffs.shellbellBuff.buffIndex, 0, -1);
 
             characterMaster.luck = 0;
             if (characterMaster.GetBody().skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LUCKYEGG_NAME" && !luckyegg)
             {
                 luckyegg = true;
-                dittocon.luckyegg = true;
-                self.AddBuff(Modules.Buffs.luckyeggBuff);
-                characterMaster.luck += 1f;
-            }
-            if (characterMaster.GetBody().skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LUCKYEGG_NAME" && !luckyegg2)
-            {
-                luckyegg2 = true;
-                dittocon.luckyegg = true;
                 self.AddBuff(Modules.Buffs.luckyeggBuff);
                 characterMaster.luck += 1f;
             }
@@ -198,37 +130,30 @@ namespace DittoMod.Modules.Survivors
             if (self.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_ASSAULTVEST_NAME" && !assaultvest)
             {
                 assaultvest = true;
-                dittocon.assaultvest = true;
                 self.AddBuff(Modules.Buffs.assaultvestBuff);
             }
             if (self.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICEBAND_NAME" && !choiceband)
             {
                 choiceband = true;
-                dittocon.choiceband = true;
                 self.AddBuff(Modules.Buffs.choicebandBuff);
             }
             if (self.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICESCARF_NAME" && !choicescarf)
             {
-                choicescarf = true;
-                dittocon.choicescarf = true;
                 self.AddBuff(Modules.Buffs.choicescarfBuff);
             }
             if (self.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICESPECS_NAME" && !choicespecs)
             {
                 choicespecs = true;
-                dittocon.choicespecs = true;
                 self.AddBuff(Modules.Buffs.choicespecsBuff);
             }
             if (self.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LEFTOVERS_NAME" && !leftovers)
             {
                 leftovers = true;
-                dittocon.leftovers = true;
                 self.AddBuff(Modules.Buffs.leftoversBuff);
             }
             if (self.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LIFEORB_NAME" && !lifeorb)
             {
                 lifeorb = true;
-                dittocon.lifeorb = true;
                 self.AddBuff(Modules.Buffs.lifeorbBuff);
             }
             //if (self.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LUCKYEGG_NAME" && !luckyegg)
@@ -239,80 +164,77 @@ namespace DittoMod.Modules.Survivors
             if (self.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_ROCKYHELMET_NAME" && !rockyhelmet)
             {
                 rockyhelmet = true;
-                dittocon.rockyhelmet = true;
                 self.AddBuff(Modules.Buffs.rockyhelmetBuff);
             }
             if (self.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_SCOPELENS_NAME" && !scopelens)
             {
                 scopelens = true;
-                dittocon.scopelens = true;
                 self.AddBuff(Modules.Buffs.scopelensBuff);
             }
             if (self.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_SHELLBELL_NAME" && !shellbell)
             {
                 shellbell = true;
-                dittocon.shellbell = true;
                 self.AddBuff(Modules.Buffs.shellbellBuff);
             }
-            if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_ASSAULTVEST_NAME" && !assaultvest2)
-            {
-                assaultvest2 = true;
-                dittocon.assaultvest2 = true;
-                self.AddBuff(Modules.Buffs.assaultvestBuff);
-            }
-            if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICEBAND_NAME" && !choiceband2)
-            {
-                choiceband2 = true;
-                dittocon.choiceband2 = true;
-                self.AddBuff(Modules.Buffs.choicebandBuff);
-            }
-            if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICESCARF_NAME" && !choicescarf2)
-            {
-                choicescarf2 = true;
-                dittocon.choicescarf2 = true;
-                self.AddBuff(Modules.Buffs.choicescarfBuff);
-            }
-            if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICESPECS_NAME" && !choicespecs2)
-            {
-                choicespecs2 = true;
-                dittocon.choicespecs2 = true;
-                self.AddBuff(Modules.Buffs.choicespecsBuff);
-            }
-            if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LEFTOVERS_NAME" && !leftovers2)
-            {
-                leftovers2 = true;
-                dittocon.leftovers2 = true;
-                self.AddBuff(Modules.Buffs.leftoversBuff);
-            }
-            if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LIFEORB_NAME" && !lifeorb2)
-            {
-                lifeorb2 = true;
-                dittocon.lifeorb2 = true;
-                self.AddBuff(Modules.Buffs.lifeorbBuff);
-            }
-            //if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LUCKYEGG_NAME" && !luckyegg2)
+            //if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_ASSAULTVEST_NAME" && !assaultvest1)
             //{
-            //    luckyegg2 = true;
-            //    self.AddBuff(Modules.Buffs.luckyeggBuff);
+            //    assaultvest1 = true;
+            //    dittocon.assaultvest1 = true;
+            //    self.AddBuff(Modules.Buffs.assaultvestBuff);
             //}
-            if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_ROCKYHELMET_NAME" && !rockyhelmet2)
-            {
-                rockyhelmet2 = true;
-                dittocon.rockyhelmet2 = true;
-                self.AddBuff(Modules.Buffs.rockyhelmetBuff);
-            }
-            if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_SCOPELENS_NAME" && !scopelens2)
-            {
-                scopelens2 = true;
-                dittocon.scopelens2 = true;
-                self.AddBuff(Modules.Buffs.scopelensBuff);
-            }
-            if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_SHELLBELL_NAME" && !shellbell2)
-            {
-                shellbell2 = true;
-                dittocon.shellbell2 = true;
-                self.AddBuff(Modules.Buffs.shellbellBuff);
-            }
+            //if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICEBAND_NAME" && !choiceband1)
+            //{
+            //    choiceband1 = true;
+            //    dittocon.choiceband1 = true;
+            //    self.AddBuff(Modules.Buffs.choicebandBuff);
+            //}
+            //if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICESCARF_NAME" && !choicescarf1)
+            //{
+            //    choicescarf1 = true;
+            //    dittocon.choicescarf1 = true;
+            //    self.AddBuff(Modules.Buffs.choicescarfBuff);
+            //}
+            //if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICESPECS_NAME" && !choicespecs1)
+            //{
+            //    choicespecs1 = true;
+            //    dittocon.choicespecs1 = true;
+            //    self.AddBuff(Modules.Buffs.choicespecsBuff);
+            //}
+            //if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LEFTOVERS_NAME" && !leftovers1)
+            //{
+            //    leftovers1 = true;
+            //    dittocon.leftovers1 = true;
+            //    self.AddBuff(Modules.Buffs.leftoversBuff);
+            //}
+            //if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LIFEORB_NAME" && !lifeorb1)
+            //{
+            //    lifeorb1 = true;
+            //    dittocon.lifeorb1 = true;
+            //    self.AddBuff(Modules.Buffs.lifeorbBuff);
+            //}
+            ////if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LUCKYEGG_NAME" && !luckyegg1)
+            ////{
+            ////    luckyegg1 = true;
+            ////    self.AddBuff(Modules.Buffs.luckyeggBuff);
+            ////}
+            //if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_ROCKYHELMET_NAME" && !rockyhelmet1)
+            //{
+            //    rockyhelmet1 = true;
+            //    dittocon.rockyhelmet1 = true;
+            //    self.AddBuff(Modules.Buffs.rockyhelmetBuff);
+            //}
+            //if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_SCOPELENS_NAME" && !scopelens1)
+            //{
+            //    scopelens1 = true;
+            //    dittocon.scopelens1 = true;
+            //    self.AddBuff(Modules.Buffs.scopelensBuff);
+            //}
+            //if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_SHELLBELL_NAME" && !shellbell1)
+            //{
+            //    shellbell1 = true;
+            //    dittocon.shellbell1 = true;
+            //    self.AddBuff(Modules.Buffs.shellbellBuff);
+            //}
 
 
         }
@@ -336,37 +258,7 @@ namespace DittoMod.Modules.Survivors
                 rockyhelmet = false;
                 scopelens = false;
                 shellbell = false;
-                assaultvest2 = false;
-                choiceband2 = false;
-                choicescarf2 = false;
-                choicespecs2 = false;
-                leftovers2 = false;
-                lifeorb2 = false;
-                luckyegg2 = false;
-                rockyhelmet2 = false;
-                scopelens2 = false;
-                shellbell2 = false;
 
-                dittocon.assaultvest = false;
-                dittocon.choiceband = false;
-                dittocon.choicescarf = false;
-                dittocon.choicespecs = false;
-                dittocon.leftovers = false;
-                dittocon.lifeorb = false;
-                dittocon.luckyegg = false;
-                dittocon.rockyhelmet = false;
-                dittocon.scopelens = false;
-                dittocon.shellbell = false;
-                dittocon.assaultvest2 = false;
-                dittocon.choiceband2 = false;
-                dittocon.choicescarf2 = false;
-                dittocon.choicespecs2 = false;
-                dittocon.leftovers2 = false;
-                dittocon.lifeorb2 = false;
-                dittocon.luckyegg2 = false;
-                dittocon.rockyhelmet2 = false;
-                dittocon.scopelens2 = false;
-                dittocon.shellbell2 = false;
             }
             //Destroy(dittomastercon);
 
@@ -380,10 +272,6 @@ namespace DittoMod.Modules.Survivors
 
             self.luck = 0;
             if (luckyegg)
-            {
-                self.luck += 1f;
-            }
-            if (luckyegg2)
             {
                 self.luck += 1f;
             }
@@ -401,23 +289,21 @@ namespace DittoMod.Modules.Survivors
             {
                 if (self.master)
                 {
-                    if (self.master.gameObject.GetComponent<DittoMasterController>())
+                    if(characterMaster.netId == self.master.netId)
                     {
-                        givebuffs = false;
-
-
                         if (self.master.bodyPrefab.name == BodyCatalog.FindBodyPrefab("DittoBody").name)
                         {
-                            //self.SetBuffCount(Modules.Buffs.assaultvestBuff.buffIndex, 0);
-                            //self.SetBuffCount(Modules.Buffs.choicebandBuff.buffIndex, 0);
-                            //self.SetBuffCount(Modules.Buffs.choicescarfBuff.buffIndex, 0);
-                            //self.SetBuffCount(Modules.Buffs.choicespecsBuff.buffIndex, 0);
-                            //self.SetBuffCount(Modules.Buffs.leftoversBuff.buffIndex, 0);
-                            //self.SetBuffCount(Modules.Buffs.lifeorbBuff.buffIndex, 0);
-                            //self.SetBuffCount(Modules.Buffs.luckyeggBuff.buffIndex, 0);
-                            //self.SetBuffCount(Modules.Buffs.rockyhelmetBuff.buffIndex, 0);
-                            //self.SetBuffCount(Modules.Buffs.scopelensBuff.buffIndex, 0);
-                            //self.SetBuffCount(Modules.Buffs.shellbellBuff.buffIndex, 0);
+                            givebuffs = false;
+                            //self.ApplyBuff(Modules.Buffs.assaultvestBuff.buffIndex, 0);
+                            //self.ApplyBuff(Modules.Buffs.choicebandBuff.buffIndex, 0);
+                            //self.ApplyBuff(Modules.Buffs.choicescarfBuff.buffIndex, 0);
+                            //self.ApplyBuff(Modules.Buffs.choicespecsBuff.buffIndex, 0);
+                            //self.ApplyBuff(Modules.Buffs.leftoversBuff.buffIndex, 0);
+                            //self.ApplyBuff(Modules.Buffs.lifeorbBuff.buffIndex, 0);
+                            //self.ApplyBuff(Modules.Buffs.luckyeggBuff.buffIndex, 0);
+                            //self.ApplyBuff(Modules.Buffs.rockyhelmetBuff.buffIndex, 0);
+                            //self.ApplyBuff(Modules.Buffs.scopelensBuff.buffIndex, 0);
+                            //self.ApplyBuff(Modules.Buffs.shellbellBuff.buffIndex, 0);
 
 
                             //transformed = false;
@@ -431,16 +317,16 @@ namespace DittoMod.Modules.Survivors
                             //rockyhelmet = false;
                             //scopelens = false;
                             //shellbell = false;
-                            //assaultvest2 = false;
-                            //choiceband2 = false;
-                            //choicescarf2 = false;
-                            //choicespecs2 = false;
-                            //leftovers2 = false;
-                            //lifeorb2 = false;
-                            //luckyegg2 = false;
-                            //rockyhelmet2 = false;
-                            //scopelens2 = false;
-                            //shellbell2 = false;
+                            //assaultvest1 = false;
+                            //choiceband1 = false;
+                            //choicescarf1 = false;
+                            //choicespecs1 = false;
+                            //leftovers1 = false;
+                            //lifeorb1 = false;
+                            //luckyegg1 = false;
+                            //rockyhelmet1 = false;
+                            //scopelens1 = false;
+                            //shellbell1 = false;
 
                             //if (self.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LUCKYEGG_NAME" && !luckyegg)
                             //{
@@ -449,9 +335,9 @@ namespace DittoMod.Modules.Survivors
                             //    self.AddBuff(Modules.Buffs.luckyeggBuff);
                             //    characterMaster.luck += 1f;
                             //}
-                            //if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LUCKYEGG_NAME" && !luckyegg2)
+                            //if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LUCKYEGG_NAME" && !luckyegg1)
                             //{
-                            //    luckyegg2 = true;
+                            //    luckyegg1 = true;
                             //    dittocon.luckyegg = true;
                             //    self.AddBuff(Modules.Buffs.luckyeggBuff);
                             //    characterMaster.luck += 1f;
@@ -517,149 +403,149 @@ namespace DittoMod.Modules.Survivors
                             //    dittocon.shellbell = true;
                             //    self.AddBuff(Modules.Buffs.shellbellBuff);
                             //}
-                            //if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_ASSAULTVEST_NAME" && !assaultvest2)
+                            //if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_ASSAULTVEST_NAME" && !assaultvest1)
                             //{
-                            //    assaultvest2 = true;
-                            //    dittocon.assaultvest2 = true;
+                            //    assaultvest1 = true;
+                            //    dittocon.assaultvest1 = true;
                             //    self.AddBuff(Modules.Buffs.assaultvestBuff);
                             //}
-                            //if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICEBAND_NAME" && !choiceband2)
+                            //if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICEBAND_NAME" && !choiceband1)
                             //{
-                            //    choiceband2 = true;
-                            //    dittocon.choiceband2 = true;
+                            //    choiceband1 = true;
+                            //    dittocon.choiceband1 = true;
                             //    self.AddBuff(Modules.Buffs.choicebandBuff);
                             //}
-                            //if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICESCARF_NAME" && !choicescarf2)
+                            //if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICESCARF_NAME" && !choicescarf1)
                             //{
-                            //    choicescarf2 = true;
-                            //    dittocon.choicescarf2 = true;
+                            //    choicescarf1 = true;
+                            //    dittocon.choicescarf1 = true;
                             //    self.AddBuff(Modules.Buffs.choicescarfBuff);
                             //}
-                            //if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICESPECS_NAME" && !choicespecs2)
+                            //if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICESPECS_NAME" && !choicespecs1)
                             //{
-                            //    choicespecs2 = true;
-                            //    dittocon.choicespecs2 = true;
+                            //    choicespecs1 = true;
+                            //    dittocon.choicespecs1 = true;
                             //    self.AddBuff(Modules.Buffs.choicespecsBuff);
                             //}
-                            //if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LEFTOVERS_NAME" && !leftovers2)
+                            //if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LEFTOVERS_NAME" && !leftovers1)
                             //{
-                            //    leftovers2 = true;
-                            //    dittocon.leftovers2 = true;
+                            //    leftovers1 = true;
+                            //    dittocon.leftovers1 = true;
                             //    self.AddBuff(Modules.Buffs.leftoversBuff);
                             //}
-                            //if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LIFEORB_NAME" && !lifeorb2)
+                            //if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LIFEORB_NAME" && !lifeorb1)
                             //{
-                            //    lifeorb2 = true;
-                            //    dittocon.lifeorb2 = true;
+                            //    lifeorb1 = true;
+                            //    dittocon.lifeorb1 = true;
                             //    self.AddBuff(Modules.Buffs.lifeorbBuff);
                             //}
-                            ////if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LUCKYEGG_NAME" && !luckyegg2)
+                            ////if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LUCKYEGG_NAME" && !luckyegg1)
                             ////{
-                            ////    luckyegg2 = true;
+                            ////    luckyegg1 = true;
                             ////    self.AddBuff(Modules.Buffs.luckyeggBuff);
                             ////}
-                            //if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_ROCKYHELMET_NAME" && !rockyhelmet2)
+                            //if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_ROCKYHELMET_NAME" && !rockyhelmet1)
                             //{
-                            //    rockyhelmet2 = true;
-                            //    dittocon.rockyhelmet2 = true;
+                            //    rockyhelmet1 = true;
+                            //    dittocon.rockyhelmet1 = true;
                             //    self.AddBuff(Modules.Buffs.rockyhelmetBuff);
                             //}
-                            //if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_SCOPELENS_NAME" && !scopelens2)
+                            //if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_SCOPELENS_NAME" && !scopelens1)
                             //{
-                            //    scopelens2 = true;
-                            //    dittocon.scopelens2 = true;
+                            //    scopelens1 = true;
+                            //    dittocon.scopelens1 = true;
                             //    self.AddBuff(Modules.Buffs.scopelensBuff);
                             //}
-                            //if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_SHELLBELL_NAME" && !shellbell2)
+                            //if (self.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_SHELLBELL_NAME" && !shellbell1)
                             //{
-                            //    shellbell2 = true;
-                            //    dittocon.shellbell2 = true;
+                            //    shellbell1 = true;
+                            //    dittocon.shellbell1 = true;
                             //    self.AddBuff(Modules.Buffs.shellbellBuff);
                             //}
 
-                            if (assaultvest && assaultvest2)
+                            if (assaultvest)
                             {
-                                self.SetBuffCount(Modules.Buffs.assaultvestBuff.buffIndex, 2);
+                                self.ApplyBuff(Modules.Buffs.assaultvestBuff.buffIndex, 1);
                             }
-                            else if (assaultvest | assaultvest2)
+                            else
                             {
-                                self.SetBuffCount(Modules.Buffs.assaultvestBuff.buffIndex, 1);
+                                self.ApplyBuff(Modules.Buffs.assaultvestBuff.buffIndex, 0);
                             }
-                            if (choiceband && choiceband2)
+                            if (choiceband)
                             {
-                                self.SetBuffCount(Modules.Buffs.choicebandBuff.buffIndex, 2);
+                                self.ApplyBuff(Modules.Buffs.choicebandBuff.buffIndex, 1);
                             }
-                            else if (choiceband | choiceband2)
+                            else 
                             {
-                                self.SetBuffCount(Modules.Buffs.choicebandBuff.buffIndex, 1);
+                                self.ApplyBuff(Modules.Buffs.choicebandBuff.buffIndex, 1);
                             }
-                            if (choicescarf && choicescarf2)
+                            if (choicescarf)
                             {
-                                self.SetBuffCount(Modules.Buffs.choicescarfBuff.buffIndex, 2);
+                                self.ApplyBuff(Modules.Buffs.choicescarfBuff.buffIndex, 1);
                             }
-                            else if (choicescarf | choicescarf2)
+                            else
+                            { 
+                                self.ApplyBuff(Modules.Buffs.choicescarfBuff.buffIndex, 0);
+                            }
+                            if (choicespecs)
                             {
-                                self.SetBuffCount(Modules.Buffs.choicescarfBuff.buffIndex, 1);
+                                self.ApplyBuff(Modules.Buffs.choicespecsBuff.buffIndex, 1);
                             }
-                            if (choicespecs && choicespecs2)
+                            else 
                             {
-                                self.SetBuffCount(Modules.Buffs.choicespecsBuff.buffIndex, 2);
+                                self.ApplyBuff(Modules.Buffs.choicespecsBuff.buffIndex, 0);
                             }
-                            else if (choicespecs | choicespecs2)
+                            if (leftovers)
                             {
-                                self.SetBuffCount(Modules.Buffs.choicespecsBuff.buffIndex, 1);
+                                self.ApplyBuff(Modules.Buffs.leftoversBuff.buffIndex, 1);
                             }
-                            if (leftovers && leftovers2)
+                            else 
                             {
-                                self.SetBuffCount(Modules.Buffs.leftoversBuff.buffIndex, 2);
+                                self.ApplyBuff(Modules.Buffs.leftoversBuff.buffIndex, 0);
                             }
-                            else if (leftovers | leftovers2)
+                            if (lifeorb)
                             {
-                                self.SetBuffCount(Modules.Buffs.leftoversBuff.buffIndex, 1);
+                                self.ApplyBuff(Modules.Buffs.lifeorbBuff.buffIndex, 1);
                             }
-                            if (lifeorb && lifeorb2)
+                            else
                             {
-                                self.SetBuffCount(Modules.Buffs.lifeorbBuff.buffIndex, 2);
+                                self.ApplyBuff(Modules.Buffs.lifeorbBuff.buffIndex, 0);
                             }
-                            else if (lifeorb | lifeorb2)
-                            {
-                                self.SetBuffCount(Modules.Buffs.lifeorbBuff.buffIndex, 1);
-                            }
-                            //if (luckyegg && luckyegg2)
+                            //if (luckyegg && luckyegg1)
                             //{
                             //    self.master.luck = 0;
-                            //    self.SetBuffCount(Modules.Buffs.luckyeggBuff.buffIndex, 2);
-                            //    self.master.luck += 2f;
-                            //}
-                            //else if (luckyegg | luckyegg2)
-                            //{
-                            //    self.master.luck = 0;
-                            //    self.SetBuffCount(Modules.Buffs.luckyeggBuff.buffIndex, 1);
+                            //    self.ApplyBuff(Modules.Buffs.luckyeggBuff.buffIndex, 1);
                             //    self.master.luck += 1f;
                             //}
-                            if (rockyhelmet && rockyhelmet2)
+                            //else if (luckyegg | luckyegg1)
+                            //{
+                            //    self.master.luck = 0;
+                            //    self.ApplyBuff(Modules.Buffs.luckyeggBuff.buffIndex, 1);
+                            //    self.master.luck += 1f;
+                            //}
+                            if (rockyhelmet)
                             {
-                                self.SetBuffCount(Modules.Buffs.rockyhelmetBuff.buffIndex, 2);
+                                self.ApplyBuff(Modules.Buffs.rockyhelmetBuff.buffIndex, 1);
                             }
-                            else if (rockyhelmet | rockyhelmet2)
+                            else 
                             {
-                                self.SetBuffCount(Modules.Buffs.rockyhelmetBuff.buffIndex, 1);
+                                self.ApplyBuff(Modules.Buffs.rockyhelmetBuff.buffIndex, 0);
                             }
-                            if (scopelens && scopelens2)
+                            if (scopelens)
                             {
-                                self.SetBuffCount(Modules.Buffs.scopelensBuff.buffIndex, 2);
+                                self.ApplyBuff(Modules.Buffs.scopelensBuff.buffIndex, 1);
                             }
-                            else if (scopelens | scopelens2)
+                            else 
                             {
-                                self.SetBuffCount(Modules.Buffs.scopelensBuff.buffIndex, 1);
+                                self.ApplyBuff(Modules.Buffs.scopelensBuff.buffIndex, 0);
                             }
-                            if (shellbell && shellbell2)
+                            if (shellbell)
                             {
-                                self.SetBuffCount(Modules.Buffs.shellbellBuff.buffIndex, 2);
+                                self.ApplyBuff(Modules.Buffs.shellbellBuff.buffIndex, 1);
                             }
-                            else if (shellbell | shellbell2)
+                            else 
                             {
-                                self.SetBuffCount(Modules.Buffs.shellbellBuff.buffIndex, 1);
+                                self.ApplyBuff(Modules.Buffs.shellbellBuff.buffIndex, 0);
                             }
 
 
@@ -672,99 +558,100 @@ namespace DittoMod.Modules.Survivors
                                 {
                                     if (transformed)
                                     {
-                                        self.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, 30);
+                                        self.ApplyBuff(Modules.Buffs.transformBuff.buffIndex, 30);
                                     }
                                 }
 
                             }
-                            if (assaultvest && assaultvest2)
+                            if (assaultvest)
                             {
-                                self.SetBuffCount(Modules.Buffs.assaultvestBuff.buffIndex, 2);
+                                self.ApplyBuff(Modules.Buffs.assaultvestBuff.buffIndex, 1);
                             }
-                            else if (assaultvest | assaultvest2)
+                            else
                             {
-                                self.SetBuffCount(Modules.Buffs.assaultvestBuff.buffIndex, 1);
+                                self.ApplyBuff(Modules.Buffs.assaultvestBuff.buffIndex, 0);
                             }
-                            if (choiceband && choiceband2)
+                            if (choiceband)
                             {
-                                self.SetBuffCount(Modules.Buffs.choicebandBuff.buffIndex, 2);
+                                self.ApplyBuff(Modules.Buffs.choicebandBuff.buffIndex, 1);
                             }
-                            else if (choiceband | choiceband2)
+                            else
                             {
-                                self.SetBuffCount(Modules.Buffs.choicebandBuff.buffIndex, 1);
+                                self.ApplyBuff(Modules.Buffs.choicebandBuff.buffIndex, 1);
                             }
-                            if (choicescarf && choicescarf2)
+                            if (choicescarf)
                             {
-                                self.SetBuffCount(Modules.Buffs.choicescarfBuff.buffIndex, 2);
+                                self.ApplyBuff(Modules.Buffs.choicescarfBuff.buffIndex, 1);
                             }
-                            else if (choicescarf | choicescarf2)
+                            else
                             {
-                                self.SetBuffCount(Modules.Buffs.choicescarfBuff.buffIndex, 1);
+                                self.ApplyBuff(Modules.Buffs.choicescarfBuff.buffIndex, 0);
                             }
-                            if (choicespecs && choicespecs2)
+                            if (choicespecs)
                             {
-                                self.SetBuffCount(Modules.Buffs.choicespecsBuff.buffIndex, 2);
+                                self.ApplyBuff(Modules.Buffs.choicespecsBuff.buffIndex, 1);
                             }
-                            else if (choicespecs | choicespecs2)
+                            else
                             {
-                                self.SetBuffCount(Modules.Buffs.choicespecsBuff.buffIndex, 1);
+                                self.ApplyBuff(Modules.Buffs.choicespecsBuff.buffIndex, 0);
                             }
-                            if (leftovers && leftovers2)
+                            if (leftovers)
                             {
-                                self.SetBuffCount(Modules.Buffs.leftoversBuff.buffIndex, 2);
+                                self.ApplyBuff(Modules.Buffs.leftoversBuff.buffIndex, 1);
                             }
-                            else if (leftovers | leftovers2)
+                            else
                             {
-                                self.SetBuffCount(Modules.Buffs.leftoversBuff.buffIndex, 1);
+                                self.ApplyBuff(Modules.Buffs.leftoversBuff.buffIndex, 0);
                             }
-                            if (lifeorb && lifeorb2)
+                            if (lifeorb)
                             {
-                                self.SetBuffCount(Modules.Buffs.lifeorbBuff.buffIndex, 2);
+                                self.ApplyBuff(Modules.Buffs.lifeorbBuff.buffIndex, 1);
                             }
-                            else if (lifeorb | lifeorb2)
+                            else
                             {
-                                self.SetBuffCount(Modules.Buffs.lifeorbBuff.buffIndex, 1);
+                                self.ApplyBuff(Modules.Buffs.lifeorbBuff.buffIndex, 0);
                             }
-                            if (luckyegg && luckyegg2)
+                            //if (luckyegg && luckyegg1)
+                            //{
+                            //    self.master.luck = 0;
+                            //    self.ApplyBuff(Modules.Buffs.luckyeggBuff.buffIndex, 1);
+                            //    self.master.luck += 1f;
+                            //}
+                            //else if (luckyegg | luckyegg1)
+                            //{
+                            //    self.master.luck = 0;
+                            //    self.ApplyBuff(Modules.Buffs.luckyeggBuff.buffIndex, 1);
+                            //    self.master.luck += 1f;
+                            //}
+                            if (rockyhelmet)
                             {
-                                self.master.luck = 0;
-                                self.SetBuffCount(Modules.Buffs.luckyeggBuff.buffIndex, 2);
-                                self.master.luck += 2f;
+                                self.ApplyBuff(Modules.Buffs.rockyhelmetBuff.buffIndex, 1);
                             }
-                            else if (luckyegg | luckyegg2)
+                            else
                             {
-                                self.master.luck = 0;
-                                self.SetBuffCount(Modules.Buffs.luckyeggBuff.buffIndex, 1);
-                                self.master.luck += 1f;
+                                self.ApplyBuff(Modules.Buffs.rockyhelmetBuff.buffIndex, 0);
                             }
-                            if (rockyhelmet && rockyhelmet2)
+                            if (scopelens)
                             {
-                                self.SetBuffCount(Modules.Buffs.rockyhelmetBuff.buffIndex, 2);
+                                self.ApplyBuff(Modules.Buffs.scopelensBuff.buffIndex, 1);
                             }
-                            else if (rockyhelmet | rockyhelmet2)
+                            else
                             {
-                                self.SetBuffCount(Modules.Buffs.rockyhelmetBuff.buffIndex, 1);
+                                self.ApplyBuff(Modules.Buffs.scopelensBuff.buffIndex, 0);
                             }
-                            if (scopelens && scopelens2)
+                            if (shellbell)
                             {
-                                self.SetBuffCount(Modules.Buffs.scopelensBuff.buffIndex, 2);
+                                self.ApplyBuff(Modules.Buffs.shellbellBuff.buffIndex, 1);
                             }
-                            else if (scopelens | scopelens2)
+                            else
                             {
-                                self.SetBuffCount(Modules.Buffs.scopelensBuff.buffIndex, 1);
-                            }
-                            if (shellbell && shellbell2)
-                            {
-                                self.SetBuffCount(Modules.Buffs.shellbellBuff.buffIndex, 2);
-                            }
-                            else if (shellbell | shellbell2)
-                            {
-                                self.SetBuffCount(Modules.Buffs.shellbellBuff.buffIndex, 1);
+                                self.ApplyBuff(Modules.Buffs.shellbellBuff.buffIndex, 0);
                             }
 
 
 
                         }
+
 
                     }
 
@@ -780,21 +667,16 @@ namespace DittoMod.Modules.Survivors
         public void FixedUpdate()
         {
 
-            //characterMaster = gameObject.GetComponent<CharacterMaster>();
-            if (characterMaster)
+            //transformback
+            if (self.hasEffectiveAuthority)
             {
-                self = characterMaster.GetBody();
-            }
-            if (self)
-            {
-                //transformback
                 if (Input.GetKeyDown(Config.transformHotkey.Value) && self.HasBuff(Modules.Buffs.transformdeBuff.buffIndex) && self.master.bodyPrefab.name != BodyCatalog.FindBodyPrefab("DittoBody").name)
                 {
                     Chat.AddMessage("Can't <style=cIsUtility>Transform </style>back yet, wait for the debuff to expire.");
                 }
                 if (Input.GetKeyDown(Config.transformHotkey.Value) && !self.HasBuff(Modules.Buffs.transformdeBuff.buffIndex) && self.master.bodyPrefab.name != BodyCatalog.FindBodyPrefab("DittoBody").name)
                 {
-                    AkSoundEngine.PostEvent(1719197672, this.gameObject);
+                    AkSoundEngine.PostEvent(1719197671, this.gameObject);
                     var oldHealth = self.healthComponent.health / self.healthComponent.fullHealth;
                     if (characterMaster.bodyPrefab.name == "CaptainBody")
                     {
@@ -821,183 +703,185 @@ namespace DittoMod.Modules.Survivors
 
                 }
 
-                //checkbuff
+            }
 
-                if (self.master.bodyPrefab.name == BodyCatalog.FindBodyPrefab("DittoBody").name && !givebuffs)
+            //checkbuff
+
+            //if (self.master.bodyPrefab.name == BodyCatalog.FindBodyPrefab("DittoBody").name && !givebuffs)
+            //{
+            //    givebuffs = true;
+            //    if (assaultvest && assaultvest1)
+            //    {
+            //        self.ApplyBuff(Modules.Buffs.assaultvestBuff.buffIndex, 1);
+            //    }
+            //    else if (assaultvest | assaultvest1)
+            //    {
+            //        self.ApplyBuff(Modules.Buffs.assaultvestBuff.buffIndex, 1);
+            //    }
+            //    if (choiceband && choiceband1)
+            //    {
+            //        self.ApplyBuff(Modules.Buffs.choicebandBuff.buffIndex, 1);
+            //    }
+            //    else if (choiceband | choiceband1)
+            //    {
+            //        self.ApplyBuff(Modules.Buffs.choicebandBuff.buffIndex, 1);
+            //    }
+            //    if (choicescarf && choicescarf1)
+            //    {
+            //        self.ApplyBuff(Modules.Buffs.choicescarfBuff.buffIndex, 1);
+            //    }
+            //    else if (choicescarf | choicescarf1)
+            //    {
+            //        self.ApplyBuff(Modules.Buffs.choicescarfBuff.buffIndex, 1);
+            //    }
+            //    if (choicespecs && choicespecs1)
+            //    {
+            //        self.ApplyBuff(Modules.Buffs.choicespecsBuff.buffIndex, 1);
+            //    }
+            //    else if (choicespecs | choicespecs1)
+            //    {
+            //        self.ApplyBuff(Modules.Buffs.choicespecsBuff.buffIndex, 1);
+            //    }
+            //    if (leftovers && leftovers1)
+            //    {
+            //        self.ApplyBuff(Modules.Buffs.leftoversBuff.buffIndex, 1);
+            //    }
+            //    else if (leftovers | leftovers1)
+            //    {
+            //        self.ApplyBuff(Modules.Buffs.leftoversBuff.buffIndex, 1);
+            //    }
+            //    if (lifeorb && lifeorb1)
+            //    {
+            //        self.ApplyBuff(Modules.Buffs.lifeorbBuff.buffIndex, 1);
+            //    }
+            //    else if (lifeorb | lifeorb1)
+            //    {
+            //        self.ApplyBuff(Modules.Buffs.lifeorbBuff.buffIndex, 1);
+            //    }
+            //    //if (luckyegg && luckyegg1)
+            //    //{
+            //    //    self.master.luck = 0;
+            //    //    self.ApplyBuff(Modules.Buffs.luckyeggBuff.buffIndex, 1);
+            //    //    self.master.luck += 1f;
+            //    //}
+            //    //else if (luckyegg | luckyegg1)
+            //    //{
+            //    //    self.master.luck = 0;
+            //    //    self.ApplyBuff(Modules.Buffs.luckyeggBuff.buffIndex, 1);
+            //    //    self.master.luck += 1f;
+            //    //}
+            //    if (rockyhelmet && rockyhelmet1)
+            //    {
+            //        self.ApplyBuff(Modules.Buffs.rockyhelmetBuff.buffIndex, 1);
+            //    }
+            //    else if (rockyhelmet | rockyhelmet1)
+            //    {
+            //        self.ApplyBuff(Modules.Buffs.rockyhelmetBuff.buffIndex, 1);
+            //    }
+            //    if (scopelens && scopelens1)
+            //    {
+            //        self.ApplyBuff(Modules.Buffs.scopelensBuff.buffIndex, 1);
+            //    }
+            //    else if (scopelens | scopelens1)
+            //    {
+            //        self.ApplyBuff(Modules.Buffs.scopelensBuff.buffIndex, 1);
+            //    }
+            //    if (shellbell && shellbell1)
+            //    {
+            //        self.ApplyBuff(Modules.Buffs.shellbellBuff.buffIndex, 1);
+            //    }
+            //    else if (shellbell | shellbell1)
+            //    {
+            //        self.ApplyBuff(Modules.Buffs.shellbellBuff.buffIndex, 1);
+            //    }
+            //}
+
+
+            //transform softlock fix
+            if (self.hasEffectiveAuthority)
+            {
+                if (self.HasBuff(Modules.Buffs.transformBuff.buffIndex))
                 {
-                    givebuffs = true;
-                    if (assaultvest && assaultvest2)
+
+                    if (transformage1 > 1f)
                     {
-                        self.SetBuffCount(Modules.Buffs.assaultvestBuff.buffIndex, 2);
+                        int buffCountToApply = self.GetBuffCount(Modules.Buffs.transformBuff.buffIndex);
+                        if (buffCountToApply > 1)
+                        {
+                            if (buffCountToApply >= 1)
+                            {
+                                //self.ApplyBuff(Modules.Buffs.transformBuff.buffIndex, (buffCountToApply - 1));
+                                self.ApplyBuff(Modules.Buffs.transformBuff.buffIndex, buffCountToApply-1);
+
+                                transformage1 = 0;
+
+
+                            }
+                        }
+                        else
+                        {
+
+                            if (self.master.bodyPrefab.name == "CaptainBody")
+                            {
+                                self.master.inventory.RemoveItem(RoR2Content.Items.CaptainDefenseMatrix, 1);
+                            }
+                            //if (self.master.bodyPrefab.name == "HereticBody")
+                            //{
+                            //    self.master.inventory.RemoveItem(RoR2Content.Items.LunarPrimaryReplacement, 1);
+                            //    self.master.inventory.RemoveItem(RoR2Content.Items.LunarSecondaryReplacement, 1);
+                            //    self.master.inventory.RemoveItem(RoR2Content.Items.LunarSpecialReplacement, 1);
+                            //    self.master.inventory.RemoveItem(RoR2Content.Items.LunarUtilityReplacement, 1);
+                            //}
+
+                            //self.master.bodyPrefab = BodyCatalog.FindBodyPrefab("DittoBody");
+                            CharacterBody body;
+
+
+                            //body = self.master.Respawn(self.master.GetBody().transform.position, self.master.GetBody().transform.rotation);
+
+                            self.master.TransformBody("DittoBody");
+
+                            body = self.master.GetBody();
+
+                            transformed = false;
+
+                        }
                     }
-                    else if (assaultvest | assaultvest2)
-                    {
-                        self.SetBuffCount(Modules.Buffs.assaultvestBuff.buffIndex, 1);
-                    }
-                    if (choiceband && choiceband2)
-                    {
-                        self.SetBuffCount(Modules.Buffs.choicebandBuff.buffIndex, 2);
-                    }
-                    else if (choiceband | choiceband2)
-                    {
-                        self.SetBuffCount(Modules.Buffs.choicebandBuff.buffIndex, 1);
-                    }
-                    if (choicescarf && choicescarf2)
-                    {
-                        self.SetBuffCount(Modules.Buffs.choicescarfBuff.buffIndex, 2);
-                    }
-                    else if (choicescarf | choicescarf2)
-                    {
-                        self.SetBuffCount(Modules.Buffs.choicescarfBuff.buffIndex, 1);
-                    }
-                    if (choicespecs && choicespecs2)
-                    {
-                        self.SetBuffCount(Modules.Buffs.choicespecsBuff.buffIndex, 2);
-                    }
-                    else if (choicespecs | choicespecs2)
-                    {
-                        self.SetBuffCount(Modules.Buffs.choicespecsBuff.buffIndex, 1);
-                    }
-                    if (leftovers && leftovers2)
-                    {
-                        self.SetBuffCount(Modules.Buffs.leftoversBuff.buffIndex, 2);
-                    }
-                    else if (leftovers | leftovers2)
-                    {
-                        self.SetBuffCount(Modules.Buffs.leftoversBuff.buffIndex, 1);
-                    }
-                    if (lifeorb && lifeorb2)
-                    {
-                        self.SetBuffCount(Modules.Buffs.lifeorbBuff.buffIndex, 2);
-                    }
-                    else if (lifeorb | lifeorb2)
-                    {
-                        self.SetBuffCount(Modules.Buffs.lifeorbBuff.buffIndex, 1);
-                    }
-                    //if (luckyegg && luckyegg2)
-                    //{
-                    //    self.master.luck = 0;
-                    //    self.SetBuffCount(Modules.Buffs.luckyeggBuff.buffIndex, 2);
-                    //    self.master.luck += 2f;
-                    //}
-                    //else if (luckyegg | luckyegg2)
-                    //{
-                    //    self.master.luck = 0;
-                    //    self.SetBuffCount(Modules.Buffs.luckyeggBuff.buffIndex, 1);
-                    //    self.master.luck += 1f;
-                    //}
-                    if (rockyhelmet && rockyhelmet2)
-                    {
-                        self.SetBuffCount(Modules.Buffs.rockyhelmetBuff.buffIndex, 2);
-                    }
-                    else if (rockyhelmet | rockyhelmet2)
-                    {
-                        self.SetBuffCount(Modules.Buffs.rockyhelmetBuff.buffIndex, 1);
-                    }
-                    if (scopelens && scopelens2)
-                    {
-                        self.SetBuffCount(Modules.Buffs.scopelensBuff.buffIndex, 2);
-                    }
-                    else if (scopelens | scopelens2)
-                    {
-                        self.SetBuffCount(Modules.Buffs.scopelensBuff.buffIndex, 1);
-                    }
-                    if (shellbell && shellbell2)
-                    {
-                        self.SetBuffCount(Modules.Buffs.shellbellBuff.buffIndex, 2);
-                    }
-                    else if (shellbell | shellbell2)
-                    {
-                        self.SetBuffCount(Modules.Buffs.shellbellBuff.buffIndex, 1);
-                    }
+
+                    else transformage1 += Time.fixedDeltaTime;
                 }
 
-
-                //transform softlock fix
-                if (self.hasEffectiveAuthority)
+                if (self.HasBuff(Modules.Buffs.transformdeBuff.buffIndex))
                 {
-                    if (self.HasBuff(Modules.Buffs.transformBuff.buffIndex))
+
+                    if (transformage1 > 1f)
                     {
-
-                        if (transformage2 > 1f)
+                        int buffCountToApply1 = self.GetBuffCount(Modules.Buffs.transformdeBuff.buffIndex);
+                        if (buffCountToApply1 > 1)
                         {
-                            int buffCountToApply = self.GetBuffCount(Modules.Buffs.transformBuff.buffIndex);
-                            if (buffCountToApply > 1)
+                            if (buffCountToApply1 >= 1)
                             {
-                                if (buffCountToApply >= 2)
-                                {
-                                    //self.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, (buffCountToApply - 1));
-                                    self.RemoveBuff(Modules.Buffs.transformBuff.buffIndex);
+                                //self.ApplyBuff(Modules.Buffs.transformBuff.buffIndex, (buffCountToApply - 1));
+                                self.ApplyBuff(Modules.Buffs.transformdeBuff.buffIndex, buffCountToApply1 - 1);
 
-                                    transformage2 = 0;
+                                transformage1 = 0;
 
-
-                                }
-                            }
-                            else
-                            {
-
-                                if (self.master.bodyPrefab.name == "CaptainBody")
-                                {
-                                    self.master.inventory.RemoveItem(RoR2Content.Items.CaptainDefenseMatrix, 1);
-                                }
-                                //if (self.master.bodyPrefab.name == "HereticBody")
-                                //{
-                                //    self.master.inventory.RemoveItem(RoR2Content.Items.LunarPrimaryReplacement, 1);
-                                //    self.master.inventory.RemoveItem(RoR2Content.Items.LunarSecondaryReplacement, 1);
-                                //    self.master.inventory.RemoveItem(RoR2Content.Items.LunarSpecialReplacement, 1);
-                                //    self.master.inventory.RemoveItem(RoR2Content.Items.LunarUtilityReplacement, 1);
-                                //}
-
-                                //self.master.bodyPrefab = BodyCatalog.FindBodyPrefab("DittoBody");
-                                CharacterBody body;
-
-
-                                //body = self.master.Respawn(self.master.GetBody().transform.position, self.master.GetBody().transform.rotation);
-
-                                self.master.TransformBody("DittoBody");
-
-                                body = self.master.GetBody();
-
-                                transformed = false;
 
                             }
                         }
-
-                        else transformage2 += Time.fixedDeltaTime;
-                    }
-
-                    if (self.HasBuff(Modules.Buffs.transformdeBuff.buffIndex))
-                    {
-
-                        if (transformage2 > 1f)
+                        else
                         {
-                            int buffCountToApply2 = self.GetBuffCount(Modules.Buffs.transformdeBuff.buffIndex);
-                            if (buffCountToApply2 > 1)
-                            {
-                                if (buffCountToApply2 >= 2)
-                                {
-                                    //self.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, (buffCountToApply - 1));
-                                    self.RemoveBuff(Modules.Buffs.transformdeBuff.buffIndex);
+                            self.RemoveBuff(Modules.Buffs.transformdeBuff.buffIndex);
 
-                                    transformage2 = 0;
-
-
-                                }
-                            }
-                            else
-                            {
-                                self.RemoveBuff(Modules.Buffs.transformdeBuff.buffIndex);
-
-                            }
                         }
-
-                        else transformage2 += Time.fixedDeltaTime;
                     }
 
+                    else transformage1 += Time.fixedDeltaTime;
                 }
 
             }
+
+            
             
 
             

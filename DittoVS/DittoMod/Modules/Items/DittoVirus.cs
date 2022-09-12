@@ -133,7 +133,7 @@
 //                {
 //                    if (speciallist.Contains(vicb.master.bodyPrefab.name))
 //                    {
-//                        //self.body.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, 1);
+//                        //self.body.ApplyBuff(Modules.Buffs.transformBuff.buffIndex, 1);
 //                        vicb.master.TransformBody("DittoBody");
 
 //                        body = vicb.master.GetBody();
@@ -261,7 +261,7 @@
 //        //            {
 //        //                if (self.body.master.bodyPrefab.name != "DittoBody")
 //        //                {
-//        //                    //self.body.SetBuffCount(Modules.Buffs.transformBuff.buffIndex, 1);
+//        //                    //self.body.ApplyBuff(Modules.Buffs.transformBuff.buffIndex, 1);
 //        //                    self.body.master.TransformBody("DittoBody");
 //        //                    body = self.body;
 
