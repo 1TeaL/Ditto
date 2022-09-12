@@ -631,16 +631,14 @@ namespace DittoMod.Modules.Survivors
             #region Utility
             Skills.AddUtilitySkills(this.bodyPrefab, new SkillDef[]
             {
-                AssaultVest,
-                ChoiceBand,
-                ChoiceScarf,
-                ChoiceSpecs,
-                Leftovers,
-                LifeOrb,
-                LuckyEgg,
-                RockyHelmet,
-                ScopeLens,
-                ShellBell,
+                FlameBody,
+                HugePower,
+                Levitate,
+                MagicGuard,
+                Moody,
+                Moxie,
+                Multiscale,
+                Sniper,
             });
             #endregion
 
