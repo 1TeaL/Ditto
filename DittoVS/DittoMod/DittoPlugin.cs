@@ -365,7 +365,7 @@ namespace DittoMod
             On.RoR2.CharacterModel.Awake += CharacterModel_Awake;
             On.RoR2.CharacterMaster.Start += CharacterMaster_Start;
             //On.RoR2.CharacterBody.Start += CharacterBody_Start;
-            //On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
+            On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             //On.RoR2.TeleporterInteraction.FinishedState.OnEnter += TeleporterInteraction_FinishedState;
             GlobalEventManager.onServerDamageDealt += GlobalEventManager_OnDamageDealt;
@@ -560,8 +560,11 @@ namespace DittoMod
         private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
         {
             //buffs 
-            orig.Invoke(self);
 
+            if (self.healthComponent)
+            {
+                orig.Invoke(self);
+            } 
             //if (self)
             //{
             //    if (self.master.gameObject.GetComponent<DittoMasterController>())
@@ -714,7 +717,7 @@ namespace DittoMod
             //    }
 
             //}
-     
+
         }
 
         private void CharacterBody_OnDeathStart(On.RoR2.CharacterBody.orig_OnDeathStart orig, CharacterBody self)
