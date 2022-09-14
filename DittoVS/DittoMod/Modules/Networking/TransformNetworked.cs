@@ -38,6 +38,8 @@ namespace DittoMod.Modules.Networking
             GameObject masterobject = Util.FindNetworkObject(IDNet);
             CharacterMaster charMaster = masterobject.GetComponent<CharacterMaster>();
             charMaster.TransformBody("DittoBody");
+
+            charMaster.bodyPrefab = BodyCatalog.FindBodyPrefab("DittoBody");
         }
 
     }

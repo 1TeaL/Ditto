@@ -119,6 +119,8 @@ namespace DittoMod.SkillStates
 
                 master.TransformBody(BodyCatalog.GetBodyName(hurtBox.healthComponent.body.bodyIndex));
 
+                master.bodyPrefab = BodyCatalog.FindBodyPrefab(newbodyPrefab.name);
+
                 body = master.GetBody();
 
                 if (Config.copyLoadout.Value)

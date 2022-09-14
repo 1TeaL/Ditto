@@ -420,17 +420,13 @@ namespace DittoMod.Modules.Survivors
                     if (transformAge > 1f)
                     {
                         int buffCountToApply = body.GetBuffCount(Modules.Buffs.transformBuff.buffIndex);
-                        if (buffCountToApply >= 1)
+                        if (buffCountToApply > 1)
                         {
-                            if (buffCountToApply > 1)
-                            {
-                                //body.ApplyBuff(Modules.Buffs.transformBuff.buffIndex, (buffCountToApply - 1));
-                                body.ApplyBuff(Modules.Buffs.transformBuff.buffIndex, buffCountToApply - 1);
+                            //body.ApplyBuff(Modules.Buffs.transformBuff.buffIndex, (buffCountToApply - 1));
+                            body.ApplyBuff(Modules.Buffs.transformBuff.buffIndex, buffCountToApply - 1);
 
-                                transformAge = 0;
+                            transformAge = 0;
 
-
-                            }
                         }
                         else
                         {
@@ -448,14 +444,12 @@ namespace DittoMod.Modules.Survivors
                             //}
 
                             //body.master.bodyPrefab = BodyCatalog.FindBodyPrefab("DittoBody");
-                            CharacterBody newbody;
-
+                            
 
                             //body = body.master.Respawn(body.master.GetBody().transform.position, body.master.GetBody().transform.rotation);
 
                             new TransformNetworked(characterMaster.netId).Send(NetworkDestination.Server);
 
-                            newbody = body.master.GetBody();
 
                             transformed = false;
 
@@ -478,17 +472,12 @@ namespace DittoMod.Modules.Survivors
 
                         //Chat.AddMessage("buffcount" + body.GetBuffCount(Modules.Buffs.transformdeBuff.buffIndex));
                         int buffCountToApply1 = body.GetBuffCount(Modules.Buffs.transformdeBuff.buffIndex);
-                        if (buffCountToApply1 >= 1)
-                        {
-                            if (buffCountToApply1 > 1)
-                            {
+                        if (buffCountToApply1 > 1)
+                        {                            
+                            //Chat.AddMessage("applybuff for debuff");
+                            body.ApplyBuff(Modules.Buffs.transformdeBuff.buffIndex, buffCountToApply1 - 1);
 
-                                //Chat.AddMessage("applybuff for debuff");
-                                body.ApplyBuff(Modules.Buffs.transformdeBuff.buffIndex, buffCountToApply1 - 1);
-
-                                transformDebuffAge = 0;
-
-                            }
+                            transformDebuffAge = 0;                            
                         }
                         else
                         {
@@ -510,15 +499,14 @@ namespace DittoMod.Modules.Survivors
                         {
                             characterMaster.inventory.RemoveItem(RoR2Content.Items.CaptainDefenseMatrix, 1);
                         }
-                        if (characterMaster.bodyPrefab.name == "HereticBody")
+                        else if (characterMaster.bodyPrefab.name == "HereticBody")
                         {
                             characterMaster.inventory.RemoveItem(RoR2Content.Items.LunarPrimaryReplacement, 1);
                             characterMaster.inventory.RemoveItem(RoR2Content.Items.LunarSecondaryReplacement, 1);
                             characterMaster.inventory.RemoveItem(RoR2Content.Items.LunarSpecialReplacement, 1);
                             characterMaster.inventory.RemoveItem(RoR2Content.Items.LunarUtilityReplacement, 1);
                         }
-
-                        if (characterMaster.bodyPrefab.name != "DittoBody")
+                        else                        
                         {
                             new TransformNetworked(characterMaster.netId).Send(NetworkDestination.Server);
 
