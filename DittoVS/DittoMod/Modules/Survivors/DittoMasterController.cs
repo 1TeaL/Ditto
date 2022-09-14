@@ -19,7 +19,8 @@ namespace DittoMod.Modules.Survivors
         private CharacterMaster characterMaster;
         public bool transformed;
         //private int buffCountToApply;
-        public float transformage1;
+        public float transformAge;
+        public float transformDebuffAge;
         public float leftoverTimer;
 
         public bool assaultvest;
@@ -32,7 +33,6 @@ namespace DittoMod.Modules.Survivors
         public bool rockyhelmet;
         public bool scopelens;
         public bool shellbell;
-        private bool givebuffs;
 
         public bool hookgiven;
 
@@ -178,70 +178,18 @@ namespace DittoMod.Modules.Survivors
 
                         if (self.master.bodyPrefab.name == BodyCatalog.FindBodyPrefab("DittoBody").name)
                         {
-                            givebuffs = false;
 
+                            self.ApplyBuff(Modules.Buffs.assaultvestBuff.buffIndex, assaultvest ? 1 : 0);
+                            self.ApplyBuff(Modules.Buffs.choicebandBuff.buffIndex, choiceband ? 1 : 0);
+                            self.ApplyBuff(Modules.Buffs.choicescarfBuff.buffIndex, choicescarf ? 1 : 0);
+                            self.ApplyBuff(Modules.Buffs.choicespecsBuff.buffIndex, choicespecs ? 1 : 0);
+                            self.ApplyBuff(Modules.Buffs.leftoversBuff.buffIndex, leftovers ? 1 : 0);
+                            self.ApplyBuff(Modules.Buffs.lifeorbBuff.buffIndex, lifeorb ? 1 : 0);
+                            self.ApplyBuff(Modules.Buffs.luckyeggBuff.buffIndex, luckyegg ? 1 : 0);
+                            self.ApplyBuff(Modules.Buffs.rockyhelmetBuff.buffIndex, rockyhelmet ? 1 : 0);
+                            self.ApplyBuff(Modules.Buffs.scopelensBuff.buffIndex, scopelens ? 1 : 0);
+                            self.ApplyBuff(Modules.Buffs.shellbellBuff.buffIndex, shellbell ? 1 : 0);
 
-                            transformed = false;
-                            assaultvest = false;
-                            choiceband = false;
-                            choicescarf = false;
-                            choicespecs = false;
-                            leftovers = false;
-                            lifeorb = false;
-                            luckyegg = false;
-                            rockyhelmet = false;
-                            scopelens = false;
-                            shellbell = false;
-
-                            if (self.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_ASSAULTVEST_NAME" && !assaultvest)
-                            {
-                                assaultvest = true;
-                                self.ApplyBuff(Modules.Buffs.assaultvestBuff.buffIndex, 1);
-                            }
-                            if (self.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICEBAND_NAME" && !choiceband)
-                            {
-                                choiceband = true;
-                                self.ApplyBuff(Modules.Buffs.choicebandBuff.buffIndex, 1);
-                            }
-                            if (self.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICESCARF_NAME" && !choicescarf)
-                            {
-                                self.ApplyBuff(Modules.Buffs.choicescarfBuff.buffIndex, 1);
-                            }
-                            if (self.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICESPECS_NAME" && !choicespecs)
-                            {
-                                choicespecs = true;
-                                self.ApplyBuff(Modules.Buffs.choicespecsBuff.buffIndex, 1);
-                            }
-                            if (self.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LEFTOVERS_NAME" && !leftovers)
-                            {
-                                leftovers = true;
-                                self.ApplyBuff(Modules.Buffs.leftoversBuff.buffIndex, 1);
-                            }
-                            if (self.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LIFEORB_NAME" && !lifeorb)
-                            {
-                                lifeorb = true;
-                                self.ApplyBuff(Modules.Buffs.lifeorbBuff.buffIndex, 1);
-                            }
-                            //if (self.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LUCKYEGG_NAME" && !luckyegg)
-                            //{
-                            //    luckyegg = true;
-                            //    self.AddBuff(Modules.Buffs.luckyeggBuff);
-                            //}
-                            if (self.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_ROCKYHELMET_NAME" && !rockyhelmet)
-                            {
-                                rockyhelmet = true;
-                                self.ApplyBuff(Modules.Buffs.rockyhelmetBuff.buffIndex, 1);
-                            }
-                            if (self.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_SCOPELENS_NAME" && !scopelens)
-                            {
-                                scopelens = true;
-                                self.ApplyBuff(Modules.Buffs.scopelensBuff.buffIndex, 1);
-                            }
-                            if (self.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_SHELLBELL_NAME" && !shellbell)
-                            {
-                                shellbell = true;
-                                self.ApplyBuff(Modules.Buffs.shellbellBuff.buffIndex, 1);
-                            }
 
                         }
                         else if (self.master.bodyPrefab.name != BodyCatalog.FindBodyPrefab("DittoBody").name)
@@ -289,144 +237,148 @@ namespace DittoMod.Modules.Survivors
         public void FixedUpdate()
         {
             CharacterBody body = characterMaster.GetBody();
-            if (!initialized)
-            {
-                initialized = true;
-
-                body.ApplyBuff(Modules.Buffs.assaultvestBuff.buffIndex, 0);
-                body.ApplyBuff(Modules.Buffs.choicebandBuff.buffIndex, 0);
-                body.ApplyBuff(Modules.Buffs.choicescarfBuff.buffIndex, 0);
-                body.ApplyBuff(Modules.Buffs.choicespecsBuff.buffIndex, 0);
-                body.ApplyBuff(Modules.Buffs.leftoversBuff.buffIndex, 0);
-                body.ApplyBuff(Modules.Buffs.lifeorbBuff.buffIndex, 0);
-                body.ApplyBuff(Modules.Buffs.luckyeggBuff.buffIndex, 0);
-                body.ApplyBuff(Modules.Buffs.rockyhelmetBuff.buffIndex, 0);
-                body.ApplyBuff(Modules.Buffs.scopelensBuff.buffIndex, 0);
-                body.ApplyBuff(Modules.Buffs.shellbellBuff.buffIndex, 0);
-
-                characterMaster.luck = 0;
-                if (body.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LUCKYEGG_NAME" && !luckyegg)
-                {
-                    luckyegg = true;
-                    body.AddBuff(Modules.Buffs.luckyeggBuff);
-                    characterMaster.luck += 1f;
-                }
 
 
-                if (body.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_ASSAULTVEST_NAME" && !assaultvest)
-                {
-                    assaultvest = true;
-                    body.ApplyBuff(Modules.Buffs.assaultvestBuff.buffIndex, 1);
-                }
-                if (body.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICEBAND_NAME" && !choiceband)
-                {
-                    choiceband = true;
-                    body.ApplyBuff(Modules.Buffs.choicebandBuff.buffIndex, 1);
-                }
-                if (body.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICESCARF_NAME" && !choicescarf)
-                {
-                    body.ApplyBuff(Modules.Buffs.choicescarfBuff.buffIndex, 1);
-                }
-                if (body.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICESPECS_NAME" && !choicespecs)
-                {
-                    choicespecs = true;
-                    body.ApplyBuff(Modules.Buffs.choicespecsBuff.buffIndex, 1);
-                }
-                if (body.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LEFTOVERS_NAME" && !leftovers)
-                {
-                    leftovers = true;
-                    body.ApplyBuff(Modules.Buffs.leftoversBuff.buffIndex, 1);
-                }
-                if (body.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LIFEORB_NAME" && !lifeorb)
-                {
-                    lifeorb = true;
-                    body.ApplyBuff(Modules.Buffs.lifeorbBuff.buffIndex, 1);
-                }
-                //if (body.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LUCKYEGG_NAME" && !luckyegg)
-                //{
-                //    luckyegg = true;
-                //    body.AddBuff(Modules.Buffs.luckyeggBuff);
-                //}
-                if (body.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_ROCKYHELMET_NAME" && !rockyhelmet)
-                {
-                    rockyhelmet = true;
-                    body.ApplyBuff(Modules.Buffs.rockyhelmetBuff.buffIndex, 1);
-                }
-                if (body.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_SCOPELENS_NAME" && !scopelens)
-                {
-                    scopelens = true;
-                    body.ApplyBuff(Modules.Buffs.scopelensBuff.buffIndex, 1);
-                }
-                if (body.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_SHELLBELL_NAME" && !shellbell)
-                {
-                    shellbell = true;
-                    body.ApplyBuff(Modules.Buffs.shellbellBuff.buffIndex, 1);
-                }
-                //if (body.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_ASSAULTVEST_NAME" && !assaultvest1)
-                //{
-                //    assaultvest1 = true;
-                //    dittocon.assaultvest1 = true;
-                //    body.AddBuff(Modules.Buffs.assaultvestBuff);
-                //}
-                //if (body.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICEBAND_NAME" && !choiceband1)
-                //{
-                //    choiceband1 = true;
-                //    dittocon.choiceband1 = true;
-                //    body.AddBuff(Modules.Buffs.choicebandBuff);
-                //}
-                //if (body.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICESCARF_NAME" && !choicescarf1)
-                //{
-                //    choicescarf1 = true;
-                //    dittocon.choicescarf1 = true;
-                //    body.AddBuff(Modules.Buffs.choicescarfBuff);
-                //}
-                //if (body.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICESPECS_NAME" && !choicespecs1)
-                //{
-                //    choicespecs1 = true;
-                //    dittocon.choicespecs1 = true;
-                //    body.AddBuff(Modules.Buffs.choicespecsBuff);
-                //}
-                //if (body.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LEFTOVERS_NAME" && !leftovers1)
-                //{
-                //    leftovers1 = true;
-                //    dittocon.leftovers1 = true;
-                //    body.AddBuff(Modules.Buffs.leftoversBuff);
-                //}
-                //if (body.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LIFEORB_NAME" && !lifeorb1)
-                //{
-                //    lifeorb1 = true;
-                //    dittocon.lifeorb1 = true;
-                //    body.AddBuff(Modules.Buffs.lifeorbBuff);
-                //}
-                ////if (body.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LUCKYEGG_NAME" && !luckyegg1)
-                ////{
-                ////    luckyegg1 = true;
-                ////    body.AddBuff(Modules.Buffs.luckyeggBuff);
-                ////}
-                //if (body.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_ROCKYHELMET_NAME" && !rockyhelmet1)
-                //{
-                //    rockyhelmet1 = true;
-                //    dittocon.rockyhelmet1 = true;
-                //    body.AddBuff(Modules.Buffs.rockyhelmetBuff);
-                //}
-                //if (body.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_SCOPELENS_NAME" && !scopelens1)
-                //{
-                //    scopelens1 = true;
-                //    dittocon.scopelens1 = true;
-                //    body.AddBuff(Modules.Buffs.scopelensBuff);
-                //}
-                //if (body.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_SHELLBELL_NAME" && !shellbell1)
-                //{
-                //    shellbell1 = true;
-                //    dittocon.shellbell1 = true;
-                //    body.AddBuff(Modules.Buffs.shellbellBuff);
-                //}
-            }
-
-
+            Chat.AddMessage(BodyCatalog.FindBodyPrefab("DittoBody").name + "dittobody name");
+            Chat.AddMessage(characterMaster.bodyPrefab.name + "charactermaster name");
 
             if (characterMaster.netId == networkInstanceID)
             {
+                //give skill buffs
+                if (!initialized && body.master.bodyPrefab.name == BodyCatalog.FindBodyPrefab("DittoBody").name && body)
+                {
+                    initialized = true;
+
+                    body.ApplyBuff(Modules.Buffs.assaultvestBuff.buffIndex, 0);
+                    body.ApplyBuff(Modules.Buffs.choicebandBuff.buffIndex, 0);
+                    body.ApplyBuff(Modules.Buffs.choicescarfBuff.buffIndex, 0);
+                    body.ApplyBuff(Modules.Buffs.choicespecsBuff.buffIndex, 0);
+                    body.ApplyBuff(Modules.Buffs.leftoversBuff.buffIndex, 0);
+                    body.ApplyBuff(Modules.Buffs.lifeorbBuff.buffIndex, 0);
+                    body.ApplyBuff(Modules.Buffs.luckyeggBuff.buffIndex, 0);
+                    body.ApplyBuff(Modules.Buffs.rockyhelmetBuff.buffIndex, 0);
+                    body.ApplyBuff(Modules.Buffs.scopelensBuff.buffIndex, 0);
+                    body.ApplyBuff(Modules.Buffs.shellbellBuff.buffIndex, 0);
+
+                    characterMaster.luck = 0;
+                    if (body.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LUCKYEGG_NAME" && !luckyegg)
+                    {
+                        luckyegg = true;
+                        body.AddBuff(Modules.Buffs.luckyeggBuff);
+                        characterMaster.luck += 1f;
+                    }
+
+
+                    if (body.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_ASSAULTVEST_NAME" && !assaultvest)
+                    {
+                        assaultvest = true;
+                        body.ApplyBuff(Modules.Buffs.assaultvestBuff.buffIndex, 1);
+                    }
+                    if (body.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICEBAND_NAME" && !choiceband)
+                    {
+                        choiceband = true;
+                        body.ApplyBuff(Modules.Buffs.choicebandBuff.buffIndex, 1);
+                    }
+                    if (body.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICESCARF_NAME" && !choicescarf)
+                    {
+                        body.ApplyBuff(Modules.Buffs.choicescarfBuff.buffIndex, 1);
+                    }
+                    if (body.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICESPECS_NAME" && !choicespecs)
+                    {
+                        choicespecs = true;
+                        body.ApplyBuff(Modules.Buffs.choicespecsBuff.buffIndex, 1);
+                    }
+                    if (body.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LEFTOVERS_NAME" && !leftovers)
+                    {
+                        leftovers = true;
+                        body.ApplyBuff(Modules.Buffs.leftoversBuff.buffIndex, 1);
+                    }
+                    if (body.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LIFEORB_NAME" && !lifeorb)
+                    {
+                        lifeorb = true;
+                        body.ApplyBuff(Modules.Buffs.lifeorbBuff.buffIndex, 1);
+                    }
+                    //if (body.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LUCKYEGG_NAME" && !luckyegg)
+                    //{
+                    //    luckyegg = true;
+                    //    body.AddBuff(Modules.Buffs.luckyeggBuff);
+                    //}
+                    if (body.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_ROCKYHELMET_NAME" && !rockyhelmet)
+                    {
+                        rockyhelmet = true;
+                        body.ApplyBuff(Modules.Buffs.rockyhelmetBuff.buffIndex, 1);
+                    }
+                    if (body.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_SCOPELENS_NAME" && !scopelens)
+                    {
+                        scopelens = true;
+                        body.ApplyBuff(Modules.Buffs.scopelensBuff.buffIndex, 1);
+                    }
+                    if (body.skillLocator.secondary.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_SHELLBELL_NAME" && !shellbell)
+                    {
+                        shellbell = true;
+                        body.ApplyBuff(Modules.Buffs.shellbellBuff.buffIndex, 1);
+                    }
+                    //if (body.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_ASSAULTVEST_NAME" && !assaultvest1)
+                    //{
+                    //    assaultvest1 = true;
+                    //    dittocon.assaultvest1 = true;
+                    //    body.AddBuff(Modules.Buffs.assaultvestBuff);
+                    //}
+                    //if (body.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICEBAND_NAME" && !choiceband1)
+                    //{
+                    //    choiceband1 = true;
+                    //    dittocon.choiceband1 = true;
+                    //    body.AddBuff(Modules.Buffs.choicebandBuff);
+                    //}
+                    //if (body.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICESCARF_NAME" && !choicescarf1)
+                    //{
+                    //    choicescarf1 = true;
+                    //    dittocon.choicescarf1 = true;
+                    //    body.AddBuff(Modules.Buffs.choicescarfBuff);
+                    //}
+                    //if (body.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_CHOICESPECS_NAME" && !choicespecs1)
+                    //{
+                    //    choicespecs1 = true;
+                    //    dittocon.choicespecs1 = true;
+                    //    body.AddBuff(Modules.Buffs.choicespecsBuff);
+                    //}
+                    //if (body.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LEFTOVERS_NAME" && !leftovers1)
+                    //{
+                    //    leftovers1 = true;
+                    //    dittocon.leftovers1 = true;
+                    //    body.AddBuff(Modules.Buffs.leftoversBuff);
+                    //}
+                    //if (body.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LIFEORB_NAME" && !lifeorb1)
+                    //{
+                    //    lifeorb1 = true;
+                    //    dittocon.lifeorb1 = true;
+                    //    body.AddBuff(Modules.Buffs.lifeorbBuff);
+                    //}
+                    ////if (body.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_LUCKYEGG_NAME" && !luckyegg1)
+                    ////{
+                    ////    luckyegg1 = true;
+                    ////    body.AddBuff(Modules.Buffs.luckyeggBuff);
+                    ////}
+                    //if (body.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_ROCKYHELMET_NAME" && !rockyhelmet1)
+                    //{
+                    //    rockyhelmet1 = true;
+                    //    dittocon.rockyhelmet1 = true;
+                    //    body.AddBuff(Modules.Buffs.rockyhelmetBuff);
+                    //}
+                    //if (body.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_SCOPELENS_NAME" && !scopelens1)
+                    //{
+                    //    scopelens1 = true;
+                    //    dittocon.scopelens1 = true;
+                    //    body.AddBuff(Modules.Buffs.scopelensBuff);
+                    //}
+                    //if (body.skillLocator.utility.skillNameToken == DittoPlugin.developerPrefix + "_DITTO_BODY_SHELLBELL_NAME" && !shellbell1)
+                    //{
+                    //    shellbell1 = true;
+                    //    dittocon.shellbell1 = true;
+                    //    body.AddBuff(Modules.Buffs.shellbellBuff);
+                    //}
+                }
+
                 //leftovers
                 if (body.HasBuff(Buffs.leftoversBuff.buffIndex))
                 {
@@ -465,17 +417,17 @@ namespace DittoMod.Modules.Survivors
                 if (body.HasBuff(Modules.Buffs.transformBuff.buffIndex))
                 {
 
-                    if (transformage1 > 1f)
+                    if (transformAge > 1f)
                     {
                         int buffCountToApply = body.GetBuffCount(Modules.Buffs.transformBuff.buffIndex);
-                        if (buffCountToApply > 1)
+                        if (buffCountToApply >= 1)
                         {
-                            if (buffCountToApply >= 1)
+                            if (buffCountToApply > 1)
                             {
                                 //body.ApplyBuff(Modules.Buffs.transformBuff.buffIndex, (buffCountToApply - 1));
                                 body.ApplyBuff(Modules.Buffs.transformBuff.buffIndex, buffCountToApply - 1);
 
-                                transformage1 = 0;
+                                transformAge = 0;
 
 
                             }
@@ -501,7 +453,7 @@ namespace DittoMod.Modules.Survivors
 
                             //body = body.master.Respawn(body.master.GetBody().transform.position, body.master.GetBody().transform.rotation);
 
-                            body.master.TransformBody("DittoBody");
+                            new TransformNetworked(characterMaster.netId).Send(NetworkDestination.Server);
 
                             newbody = body.master.GetBody();
 
@@ -510,7 +462,7 @@ namespace DittoMod.Modules.Survivors
                         }
                     }
 
-                    else transformage1 += Time.fixedDeltaTime;
+                    else transformAge += Time.fixedDeltaTime;
                 }
 
                 //transform debuff
@@ -521,21 +473,20 @@ namespace DittoMod.Modules.Survivors
                         Chat.AddMessage("Can't <style=cIsUtility>Transform </style>back yet, wait for the debuff to expire.");
                     }
 
-                    if (transformage1 > 1f)
+                    if (transformDebuffAge > 1f)
                     {
 
                         //Chat.AddMessage("buffcount" + body.GetBuffCount(Modules.Buffs.transformdeBuff.buffIndex));
                         int buffCountToApply1 = body.GetBuffCount(Modules.Buffs.transformdeBuff.buffIndex);
-                        if (buffCountToApply1 > 1)
+                        if (buffCountToApply1 >= 1)
                         {
-                            if (buffCountToApply1 >= 1)
+                            if (buffCountToApply1 > 1)
                             {
 
                                 //Chat.AddMessage("applybuff for debuff");
                                 body.ApplyBuff(Modules.Buffs.transformdeBuff.buffIndex, buffCountToApply1 - 1);
 
-                                transformage1 = 0;
-
+                                transformDebuffAge = 0;
 
                             }
                         }
@@ -545,7 +496,7 @@ namespace DittoMod.Modules.Survivors
 
                         }
                     }
-                    else transformage1 += Time.fixedDeltaTime;
+                    else transformDebuffAge += Time.fixedDeltaTime;
 
 
                 }
@@ -584,10 +535,6 @@ namespace DittoMod.Modules.Survivors
 
             }
 
-            if (!characterMaster.gameObject)
-            {
-                Destroy(dittomastercon);
-            }
             
         }
 
