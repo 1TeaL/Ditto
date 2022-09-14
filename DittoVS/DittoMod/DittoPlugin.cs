@@ -3,6 +3,7 @@ using BepInEx.Bootstrap;
 using DittoMod.Equipment;
 using DittoMod.Items;
 using DittoMod.Modules;
+using DittoMod.Modules.Networking;
 //using DittoMod.Modules.Networking;
 using DittoMod.Modules.Survivors;
 using DittoMod.SkillStates;
@@ -113,6 +114,10 @@ namespace DittoMod
                 EquipmentBase equipment = (EquipmentBase)System.Activator.CreateInstance(equipmentType);
                 equipment.Init();
             }
+
+            //Networking
+            NetworkingAPI.RegisterMessageType<TransformNetworked>();
+
 
             //Item Initialization
             //var ItemTypes = Assembly.GetExecutingAssembly().GetTypes().Where(type => !type.IsAbstract && type.IsSubclassOf(typeof(ItemBase)));
@@ -377,70 +382,67 @@ namespace DittoMod
         {
             if (sender)
             {
-
+                //items
                 if (sender.HasBuff(Modules.Buffs.assaultvestBuff))
                 {
-                    args.armorAdd += (sender.GetBuffCount(Buffs.assaultvestBuff) * Modules.StaticValues.assaultvestboost);
+                    args.armorAdd += Modules.StaticValues.assaultvestboost;
 
                 }
                 if (sender.HasBuff(Modules.Buffs.choicebandBuff))
                 {
-                    args.baseAttackSpeedAdd += (sender.GetBuffCount(Buffs.choicebandBuff) * (Modules.StaticValues.choicebandboost - 1));
+                    args.baseAttackSpeedAdd += Modules.StaticValues.choicebandboost;
 
                 }
                 if (sender.HasBuff(Modules.Buffs.choicescarfBuff))
                 {
-                    args.moveSpeedMultAdd += (sender.GetBuffCount(Buffs.choicescarfBuff) * (Modules.StaticValues.choicescarfboost - 1));
+                    args.moveSpeedMultAdd +=  Modules.StaticValues.choicescarfboost;
 
                 }
                 if (sender.HasBuff(Modules.Buffs.choicespecsBuff))
-                {
-                    int buffnumber = sender.GetBuffCount(Modules.Buffs.choicespecsBuff);
-                    if (buffnumber > 0)
-                    {
-                        if (buffnumber >= 1 && buffnumber < 2)
-                        {
-                            args.cooldownReductionAdd += (1 - StaticValues.choicespecsboost);
-                        }
-                        if (buffnumber >= 2)
-                        {
-                            args.cooldownReductionAdd += (1 - StaticValues.choicespecsboost2);
-                        }
-                    }
+                {    
+                    args.cooldownReductionAdd += 1 - StaticValues.choicespecsboost;        
                 }
-                if (sender.HasBuff(Modules.Buffs.leftoversBuff))
-                {
-                    int buffnumber = sender.GetBuffCount(Modules.Buffs.leftoversBuff);
-                    if (buffnumber > 0)
-                    {
-                        if (buffnumber >= 1 && buffnumber < 2)
-                        {
+                //if (sender.HasBuff(Modules.Buffs.leftoversBuff))
+                //{
+                //    int buffnumber = sender.GetBuffCount(Modules.Buffs.leftoversBuff);
+                //    if (buffnumber > 0)
+                //    {
+                //        if (buffnumber >= 1 && buffnumber < 2)
+                //        {
 
-                            HealthComponent hp = sender.healthComponent;
-                            float regenValue = hp.fullCombinedHealth * Modules.StaticValues.leftoversregen;
-                            args.baseRegenAdd += regenValue;
-                        }
-                        if (buffnumber >= 2)
-                        {
+                //            HealthComponent hp = sender.healthComponent;
+                //            float regenValue = hp.fullCombinedHealth * Modules.StaticValues.leftoversregen;
+                //            args.baseRegenAdd += regenValue;
+                //        }
+                //        if (buffnumber >= 2)
+                //        {
 
-                            HealthComponent hp = sender.healthComponent;
-                            float regenValue = hp.fullCombinedHealth * Modules.StaticValues.leftoversregen2;
-                            args.baseRegenAdd += regenValue;
-                        }
-                    }
-                }
+                //            HealthComponent hp = sender.healthComponent;
+                //            float regenValue = hp.fullCombinedHealth * Modules.StaticValues.leftoversregen2;
+                //            args.baseRegenAdd += regenValue;
+                //        }
+                //    }
+                //}
                 if (sender.HasBuff(Modules.Buffs.lifeorbBuff))
                 {
-                    args.damageMultAdd += (sender.GetBuffCount(Buffs.lifeorbBuff) * (Modules.StaticValues.lifeorbboost - 1));
+                    args.damageMultAdd += Modules.StaticValues.lifeorbboost;
 
                 }
                 if (sender.HasBuff(Modules.Buffs.scopelensBuff))
                 {
-                    args.critAdd += (sender.GetBuffCount(Buffs.scopelensBuff) * Modules.StaticValues.scopelensboost);
+                    args.critAdd +=  Modules.StaticValues.scopelensboost;
 
                 }
 
-                              
+                //abilities
+                if (sender.HasBuff(Modules.Buffs.hugepowerBuff))
+                {
+                    args.damageMultAdd += Modules.StaticValues.hugepowerBoost;
+
+                }
+
+
+
 
 
             }
@@ -454,21 +456,15 @@ namespace DittoMod
             bool flag = !report.attacker || !report.attackerBody;
             if (!flag && report.attackerBody.HasBuff(Modules.Buffs.shellbellBuff))
             {
-                int buffnumber = report.attackerBody.GetBuffCount(Modules.Buffs.shellbellBuff);
-                if (buffnumber > 0)
+                CharacterBody attackerBody = report.attackerBody;
+                attackerBody.healthComponent.Heal(report.damageDealt * Modules.StaticValues.shellbelllifesteal, default(ProcChainMask), true);
+            }
+            if (!flag && report.attackerBody.HasBuff(Modules.Buffs.sniperBuff))
+            {
+                if (report.damageInfo.crit)
                 {
-                    if (buffnumber >= 1 && buffnumber < 2)
-                    {
-                        CharacterBody attackerBody = report.attackerBody;
-                        attackerBody.healthComponent.Heal(report.damageDealt * Modules.StaticValues.shellbelllifesteal, default(ProcChainMask), true);
-                    }
-                    if (buffnumber >= 2)
-                    {
-                        CharacterBody attackerBody = report.attackerBody;
-                        attackerBody.healthComponent.Heal(report.damageDealt * Modules.StaticValues.shellbelllifesteal2, default(ProcChainMask), true);
-                    }
+                    report.damageDealt *= Modules.StaticValues.sniperBoost;
                 }
-
             }
         }
 
@@ -482,71 +478,37 @@ namespace DittoMod
                 {
                     if (self.body.HasBuff(Modules.Buffs.rockyhelmetBuff.buffIndex))
                     {
-                        int buffnumber = self.body.GetBuffCount(Modules.Buffs.rockyhelmetBuff);
-                        if (buffnumber > 0)
+
+                        var damageInfo2 = new DamageInfo();
+
+                        blastAttack = new BlastAttack();
+                        blastAttack.radius = 8f;
+                        blastAttack.procCoefficient = 1;
+                        blastAttack.position = self.transform.position;
+                        blastAttack.attacker = self.gameObject;
+                        blastAttack.crit = Util.CheckRoll(self.body.crit, self.body.master);
+                        blastAttack.baseDamage = self.body.damage * Modules.StaticValues.rockyhelmetreflect;
+                        blastAttack.falloffModel = BlastAttack.FalloffModel.None;
+                        blastAttack.baseForce = 100f;
+                        blastAttack.teamIndex = TeamComponent.GetObjectTeam(blastAttack.attacker);
+                        blastAttack.damageType = DamageType.Stun1s | DamageType.BypassArmor;
+                        blastAttack.attackerFiltering = AttackerFiltering.NeverHitSelf;
+
+                        if (damageInfo.attacker.GetComponent<CharacterBody>().masterObjectId != self.body.masterObjectId)
                         {
-                            if (buffnumber >= 1 && buffnumber < 2)
-                            {
-
-                                var damageInfo2 = new DamageInfo();
-
-                                blastAttack = new BlastAttack();
-                                blastAttack.radius = 8f;
-                                blastAttack.procCoefficient = 1;
-                                blastAttack.position = self.transform.position;
-                                blastAttack.attacker = self.gameObject;
-                                blastAttack.crit = Util.CheckRoll(self.body.crit, self.body.master);
-                                blastAttack.baseDamage = self.body.damage * Modules.StaticValues.rockyhelmetreflect;
-                                blastAttack.falloffModel = BlastAttack.FalloffModel.None;
-                                blastAttack.baseForce = 100f;
-                                blastAttack.teamIndex = TeamComponent.GetObjectTeam(blastAttack.attacker);
-                                blastAttack.damageType = DamageType.Stun1s | DamageType.BypassArmor;
-                                blastAttack.attackerFiltering = AttackerFiltering.NeverHitSelf;
-
-                                if (damageInfo.attacker.GetComponent<CharacterBody>().masterObjectId != self.body.masterObjectId)
-                                {
-                                    blastAttack.Fire();
-                                }
-
-
-                                EffectManager.SpawnEffect(effectPrefab, new EffectData
-                                {
-                                    origin = self.transform.position,
-                                    scale = 10f,
-                                    rotation = Quaternion.LookRotation(self.transform.position)
-
-                                }, true);
-                            }
-                            if (buffnumber >= 2)
-                            {
-                                blastAttack = new BlastAttack();
-                                blastAttack.radius = 16f;
-                                blastAttack.procCoefficient = 2;
-                                blastAttack.position = self.transform.position;
-                                blastAttack.attacker = self.gameObject;
-                                blastAttack.crit = Util.CheckRoll(self.body.crit, self.body.master);
-                                blastAttack.baseDamage = self.body.damage * Modules.StaticValues.rockyhelmetreflect2;
-                                blastAttack.falloffModel = BlastAttack.FalloffModel.None;
-                                blastAttack.baseForce = 100f;
-                                blastAttack.teamIndex = TeamComponent.GetObjectTeam(blastAttack.attacker);
-                                blastAttack.damageType = DamageType.Stun1s | DamageType.BypassArmor;
-                                blastAttack.attackerFiltering = AttackerFiltering.NeverHitSelf;
-
-                                if (damageInfo.attacker.GetComponent<CharacterBody>().masterObjectId != self.body.masterObjectId)
-                                {
-                                    blastAttack.Fire();
-                                }
-
-
-                                EffectManager.SpawnEffect(effectPrefab, new EffectData
-                                {
-                                    origin = self.transform.position,
-                                    scale = 10f,
-                                    rotation = Quaternion.LookRotation(self.transform.position)
-
-                                }, true);
-                            }
+                            blastAttack.Fire();
                         }
+
+
+                        EffectManager.SpawnEffect(effectPrefab, new EffectData
+                        {
+                            origin = self.transform.position,
+                            scale = 10f,
+                            rotation = Quaternion.LookRotation(self.transform.position)
+
+                        }, true);
+                            
+                        
 
                     }
 

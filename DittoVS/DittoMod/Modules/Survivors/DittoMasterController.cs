@@ -20,6 +20,8 @@ namespace DittoMod.Modules.Survivors
         public bool transformed;
         //private int buffCountToApply;
         public float transformage1;
+        public float leftoverTimer;
+
         public bool assaultvest;
         public bool choiceband;
         public bool choicescarf;
@@ -36,6 +38,7 @@ namespace DittoMod.Modules.Survivors
 
         public NetworkInstanceId networkInstanceID;
         private bool initialized;
+        private float jumpTimer;
 
         public void Awake()
         {
@@ -424,6 +427,40 @@ namespace DittoMod.Modules.Survivors
 
             if (characterMaster.netId == networkInstanceID)
             {
+                //leftovers
+                if (body.HasBuff(Buffs.leftoversBuff.buffIndex))
+                {
+                    if(leftoverTimer > 1f)
+                    {
+                        new LeftoversNetworked(characterMaster.netId).Send(NetworkDestination.Server);
+                    }
+                    else
+                    {
+                        leftoverTimer += Time.fixedDeltaTime;
+                    }
+                }
+
+                //levitate
+                if (body.HasBuff(Buffs.levitateBuff.buffIndex))
+                {
+                    if (!body.characterMotor.isGrounded)
+                    {
+                        if (body.inputBank.jump.down)
+                        {
+                            jumpTimer += Time.fixedDeltaTime;
+                            if (jumpTimer < 1f)
+                            {
+                                body.characterMotor.velocity.y += 1f;
+                            }
+                        }
+                        else
+                        {
+                            jumpTimer = 0f;
+                        }
+
+                    }
+                }
+
                 //transform back
                 if (body.HasBuff(Modules.Buffs.transformBuff.buffIndex))
                 {

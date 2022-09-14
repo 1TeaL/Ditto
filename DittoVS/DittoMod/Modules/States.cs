@@ -22,6 +22,15 @@ namespace DittoMod.Modules
             entityStates.Add(typeof(RockyHelmet));
             entityStates.Add(typeof(ScopeLens));
             entityStates.Add(typeof(ShellBell));
+
+            entityStates.Add(typeof(FlameBody));
+            entityStates.Add(typeof(HugePower));
+            entityStates.Add(typeof(Levitate));
+            entityStates.Add(typeof(MagicGuard));
+            entityStates.Add(typeof(Moody));
+            entityStates.Add(typeof(Moxie));
+            entityStates.Add(typeof(Multiscale));
+            entityStates.Add(typeof(Sniper));
         }
     }
 }
