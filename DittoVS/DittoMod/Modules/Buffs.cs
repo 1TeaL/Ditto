@@ -33,8 +33,18 @@ namespace DittoMod.Modules
         internal static BuffDef levitateBuff;
         internal static BuffDef magicguardBuff;
         internal static BuffDef moodyBuff;
+        internal static BuffDef moodyDamageBuff;
+        internal static BuffDef moodyArmorBuff;
+        internal static BuffDef moodyMovespeedBuff;
+        internal static BuffDef moodyAttackspeedBuff;
+        internal static BuffDef moodyDamageDebuff;
+        internal static BuffDef moodyArmorDebuff;
+        internal static BuffDef moodyMovespeedDebuff;
+        internal static BuffDef moodyAttackspeedDebuff;
         internal static BuffDef moxieBuff;
+        internal static BuffDef moxieBoostBuff;
         internal static BuffDef multiscaleBuff;
+        internal static BuffDef multiscaleCooldownDebuff;
         internal static BuffDef sniperBuff;
 
         internal static void RegisterBuffs()
@@ -54,14 +64,28 @@ namespace DittoMod.Modules
             scopelensBuff = Buffs.AddNewBuff("scopelensBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("ScopeLens"), Color.white, false, false);
             shellbellBuff = Buffs.AddNewBuff("shellbellBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("ShellBell"), Color.white, false, false);
 
-            flamebodyBuff = Buffs.AddNewBuff("flamebodyBuff", Assets.blazingBuffIcon, Color.red, false, false);
+            flamebodyBuff = Buffs.AddNewBuff("flamebodyBuff", Assets.blazingBuffIcon, Color.grey, false, false);
             hugepowerBuff = Buffs.AddNewBuff("hugepowerBuff", Assets.elephantBuffIcon, Color.blue, false, false);
             levitateBuff = Buffs.AddNewBuff("levitateBuff", Assets.levitateBuffIcon, Color.magenta, false, false);
             magicguardBuff = Buffs.AddNewBuff("magicguardBuff", Assets.brainBuffIcon, new Color(0.86f, 0.44f, 0.59f), false, false);
+
             moodyBuff = Buffs.AddNewBuff("moodyBuff", Assets.boostBuffIcon, new Color(0.59f, 0.31f, 0.16f), false, false);
-            moxieBuff = Buffs.AddNewBuff("moxieBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("ShellBell"), Color.white, false, false);
-            multiscaleBuff = Buffs.AddNewBuff("multiscaleBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("ShellBell"), Color.white, false, false);
-            sniperBuff = Buffs.AddNewBuff("sniperBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("ShellBell"), Color.white, false, false);
+            moodyDamageBuff = Buffs.AddNewBuff("moodyDamageBuff", Assets.warcryBuffIcon, Color.red, true, false);
+            moodyArmorBuff = Buffs.AddNewBuff("moodyArmorBuff", Assets.shieldBuffIcon, Color.green, true, false);
+            moodyAttackspeedBuff = Buffs.AddNewBuff("moodyAttackspeedBuff", Assets.predatorBuffIcon, Color.blue, true, false);
+            moodyMovespeedBuff = Buffs.AddNewBuff("moodyMovespeedBuff", Assets.speedBuffIcon, new Color(1f, 0.5f, 0f), true, false);
+
+            moodyDamageDebuff = Buffs.AddNewBuff("moodyDamageDebuff", Assets.warcryBuffIcon, new Color(0f, 1f, 1f), true, true);
+            moodyArmorDebuff = Buffs.AddNewBuff("moodyArmorDebuff", Assets.shieldBuffIcon, new Color(1f, 0f, 1f), true, true);
+            moodyAttackspeedDebuff = Buffs.AddNewBuff("moodyAttackspeedDebuff", Assets.predatorBuffIcon, new Color(0.75f, 1f, 0f), true, true);
+            moodyMovespeedDebuff = Buffs.AddNewBuff("moodyMovespeedDebuff", Assets.speedBuffIcon, new Color(0f, 0.52f, 1f), true, true);
+
+            moxieBuff = Buffs.AddNewBuff("moxieBuff", Assets.banditSkullBuffIcon, Color.black, false, false);
+            moxieBoostBuff = Buffs.AddNewBuff("moxieBoostBuff", Assets.banditSkullBuffIcon, Color.blue, true, false);
+
+            multiscaleBuff = Buffs.AddNewBuff("multiscaleBuff", Assets.skinBuffIcon, new Color(1f, 0.5f, 0f), false, false);
+            multiscaleCooldownDebuff = Buffs.AddNewBuff("multiscaleCooldownDebuff", Assets.skinBuffIcon, Color.white, false, true);
+            sniperBuff = Buffs.AddNewBuff("sniperBuff", Assets.critBuffIcon, Color.blue, false, false);
 
             //Sprite TransformBuff = Addressables.LoadAssetAsync<BuffDef>("RoR2/Base/LunarSkillReplacements/bdLunarSecondaryRoot.asset").WaitForCompletion().iconSprite;
             //transformBuff = AddNewBuff("TransformTimer", TransformBuff, Color.yellow, false, false);

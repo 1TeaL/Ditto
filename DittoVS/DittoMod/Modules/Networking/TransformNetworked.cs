@@ -34,12 +34,15 @@ namespace DittoMod.Modules.Networking
 
         public void OnReceived()
         {
+            if (NetworkServer.active)
+            {
+                GameObject masterobject = Util.FindNetworkObject(IDNet);
+                CharacterMaster charMaster = masterobject.GetComponent<CharacterMaster>();
+                charMaster.TransformBody("DittoBody");
 
-            GameObject masterobject = Util.FindNetworkObject(IDNet);
-            CharacterMaster charMaster = masterobject.GetComponent<CharacterMaster>();
-            charMaster.TransformBody("DittoBody");
+                charMaster.bodyPrefab = BodyCatalog.FindBodyPrefab("DittoBody");
 
-            charMaster.bodyPrefab = BodyCatalog.FindBodyPrefab("DittoBody");
+            }
         }
 
     }

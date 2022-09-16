@@ -34,12 +34,15 @@ namespace DittoMod.Modules.Networking
 
         public void OnReceived()
         {
+            if (NetworkServer.active)
+            {
+                GameObject masterobject = Util.FindNetworkObject(IDNet);
+                CharacterMaster charMaster = masterobject.GetComponent<CharacterMaster>();
+                CharacterBody charBody = charMaster.GetComponent<CharacterBody>();
 
-            GameObject masterobject = Util.FindNetworkObject(IDNet);
-            CharacterMaster charMaster = masterobject.GetComponent<CharacterMaster>();
-            CharacterBody charBody = charMaster.GetComponent<CharacterBody>();
+                charBody.healthComponent.Heal(Modules.StaticValues.leftoversregen * charBody.healthComponent.fullHealth, new ProcChainMask(), true);
 
-            charBody.healthComponent.Heal(Modules.StaticValues.leftoversregen * charBody.healthComponent.fullHealth, new ProcChainMask(), true);
+            }
         }
 
     }

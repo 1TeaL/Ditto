@@ -23,6 +23,15 @@ namespace DittoMod.Modules
         //abilities
         internal const float hugepowerBoost = 1f;
         internal const float sniperBoost = 1.5f;
+        internal const float flamebodyDamage = 1f;
+        internal const float moodyTimer = 20f;
+        internal const float moodyDamage = 0.1f;
+        internal const float moodyArmor = 5f;
+        internal const float moodyMovespeed = 0.1f;
+        internal const float moodyAttackspeed = 0.1f;
+        internal const float moxieDamage = 0.3f;
+        internal const int moxieTimer = 20;
+        internal const float multiscaleReduction = 0.5f;
 
 
         //transform
