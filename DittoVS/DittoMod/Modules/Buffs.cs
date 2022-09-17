@@ -51,7 +51,7 @@ namespace DittoMod.Modules
         {
             Sprite fractureddebuff = Addressables.LoadAssetAsync<BuffDef>("RoR2/DLC1/BleedOnHitVoid/bdFracture.asset").WaitForCompletion().iconSprite;
 
-            transformdeBuff = Buffs.AddNewBuff("transformdeBuff", fractureddebuff, Color.white, true, true);
+            transformdeBuff = Buffs.AddNewBuff("transformdeBuff", fractureddebuff, Color.white, false, true);
             transformBuff = Buffs.AddNewBuff("transformBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("Transform"), Color.white, true, false);
             assaultvestBuff = Buffs.AddNewBuff("assaultvestBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("AssaultVest"), Color.white, false, false);
             choicescarfBuff = Buffs.AddNewBuff("choicescarfBuff", Assets.mainAssetBundle.LoadAsset<Sprite>("ChoiceScarf"), Color.white, false, false);

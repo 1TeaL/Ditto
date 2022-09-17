@@ -372,14 +372,110 @@ namespace DittoMod
             On.RoR2.CharacterBody.OnDeathStart += CharacterBody_OnDeathStart;
             On.RoR2.CharacterModel.Awake += CharacterModel_Awake;
             On.RoR2.CharacterMaster.Start += CharacterMaster_Start;
-            On.RoR2.GlobalEventManager.OnCharacterDeath += GlobalEventManager_OnCharacterDeath; ;
-            //On.RoR2.CharacterBody.Start += CharacterBody_Start;
+            On.RoR2.GlobalEventManager.OnCharacterDeath += GlobalEventManager_OnCharacterDeath;
             On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             //On.RoR2.TeleporterInteraction.FinishedState.OnEnter += TeleporterInteraction_FinishedState;
             GlobalEventManager.onServerDamageDealt += GlobalEventManager_OnDamageDealt;
             //On.RoR2.CharacterBody.FixedUpdate += CharacterBody_FixedUpdate;
             //On.RoR2.CharacterBody.Update += CharacterBody_Update;
+            On.RoR2.CharacterMaster.OnInventoryChanged += CharacterMaster_OnInventoryChanged;
+            On.RoR2.CharacterBody.Start += CharacterBody_Start;
+        }
+
+
+        public void CharacterBody_Start(On.RoR2.CharacterBody.orig_Start orig, CharacterBody self)
+        {
+            orig.Invoke(self);
+
+            if (self)
+            {
+                if (self.master)
+                {
+
+                    dittomastercon = self.master.gameObject.GetComponent<DittoMasterController>();
+                    if (dittomastercon.initialized)
+                    {
+                        if (dittomastercon.networkInstanceID == self.master.netId)
+                        {
+
+                            self.ApplyBuff(Buffs.assaultvestBuff.buffIndex, dittomastercon.assaultvest ? 1 : 0);
+                            self.ApplyBuff(Buffs.choicebandBuff.buffIndex, dittomastercon.choiceband ? 1 : 0);
+                            self.ApplyBuff(Buffs.choicescarfBuff.buffIndex, dittomastercon.choicescarf ? 1 : 0);
+                            self.ApplyBuff(Buffs.choicespecsBuff.buffIndex, dittomastercon.choicespecs ? 1 : 0);
+                            self.ApplyBuff(Buffs.leftoversBuff.buffIndex, dittomastercon.leftovers ? 1 : 0);
+                            self.ApplyBuff(Buffs.lifeorbBuff.buffIndex, dittomastercon.lifeorb ? 1 : 0);
+                            self.ApplyBuff(Buffs.luckyeggBuff.buffIndex, dittomastercon.luckyegg ? 1 : 0);
+                            self.ApplyBuff(Buffs.rockyhelmetBuff.buffIndex, dittomastercon.rockyhelmet ? 1 : 0);
+                            self.ApplyBuff(Buffs.scopelensBuff.buffIndex, dittomastercon.scopelens ? 1 : 0);
+                            self.ApplyBuff(Buffs.shellbellBuff.buffIndex, dittomastercon.shellbell ? 1 : 0);
+
+                            self.ApplyBuff(Buffs.flamebodyBuff.buffIndex, dittomastercon.flamebody ? 1 : 0);
+                            self.ApplyBuff(Buffs.hugepowerBuff.buffIndex, dittomastercon.hugepower ? 1 : 0);
+                            self.ApplyBuff(Buffs.levitateBuff.buffIndex, dittomastercon.levitate ? 1 : 0);
+                            self.ApplyBuff(Buffs.magicguardBuff.buffIndex, dittomastercon.magicguard ? 1 : 0);
+                            self.ApplyBuff(Buffs.moodyBuff.buffIndex, dittomastercon.moody ? 1 : 0);
+                            self.ApplyBuff(Buffs.moxieBuff.buffIndex, dittomastercon.moxie ? 1 : 0);
+                            self.ApplyBuff(Buffs.multiscaleBuff.buffIndex, dittomastercon.multiscale ? 1 : 0);
+                            self.ApplyBuff(Buffs.sniperBuff.buffIndex, dittomastercon.sniper ? 1 : 0);
+                            //if (self.master.bodyPrefab.name == BodyCatalog.FindBodyPrefab("DittoBody").name)
+                            //{
+
+
+
+                            //}
+                            if (self.master.bodyPrefab.name != BodyCatalog.FindBodyPrefab("DittoBody").name)
+                            {
+                                if (DittoMod.Modules.Config.bossTimer.Value)
+                                {
+                                    if (StaticValues.speciallist.Contains(self.master.bodyPrefab.name))
+                                    {
+                                        if (dittomastercon.transformed)
+                                        {
+                                            self.ApplyBuff(Buffs.transformBuff.buffIndex, 30);
+                                        }
+                                    }
+
+                                }
+
+
+
+                            }
+
+
+                        }
+
+                    }
+
+
+                }
+
+
+            }
+
+
+        }
+
+        private void CharacterMaster_OnInventoryChanged(On.RoR2.CharacterMaster.orig_OnInventoryChanged orig, CharacterMaster self)
+        {
+            orig.Invoke(self);
+
+            if (self)
+            {
+                dittomastercon = self.gameObject.GetComponent<DittoMasterController>();
+                if (dittomastercon.characterMaster.netId == self.netId)
+                {
+                    self.luck = 0;
+                    if (dittomastercon.luckyegg)
+                    {
+                        self.luck += 1f;
+                    }
+                    self.luck += self.inventory.GetItemCount(RoR2Content.Items.Clover);
+                    self.luck -= self.inventory.GetItemCount(RoR2Content.Items.LunarBadLuck);
+
+                }
+            }
+
         }
 
         private void GlobalEventManager_OnCharacterDeath(On.RoR2.GlobalEventManager.orig_OnCharacterDeath orig, GlobalEventManager self, DamageReport damageReport)
@@ -823,7 +919,29 @@ namespace DittoMod
             {
                 AkSoundEngine.PostEvent(3468082827, self.gameObject);
 
+                dittomastercon = self.gameObject.GetComponent<DittoMasterController>();
 
+                dittomastercon.transformed = false;
+                dittomastercon.assaultvest = false;
+                dittomastercon.choiceband = false;
+                dittomastercon.choicescarf = false;
+                dittomastercon.choicespecs = false;
+                dittomastercon.leftovers = false;
+                dittomastercon.lifeorb = false;
+                dittomastercon.luckyegg = false;
+                dittomastercon.rockyhelmet = false;
+                dittomastercon.scopelens = false;
+                dittomastercon.shellbell = false;
+                dittomastercon.flamebody = false;
+                dittomastercon.hugepower = false;
+                dittomastercon.levitate = false;
+                dittomastercon.magicguard = false;
+                dittomastercon.moody = false;
+                dittomastercon.moxie = false;
+                dittomastercon.multiscale = false;
+                dittomastercon.sniper = false;
+
+                
             }
 
         }

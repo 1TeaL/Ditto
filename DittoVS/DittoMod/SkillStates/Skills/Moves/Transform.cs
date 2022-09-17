@@ -86,7 +86,7 @@ namespace DittoMod.SkillStates
 
             new EquipmentDropNetworked(PickupCatalog.FindPickupIndex(def.equipmentIndex), 
                 base.transform.position + Vector3.up * 1.5f, 
-                Vector3.up * 20f + base.transform.forward * 2f).Send(NetworkDestination.Server);
+                Vector3.up * 20f + base.transform.forward * 2f).Send(NetworkDestination.Clients);
         }
 
         private void ChangeOrSetCharacter(NetworkUser player, HurtBox hurtBox)
@@ -203,7 +203,7 @@ namespace DittoMod.SkillStates
                 body.levelMoveSpeed = oldBody.levelMoveSpeed * Config.movespeedMultiplier.Value;
 
                 body.AddTimedBuffAuthority(RoR2Content.Buffs.HiddenInvincibility.buffIndex, Modules.StaticValues.invincibilityDuration);
-                body.ApplyBuff(Modules.Buffs.transformdeBuff.buffIndex, Modules.StaticValues.transformDuration);
+                body.ApplyBuff(Modules.Buffs.transformdeBuff.buffIndex, 1, Modules.StaticValues.transformDuration);
 
                 if (targetMaster.playerCharacterMasterController || !targetMaster.playerCharacterMasterController)
                 {

@@ -123,6 +123,7 @@ namespace DittoMod.Modules.Equipment
                     //body = characterMaster.Respawn(characterMaster.GetBody().transform.position, characterMaster.GetBody().transform.rotation);
                     //characterMaster.GetBody().AddBuff(Modules.Buffs.transformBuff.buffIndex);
                     characterMaster.TransformBody("DittoBody");
+                    characterMaster.bodyPrefab = BodyCatalog.FindBodyPrefab("DittoBody");
 
                     //body = characterMaster.GetBody();
 
