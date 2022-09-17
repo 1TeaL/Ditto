@@ -482,7 +482,8 @@ namespace DittoMod.Modules.Survivors
                     if(leftoverTimer > 1f)
                     {
                         leftoverTimer = 0f;
-                        new LeftoversNetworked(characterMaster.netId).Send(NetworkDestination.Clients);
+                        new LeftoversNetworked(characterMaster.netId).Send(NetworkDestination.Server);
+                        //body.healthComponent.Heal(Modules.StaticValues.leftoversregen * body.healthComponent.fullHealth, new ProcChainMask(), true);
                     }
                     else
                     {
@@ -493,21 +494,27 @@ namespace DittoMod.Modules.Survivors
                 //levitate
                 if (body.HasBuff(Buffs.levitateBuff.buffIndex))
                 {
-                    if (!body.characterMotor.isGrounded)
+                    if (body.characterMotor)
                     {
-                        if (body.inputBank.jump.down)
+                        if (!body.characterMotor.isGrounded)
                         {
-                            jumpTimer += Time.fixedDeltaTime;
-                            if (jumpTimer < 1f)
+                            if (body.inputBank.jump.down)
                             {
-                                body.characterMotor.velocity.y += 0.1f;
+                                jumpTimer += Time.fixedDeltaTime;
+                                if (jumpTimer > 0.5f)
+                                {
+                                    if (body.characterMotor)
+                                    {
+                                        body.characterMotor.velocity.y = body.moveSpeed;
+                                    }
+                                }
                             }
+
                         }
-                        else
+                        else if (body.characterMotor.isGrounded)
                         {
                             jumpTimer = 0f;
                         }
-
                     }
                 }
 

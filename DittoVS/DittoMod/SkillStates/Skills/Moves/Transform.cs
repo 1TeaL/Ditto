@@ -7,6 +7,8 @@ using DittoMod.Modules;
 using UnityEngine.Networking;
 using RoR2.ExpansionManagement;
 using R2API.Networking;
+using DittoMod.Modules.Networking;
+using R2API.Networking.Interfaces;
 
 namespace DittoMod.SkillStates
 {
@@ -80,8 +82,11 @@ namespace DittoMod.SkillStates
 
         public void dropEquipment(EquipmentDef def)
         {
-            PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(def.equipmentIndex), base.transform.position + Vector3.up * 1.5f, Vector3.up * 20f + base.transform.forward * 2f);
+            //PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(def.equipmentIndex), base.transform.position + Vector3.up * 1.5f, Vector3.up * 20f + base.transform.forward * 2f);
 
+            new EquipmentDropNetworked(PickupCatalog.FindPickupIndex(def.equipmentIndex), 
+                base.transform.position + Vector3.up * 1.5f, 
+                Vector3.up * 20f + base.transform.forward * 2f).Send(NetworkDestination.Server);
         }
 
         private void ChangeOrSetCharacter(NetworkUser player, HurtBox hurtBox)

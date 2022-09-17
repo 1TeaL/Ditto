@@ -54,7 +54,7 @@ namespace DittoMod
 
         public const string MODUID = "com.TeaL.DittoMod";
         public const string MODNAME = "DittoMod";
-        public const string MODVERSION = "1.3.6";
+        public const string MODVERSION = "2.0.0";
 
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string developerPrefix = "TEAL";
@@ -118,6 +118,7 @@ namespace DittoMod
 
             //Networking
             NetworkingAPI.RegisterMessageType<TransformNetworked>();
+            NetworkingAPI.RegisterMessageType<EquipmentDropNetworked>();
             NetworkingAPI.RegisterMessageType<LeftoversNetworked>();
 
 

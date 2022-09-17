@@ -59,7 +59,7 @@ namespace DittoMod.Modules
             LanguageAPI.Add(prefix + "LUCKYEGG_NAME", "Lucky Egg");
             LanguageAPI.Add(prefix + "LUCKYEGG_DESCRIPTION", $"Equip a Lucky Egg, granting <style=cIsUtility>1 luck</style>" + " </style>.");
             LanguageAPI.Add(prefix + "ROCKYHELMET_NAME", "Rocky Helmet");
-            LanguageAPI.Add(prefix + "ROCKYHELMET_DESCRIPTION", $"Equip a Rocky Helmet, stunning and dealing <style=cIsDamage>{100f * StaticValues.rockyhelmetreflect}% damage</style>" + " to attackers around you.");
+            LanguageAPI.Add(prefix + "ROCKYHELMET_DESCRIPTION", $"Equip a Rocky Helmet, stunning and dealing <style=cIsDamage>{100f * StaticValues.rockyhelmetreflect}% damage</style>" + " to attackers around you when hit.");
             LanguageAPI.Add(prefix + "SCOPELENS_NAME", "Scope Lens");
             LanguageAPI.Add(prefix + "SCOPELENS_DESCRIPTION", $"Equip a Scope Lens, granting <style=cIsDamage>{StaticValues.scopelensboost}% critical hit chance</style>" + ".");
             LanguageAPI.Add(prefix + "SHELLBELL_NAME", "Shell Bell");
@@ -68,7 +68,7 @@ namespace DittoMod.Modules
 
             #region Abilities
             LanguageAPI.Add(prefix + "FLAMEBODY_NAME", "Flame Body");
-            LanguageAPI.Add(prefix + "FLAMEBODY_DESCRIPTION", $"Survivors with this ability <style=cIsDamage>burn nearby attackers</style>" + ".");
+            LanguageAPI.Add(prefix + "FLAMEBODY_DESCRIPTION", $"Survivors with this ability <style=cIsDamage>burn nearby attackers</style> when hit" + ".");
             LanguageAPI.Add(prefix + "HUGEPOWER_NAME", "Huge Power");
             LanguageAPI.Add(prefix + "HUGEPOWER_DESCRIPTION", $"Double the <style=cIsDamage>damage</style> of survivors with this ability" + ".");
             LanguageAPI.Add(prefix + "LEVITATE_NAME", "Levitate");
@@ -82,11 +82,11 @@ namespace DittoMod.Modules
                 $"Movespeed increments by {100f * StaticValues.moodyMovespeed}%. " + Environment.NewLine +
                 $"Attackspeed increments by {100f * StaticValues.moodyAttackspeed}%" + ".");
             LanguageAPI.Add(prefix + "MOXIE_NAME", "Moxie");
-            LanguageAPI.Add(prefix + "MOXIE_DESCRIPTION", $"Survivors with this ability gain<style=cIsUtility>{100f * StaticValues.moxieDamage}% damage on kill</style>" + ".");
+            LanguageAPI.Add(prefix + "MOXIE_DESCRIPTION", $"Survivors with this ability gain<style=cIsUtility>{100f * StaticValues.moxieDamage}% damage on kill for {StaticValues.moxieTimer}</style>, stacking" + ".");
             LanguageAPI.Add(prefix + "MULTISCALE_NAME", "Multiscale");
             LanguageAPI.Add(prefix + "MULTISCALE_DESCRIPTION", $"Survivors with this ability take <style=cIsUtility>{100f * (StaticValues.multiscaleReduction)}% reduced damage while at full health</style>" + ".");
             LanguageAPI.Add(prefix + "SNIPER_NAME", "Sniper");
-            LanguageAPI.Add(prefix + "SNIPER_DESCRIPTION", $"Survivors with this ability do <style=cIsDamage>{100f * (StaticValues.sniperBoost)}% damage on critical hits</style>" + ".");           
+            LanguageAPI.Add(prefix + "SNIPER_DESCRIPTION", $"Survivors with this ability deal <style=cIsDamage>{100f * (StaticValues.sniperBoost)}% damage on critical hits</style>" + ".");           
             #endregion
 
             #region Special

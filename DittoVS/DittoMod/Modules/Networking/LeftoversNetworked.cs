@@ -38,7 +38,7 @@ namespace DittoMod.Modules.Networking
             {
                 GameObject masterobject = Util.FindNetworkObject(IDNet);
                 CharacterMaster charMaster = masterobject.GetComponent<CharacterMaster>();
-                CharacterBody charBody = charMaster.GetComponent<CharacterBody>();
+                CharacterBody charBody = charMaster.GetBody();
 
                 charBody.healthComponent.Heal(Modules.StaticValues.leftoversregen * charBody.healthComponent.fullHealth, new ProcChainMask(), true);
 
