@@ -1,3 +1,6 @@
+# DittoRor2
+Ditto mod for Ror2
+Ditto!
 ## Ditto
 Adds Ditto, the transform Pokémon.
 #### Multiplayer works (hopefully). 
@@ -40,37 +43,28 @@ If you enjoy my work, support me on Ko-fi!
 
 ## Latest Changelog, Next update(s)
 
-- 1.3.6 
-    - Fixed boss config, and tbh with the new transform hotkey, no more softlocks should exist, however I'll keep the 30 second timer as a default since bosses can be quite strong (They also got buffed with the instantly spawn change).
-- 1.3.5 
-    - Hopefully fixed null errors and fps issues.
-- 1.3.4 
-    - Fixed item buff passives not properly given to Ditto in future runs (hopefully).
-- 1.3.3 
-    - Added config to disable dropping aspects when transforming into Elites.
-    - Fixed item buff passives not properly given to Ditto as well as previous run buffs carrying over.
-- 1.3.2 
-    - Fixed equipment not working.
-- 1.3.1 
-    - Forgot to mention equipments now drop from elites.
-- 1.3 
-    - Transforms now instantly happen without a spawn animation to save time. With this I changed it so you only get 1 second of invincibility.
-    - Transform hotkey added! By default it is F, and can be configured in the Configs!
+- 2.0.0 
+    - Bug Fixes
+        - Fixed networking/multiplayer issues (hopefully). 
+        - Non-hosts can now get elite equipment.
+        - Transform debuff should properly decrease for non-hosts as it is now a duration rather than stacks.
+        - Transform key will now work for individual players, hosts won't detransform other players.
+    - Changes
+        - Leftovers now heal 6.25% HP per second, and its proper healing not regen.
+        - The Utility slot for Items is removed, no more item stacking. 
+    - *NEW*
+        - ADDED ABILITIES for the Utility slots!
+        - Try out the item and ability combinations for some CRAZINGO gameplay!
 
 
 - Next update(s)
     - Bug fixes. 
-    - Using extraskillslots mod to let ditto transform with a skill instead of an equipment?
-    - Adding pokemon abilities to replace one of the item skill slots instead?
 
-<img src="https://user-images.githubusercontent.com/93917577/161882257-dd41f57e-fa05-4fa9-841c-e8ee1623c64a.PNG">
+<img src="https://user-images.githubusercontent.com/93917577/190889679-f4e22ebc-81fb-4b6c-bfac-26d9792181f2.PNG">
 
 ## Known Issues
 
-
-Non-host dittos may have multiple buffs, but they are not active.
-
-Some Transformations aren't able to use equipment. 
+Some Transformations aren't able to use equipment. Transform key/30 second timer will turn them back.
 
 No Ragdoll yet
 
@@ -82,7 +76,6 @@ No Ragdoll yet
     Use Ditto's equipment to transform back to ditto. It can also drop naturally.
     Ditto drops an elite's equipment when transforming.
     Ditto's secondary and utility skills are items that when activated give buffs that are carried over when transformed as well. They stack as well by having both equipped.
-    Aim to increase your HP as it has low base HP
 
 ## Skills
 ### Passive
@@ -119,7 +112,7 @@ Ditto comes with an equipment that transform yourself into a ditto. It has a dou
   <tr>
     <td>Leftovers</td>
     <td><img src="https://user-images.githubusercontent.com/93917577/163766994-4c80ebc6-bf44-4428-bbee-e49e3d9a8299.png" alt="Image" width="100" height="100"></td>
-    <td>Grant 3.125% of your max health as regen.</td>
+    <td>Grant 6.25% of your max health as regen.</td>
   </tr>
   <tr>
     <td>Life Orb</td>
@@ -134,7 +127,7 @@ Ditto comes with an equipment that transform yourself into a ditto. It has a dou
   <tr>
     <td>Rocky Helmet</td>
     <td><img src="https://user-images.githubusercontent.com/93917577/163767009-c4d9d7ec-c458-423b-b66e-b00d3f68601d.png" alt="Image" width="100" height="100"></td>
-    <td>When hit, stun and deal damage around you. <br>A second stack doubles the range.<br>Proc chance for 1st stack = 1.<br>Proc chance for 2nd stack = 2.</td>
+    <td>When hit, stun and deal damage around you. <br>Proc: 1.</td>
   </tr>
   <tr>
     <td>Scope Lens</td>
@@ -149,6 +142,49 @@ Ditto comes with an equipment that transform yourself into a ditto. It has a dou
 </tbody>
 </table>
 
+<table>
+<thead>
+  <tr>
+    <th>Ability</th>
+    <th>Description</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Flame Body</td>
+    <td>When hit, damage and burn nearby enemies. Proc: 1.</td>
+  </tr>
+  <tr>
+    <td>Huge Power</td>
+    <td>Double your damage.</td>
+  </tr>
+  <tr>
+    <td>Levitate</td>
+    <td>Float by holding the jump button.</td>
+  </tr>
+  <tr>
+    <td>Magic Guard</td>
+    <td>Immune to DoTs.</td>
+  </tr>
+  <tr>
+    <td>Moody</td>
+    <td>Every 20 seconds, gain 2 stacks of a random buff and 1 stack of a random debuff.<br>Damage increments by 10%.<br>Armor increments by 5.<br>Movespeed increments by 10%.<br>Attackspeed increments by 10%.</td>
+  </tr>
+  <tr>
+    <td>Moxie</td>
+    <td>Gain 30% damage on kill for 20 seconds, stacking.</td>
+  </tr>
+  <tr>
+    <td>Multiscale</td>
+    <td>Take 50% reduced damage while at full health.</td>
+  </tr>
+  <tr>
+    <td>Sniper</td>
+    <td>Deal 150% damage on critical hits.</td>
+  </tr>
+</tbody>
+</table>
+
 ## Numbers
 ##### Armor = 10 + 0.5 per level
 ##### Damage = 20 + 4 per level
@@ -159,6 +195,25 @@ Ditto comes with an equipment that transform yourself into a ditto. It has a dou
 These stats are prone to change.
 
 ## Changelog
+
+<details>
+<summary>Click to expand previous patch notes:</summary>
+- 1.3.6 
+    - Fixed boss config, and tbh with the new transform hotkey, no more softlocks should exist, however I'll keep the 30 second timer as a default since bosses can be quite strong (They also got buffed with the instantly spawn change).
+- 1.3.5 
+    - Hopefully fixed null errors and fps issues.
+- 1.3.4 
+    - Fixed item buff passives not properly given to Ditto in future runs (hopefully).
+- 1.3.3 
+    - Added config to disable dropping aspects when transforming into Elites.
+    - Fixed item buff passives not properly given to Ditto as well as previous run buffs carrying over.
+- 1.3.2 
+    - Fixed equipment not working.
+- 1.3.1 
+    - Forgot to mention equipments now drop from elites.
+- 1.3 
+    - Transforms now instantly happen without a spawn animation to save time. With this I changed it so you only get 1 second of invincibility.
+    - Transform hotkey added! By default it is F, and can be configured in the Configs!
 - 1.2 
     - Fixed buffs carrying over between stages and transformations, fixed rocky helmet bugs.
     - Buffed Ditto base HP 100 + 20/level -> 206 + 48/level.
@@ -213,12 +268,11 @@ These stats are prone to change.
 - 1.0.0 
     - Release Ditto!(?)
 - rest of changelog on github
-
+    
+</details>
 
 ## Future plans
-##### More items
-##### A Ditto Item that turns enemies into Dittos?
-##### Item display for equipment
+##### Unown for now
 
 
 ## Credits

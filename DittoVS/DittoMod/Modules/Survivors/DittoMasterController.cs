@@ -72,7 +72,42 @@ namespace DittoMod.Modules.Survivors
             sniper = false;
             //On.RoR2.Stage.Start += Stage_Start;
             //On.RoR2.CharacterMaster.Respawn += CharacterMaster_Respawn;
+            On.RoR2.CharacterMaster.OnInventoryChanged += CharacterMaster_OnInventoryChanged;
+            On.RoR2.CharacterModel.Awake += CharacterModel_Awake;
+            On.RoR2.Run.Start += Run_Start;
+            On.RoR2.CharacterBody.Start += CharacterBody_Start;
 
+        }
+
+        public void Start()
+        {
+            transformed = false;
+            assaultvest = false;
+            choiceband = false;
+            choicescarf = false;
+            choicespecs = false;
+            leftovers = false;
+            lifeorb = false;
+            luckyegg = false;
+            rockyhelmet = false;
+            scopelens = false;
+            shellbell = false;
+            flamebody = false;
+            hugepower = false;
+            levitate = false;
+            magicguard = false;
+            moody = false;
+            moxie = false;
+            multiscale = false;
+            sniper = false;
+            characterMaster = gameObject.GetComponent<CharacterMaster>();
+
+            networkInstanceID = characterMaster.netId;
+            //Debug.Log(transformed + "istransformed");
+
+            dittomastercon = characterMaster.gameObject.GetComponent<DittoMasterController>();
+
+            initialized = false;
         }
 
         private void Run_Start(On.RoR2.Run.orig_Start orig, Run self)
@@ -99,38 +134,134 @@ namespace DittoMod.Modules.Survivors
             sniper = false;
         }
 
-
-
-
-        public void Start()
+        private void CharacterModel_Awake(On.RoR2.CharacterModel.orig_Awake orig, CharacterModel self)
         {
-            transformed = false;
-            assaultvest = false;
-            choiceband = false;
-            choicescarf = false;
-            choicespecs = false;
-            leftovers = false;
-            lifeorb = false;
-            luckyegg = false;
-            rockyhelmet = false;
-            scopelens = false;
-            shellbell = false;
-            flamebody = false;
-            hugepower = false;
-            levitate = false;
-            magicguard = false;
-            moody = false;
-            moxie = false;
-            multiscale = false;
-            sniper = false;
-            characterMaster = gameObject.GetComponent<CharacterMaster>();
-            
-            networkInstanceID = characterMaster.netId;
-            //Debug.Log(transformed + "istransformed");
-            
-            dittomastercon = characterMaster.gameObject.GetComponent<DittoMasterController>();
+            orig(self);
+            if (self.gameObject.name.Contains("DittoDisplay"))
+            {
 
-            initialized = false;
+                transformed = false;
+                assaultvest = false;
+                choiceband = false;
+                choicescarf = false;
+                choicespecs = false;
+                leftovers = false;
+                lifeorb = false;
+                luckyegg = false;
+                rockyhelmet = false;
+                scopelens = false;
+                shellbell = false;
+                flamebody = false;
+                hugepower = false;
+                levitate = false;
+                magicguard = false;
+                moody = false;
+                moxie = false;
+                multiscale = false;
+                sniper = false;
+
+
+            }
+
+        }
+
+        private void CharacterMaster_OnInventoryChanged(On.RoR2.CharacterMaster.orig_OnInventoryChanged orig, CharacterMaster self)
+        {
+            orig.Invoke(self);
+
+            if (self)
+            {
+                if (networkInstanceID == self.netId)
+                {
+                    self.luck = 0;
+                    if (luckyegg)
+                    {
+                        self.luck += 1f;
+                    }
+                    self.luck += self.inventory.GetItemCount(RoR2Content.Items.Clover);
+                    self.luck -= self.inventory.GetItemCount(RoR2Content.Items.LunarBadLuck);
+
+                }
+            }
+
+        }
+
+        public void CharacterBody_Start(On.RoR2.CharacterBody.orig_Start orig, CharacterBody self)
+        {
+            orig.Invoke(self);
+
+            if (self)
+            {
+                if (self.master)
+                {
+
+                    if (initialized)
+                    {
+                        if (networkInstanceID == self.master.netId)
+                        {
+
+                            self.ApplyBuff(Buffs.assaultvestBuff.buffIndex, assaultvest ? 1 : 0);
+                            self.ApplyBuff(Buffs.choicebandBuff.buffIndex, choiceband ? 1 : 0);
+                            self.ApplyBuff(Buffs.choicescarfBuff.buffIndex, choicescarf ? 1 : 0);
+                            self.ApplyBuff(Buffs.choicespecsBuff.buffIndex, choicespecs ? 1 : 0);
+                            self.ApplyBuff(Buffs.leftoversBuff.buffIndex, leftovers ? 1 : 0);
+                            self.ApplyBuff(Buffs.lifeorbBuff.buffIndex, lifeorb ? 1 : 0);
+                            self.ApplyBuff(Buffs.luckyeggBuff.buffIndex, luckyegg ? 1 : 0);
+                            self.ApplyBuff(Buffs.rockyhelmetBuff.buffIndex, rockyhelmet ? 1 : 0);
+                            self.ApplyBuff(Buffs.scopelensBuff.buffIndex, scopelens ? 1 : 0);
+                            self.ApplyBuff(Buffs.shellbellBuff.buffIndex, shellbell ? 1 : 0);
+
+                            self.ApplyBuff(Buffs.flamebodyBuff.buffIndex, flamebody ? 1 : 0);
+                            self.ApplyBuff(Buffs.hugepowerBuff.buffIndex, hugepower ? 1 : 0);
+                            self.ApplyBuff(Buffs.levitateBuff.buffIndex, levitate ? 1 : 0);
+                            self.ApplyBuff(Buffs.magicguardBuff.buffIndex, magicguard ? 1 : 0);
+                            self.ApplyBuff(Buffs.moodyBuff.buffIndex, moody ? 1 : 0);
+                            self.ApplyBuff(Buffs.moxieBuff.buffIndex, moxie ? 1 : 0);
+                            self.ApplyBuff(Buffs.multiscaleBuff.buffIndex, multiscale ? 1 : 0);
+                            self.ApplyBuff(Buffs.sniperBuff.buffIndex, sniper ? 1 : 0);
+                            //if (self.master.bodyPrefab.name == BodyCatalog.FindBodyPrefab("DittoBody").name)
+                            //{
+
+
+
+                            //}
+                            if (self.master.bodyPrefab.name != BodyCatalog.FindBodyPrefab("DittoBody").name)
+                            {
+                                if (DittoMod.Modules.Config.bossTimer.Value)
+                                {
+                                    if (StaticValues.speciallist.Contains(self.master.bodyPrefab.name))
+                                    {
+                                        if (transformed)
+                                        {
+                                            self.ApplyBuff(Buffs.transformBuff.buffIndex, 30);
+                                        }
+                                    }
+
+                                }
+
+
+
+                            }
+
+
+                        }
+
+                    }
+
+
+                }
+
+
+            }
+
+
+        }
+        public void OnDestroy()
+        {
+            On.RoR2.CharacterBody.Start -= CharacterBody_Start;
+            On.RoR2.Run.Start -= Run_Start;
+            On.RoR2.CharacterMaster.OnInventoryChanged -= CharacterMaster_OnInventoryChanged;
+            On.RoR2.CharacterModel.Awake -= CharacterModel_Awake;
         }
 
 

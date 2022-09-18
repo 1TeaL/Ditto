@@ -84,9 +84,12 @@ namespace DittoMod.SkillStates
         {
             //PickupDropletController.CreatePickupDroplet(PickupCatalog.FindPickupIndex(def.equipmentIndex), base.transform.position + Vector3.up * 1.5f, Vector3.up * 20f + base.transform.forward * 2f);
 
-            new EquipmentDropNetworked(PickupCatalog.FindPickupIndex(def.equipmentIndex), 
-                base.transform.position + Vector3.up * 1.5f, 
-                Vector3.up * 20f + base.transform.forward * 2f).Send(NetworkDestination.Clients);
+            if (base.isAuthority)
+            {
+                new EquipmentDropNetworked(PickupCatalog.FindPickupIndex(def.equipmentIndex),
+                    base.transform.position + Vector3.up * 1.5f,
+                    Vector3.up * 20f + base.transform.forward * 2f).Send(NetworkDestination.Clients);
+            }
         }
 
         private void ChangeOrSetCharacter(NetworkUser player, HurtBox hurtBox)
