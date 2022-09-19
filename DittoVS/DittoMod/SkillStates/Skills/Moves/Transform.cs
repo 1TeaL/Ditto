@@ -206,7 +206,8 @@ namespace DittoMod.SkillStates
                 body.levelMoveSpeed = oldBody.levelMoveSpeed * Config.movespeedMultiplier.Value;
 
                 body.AddTimedBuffAuthority(RoR2Content.Buffs.HiddenInvincibility.buffIndex, Modules.StaticValues.invincibilityDuration);
-                body.ApplyBuff(Modules.Buffs.transformdeBuff.buffIndex, 1, Modules.StaticValues.transformDuration);
+                //body.ApplyBuff(Modules.Buffs.transformdeBuff.buffIndex, 1, Modules.StaticValues.transformDuration);
+                body.AddTimedBuffAuthority(Buffs.transformdeBuff.buffIndex, StaticValues.transformDuration);
 
                 if (targetMaster.playerCharacterMasterController || !targetMaster.playerCharacterMasterController)
                 {
