@@ -54,7 +54,7 @@ namespace DittoMod
 
         public const string MODUID = "com.TeaL.DittoMod";
         public const string MODNAME = "DittoMod";
-        public const string MODVERSION = "2.0.0";
+        public const string MODVERSION = "2.0.1";
 
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string developerPrefix = "TEAL";
