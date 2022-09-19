@@ -43,6 +43,9 @@ If you enjoy my work, support me on Ko-fi!
 
 ## Latest Changelog, Next update(s)
 
+- 2.0.2 
+    - Fixed missing NetworkingAPI dependency.
+    - Sounds will play for the player only rather than everyone.
 - 2.0.1 
     - Fixed transform duration decrementing incorrectly.
     - Noted known issues- the host doesn't move for other players- to fix, just restart the lobby or have someone host
@@ -72,8 +75,6 @@ Some Transformations aren't able to use equipment. Transform key/30 second timer
 Hosts won't be moving for non-hosts-> fix by restarting the lobby or having someone else host, not sure why this happens.
 Networked timed buffs don't show the duration for the transformdebuff? it still works.
 No Ragdoll yet
-
-
 
 ## Overview
     Ditto can transform into any character/monster
