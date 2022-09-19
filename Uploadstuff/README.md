@@ -43,6 +43,9 @@ If you enjoy my work, support me on Ko-fi!
 
 ## Latest Changelog, Next update(s)
 
+- 2.0.2 
+    - Fixed missing NetworkingAPI dependency.
+    - Sounds will play for the player only rather than everyone.
 - 2.0.1 
     - Fixed transform duration decrementing incorrectly.
     - Noted known issues- the host doesn't move for other players- to fix, just restart the lobby or have someone host

@@ -49,8 +49,11 @@ namespace DittoMod.SkillStates
             blastAttack.teamIndex = TeamComponent.GetObjectTeam(blastAttack.attacker);
             blastAttack.damageType = DamageType.Generic;
             blastAttack.attackerFiltering = AttackerFiltering.Default;
-            
-            AkSoundEngine.PostEvent(500315785, this.gameObject);
+
+            if (base.isAuthority)
+            {
+                AkSoundEngine.PostEvent(500315785, this.gameObject);
+            }
 
             PlayAnimation("Body", "BonusJump", "Attack.playbackRate", fireTime);
             base.gameObject.layer = LayerIndex.fakeActor.intVal;

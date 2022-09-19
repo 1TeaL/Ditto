@@ -82,7 +82,7 @@ namespace DittoMod.Modules
                 $"Movespeed increments by {100f * StaticValues.moodyMovespeed}%. " + Environment.NewLine +
                 $"Attackspeed increments by {100f * StaticValues.moodyAttackspeed}%" + ".");
             LanguageAPI.Add(prefix + "MOXIE_NAME", "Moxie");
-            LanguageAPI.Add(prefix + "MOXIE_DESCRIPTION", $"Survivors with this ability gain <style=cIsDamage>{100f * StaticValues.moxieDamage}% damage on kill for {StaticValues.moxieTimer}</style>, stacking" + ".");
+            LanguageAPI.Add(prefix + "MOXIE_DESCRIPTION", $"Survivors with this ability gain <style=cIsDamage>{100f * StaticValues.moxieDamage}% damage on kill for {StaticValues.moxieTimer} seconds</style>, stacking" + ".");
             LanguageAPI.Add(prefix + "MULTISCALE_NAME", "Multiscale");
             LanguageAPI.Add(prefix + "MULTISCALE_DESCRIPTION", $"Survivors with this ability take <style=cIsUtility>{100f * (StaticValues.multiscaleReduction)}% reduced damage while at full health</style>" + ".");
             LanguageAPI.Add(prefix + "SNIPER_NAME", "Sniper");

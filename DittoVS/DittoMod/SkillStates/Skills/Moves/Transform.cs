@@ -64,7 +64,10 @@ namespace DittoMod.SkillStates
 
                     Debug.Log("Target");
                     Debug.Log(BodyCatalog.FindBodyPrefab(BodyCatalog.GetBodyName(Target.healthComponent.body.bodyIndex)));
-                    AkSoundEngine.PostEvent(1719197672, this.gameObject);
+                    if (base.isAuthority)
+                    {
+                        AkSoundEngine.PostEvent(1719197672, this.gameObject);
+                    }
                     ChangeOrSetCharacter(characterBody.master.playerCharacterMasterController.networkUser, Target);
 
 

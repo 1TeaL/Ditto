@@ -39,6 +39,7 @@ namespace DittoMod
         "SoundAPI",
         "ItemAPI",
         "RecalculateStatsAPI",
+        "NetworkingAPI"
     })]
 
     public class DittoPlugin : BaseUnityPlugin
@@ -54,7 +55,7 @@ namespace DittoMod
 
         public const string MODUID = "com.TeaL.DittoMod";
         public const string MODNAME = "DittoMod";
-        public const string MODVERSION = "2.0.1";
+        public const string MODVERSION = "2.0.2";
 
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string developerPrefix = "TEAL";
