@@ -204,6 +204,7 @@ These stats are prone to change.
 
 <details>
 <summary>Click to expand previous patch notes:</summary>
+    
 - 1.3.6 
     - Fixed boss config, and tbh with the new transform hotkey, no more softlocks should exist, however I'll keep the 30 second timer as a default since bosses can be quite strong (They also got buffed with the instantly spawn change).
 - 1.3.5 
