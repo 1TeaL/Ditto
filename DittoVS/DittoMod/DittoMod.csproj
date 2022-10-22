@@ -41,6 +41,9 @@
     <Reference Include="MMHOOK_RoR2">
       <HintPath>..\..\..\ShiggyRor2\ShiggyVS\ShiggyMod\bin\Debug\netstandard2.0\MMHOOK_RoR2.dll</HintPath>
     </Reference>
+    <Reference Include="RiskOfOptions">
+      <HintPath>bin\Debug\netstandard2.0\RiskOfOptions.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

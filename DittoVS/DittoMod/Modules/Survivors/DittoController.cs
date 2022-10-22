@@ -45,7 +45,8 @@ namespace DittoMod.Modules.Survivors
 
 
 			characterMaster = characterBody.master;
-			if (!characterMaster.gameObject.GetComponent<DittoMasterController>())
+            dittomastercon = characterMaster.gameObject.GetComponent<DittoMasterController>();
+            if (!dittomastercon)
 			{
 				dittomastercon = characterMaster.gameObject.AddComponent<DittoMasterController>();
 			}

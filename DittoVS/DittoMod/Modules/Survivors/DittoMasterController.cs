@@ -232,13 +232,13 @@ namespace DittoMod.Modules.Survivors
                                 //}
                                 if (self.master.bodyPrefab.name != BodyCatalog.FindBodyPrefab("DittoBody").name)
                                 {
-                                    if (DittoMod.Modules.Config.bossTimer.Value)
+                                    if (Config.bossTimerOn.Value)
                                     {
                                         if (StaticValues.speciallist.Contains(self.master.bodyPrefab.name))
                                         {
                                             if (transformed)
                                             {
-                                                self.ApplyBuff(Buffs.transformBuff.buffIndex, 30);
+                                                self.ApplyBuff(Buffs.transformBuff.buffIndex, Config.bossTimer.Value);
                                             }
                                         }
 
@@ -272,7 +272,50 @@ namespace DittoMod.Modules.Survivors
 
 
 
+        public void Update()
+        {
+            CharacterBody body = characterMaster.GetBody();
+            //transform debuff
+            if (body.HasBuff(Buffs.transformdeBuff.buffIndex))
+            {
+                if (Config.transformHotkey.Value.IsDown() && body.master.bodyPrefab.name != BodyCatalog.FindBodyPrefab("DittoBody").name && body.hasEffectiveAuthority)
+                {
+                    Chat.AddMessage("Can't <style=cIsUtility>Transform </style>back yet, wait for the debuff to expire.");
+                }
 
+            }
+            else if (!body.HasBuff(Buffs.transformdeBuff.buffIndex))
+            {
+                if (Config.transformHotkey.Value.IsDown() && body.master.bodyPrefab.name != BodyCatalog.FindBodyPrefab("DittoBody").name && body.hasEffectiveAuthority)
+                {
+                    AkSoundEngine.PostEvent(1719197671, this.gameObject);
+                    var oldHealthFraction = body.healthComponent.health / body.healthComponent.fullHealth;
+                    if (characterMaster.bodyPrefab.name == "CaptainBody")
+                    {
+                        characterMaster.inventory.RemoveItem(RoR2Content.Items.CaptainDefenseMatrix, 1);
+                    }
+                    else if (characterMaster.bodyPrefab.name == "HereticBody")
+                    {
+                        characterMaster.inventory.RemoveItem(RoR2Content.Items.LunarPrimaryReplacement, 1);
+                        characterMaster.inventory.RemoveItem(RoR2Content.Items.LunarSecondaryReplacement, 1);
+                        characterMaster.inventory.RemoveItem(RoR2Content.Items.LunarSpecialReplacement, 1);
+                        characterMaster.inventory.RemoveItem(RoR2Content.Items.LunarUtilityReplacement, 1);
+                    }
+                    else
+                    {
+                        new TransformNetworked(characterMaster.netId).Send(NetworkDestination.Server);
+
+                        CharacterBody newbody = characterMaster.GetBody();
+
+                        if (Config.copyHealth.Value && oldHealthFraction > 0)
+                            newbody.healthComponent.health = newbody.healthComponent.fullHealth * oldHealthFraction;
+
+                    }
+                }
+
+
+            }
+        }
 
 
         public void FixedUpdate()
@@ -554,65 +597,7 @@ namespace DittoMod.Modules.Survivors
                         else transformAge += Time.fixedDeltaTime;
                     }
 
-                    //transform debuff
-                    if (body.HasBuff(Buffs.transformdeBuff.buffIndex))
-                    {
-                        if (Input.GetKeyDown(Config.transformHotkey.Value) && body.master.bodyPrefab.name != BodyCatalog.FindBodyPrefab("DittoBody").name && body.hasEffectiveAuthority)
-                        {
-                            Chat.AddMessage("Can't <style=cIsUtility>Transform </style>back yet, wait for the debuff to expire.");
-                        }
-
-                        //if (transformDebuffAge > 1f)
-                        //{
-
-                        //    int buffCountToApply1 = body.GetBuffCount(Buffs.transformdeBuff.buffIndex);
-                        //    if (buffCountToApply1 > 1)
-                        //    {
-                        //        body.ApplyBuff(Buffs.transformdeBuff.buffIndex, buffCountToApply1 - 1);
-
-                        //        transformDebuffAge = 0;
-                        //    }
-                        //    else
-                        //    {
-                        //        body.ApplyBuff(Buffs.transformdeBuff.buffIndex, 0);
-
-                        //    }
-                        //}
-                        //else transformDebuffAge += Time.fixedDeltaTime;
-
-
-                    }
-                    else if (!body.HasBuff(Buffs.transformdeBuff.buffIndex))
-                    {
-                        if (Input.GetKeyDown(Config.transformHotkey.Value) && body.master.bodyPrefab.name != BodyCatalog.FindBodyPrefab("DittoBody").name && body.hasEffectiveAuthority)
-                        {
-                            AkSoundEngine.PostEvent(1719197671, this.gameObject);
-                            var oldHealthFraction = body.healthComponent.health / body.healthComponent.fullHealth;
-                            if (characterMaster.bodyPrefab.name == "CaptainBody")
-                            {
-                                characterMaster.inventory.RemoveItem(RoR2Content.Items.CaptainDefenseMatrix, 1);
-                            }
-                            else if (characterMaster.bodyPrefab.name == "HereticBody")
-                            {
-                                characterMaster.inventory.RemoveItem(RoR2Content.Items.LunarPrimaryReplacement, 1);
-                                characterMaster.inventory.RemoveItem(RoR2Content.Items.LunarSecondaryReplacement, 1);
-                                characterMaster.inventory.RemoveItem(RoR2Content.Items.LunarSpecialReplacement, 1);
-                                characterMaster.inventory.RemoveItem(RoR2Content.Items.LunarUtilityReplacement, 1);
-                            }
-                            else
-                            {
-                                new TransformNetworked(characterMaster.netId).Send(NetworkDestination.Server);
-
-                                CharacterBody newbody = characterMaster.GetBody();
-
-                                if (Config.copyHealth.Value && oldHealthFraction > 0)
-                                    newbody.healthComponent.health = newbody.healthComponent.fullHealth * oldHealthFraction;
-
-                            }
-                        }
-
-
-                    }
+                    
 
                 }
                

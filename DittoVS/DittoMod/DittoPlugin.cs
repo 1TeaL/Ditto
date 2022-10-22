@@ -30,6 +30,7 @@ using UnityEngine.Networking;
 namespace DittoMod
 {
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("com.rune580.riskofoptions", BepInDependency.DependencyFlags.SoftDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     [BepInPlugin(MODUID, MODNAME, MODVERSION)]
     [R2APISubmoduleDependency(new string[]
@@ -55,7 +56,7 @@ namespace DittoMod
 
         public const string MODUID = "com.TeaL.DittoMod";
         public const string MODNAME = "DittoMod";
-        public const string MODVERSION = "2.0.2";
+        public const string MODVERSION = "2.1.0";
 
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string developerPrefix = "TEAL";
@@ -100,6 +101,10 @@ namespace DittoMod
             // load assets and read config
             Modules.Assets.Initialize();
             Modules.Config.ReadConfig();
+            if (Chainloader.PluginInfos.ContainsKey("com.rune580.riskofoptions")) //risk of options support
+            {
+                Modules.Config.SetupRiskOfOptions();
+            }
             Modules.States.RegisterStates(); // register states for networking
             Modules.Buffs.RegisterBuffs(); // add and register custom buffs/debuffs
             Modules.Projectiles.RegisterProjectiles(); // add and register custom projectiles
