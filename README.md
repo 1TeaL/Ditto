@@ -43,9 +43,9 @@ If you enjoy my work, support me on Ko-fi!
     </a>
 </div>
 <div>
-    <a href="[https://thunderstore.io/package/PopcornFactory/Arsonist_Mod/](https://thunderstore.io/package/TeaL/NoctisMod/)">
+    <a href="https://thunderstore.io/package/TeaL/NoctisMod/">
       <img width="130" src="https://github.com/user-attachments/assets/e5ef6c35-f487-46f0-b6e7-aab58afd2a60"/>
-      <p>Noctis Mod (My Other Mod!)</p>
+      <p>Noctis Mod (My other Mod!)</p>
     </a>
 </div>
 <div>
