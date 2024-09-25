@@ -3,6 +3,7 @@ Ditto mod for Ror2
 Ditto!
 ## Ditto
 Adds Ditto, the transform Pokémon.
+https://thunderstore.io/package/PopcornFactory/DittoMod/
 #### Multiplayer works (hopefully). 
 #### Dropinmultiplayer mod lets you turn back to ditto with the /join_as ditto command. If you ever get stuck try to use it and let me know what monster/character had you stuck.
 #### Message me on the Risk of Rain 2 Modding Discord if there are any issues- TeaL#5571. 
@@ -12,8 +13,14 @@ If you enjoy my work, support me on Ko-fi!
 <details>
 <summary>Check out other mods from the Popcorn Factory team!</summary>	
 <div>
+    <a href="https://thunderstore.io/package/PopcornFactory/Arsonist_Mod/">
+      <img width="130" src="https://github.com/user-attachments/assets/5928595d-ac4a-4bb7-9ef2-1e56d74ccb7d"/>
+      <p>Arsonist Mod (Popcorn Factory Team)</p>
+    </a>
+</div>	
+<div>
     <a href="https://thunderstore.io/package/PopcornFactory/Rimuru_Tempest_Mod/">
-      <img width="130" src="https://cdn.discordapp.com/attachments/399901440023330816/1033003173759164467/unknown.png"/>
+      <img width="130" src="https://github.com/user-attachments/assets/7ca86047-1bbb-4b2c-8b98-3cb6f65f86b3"/>
       <p>Rimuru Tempest Mod (Popcorn Factory Team)</p>
     </a>
 </div>
@@ -23,32 +30,33 @@ If you enjoy my work, support me on Ko-fi!
       <p>Darth Vader Mod (Popcorn Factory Team)</p>
     </a>
 </div>
-    <a href="https://thunderstore.io/package/PopcornFactory/ShigarakiMod/">
-        <img src="https://user-images.githubusercontent.com/93917577/168004591-39480a52-c7fe-4962-997f-cd9460bb4d4a.png"><br>
+<div>
+    <a href="https://thunderstore.io/package/TeaL/ShigarakiMod/">
+        <img src="https://github.com/user-attachments/assets/ab1e17d8-21ba-4f2f-a152-3fea5949ebe4" height ="128"><br>
         <p>ShigarakiMod (My other Mod!)</p>
     </a>
 </div>
 <div>
     <a href="https://thunderstore.io/package/TeaL/DekuMod/">
-        <img src="https://cdn.discordapp.com/attachments/399901440023330816/960043614036168784/TeaL-DekuMod-3.1.1.png.128x128_q95.png"><br>
+        <img src="https://github.com/user-attachments/assets/117f7100-e25d-4d34-8811-71d4fdf94c61" height ="128" ><br>
         <p>DekuMod (My other Mod!)</p>
     </a>
 </div>
 <div>
     <a href="https://thunderstore.io/package/Ethanol10/Ganondorf_Mod/">
-        <img src="https://cdn.discordapp.com/attachments/399901440023330816/960043613428011079/Ethanol10-Ganondorf_Mod-2.1.5.png.128x128_q95.png"><br>
+        <img src="https://github.com/user-attachments/assets/79f2ce62-04a0-4f89-a4e9-13d351401f37"><br>
         <p>Ganondorf Mod (Ethanol 10)</p>
     </a>
 </div>
 <div>
     <a href="https://thunderstore.io/package/BokChoyWithSoy/Phoenix_Wright_Mod/">
-        <img src="https://cdn.discordapp.com/attachments/399901440023330816/960054458790850570/BokChoyWithSoy-Phoenix_Wright_Mod-1.6.2.png.128x128_q95.png"><br>
+        <img src="https://github.com/user-attachments/assets/74f85c95-5ae5-4017-af33-afbbbafc868f"><br>
         <p>Phoenix Wright Mod (BokChoyWithSoy)</p>
     </a>
 </div>
 <div>
     <a href="https://thunderstore.io/package/PopcornFactory/Wisp_WarframeSurvivorMod/">
-        <img src="https://cdn.discordapp.com/attachments/399901440023330816/960043613692239942/PopcornFactory-Wisp_WarframeSurvivorMod-1.0.2.png.128x128_q95.png"><br>
+        <img src="https://github.com/user-attachments/assets/5cde736a-4c63-4a8f-84f7-72c787cf40b4" height ="128" ><br>
         <p>Wisp Mod (Popcorn Factory Team)</p>
     </a>
 </div>
@@ -56,35 +64,13 @@ If you enjoy my work, support me on Ko-fi!
 
 ## Latest Changelog, Next update(s)
 
-- 2.1.0 
-    - Risk of Options support! Delete your old configs!
-        - Added adjustable timer for the boss transformation
-    - Bug fixes: 
-        - HOPEFULLY fixed the lag ditto was creating as runs went on, should be more multiplayer friendly too.
-        - Improved transform hotkey reliability. 
-- 2.0.2 
-    - Fixed missing NetworkingAPI dependency.
-    - Sounds will play for the player only rather than everyone.
-- 2.0.1 
-    - Fixed transform duration decrementing incorrectly.
-    - Noted known issues- the host doesn't move for other players- to fix, just restart the lobby or have someone host
-    - Noted Networked timed buffs mod not showing duration for transform debuff for non-hosts, but it is still decreasing.
-- 2.0.0 
-    - Bug Fixes
-        - Fixed networking/multiplayer issues (hopefully). 
-        - Non-hosts can now get elite equipment.
-        - Transform debuff should properly decrease for non-hosts as it is now a duration rather than stacks.
-        - Transform key will now work for individual players, hosts won't detransform other players.
-    - Changes
-        - Leftovers now heal 6.25% HP per second, and its proper healing not regen.
-        - The Utility slot for Items is removed, no more item stacking. 
-    - *NEW*
-        - ADDED ABILITIES for the Utility slots!
-        - Try out the item and ability combinations for some CRAZINGO gameplay!
-
+- 2.2.0 
+    - SOTS update!
 
 - Next update(s)
-    - Bug fixes. 
+    - Bug fixes.
+    - Better compatibility for modded characters?
+    - More abilities? 
 
 <img src="https://user-images.githubusercontent.com/93917577/190889679-f4e22ebc-81fb-4b6c-bfac-26d9792181f2.PNG">
 
@@ -223,7 +209,31 @@ These stats are prone to change.
 
 <details>
 <summary>Click to expand previous patch notes:</summary>
-    
+ - 2.1.0 
+    - Risk of Options support! Delete your old configs!
+        - Added adjustable timer for the boss transformation
+    - Bug fixes: 
+        - HOPEFULLY fixed the lag ditto was creating as runs went on, should be more multiplayer friendly too.
+        - Improved transform hotkey reliability. 
+- 2.0.2 
+    - Fixed missing NetworkingAPI dependency.
+    - Sounds will play for the player only rather than everyone.
+- 2.0.1 
+    - Fixed transform duration decrementing incorrectly.
+    - Noted known issues- the host doesn't move for other players- to fix, just restart the lobby or have someone host
+    - Noted Networked timed buffs mod not showing duration for transform debuff for non-hosts, but it is still decreasing.
+- 2.0.0 
+    - Bug Fixes
+        - Fixed networking/multiplayer issues (hopefully). 
+        - Non-hosts can now get elite equipment.
+        - Transform debuff should properly decrease for non-hosts as it is now a duration rather than stacks.
+        - Transform key will now work for individual players, hosts won't detransform other players.
+    - Changes
+        - Leftovers now heal 6.25% HP per second, and its proper healing not regen.
+        - The Utility slot for Items is removed, no more item stacking. 
+    - *NEW*
+        - ADDED ABILITIES for the Utility slots!
+        - Try out the item and ability combinations for some CRAZINGO gameplay!   
 - 1.3.6 
     - Fixed boss config, and tbh with the new transform hotkey, no more softlocks should exist, however I'll keep the 30 second timer as a default since bosses can be quite strong (They also got buffed with the instantly spawn change).
 - 1.3.5 
